@@ -62,7 +62,7 @@ export default function CargoPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-8 bg-white border border-[#DDD9CF] space-y-3">
+            <div className="p-8 bg-white border border-[#DDD9CF] space-y-3 reveal-on-scroll delay-75 card-hover-light">
               <span className="font-heading font-black text-3xl text-[#FF6A00] block">01</span>
               <h3 className="font-heading font-bold text-base text-[#0B0B0B] uppercase">
                 Phân Bổ Tải Trọng Đều Trục
@@ -72,7 +72,7 @@ export default function CargoPage() {
               </p>
             </div>
 
-            <div className="p-8 bg-white border border-[#DDD9CF] space-y-3">
+            <div className="p-8 bg-white border border-[#DDD9CF] space-y-3 reveal-on-scroll delay-150 card-hover-light">
               <span className="font-heading font-black text-3xl text-[#FF6A00] block">02</span>
               <h3 className="font-heading font-bold text-base text-[#0B0B0B] uppercase">
                 Chằng Buộc Đa Điểm Chịu Lực
@@ -82,7 +82,7 @@ export default function CargoPage() {
               </p>
             </div>
 
-            <div className="p-8 bg-white border border-[#DDD9CF] space-y-3">
+            <div className="p-8 bg-white border border-[#DDD9CF] space-y-3 reveal-on-scroll delay-200 card-hover-light">
               <span className="font-heading font-black text-3xl text-[#FF6A00] block">03</span>
               <h3 className="font-heading font-bold text-base text-[#0B0B0B] uppercase">
                 Lót Đệm Chống Ma Sát Trượt
@@ -92,7 +92,7 @@ export default function CargoPage() {
               </p>
             </div>
 
-            <div className="p-8 bg-white border border-[#DDD9CF] space-y-3">
+            <div className="p-8 bg-white border border-[#DDD9CF] space-y-3 reveal-on-scroll delay-250 card-hover-light">
               <span className="font-heading font-black text-3xl text-[#FF6A00] block">04</span>
               <h3 className="font-heading font-bold text-base text-[#0B0B0B] uppercase">
                 Kiểm Tra Lại Sau 20KM Đầu

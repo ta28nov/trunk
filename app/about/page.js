@@ -94,7 +94,7 @@ export default function AboutPage() {
       {/* ═══ STORY & MISSION SECTION ═══ */}
       <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#F2F0EA] text-[#0B0B0B]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-6 reveal-left">
             <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
               SỨ MỆNH VẬN HÀNH
             </span>
@@ -109,8 +109,8 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="lg:col-span-6">
-            <div className="relative overflow-hidden h-80 sm:h-96 md:h-[480px] w-full border border-[#DDD9CF]">
+          <div className="lg:col-span-6 reveal-right">
+            <div className="relative overflow-hidden h-80 sm:h-96 md:h-[480px] w-full border border-[#DDD9CF] card-hover">
               <img
                 src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
                 alt="Đội ngũ vận tải Tiên Phong tại bãi xe trung tâm"
@@ -122,9 +122,9 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ CORE VALUES ═══ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F] reveal-on-scroll">
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-4 max-w-3xl reveal-on-scroll">
             <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
               TRIẾT LÝ VẬN HÀNH
             </span>
@@ -134,32 +134,35 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {VALUES.map((val) => (
-              <div
-                key={val.num}
-                className="p-8 bg-[#141414] border border-[#2A2A2A] space-y-4 flex flex-col justify-between"
-              >
-                <div className="space-y-3">
-                  <span className="font-heading font-black text-4xl text-[#FF6A00] block">
-                    {val.num}
-                  </span>
-                  <h3 className="font-heading font-bold text-lg text-white uppercase">
-                    {val.title}
-                  </h3>
-                  <p className="text-sm text-[#A3A3A3] font-light leading-relaxed">
-                    {val.desc}
-                  </p>
+            {VALUES.map((val, idx) => {
+              const delays = ["delay-75", "delay-150", "delay-200", "delay-250"];
+              return (
+                <div
+                  key={val.num}
+                  className={`p-8 bg-[#141414] border border-[#2A2A2A] space-y-4 flex flex-col justify-between reveal-on-scroll card-hover ${delays[idx % delays.length]}`}
+                >
+                  <div className="space-y-3">
+                    <span className="font-heading font-black text-4xl text-[#FF6A00] block">
+                      {val.num}
+                    </span>
+                    <h3 className="font-heading font-bold text-lg text-white uppercase">
+                      {val.title}
+                    </h3>
+                    <p className="text-sm text-[#A3A3A3] font-light leading-relaxed">
+                      {val.desc}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* ═══ TIMELINE SECTION ═══ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#141414] border-t border-[#1F1F1F] reveal-on-scroll">
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#141414] border-t border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-4 max-w-3xl reveal-on-scroll">
             <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
               CHẶNG ĐƯỜNG PHÁT TRIỂN
             </span>
@@ -169,30 +172,33 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {TIMELINE.map((t) => (
-              <div
-                key={t.year}
-                className="p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-3"
-              >
-                <span className="font-heading font-black text-3xl text-[#FF6A00] block">
-                  {t.year}
-                </span>
-                <h3 className="font-heading font-bold text-base text-white uppercase">
-                  {t.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-[#A3A3A3] font-light leading-relaxed">
-                  {t.desc}
-                </p>
-              </div>
-            ))}
+            {TIMELINE.map((t, idx) => {
+              const delays = ["delay-75", "delay-150", "delay-200", "delay-250"];
+              return (
+                <div
+                  key={t.year}
+                  className={`p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-3 reveal-on-scroll card-hover ${delays[idx % delays.length]}`}
+                >
+                  <span className="font-heading font-black text-3xl text-[#FF6A00] block">
+                    {t.year}
+                  </span>
+                  <h3 className="font-heading font-bold text-base text-white uppercase">
+                    {t.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#A3A3A3] font-light leading-relaxed">
+                    {t.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* ═══ LEGAL & LICENSING SPECIFICATION ═══ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F] reveal-on-scroll">
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto space-y-12">
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-4 max-w-3xl reveal-on-scroll">
             <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
               PHÁP LÝ CHÍNH NGẠCH
             </span>
@@ -202,17 +208,17 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
-            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1">
+            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1 reveal-on-scroll delay-75 card-hover">
               <span className="text-xs uppercase tracking-wider text-[#737373]">Tên Doanh Nghiệp:</span>
               <span className="font-heading font-bold text-base text-white block">Công Ty TNHH TM DV Vận Tải Tiên Phong</span>
             </div>
 
-            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1">
+            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1 reveal-on-scroll delay-150 card-hover">
               <span className="text-xs uppercase tracking-wider text-[#737373]">Mã Số Doanh Nghiệp (MST):</span>
               <span className="font-heading font-black text-lg text-[#FF6A00] block">0314892039</span>
             </div>
 
-            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1">
+            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1 reveal-on-scroll delay-200 card-hover">
               <span className="text-xs uppercase tracking-wider text-[#737373]">Giấy Phép Vận Tải Ô Tô:</span>
               <span className="font-heading font-bold text-base text-white block">41-GPVT/SGTVT (Sở GTVT TP.HCM)</span>
             </div>

@@ -71,7 +71,7 @@ export default function HomePage() {
   const [videoOpen, setVideoOpen] = useState(false);
 
   return (
-    <div className="flex flex-col w-full bg-[#0B0B0B] text-white">
+    <div className="flex flex-col w-full bg-[#0B0B0B] text-white overflow-hidden">
       <VideoModal isOpen={videoOpen} onClose={() => setVideoOpen(false)} />
 
       {/* ════════════════════════════════════════════════════════════════
@@ -153,9 +153,9 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════
           SECTION 02: INTRODUCTION (Large Editorial Typography)
          ════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F] reveal-on-scroll">
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className="lg:col-span-8 space-y-6">
+          <div className="lg:col-span-8 space-y-6 reveal-left">
             <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
               NĂNG LỰC CỐT LÕI
             </span>
@@ -167,7 +167,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="lg:col-span-4 p-8 bg-[#141414] border border-[#2A2A2A] space-y-6">
+          <div className="lg:col-span-4 p-8 bg-[#141414] border border-[#2A2A2A] space-y-6 reveal-right card-hover">
             <div className="space-y-1">
               <span className="text-xs uppercase tracking-widest text-[#737373] font-heading font-semibold block">
                 Giấy Phép Sở GTVT
@@ -195,7 +195,7 @@ export default function HomePage() {
             <div className="pt-2">
               <Link
                 href="/about"
-                className="btn-arrow-hover text-xs font-heading font-bold uppercase tracking-wider text-[#FF6A00] hover:underline"
+                className="btn-arrow-hover text-xs font-heading font-bold uppercase tracking-wider text-[#FF6A00] hover:underline block"
               >
                 <span>XEM HỒ SƠ DOANH NGHIỆP</span>
                 <span className="arrow-move ml-1">→</span>
@@ -210,7 +210,7 @@ export default function HomePage() {
          ════════════════════════════════════════════════════════════════ */}
       <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#F2F0EA] text-[#0B0B0B] border-t border-[#DDD9CF]">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-4 max-w-3xl reveal-on-scroll">
             <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
               DỊCH VỤ TRỌNG TÂM
             </span>
@@ -222,17 +222,19 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Interactive Expandable Services Accordion */}
-          <InteractiveServices />
+          {/* Interactive Expandable Services Accordion with Scroll Reveal */}
+          <div className="reveal-on-scroll delay-150">
+            <InteractiveServices />
+          </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
           SECTION 04: OPERATIONAL VIDEO FEATURE (§24, §25)
          ════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#070707] border-t border-[#1F1F1F] reveal-on-scroll">
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#070707] border-t border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto space-y-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#1F1F1F] pb-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#1F1F1F] pb-8 reveal-on-scroll">
             <div className="space-y-3 max-w-2xl">
               <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
                 BẰNG CHỨNG THỰC ĐỊA
@@ -255,14 +257,14 @@ export default function HomePage() {
           </div>
 
           {/* Embedded Industrial Video Showcase */}
-          <div className="relative aspect-video w-full bg-[#141414] border border-[#2A2A2A] overflow-hidden group shadow-2xl">
+          <div className="relative aspect-video w-full bg-[#141414] border border-[#2A2A2A] overflow-hidden group shadow-2xl reveal-scale delay-200 card-hover">
             <video
               autoPlay
               muted
               loop
               playsInline
               poster="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1600&q=80"
-              className="w-full h-full object-cover filter brightness-90 group-hover:scale-102 transition-transform duration-700"
+              className="w-full h-full object-cover filter brightness-90 img-editorial"
             >
               <source src="/videos/traffic-hero.webm" type="video/webm" />
               <source
@@ -307,9 +309,9 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════
           SECTION 05: CARGO / CAPABILITIES (What We Move)
          ════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F] reveal-on-scroll">
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 reveal-on-scroll">
             <div className="space-y-4 max-w-3xl">
               <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
                 DANH MỤC HÀNG HÓA
@@ -331,23 +333,27 @@ export default function HomePage() {
             </Link>
           </div>
 
+          {/* Cards with Staggered Scroll Animations and Hover Lifts */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CARGO_CATEGORIES.map((cargo, idx) => (
-              <div
-                key={idx}
-                className="p-8 bg-[#141414] border border-[#2A2A2A] space-y-4 hover:border-[#FF6A00] transition-colors duration-200"
-              >
-                <span className="font-heading font-black text-xl text-[#FF6A00] block">
-                  0{idx + 1}
-                </span>
-                <h3 className="font-heading font-bold text-lg text-white uppercase">
-                  {cargo.name}
-                </h3>
-                <p className="text-sm text-[#A3A3A3] font-light leading-relaxed">
-                  {cargo.desc}
-                </p>
-              </div>
-            ))}
+            {CARGO_CATEGORIES.map((cargo, idx) => {
+              const delays = ["delay-75", "delay-150", "delay-200", "delay-250", "delay-300", "delay-400"];
+              return (
+                <div
+                  key={idx}
+                  className={`p-8 bg-[#141414] border border-[#2A2A2A] space-y-4 reveal-on-scroll card-hover ${delays[idx % delays.length]}`}
+                >
+                  <span className="font-heading font-black text-xl text-[#FF6A00] block">
+                    0{idx + 1}
+                  </span>
+                  <h3 className="font-heading font-bold text-lg text-white uppercase">
+                    {cargo.name}
+                  </h3>
+                  <p className="text-sm text-[#A3A3A3] font-light leading-relaxed">
+                    {cargo.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -355,9 +361,9 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════
           SECTION 06: COVERAGE / ROUTES (Network Visualization)
          ════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#141414] border-t border-[#1F1F1F] reveal-on-scroll">
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#141414] border-t border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-4 max-w-3xl reveal-on-scroll">
             <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
               MẠNG LƯỚI TUYẾN ĐƯỜNG
             </span>
@@ -369,9 +375,9 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Interactive Route Corridor Cards */}
+          {/* Interactive Route Corridor Cards with Hover Lift */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 sm:p-10 bg-[#0B0B0B] border border-[#2A2A2A] space-y-6">
+            <div className="p-8 sm:p-10 bg-[#0B0B0B] border border-[#2A2A2A] space-y-6 reveal-left card-hover">
               <div className="flex items-baseline justify-between border-b border-[#1F1F1F] pb-4">
                 <h3 className="font-heading font-black text-xl text-white uppercase">
                   Hành Lang Vùng Đông Nam Bộ
@@ -399,7 +405,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="p-8 sm:p-10 bg-[#0B0B0B] border border-[#2A2A2A] space-y-6">
+            <div className="p-8 sm:p-10 bg-[#0B0B0B] border border-[#2A2A2A] space-y-6 reveal-right card-hover">
               <div className="flex items-baseline justify-between border-b border-[#1F1F1F] pb-4">
                 <h3 className="font-heading font-black text-xl text-white uppercase">
                   Trục Huyết Mạch Quốc Lộ 1A: Bắc — Nam
@@ -428,7 +434,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="pt-4 text-center">
+          <div className="pt-4 text-center reveal-on-scroll delay-200">
             <Link
               href="/routes"
               className="btn-arrow-hover inline-block px-8 py-4 bg-transparent hover:bg-white text-white hover:text-black border border-[#2A2A2A] hover:border-white font-heading font-bold text-xs uppercase tracking-wider transition-all"
@@ -441,11 +447,11 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          SECTION 07: FLEET HIGHLIGHTS
+          SECTION 07: FLEET HIGHLIGHTS WITH STAGGERED REVEALS & HOVER LIFT
          ════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F] reveal-on-scroll">
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 reveal-on-scroll">
             <div className="space-y-4 max-w-2xl">
               <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
                 HỆ THỐNG PHƯƠNG TIỆN
@@ -464,47 +470,50 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {FLEET_HIGHLIGHTS.map((truck, idx) => (
-              <div
-                key={idx}
-                className="bg-[#141414] border border-[#2A2A2A] overflow-hidden flex flex-col justify-between"
-              >
-                <div className="relative h-64 w-full overflow-hidden border-b border-[#2A2A2A]">
-                  <img
-                    src={truck.image}
-                    alt={truck.name}
-                    className="w-full h-full object-cover img-editorial"
-                  />
-                  <div className="absolute top-4 right-4 bg-[#0B0B0B] border border-[#2A2A2A] px-3 py-1.5 font-heading font-black text-xs text-[#FF6A00]">
-                    {truck.payload}
-                  </div>
-                </div>
-
-                <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <h3 className="font-heading font-bold text-lg text-white uppercase">
-                      {truck.name}
-                    </h3>
-                    <p className="text-xs text-[#FF6A00] font-medium">
-                      {truck.capacity}
-                    </p>
-                    <p className="text-xs text-[#A3A3A3] font-light leading-relaxed">
-                      {truck.usage}
-                    </p>
+            {FLEET_HIGHLIGHTS.map((truck, idx) => {
+              const delays = ["delay-100", "delay-200", "delay-300"];
+              return (
+                <div
+                  key={idx}
+                  className={`bg-[#141414] border border-[#2A2A2A] overflow-hidden flex flex-col justify-between reveal-on-scroll card-hover ${delays[idx]}`}
+                >
+                  <div className="relative h-64 w-full overflow-hidden border-b border-[#2A2A2A]">
+                    <img
+                      src={truck.image}
+                      alt={truck.name}
+                      className="w-full h-full object-cover img-editorial"
+                    />
+                    <div className="absolute top-4 right-4 bg-[#0B0B0B] border border-[#2A2A2A] px-3 py-1.5 font-heading font-black text-xs text-[#FF6A00]">
+                      {truck.payload}
+                    </div>
                   </div>
 
-                  <div className="pt-4 border-t border-[#1F1F1F]">
-                    <Link
-                      href="/fleet"
-                      className="btn-arrow-hover text-xs font-heading font-bold uppercase tracking-wider text-white hover:text-[#FF6A00] transition-colors"
-                    >
-                      <span>Thông số kỹ thuật chi tiết</span>
-                      <span className="arrow-move ml-1">→</span>
-                    </Link>
+                  <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <h3 className="font-heading font-bold text-lg text-white uppercase">
+                        {truck.name}
+                      </h3>
+                      <p className="text-xs text-[#FF6A00] font-medium">
+                        {truck.capacity}
+                      </p>
+                      <p className="text-xs text-[#A3A3A3] font-light leading-relaxed">
+                        {truck.usage}
+                      </p>
+                    </div>
+
+                    <div className="pt-4 border-t border-[#1F1F1F]">
+                      <Link
+                        href="/fleet"
+                        className="btn-arrow-hover text-xs font-heading font-bold uppercase tracking-wider text-white hover:text-[#FF6A00] transition-colors block"
+                      >
+                        <span>Thông số kỹ thuật chi tiết</span>
+                        <span className="arrow-move ml-1">→</span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -512,9 +521,9 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════
           SECTION 08: PROCESS STORYTELLING WITH STICKY VISUAL (§22, §23)
          ════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#F2F0EA] text-[#0B0B0B] border-t border-[#DDD9CF] reveal-on-scroll">
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#F2F0EA] text-[#0B0B0B] border-t border-[#DDD9CF]">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-4 max-w-3xl reveal-on-scroll">
             <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
               QUY TRÌNH VẬN HÀNH
             </span>
@@ -526,17 +535,19 @@ export default function HomePage() {
             </p>
           </div>
 
-          <ProcessStorytelling />
+          <div className="reveal-on-scroll delay-150">
+            <ProcessStorytelling />
+          </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
           SECTION 09: ABOUT & ENTERPRISE PARTNERS (§08, §09)
          ════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F] reveal-on-scroll">
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto space-y-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-6 space-y-6 reveal-left">
               <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
                 HỒ SƠ NĂNG LỰC THỰC TẾ
               </span>
@@ -557,8 +568,8 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="lg:col-span-6">
-              <div className="relative overflow-hidden h-80 sm:h-96 md:h-[480px] w-full border border-[#2A2A2A]">
+            <div className="lg:col-span-6 reveal-right">
+              <div className="relative overflow-hidden h-80 sm:h-96 md:h-[480px] w-full border border-[#2A2A2A] card-hover">
                 <img
                   src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
                   alt="Tổng kho và bãi xe Sóng Thần Vận Tải Tiên Phong"
@@ -568,9 +579,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Enterprise Partners Grid */}
+          {/* Enterprise Partners Grid with Staggered Scale Reveals */}
           <div className="pt-16 border-t border-[#1F1F1F] space-y-8">
-            <div className="text-center space-y-2">
+            <div className="text-center space-y-2 reveal-on-scroll">
               <span className="text-xs uppercase tracking-[0.25em] text-[#737373] font-heading font-semibold block">
                 ĐỐI TÁC SẢN XUẤT DOANH NGHIỆP
               </span>
@@ -580,19 +591,22 @@ export default function HomePage() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
-              {CLIENTS.map((client, idx) => (
-                <div
-                  key={idx}
-                  className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1.5 hover:border-[#FF6A00] transition-colors"
-                >
-                  <span className="font-heading font-bold text-sm text-white uppercase block">
-                    {client.name}
-                  </span>
-                  <span className="text-[11px] text-[#737373] font-light block">
-                    {client.field}
-                  </span>
-                </div>
-              ))}
+              {CLIENTS.map((client, idx) => {
+                const delays = ["delay-75", "delay-150", "delay-200", "delay-250", "delay-300", "delay-400"];
+                return (
+                  <div
+                    key={idx}
+                    className={`p-6 bg-[#141414] border border-[#2A2A2A] space-y-1.5 reveal-scale card-hover ${delays[idx]}`}
+                  >
+                    <span className="font-heading font-bold text-sm text-white uppercase block">
+                      {client.name}
+                    </span>
+                    <span className="text-[11px] text-[#737373] font-light block">
+                      {client.field}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -601,8 +615,8 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════════
           SECTION 10: FINAL CTA (Visually Strongest Conversion Moment)
          ════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-28 sm:py-44 px-4 sm:px-8 lg:px-16 overflow-hidden bg-[#070707] border-t border-[#1F1F1F] reveal-on-scroll">
-        <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+      <section className="relative py-28 sm:py-44 px-4 sm:px-8 lg:px-16 overflow-hidden bg-[#070707] border-t border-[#1F1F1F]">
+        <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10 reveal-scale">
           <span className="text-xs uppercase tracking-[0.3em] text-[#FF6A00] font-heading font-bold block">
             BẮT ĐẦU VẬN HÀNH
           </span>

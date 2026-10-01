@@ -85,24 +85,27 @@ export default function RoutesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {INDUSTRIAL_PARKS.map((kcn, idx) => (
-              <div
-                key={idx}
-                className="p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-4 hover:border-[#FF6A00] transition-colors"
-              >
-                <div className="flex items-center justify-between border-b border-[#1F1F1F] pb-3">
-                  <h3 className="font-heading font-bold text-base text-white uppercase">
-                    {kcn.province}
-                  </h3>
-                  <span className="text-[10px] font-mono text-[#FF6A00]">
-                    Trực chiến
-                  </span>
+            {INDUSTRIAL_PARKS.map((kcn, idx) => {
+              const delays = ["delay-75", "delay-150", "delay-200", "delay-250", "delay-300"];
+              return (
+                <div
+                  key={idx}
+                  className={`p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-4 reveal-on-scroll card-hover ${delays[idx % delays.length]}`}
+                >
+                  <div className="flex items-center justify-between border-b border-[#1F1F1F] pb-3">
+                    <h3 className="font-heading font-bold text-base text-white uppercase">
+                      {kcn.province}
+                    </h3>
+                    <span className="text-[10px] font-mono text-[#FF6A00]">
+                      Trực chiến
+                    </span>
+                  </div>
+                  <p className="text-xs text-[#A3A3A3] font-light leading-relaxed">
+                    {kcn.list}
+                  </p>
                 </div>
-                <p className="text-xs text-[#A3A3A3] font-light leading-relaxed">
-                  {kcn.list}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

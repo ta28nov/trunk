@@ -58,7 +58,7 @@ export default function OperationsPage() {
       {/* ═══ 15.000M2 DEPOT SHOWCASE (§24) ═══ */}
       <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-6 reveal-left">
             <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
               TÂM ĐIỂM ĐIỀU PHỐI VẬN TẢI
             </span>
@@ -84,8 +84,8 @@ export default function OperationsPage() {
             </div>
           </div>
 
-          <div className="lg:col-span-6">
-            <div className="relative overflow-hidden h-80 sm:h-96 md:h-[480px] w-full border border-[#2A2A2A] bg-[#141414]">
+          <div className="lg:col-span-6 reveal-right">
+            <div className="relative overflow-hidden h-80 sm:h-96 md:h-[480px] w-full border border-[#2A2A2A] bg-[#141414] card-hover">
               <img
                 src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
                 alt="Bãi xe trung tâm 15.000m² Vận Tải Tiên Phong"
@@ -99,7 +99,7 @@ export default function OperationsPage() {
       {/* ═══ 18-STEP PRE-TRIP INSPECTION CHECKLIST ═══ */}
       <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#F2F0EA] text-[#0B0B0B] border-t border-[#DDD9CF]">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-4 max-w-3xl reveal-on-scroll">
             <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
               KIỂM ĐỊNH KỸ THUẬT
             </span>
@@ -112,27 +112,30 @@ export default function OperationsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CHECKLIST_ITEMS.map((item) => (
-              <div
-                key={item.num}
-                className="p-8 bg-white border border-[#DDD9CF] space-y-3"
-              >
-                <div className="flex items-center justify-between border-b border-[#EAE7DF] pb-3">
-                  <span className="font-heading font-black text-2xl text-[#FF6A00]">
-                    {item.num}
-                  </span>
-                  <span className="text-[10px] font-mono text-[#737373] uppercase">
-                    Bắt buộc 100%
-                  </span>
+            {CHECKLIST_ITEMS.map((item, idx) => {
+              const delays = ["delay-75", "delay-150", "delay-200", "delay-250", "delay-300", "delay-400"];
+              return (
+                <div
+                  key={item.num}
+                  className={`p-8 bg-white border border-[#DDD9CF] space-y-3 reveal-on-scroll card-hover-light ${delays[idx % delays.length]}`}
+                >
+                  <div className="flex items-center justify-between border-b border-[#EAE7DF] pb-3">
+                    <span className="font-heading font-black text-2xl text-[#FF6A00]">
+                      {item.num}
+                    </span>
+                    <span className="text-[10px] font-mono text-[#737373] uppercase">
+                      Bắt buộc 100%
+                    </span>
+                  </div>
+                  <h3 className="font-heading font-bold text-base text-[#0B0B0B] uppercase">
+                    {item.name}
+                  </h3>
+                  <p className="text-xs text-[#525252] font-light leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
-                <h3 className="font-heading font-bold text-base text-[#0B0B0B] uppercase">
-                  {item.name}
-                </h3>
-                <p className="text-xs text-[#525252] font-light leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

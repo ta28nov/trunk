@@ -65,11 +65,11 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-/* ─── SCROLL REVEAL VIEWPORT ANIMATION (BIDIRECTIONAL) ─── */
+/* ─── SCROLL REVEAL VIEWPORT ANIMATION (BIDIRECTIONAL - §34) ─── */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(48px);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
@@ -78,30 +78,143 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(0);
 }
 
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale.is-revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-left.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(48px);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-right.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger Delays for natural cascading entry */
+.delay-75 { transition-delay: 75ms; }
+.delay-100 { transition-delay: 100ms; }
+.delay-150 { transition-delay: 150ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-250 { transition-delay: 250ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal-on-scroll {
+  .reveal-on-scroll,
+  .reveal-scale,
+  .reveal-left,
+  .reveal-right {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
 }
 
-/* ─── INDUSTRIAL IMAGE HOVER ─── */
+/* ─── RICH INDUSTRIAL HOVER EFFECTS ─── */
+.card-hover {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
+              border-color 0.35s ease, 
+              box-shadow 0.35s ease, 
+              background-color 0.35s ease;
+  will-change: transform, box-shadow;
+}
+
+/* When element has both scroll reveal and card-hover */
+.reveal-on-scroll.card-hover,
+.reveal-scale.card-hover,
+.reveal-left.card-hover,
+.reveal-right.card-hover {
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background-color 0.35s ease;
+}
+
+.card-hover:hover,
+.reveal-on-scroll.is-revealed.card-hover:hover,
+.reveal-scale.is-revealed.card-hover:hover,
+.reveal-left.is-revealed.card-hover:hover,
+.reveal-right.is-revealed.card-hover:hover {
+  transform: translateY(-8px) !important;
+  border-color: #FF6A00 !important;
+  box-shadow: 0 20px 40px -12px rgba(255, 106, 0, 0.3), 0 0 0 1px rgba(255, 106, 0, 0.5) !important;
+}
+
+/* Subtle card hover for light cards */
+.card-hover-light {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.card-hover-light:hover {
+  transform: translateY(-4px);
+  border-color: #FF6A00 !important;
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.12);
+}
+
+/* Industrial Image Hover */
 .img-editorial {
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s ease;
   will-change: transform, filter;
 }
 
+.card-hover:hover .img-editorial,
 .img-editorial:hover {
-  transform: scale(1.03);
+  transform: scale(1.08);
+  filter: contrast(1.1) brightness(1.05);
 }
 
-/* ─── BUTTON HOVER LINE ANIMATION ─── */
-.btn-arrow-hover:hover .arrow-move {
-  transform: translateX(6px);
+/* Button Rich Hover Line & Lift Animation */
+.btn-arrow-hover {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 0.3s ease, 
+              background-color 0.3s ease,
+              border-color 0.3s ease;
+  will-change: transform, box-shadow;
 }
+
+.btn-arrow-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -6px rgba(255, 106, 0, 0.5);
+}
+
+.btn-arrow-hover:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+.btn-arrow-hover:hover .arrow-move {
+  transform: translateX(8px);
+}
+
 .arrow-move {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   display: inline-block;
 }
 
@@ -138,7 +251,7 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes heroFadeUp {
   0% {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(28px);
   }
   100% {
     opacity: 1;
@@ -147,16 +260,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-animate-1 {
-  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  animation: heroFadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 .hero-animate-2 {
-  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  animation: heroFadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
 }
 .hero-animate-3 {
-  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  animation: heroFadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
 }
 .hero-animate-4 {
-  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+  animation: heroFadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
 }
 
 /* ─── ROUTE ANIMATED PROGRESS LINE (§20) ─── */

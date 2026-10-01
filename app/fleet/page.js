@@ -248,22 +248,25 @@ export default function FleetPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {INSPECTION_STEPS.map((step, idx) => (
-              <div
-                key={idx}
-                className="p-8 bg-[#141414] border border-[#2A2A2A] space-y-3"
-              >
-                <span className="font-heading font-black text-xl text-[#FF6A00] block">
-                  0{idx + 1}
-                </span>
-                <h3 className="font-heading font-bold text-base text-white uppercase">
-                  {step.item}
-                </h3>
-                <p className="text-xs sm:text-sm text-[#A3A3A3] font-light leading-relaxed">
-                  {step.desc}
-                </p>
-              </div>
-            ))}
+            {INSPECTION_STEPS.map((step, idx) => {
+              const delays = ["delay-75", "delay-150", "delay-200", "delay-250", "delay-300", "delay-400"];
+              return (
+                <div
+                  key={idx}
+                  className={`p-8 bg-[#141414] border border-[#2A2A2A] space-y-3 reveal-on-scroll card-hover ${delays[idx % delays.length]}`}
+                >
+                  <span className="font-heading font-black text-xl text-[#FF6A00] block">
+                    0{idx + 1}
+                  </span>
+                  <h3 className="font-heading font-bold text-base text-white uppercase">
+                    {step.item}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#A3A3A3] font-light leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
           <div className="p-8 sm:p-12 bg-[#141414] border border-[#2A2A2A] flex flex-col md:flex-row items-center justify-between gap-8">

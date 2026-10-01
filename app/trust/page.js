@@ -96,7 +96,7 @@ export default function TrustPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 sm:p-10 bg-[#0B0B0B] border border-[#2A2A2A] space-y-4">
+            <div className="p-8 sm:p-10 bg-[#0B0B0B] border border-[#2A2A2A] space-y-4 reveal-left card-hover">
               <span className="text-xs font-mono uppercase text-[#FF6A00] block">
                 CHỨNG NHẬN ĐĂNG KÝ DOANH NGHIỆP
               </span>
@@ -123,7 +123,7 @@ export default function TrustPage() {
               </div>
             </div>
 
-            <div className="p-8 sm:p-10 bg-[#0B0B0B] border border-[#2A2A2A] space-y-4">
+            <div className="p-8 sm:p-10 bg-[#0B0B0B] border border-[#2A2A2A] space-y-4 reveal-right card-hover">
               <span className="text-xs font-mono uppercase text-[#FF6A00] block">
                 GIẤY PHÉP KINH DOANH VẬN TẢI ĐƯỜNG BỘ
               </span>
@@ -156,7 +156,7 @@ export default function TrustPage() {
       {/* ═══ TESTIMONIALS SLIDER / LIST (§28) ═══ */}
       <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#F2F0EA] text-[#0B0B0B] border-t border-[#DDD9CF]">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-4 max-w-3xl reveal-on-scroll">
             <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
               ĐỐI TÁC NÓI GÌ
             </span>
@@ -166,30 +166,33 @@ export default function TrustPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {TESTIMONIALS.map((t, idx) => (
-              <div
-                key={idx}
-                className="p-8 bg-white border border-[#DDD9CF] space-y-6 flex flex-col justify-between"
-              >
-                <div className="space-y-4">
-                  <span className="font-heading font-black text-4xl text-[#FF6A00] block leading-none">
-                    “
-                  </span>
-                  <p className="text-xs sm:text-sm text-[#262626] font-light leading-relaxed italic">
-                    {t.quote}
-                  </p>
-                </div>
+            {TESTIMONIALS.map((t, idx) => {
+              const delays = ["delay-75", "delay-150", "delay-200"];
+              return (
+                <div
+                  key={idx}
+                  className={`p-8 bg-white border border-[#DDD9CF] space-y-6 flex flex-col justify-between reveal-on-scroll card-hover-light ${delays[idx]}`}
+                >
+                  <div className="space-y-4">
+                    <span className="font-heading font-black text-4xl text-[#FF6A00] block leading-none">
+                      “
+                    </span>
+                    <p className="text-xs sm:text-sm text-[#262626] font-light leading-relaxed italic">
+                      {t.quote}
+                    </p>
+                  </div>
 
-                <div className="pt-4 border-t border-[#EAE7DF] space-y-0.5">
-                  <span className="font-heading font-bold text-sm text-[#0B0B0B] uppercase block">
-                    {t.author}
-                  </span>
-                  <span className="text-xs text-[#737373] font-light block">
-                    {t.position}
-                  </span>
+                  <div className="pt-4 border-t border-[#EAE7DF] space-y-0.5">
+                    <span className="font-heading font-bold text-sm text-[#0B0B0B] uppercase block">
+                      {t.author}
+                    </span>
+                    <span className="text-xs text-[#737373] font-light block">
+                      {t.position}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

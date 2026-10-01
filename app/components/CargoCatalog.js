@@ -182,16 +182,17 @@ export default function CargoCatalog() {
 
       {/* ─── CARGO GRID DISPLAY ─── */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredItems.map((item) => {
+        {filteredItems.map((item, idx) => {
           const isSelected = selectedItem?.id === item.id;
+          const delays = ["delay-75", "delay-150", "delay-200", "delay-250", "delay-300", "delay-400"];
           return (
             <div
               key={item.id}
               onClick={() => setSelectedItem(item)}
-              className={`cursor-pointer bg-[#141414] border transition-all duration-200 flex flex-col justify-between ${
+              className={`cursor-pointer bg-[#141414] border flex flex-col justify-between reveal-on-scroll card-hover ${delays[idx % delays.length]} ${
                 isSelected
-                  ? "border-[#FF6A00] shadow-xl"
-                  : "border-[#2A2A2A] hover:border-[#737373]"
+                  ? "!border-[#FF6A00] shadow-2xl scale-[1.01]"
+                  : "border-[#2A2A2A]"
               }`}
             >
               <div className="relative h-52 w-full overflow-hidden border-b border-[#2A2A2A]">

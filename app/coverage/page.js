@@ -180,19 +180,22 @@ export default function CoveragePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {INDUSTRIAL_PARKS.map((ip, idx) => (
-              <div
-                key={idx}
-                className="p-8 bg-[#141414] border border-[#2A2A2A] space-y-3"
-              >
-                <h3 className="font-heading font-bold text-base text-[#FF6A00] uppercase">
-                  {ip.province}
-                </h3>
-                <p className="text-sm text-[#E5E5E5] font-light leading-relaxed">
-                  {ip.list}
-                </p>
-              </div>
-            ))}
+            {INDUSTRIAL_PARKS.map((ip, idx) => {
+              const delays = ["delay-75", "delay-150", "delay-200", "delay-250", "delay-300", "delay-400"];
+              return (
+                <div
+                  key={idx}
+                  className={`p-8 bg-[#141414] border border-[#2A2A2A] space-y-3 reveal-on-scroll card-hover ${delays[idx % delays.length]}`}
+                >
+                  <h3 className="font-heading font-bold text-base text-[#FF6A00] uppercase">
+                    {ip.province}
+                  </h3>
+                  <p className="text-sm text-[#E5E5E5] font-light leading-relaxed">
+                    {ip.list}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
           <div className="p-8 sm:p-12 bg-[#141414] border border-[#2A2A2A] flex flex-col md:flex-row items-center justify-between gap-8">

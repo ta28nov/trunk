@@ -150,7 +150,7 @@ export default function PricingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-3">
+            <div className="p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-3 reveal-on-scroll card-hover delay-75">
               <span className="font-heading font-black text-2xl text-[#FF6A00] block">
                 10 TỶ VNĐ
               </span>
@@ -162,7 +162,7 @@ export default function PricingPage() {
               </p>
             </div>
 
-            <div className="p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-3">
+            <div className="p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-3 reveal-on-scroll card-hover delay-150">
               <span className="font-heading font-black text-2xl text-[#FF6A00] block">
                 100% ĐỀN BÙ
               </span>
@@ -174,7 +174,7 @@ export default function PricingPage() {
               </p>
             </div>
 
-            <div className="p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-3">
+            <div className="p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-3 reveal-on-scroll card-hover delay-250">
               <span className="font-heading font-black text-2xl text-[#FF6A00] block">
                 30 — 45 NGÀY
               </span>
@@ -189,7 +189,7 @@ export default function PricingPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 text-xs">
             {LEGAL_CREDENTIALS.map((cred, idx) => (
-              <div key={idx} className="p-6 bg-[#0B0B0B] border border-[#2A2A2A] space-y-1">
+              <div key={idx} className="p-6 bg-[#0B0B0B] border border-[#2A2A2A] space-y-1 reveal-on-scroll card-hover delay-100">
                 <span className="text-[#737373] uppercase tracking-wider block">{cred.label}:</span>
                 <span className="font-heading font-bold text-white block text-sm">{cred.val}</span>
               </div>

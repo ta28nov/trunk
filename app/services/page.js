@@ -98,15 +98,15 @@ export default function ServicesPage() {
               <article
                 key={srv.id}
                 id={srv.id}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start reveal-on-scroll"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start"
               >
                 {/* Visual Column */}
                 <div
                   className={`lg:col-span-6 ${
-                    isEven ? "lg:order-1" : "lg:order-2"
+                    isEven ? "lg:order-1 reveal-left" : "lg:order-2 reveal-right"
                   }`}
                 >
-                  <div className="relative overflow-hidden h-80 sm:h-96 md:h-[500px] w-full border border-[#DDD9CF]">
+                  <div className="relative overflow-hidden h-80 sm:h-96 md:h-[500px] w-full border border-[#DDD9CF] card-hover">
                     <img
                       src={srv.image}
                       alt={srv.title}
@@ -118,7 +118,7 @@ export default function ServicesPage() {
                 {/* Content Column */}
                 <div
                   className={`lg:col-span-6 space-y-6 ${
-                    isEven ? "lg:order-2" : "lg:order-1"
+                    isEven ? "lg:order-2 reveal-right" : "lg:order-1 reveal-left"
                   }`}
                 >
                   <div className="space-y-2">
@@ -139,28 +139,28 @@ export default function ServicesPage() {
 
                   {/* Capabilities List */}
                   <div className="space-y-3 pt-2 text-xs sm:text-sm">
-                    <div className="p-4 bg-white border border-[#DDD9CF]">
+                    <div className="p-4 bg-white border border-[#DDD9CF] card-hover-light">
                       <strong className="text-[#0B0B0B] font-semibold block uppercase mb-1">
                         Loại Hàng Thích Hợp:
                       </strong>
                       <span className="text-[#525252] font-light">{srv.suitableCargo}</span>
                     </div>
 
-                    <div className="p-4 bg-white border border-[#DDD9CF]">
+                    <div className="p-4 bg-white border border-[#DDD9CF] card-hover-light">
                       <strong className="text-[#0B0B0B] font-semibold block uppercase mb-1">
                         Phương Tiện Điều Động:
                       </strong>
                       <span className="text-[#525252] font-light">{srv.vehicleType}</span>
                     </div>
 
-                    <div className="p-4 bg-white border border-[#DDD9CF]">
+                    <div className="p-4 bg-white border border-[#DDD9CF] card-hover-light">
                       <strong className="text-[#0B0B0B] font-semibold block uppercase mb-1">
                         Tuyến Đường Hoạt Động:
                       </strong>
                       <span className="text-[#525252] font-light">{srv.coverage}</span>
                     </div>
 
-                    <div className="p-4 bg-white border border-[#DDD9CF]">
+                    <div className="p-4 bg-white border border-[#DDD9CF] card-hover-light">
                       <strong className="text-[#0B0B0B] font-semibold block uppercase mb-1">
                         Quy Trình Thực Hiện:
                       </strong>
@@ -179,9 +179,9 @@ export default function ServicesPage() {
 
                     <a
                       href="tel:0918456789"
-                      className="px-6 py-4 bg-transparent border border-[#0B0B0B] hover:bg-[#0B0B0B] hover:text-white text-[#0B0B0B] font-heading font-bold text-xs uppercase tracking-wider transition-colors"
+                      className="btn-arrow-hover px-6 py-4 bg-transparent border border-[#0B0B0B] hover:bg-[#0B0B0B] hover:text-white text-[#0B0B0B] font-heading font-bold text-xs uppercase tracking-wider transition-colors"
                     >
-                      Hotline: 0918.456.789
+                      <span>Hotline: 0918.456.789</span>
                     </a>
                   </div>
                 </div>

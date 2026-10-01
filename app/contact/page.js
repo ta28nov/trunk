@@ -67,7 +67,7 @@ export default function ContactPage() {
       <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#F2F0EA] text-[#0B0B0B]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Form Side */}
-          <div className="lg:col-span-7 p-8 sm:p-12 bg-white border border-[#DDD9CF] space-y-8">
+          <div className="lg:col-span-7 p-8 sm:p-12 bg-white border border-[#DDD9CF] space-y-8 reveal-left card-hover-light">
             <div className="space-y-2">
               <span className="text-xs uppercase tracking-widest text-[#FF6A00] font-heading font-bold block">
                 BÁO GIÁ TRỰC TUYẾN
@@ -246,8 +246,8 @@ export default function ContactPage() {
           </div>
 
           {/* Direct Details Side */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="p-8 bg-[#0B0B0B] text-white border border-[#2A2A2A] space-y-6">
+          <div className="lg:col-span-5 space-y-8 reveal-right">
+            <div className="p-8 bg-[#0B0B0B] text-white border border-[#2A2A2A] space-y-6 card-hover">
               <span className="text-xs uppercase tracking-widest text-[#FF6A00] font-heading font-bold block">
                 TRỰC BAN ĐIỀU VẬN 24/7
               </span>
@@ -280,7 +280,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="p-8 bg-white border border-[#DDD9CF] space-y-6">
+            <div className="p-8 bg-white border border-[#DDD9CF] space-y-6 card-hover-light">
               <h3 className="font-heading font-bold text-base text-[#0B0B0B] uppercase border-b border-[#DDD9CF] pb-3">
                 HỆ THỐNG TRỤ SỞ &amp; BÃI XE
               </h3>
@@ -312,9 +312,9 @@ export default function ContactPage() {
       </section>
 
       {/* ═══ FAQ SECTION ═══ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F] reveal-on-scroll">
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F]">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="max-w-3xl space-y-4">
+          <div className="max-w-3xl space-y-4 reveal-on-scroll">
             <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
               HỎI ĐÁP DOANH NGHIỆP
             </span>
@@ -324,7 +324,7 @@ export default function ContactPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
-            <div className="p-8 bg-[#141414] border border-[#2A2A2A] space-y-3">
+            <div className="p-8 bg-[#141414] border border-[#2A2A2A] space-y-3 reveal-on-scroll delay-75 card-hover">
               <h3 className="font-heading font-bold text-base text-[#FF6A00] uppercase">
                 Thời gian điều xe sau khi xác nhận là bao lâu?
               </h3>
@@ -333,7 +333,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="p-8 bg-[#141414] border border-[#2A2A2A] space-y-3">
+            <div className="p-8 bg-[#141414] border border-[#2A2A2A] space-y-3 reveal-on-scroll delay-150 card-hover">
               <h3 className="font-heading font-bold text-base text-[#FF6A00] uppercase">
                 Chính sách bảo hiểm và bồi thường thiệt hại như thế nào?
               </h3>
@@ -342,7 +342,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="p-8 bg-[#141414] border border-[#2A2A2A] space-y-3">
+            <div className="p-8 bg-[#141414] border border-[#2A2A2A] space-y-3 reveal-on-scroll delay-200 card-hover">
               <h3 className="font-heading font-bold text-base text-[#FF6A00] uppercase">
                 Doanh nghiệp có được áp dụng chính sách công nợ không?
               </h3>
@@ -351,7 +351,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="p-8 bg-[#141414] border border-[#2A2A2A] space-y-3">
+            <div className="p-8 bg-[#141414] border border-[#2A2A2A] space-y-3 reveal-on-scroll delay-250 card-hover">
               <h3 className="font-heading font-bold text-base text-[#FF6A00] uppercase">
                 Khách hàng có theo dõi được vị trí xe thời gian thực không?
               </h3>
