@@ -187,70 +187,70 @@ export default function FleetPage() {
           </div>
 
           {/* Cards */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             {filtered.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden flex flex-col lg:flex-row hover:border-slate-400 transition-all"
+                className="bento-card flex flex-col lg:flex-row group overflow-hidden"
               >
-                <div className="lg:w-80 h-56 lg:h-auto bg-slate-100 shrink-0 relative">
+                <div className="lg:w-80 h-56 lg:h-auto bg-slate-100 shrink-0 relative overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover img-hover-zoom"
                   />
-                  <span className="absolute top-3 left-3 bg-navy-900/90 text-white text-[11px] font-heading font-bold uppercase px-2.5 py-0.5 rounded">
-                    {item.count} Xe Đang Hoạt Động
+                  <span className="absolute top-3 left-3 bg-navy-950/85 backdrop-blur-sm text-white text-[10px] font-heading font-bold uppercase px-3 py-1 rounded-full shadow">
+                    {item.count} Xe Sẵn Sàng
                   </span>
                 </div>
 
-                <div className="p-6 flex-1 flex flex-col justify-between gap-6">
+                <div className="p-6 md:p-8 flex-1 flex flex-col justify-between gap-6">
                   <div>
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <h3 className="font-heading font-bold text-lg md:text-xl text-navy-900 uppercase">
+                      <h3 className="font-heading font-bold text-lg md:text-xl text-navy-900 uppercase group-hover:text-orange-600 transition-colors">
                         {item.name}
                       </h3>
-                      <span className="px-3 py-1 bg-orange-100 text-orange-700 font-heading font-bold text-xs uppercase rounded">
+                      <span className="badge-pill bg-orange-100 text-orange-700">
                         {item.payload}
                       </span>
                     </div>
 
                     {/* Specs Table */}
-                    <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                      <div className="p-3 bg-slate-50 rounded border border-slate-100">
-                        <span className="text-slate-400 font-heading font-semibold uppercase block">Kích Thước Thùng:</span>
-                        <span className="text-navy-900 font-semibold mt-0.5 block">{item.length}</span>
+                    <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                      <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-100">
+                        <span className="text-slate-400 font-heading font-semibold uppercase block text-[10px]">Kích Thước Thùng:</span>
+                        <span className="text-navy-900 font-bold mt-1 block">{item.length}</span>
                       </div>
-                      <div className="p-3 bg-slate-50 rounded border border-slate-100">
-                        <span className="text-slate-400 font-heading font-semibold uppercase block">Thể Tích / Khả Năng Chứa:</span>
-                        <span className="text-navy-900 font-semibold mt-0.5 block">{item.volume}</span>
+                      <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-100">
+                        <span className="text-slate-400 font-heading font-semibold uppercase block text-[10px]">Thể Tích / Khả Năng Chứa:</span>
+                        <span className="text-navy-900 font-bold mt-1 block">{item.volume}</span>
                       </div>
-                      <div className="p-3 bg-slate-50 rounded border border-slate-100">
-                        <span className="text-slate-400 font-heading font-semibold uppercase block">Hệ Thống An Toàn:</span>
-                        <span className="text-navy-900 font-semibold mt-0.5 block">{item.safety}</span>
+                      <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-100">
+                        <span className="text-slate-400 font-heading font-semibold uppercase block text-[10px]">Hệ Thống An Toàn:</span>
+                        <span className="text-navy-900 font-medium mt-1 block">{item.safety}</span>
                       </div>
-                      <div className="p-3 bg-slate-50 rounded border border-slate-100">
-                        <span className="text-slate-400 font-heading font-semibold uppercase block">Tuyến Đường Tối Ưu:</span>
-                        <span className="text-navy-900 font-semibold mt-0.5 block">{item.usage}</span>
+                      <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-100">
+                        <span className="text-slate-400 font-heading font-semibold uppercase block text-[10px]">Tuyến Đường Tối Ưu:</span>
+                        <span className="text-navy-900 font-medium mt-1 block">{item.usage}</span>
                       </div>
                     </div>
                   </div>
 
                   <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-100">
-                    <span className="text-xs text-slate-500">
-                      *Tất cả phương tiện đều có tem kiểm định an toàn kỹ thuật & camera truyền dữ liệu về Tổng cục Đường bộ.
+                    <span className="text-xs text-slate-400">
+                      *Đăng kiểm an toàn kỹ thuật định kỳ • Định vị GPS 24/7
                     </span>
                     <div className="flex items-center gap-3">
                       <a
                         href="tel:0918456789"
-                        className="px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded transition-colors flex items-center gap-1.5"
+                        className="px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-lg transition-all shadow hover:shadow-orange-500/25 flex items-center gap-1.5"
                       >
                         <span className="material-symbols-outlined text-base">call</span>
                         Điều Xe Này
                       </a>
                       <Link
                         href="/contact"
-                        className="px-5 py-2.5 bg-navy-900 hover:bg-navy-800 text-white font-heading font-bold text-xs uppercase tracking-wider rounded transition-colors"
+                        className="px-5 py-2.5 bg-navy-900 hover:bg-navy-800 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-lg transition-colors"
                       >
                         Nhận Báo Giá
                       </Link>

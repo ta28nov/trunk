@@ -58,7 +58,7 @@ export default function QuoteCalculator({ compact = false }) {
   }).format(estimatedCost);
 
   return (
-    <div className={`bg-white rounded-lg border border-slate-200 shadow-xl overflow-hidden ${compact ? "p-4" : "p-6 md:p-8"}`}>
+    <div className={`bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden ${compact ? "p-4" : "p-6 md:p-8"}`}>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-200 gap-3">
         <div>
           <span className="font-heading text-xs font-bold text-orange-500 uppercase tracking-widest block">
@@ -68,7 +68,7 @@ export default function QuoteCalculator({ compact = false }) {
             Tính Nhanh Cước Vận Tải Tham Khảo
           </h3>
         </div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 border border-green-200 text-green-700 text-xs font-heading font-semibold rounded">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 border border-green-200 text-green-700 text-xs font-heading font-semibold rounded-full">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
           Giá Trực Tiếp Đội Xe — Không Phí Trung Gian
         </div>
@@ -88,10 +88,10 @@ export default function QuoteCalculator({ compact = false }) {
                   key={v.id}
                   type="button"
                   onClick={() => setVehicleId(v.id)}
-                  className={`text-left p-3 rounded border transition-all ${
+                  className={`text-left p-3.5 rounded-xl border transition-all duration-200 ${
                     vehicleId === v.id
-                      ? "border-orange-500 bg-orange-50/50 shadow-sm ring-1 ring-orange-500"
-                      : "border-slate-200 hover:border-slate-300 bg-white"
+                      ? "border-orange-500 bg-orange-50/70 shadow-sm ring-1 ring-orange-500 -translate-y-0.5"
+                      : "border-slate-200 hover:border-slate-300 hover:bg-slate-50 bg-white"
                   }`}
                 >
                   <div className="font-heading font-bold text-sm text-navy-900">{v.name}</div>
@@ -115,10 +115,10 @@ export default function QuoteCalculator({ compact = false }) {
                     setDistance(r.distance);
                     setCustomDistance("");
                   }}
-                  className={`text-left p-2.5 rounded border text-xs transition-all ${
+                  className={`text-left p-3 rounded-xl border text-xs transition-all duration-200 ${
                     distance === r.distance && !customDistance
-                      ? "border-navy-900 bg-navy-900 text-white font-medium"
-                      : "border-slate-200 hover:border-slate-300 text-slate-700 bg-slate-50"
+                      ? "border-navy-900 bg-navy-900 text-white font-medium shadow -translate-y-0.5"
+                      : "border-slate-200 hover:border-slate-300 text-slate-700 bg-slate-50 hover:bg-slate-100"
                   }`}
                 >
                   <div className="truncate font-semibold">{r.name}</div>

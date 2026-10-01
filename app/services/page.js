@@ -114,24 +114,24 @@ export default function ServicesPage() {
 
       {/* ═══ 4 MAIN SERVICES DETAIL ═══ */}
       <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-16">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-10">
           {SERVICES.map((srv, index) => (
             <div
               key={srv.id}
-              className={`flex flex-col lg:flex-row gap-10 items-start ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : ""
+              className={`bento-card p-6 sm:p-8 md:p-10 flex flex-col lg:flex-row gap-8 items-start group ${
+                index % 2 === 1 ? "lg:flex-row-reverse bg-slate-50/50" : ""
               }`}
             >
               <div className="lg:w-1/2 space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <span className="material-symbols-outlined text-3xl">{srv.icon}</span>
                   </div>
                   <div>
-                    <span className="text-xs font-heading font-bold text-orange-600 uppercase tracking-wider block">
+                    <span className="badge-pill bg-orange-50 text-orange-600 border border-orange-200">
                       {srv.badge}
                     </span>
-                    <h2 className="font-heading font-bold text-xl md:text-2xl text-navy-900 uppercase">
+                    <h2 className="font-heading font-bold text-xl md:text-2xl text-navy-900 uppercase mt-1">
                       {srv.title}
                     </h2>
                   </div>
@@ -139,7 +139,7 @@ export default function ServicesPage() {
 
                 <p className="text-sm text-slate-600 leading-relaxed">{srv.desc}</p>
 
-                <div className="space-y-2.5 pt-2">
+                <div className="space-y-2 pt-2">
                   {srv.features.map((feat) => (
                     <div key={feat} className="flex items-start gap-2.5 text-xs text-slate-700">
                       <span className="material-symbols-outlined text-green-600 text-base shrink-0 mt-0.5">
@@ -150,7 +150,7 @@ export default function ServicesPage() {
                   ))}
                 </div>
 
-                <div className="p-3.5 bg-orange-50 rounded border border-orange-200 text-xs text-orange-950 font-semibold flex items-center gap-2">
+                <div className="p-3.5 bg-orange-50/80 rounded-xl border border-orange-200/80 text-xs text-orange-950 font-semibold flex items-center gap-2">
                   <span className="material-symbols-outlined text-orange-600 text-lg shrink-0">
                     verified
                   </span>
@@ -160,44 +160,44 @@ export default function ServicesPage() {
                 <div className="pt-2 flex items-center gap-3">
                   <a
                     href="tel:0918456789"
-                    className="px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded transition-colors"
+                    className="px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-lg transition-all shadow hover:shadow-orange-500/25"
                   >
                     Tư Vấn Điều Xe
                   </a>
                   <Link
                     href="/pricing"
-                    className="px-5 py-2.5 border border-slate-300 hover:border-slate-400 text-navy-900 font-heading font-bold text-xs uppercase tracking-wider rounded transition-colors"
+                    className="px-5 py-2.5 border border-slate-300 hover:border-slate-400 text-navy-900 font-heading font-bold text-xs uppercase tracking-wider rounded-lg transition-colors"
                   >
                     Xem Bảng Giá
                   </Link>
                 </div>
               </div>
 
-              <div className="lg:w-1/2 w-full bg-slate-50 p-6 rounded-lg border border-slate-200 shadow-sm space-y-4">
-                <h3 className="font-heading font-bold text-sm text-navy-900 uppercase">
+              <div className="lg:w-1/2 w-full bg-slate-50 p-6 rounded-xl border border-slate-200/80 shadow-inner space-y-4">
+                <h3 className="font-heading font-bold text-xs text-navy-900 uppercase tracking-wider">
                   Tiêu Chuẩn Thực Thi Dịch Vụ:
                 </h3>
                 <div className="grid grid-cols-2 gap-3 text-xs">
-                  <div className="bg-white p-3 rounded border border-slate-200">
+                  <div className="bg-white p-3.5 rounded-lg border border-slate-200">
                     <span className="text-slate-400 uppercase font-semibold block text-[10px]">Thời Gian Tiếp Nhận:</span>
                     <span className="font-bold text-navy-900 mt-1 block">Dưới 15 Phút</span>
                   </div>
-                  <div className="bg-white p-3 rounded border border-slate-200">
+                  <div className="bg-white p-3.5 rounded-lg border border-slate-200">
                     <span className="text-slate-400 uppercase font-semibold block text-[10px]">Phương Tiện Thực Hiện:</span>
                     <span className="font-bold text-navy-900 mt-1 block">Xe Chính Chủ 100%</span>
                   </div>
-                  <div className="bg-white p-3 rounded border border-slate-200">
+                  <div className="bg-white p-3.5 rounded-lg border border-slate-200">
                     <span className="text-slate-400 uppercase font-semibold block text-[10px]">Bảo Hiểm Hàng Hóa:</span>
                     <span className="font-bold text-orange-600 mt-1 block">Tối đa 10 Tỷ VNĐ</span>
                   </div>
-                  <div className="bg-white p-3 rounded border border-slate-200">
+                  <div className="bg-white p-3.5 rounded-lg border border-slate-200">
                     <span className="text-slate-400 uppercase font-semibold block text-[10px]">Hóa Đơn Chứng Từ:</span>
                     <span className="font-bold text-navy-900 mt-1 block">Xuất Trong 24 Giờ</span>
                   </div>
                 </div>
 
-                <div className="p-3 bg-navy-900 text-white rounded text-xs flex items-center justify-between">
-                  <span className="text-slate-300">Cần tư vấn giải pháp riêng cho dự án?</span>
+                <div className="p-3 bg-navy-900 text-white rounded-lg text-xs flex items-center justify-between">
+                  <span className="text-slate-300">Cần giải pháp riêng cho dự án lớn?</span>
                   <a href="tel:0903123456" className="text-orange-400 font-bold hover:underline">
                     Gọi Điều Hành
                   </a>
@@ -219,7 +219,7 @@ export default function ServicesPage() {
               Quy Trình Giao Nhận Vận Tải 5 Bước
             </h2>
             <p className="text-xs md:text-sm text-slate-500">
-              Mỗi đơn hàng đều được kiểm soát chặt chẽ bằng phần mềm telemetry và biên bản nghiệm thu vật lý.
+              Kiểm soát chặt chẽ bằng phần mềm telemetry và biên bản nghiệm thu POD vật lý.
             </p>
           </div>
 
@@ -227,10 +227,10 @@ export default function ServicesPage() {
             {PROCESS_STEPS.map((p) => (
               <div
                 key={p.step}
-                className="bg-white p-5 rounded-lg border border-slate-200 shadow-sm flex flex-col justify-between gap-4"
+                className="bento-card p-5 flex flex-col justify-between gap-4 group"
               >
                 <div>
-                  <span className="font-heading font-bold text-3xl text-orange-500 block mb-2">
+                  <span className="font-heading font-bold text-2xl text-orange-500 block mb-1 group-hover:scale-110 transition-transform origin-left">
                     {p.step}
                   </span>
                   <h3 className="font-heading font-bold text-sm text-navy-900 uppercase">
@@ -241,7 +241,7 @@ export default function ServicesPage() {
                   </p>
                 </div>
                 <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-orange-500 w-1/3" />
+                  <div className="h-full bg-orange-500 w-1/3 group-hover:w-full transition-all duration-500" />
                 </div>
               </div>
             ))}
