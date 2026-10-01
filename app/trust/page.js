@@ -8,218 +8,228 @@ export const metadata = {
 
 export default function TrustPage() {
   return (
-    <div className="flex flex-col w-full">
-      {/* ═══ CINEMATIC HEADER BANNER ═══ */}
-      <section className="relative bg-navy-950 text-white py-20 md:py-28 overflow-hidden">
+    <div className="flex flex-col w-full bg-white text-slate-900">
+      {/* ═══ CINEMATIC HERO BANNER ═══ */}
+      <section className="relative bg-navy-950 text-white py-24 md:py-36 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=2000&q=80"
-          alt="Pháp lý vận tải và bảo hiểm hàng hóa"
+          src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=2400&q=80"
+          alt="Pháp lý vận tải và bảo hiểm hàng hóa PVI"
           className="absolute inset-0 w-full h-full object-cover opacity-25 filter contrast-125 brightness-75 scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40" />
-        <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-green-500/20 border border-green-500/30 rounded-full text-green-400 text-xs font-heading font-bold uppercase tracking-wider backdrop-blur-md">
-            Sở GTVT Cấp Phép 41-GPVT/SGTVT • MST: 0314892039
-          </div>
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight leading-tight">
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 space-y-6">
+          <h1 className="font-heading font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight leading-[1.08]">
             NĂNG LỰC PHÁP LÝ
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-400 to-teal-200 mt-1">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-300 mt-2">
               BẢO HIỂM HÀNG HÓA PVI 10 TỶ VNĐ
             </span>
           </h1>
-          <p className="text-slate-300 text-base md:text-lg max-w-3xl leading-relaxed font-light">
-            Chúng tôi hiểu rằng đối với các tập đoàn đa quốc gia và doanh nghiệp sản xuất, tính hợp pháp và năng lực bảo toàn vốn tài sản là tiêu chí số 1 khi thẩm định nhà xe đối tác.
+          <p className="text-slate-200 text-lg sm:text-xl md:text-2xl max-w-4xl leading-relaxed font-light">
+            Chúng tôi hiểu rằng đối với các tập đoàn FDI và doanh nghiệp sản xuất quy mô lớn, tính minh bạch pháp nhân và năng lực bảo toàn vốn tài sản là tiêu chí số 1 khi thẩm định đối tác vận tải.
+          </p>
+
+          <div className="pt-4 flex flex-wrap items-center gap-4">
+            <a
+              href="tel:0918456789"
+              className="inline-flex items-center gap-2 px-8 py-5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-2xl shadow-xl shadow-orange-500/25 transition-all hover:scale-105"
+            >
+              <span className="material-symbols-outlined text-base">call</span>
+              Tư Vấn Hợp Đồng: 0918.456.789
+            </a>
+            <Link
+              href="/pricing"
+              className="inline-flex items-center gap-2 px-8 py-5 bg-white/10 hover:bg-white/20 text-slate-200 border border-white/15 font-heading font-bold text-xs uppercase tracking-wider rounded-2xl transition-colors"
+            >
+              Xem Chính Sách Công Nợ B2B
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ SECTION 1: LEGAL CORPORATE IDENTITY (Clean White, Split-Screen) ═══ */}
+      <section className="py-28 md:py-36 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto w-full reveal-on-scroll">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Content */}
+          <div className="lg:col-span-6 space-y-8">
+            <h2 className="font-heading font-black text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight text-slate-900 leading-tight">
+              ĐĂNG KÝ DOANH NGHIỆP &amp; GIẤY PHÉP VẬN TẢI
+            </h2>
+
+            <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
+              Doanh nghiệp vận tải hoạt động chính quy dưới sự cấp phép trực tiếp của Sở Giao Thông Vận Tải TP. Hồ Chí Minh. Toàn bộ thông tin đăng ký minh bạch, sẵn sàng cung cấp trích lục hồ sơ năng lực đầy đủ phục vụ công tác đấu thầu.
+            </p>
+
+            {/* Legal Info Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                <span className="text-slate-500 font-medium block text-xs uppercase">Mã Số Thuế:</span>
+                <span className="font-heading font-black text-slate-900 text-2xl mt-1 block">0314892039</span>
+              </div>
+              <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                <span className="text-slate-500 font-medium block text-xs uppercase">Giấy Phép Vận Tải:</span>
+                <span className="font-heading font-black text-orange-600 text-2xl mt-1 block">41-GPVT/SGTVT</span>
+              </div>
+              <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                <span className="text-slate-500 font-medium block text-xs uppercase">Cơ Quan Quản Lý:</span>
+                <span className="font-semibold text-slate-900 text-base mt-1 block">Sở GTVT TP. Hồ Chí Minh</span>
+              </div>
+              <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                <span className="text-slate-500 font-medium block text-xs uppercase">Vốn Điều Lệ Thực Góp:</span>
+                <span className="font-semibold text-slate-900 text-base mt-1 block">20.000.000.000 VNĐ</span>
+              </div>
+            </div>
+
+            <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+              <span className="text-slate-500 font-medium block text-xs uppercase">Trụ Sở Văn Phòng Chính:</span>
+              <span className="text-slate-900 text-base mt-1 block">Số 28 Đường số 8, Phường Linh Trung, Thành phố Thủ Đức, TP. Hồ Chí Minh</span>
+            </div>
+          </div>
+
+          {/* Right Photo Frame */}
+          <div className="lg:col-span-6">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 h-80 sm:h-96 md:h-[480px] w-full">
+              <img
+                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
+                alt="Tổng kho và văn phòng điều vận Vận Tải Tiên Phong"
+                className="w-full h-full object-cover img-hover-zoom"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ SECTION 2: PVI 10 BILLION INSURANCE POLICY (Clean Slate-50, Split-Screen) ═══ */}
+      <section className="py-28 md:py-36 px-6 md:px-12 lg:px-20 bg-slate-50 border-t border-slate-200 w-full reveal-on-scroll">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left Photo Frame */}
+            <div className="lg:col-span-6 lg:order-1">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 h-80 sm:h-96 md:h-[480px] w-full">
+                <img
+                  src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=1200&q=80"
+                  alt="Bảo hiểm trách nhiệm vận chuyển hàng hóa PVI 10 Tỷ VNĐ"
+                  className="w-full h-full object-cover img-hover-zoom"
+                />
+              </div>
+            </div>
+
+            {/* Right Content */}
+            <div className="lg:col-span-6 lg:order-2 space-y-8">
+              <h2 className="font-heading font-black text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight text-slate-900 leading-tight">
+                CHÍNH SÁCH BẢO HIỂM HÀNG HÓA PVI 10 TỶ VNĐ / VỤ
+              </h2>
+
+              <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
+                Mọi chuyến hàng do Tiên Phong đảm nhiệm đều được bảo hiểm trách nhiệm dân sự của người vận chuyển ký kết cùng Tổng Công ty Bảo hiểm PVI, bảo vệ tối đa 10 Tỷ VNĐ cho mỗi vụ tổn thất.
+              </p>
+
+              <div className="space-y-4 pt-2">
+                <div className="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                  <h3 className="font-heading font-bold text-lg text-slate-900 uppercase flex items-center gap-2">
+                    <span className="material-symbols-outlined text-green-600 text-2xl">verified</span>
+                    Giải Quyết Bồi Thường Trong 7 Ngày Làm Việc
+                  </h3>
+                  <p className="text-base text-slate-600 font-light leading-relaxed">
+                    Khi xảy ra sự cố phát sinh ngoài ý muốn trên đường, biên bản giám định hiện trường độc lập được lập trong 24 giờ. Cam kết chi trả 100% giá trị thiệt hại trong 7 ngày.
+                  </p>
+                </div>
+
+                <div className="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                  <h3 className="font-heading font-bold text-lg text-slate-900 uppercase flex items-center gap-2">
+                    <span className="material-symbols-outlined text-green-600 text-2xl">verified</span>
+                    Điều Khoản Hợp Đồng Kinh Tế Minh Bạch
+                  </h3>
+                  <p className="text-base text-slate-600 font-light leading-relaxed">
+                    Trách nhiệm bảo quản hàng, hạ tải và ràng buộc bồi thường được ghi rõ ràng trong từng hợp đồng nguyên tắc, bảo vệ quyền lợi tối đa cho doanh nghiệp đối tác.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ SECTION 3: COMMERCIAL TERMS & B2B CREDIT (Clean White) ═══ */}
+      <section className="py-28 md:py-36 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto w-full space-y-16 reveal-on-scroll">
+        <div className="max-w-3xl space-y-4">
+          <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight text-slate-900 leading-tight">
+            CHÍNH SÁCH CÔNG NỢ &amp; HỢP ĐỒNG NĂM
+          </h2>
+          <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
+            Chúng tôi cung cấp chính sách thanh toán linh hoạt, hỗ trợ tối đa dòng tiền lưu động cho các nhà máy và công ty xuất nhập khẩu.
           </p>
         </div>
-      </section>
 
-      {/* ═══ LEGAL TRANSPARENCY ═══ */}
-      <section className="py-16 md:py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-10">
-          <div>
-            <span className="text-xs font-heading font-bold text-orange-600 uppercase tracking-widest block">
-              Tư Cách Pháp Nhân
-            </span>
-            <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-navy-950 uppercase tracking-tight mt-1">
-              HỒ SƠ ĐĂNG KÝ DOANH NGHIỆP CHÍNH THỨC
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-7 bento-card space-y-6">
-              <div className="flex items-center gap-4 pb-4 border-b border-slate-100">
-                <div className="w-14 h-14 bg-navy-950 text-orange-500 rounded-2xl flex items-center justify-center shadow-lg shadow-navy-950/20">
-                  <span className="material-symbols-outlined text-3xl">verified_user</span>
-                </div>
-                <div>
-                  <h3 className="font-heading font-extrabold text-base md:text-lg text-navy-950 uppercase">
-                    Công Ty TNHH Thương Mại Dịch Vụ Vận Tải Tiên Phong
-                  </h3>
-                  <span className="text-xs text-slate-500 font-medium">
-                    Tên quốc tế: TIEN PHONG TRANSPORTATION TRADING SERVICES CO., LTD
-                  </span>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="p-8 sm:p-10 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+            <h3 className="font-heading font-black text-2xl text-slate-900 uppercase flex items-center gap-3">
+              <span className="material-symbols-outlined text-3xl text-orange-600">domain</span>
+              Doanh Nghiệp Hợp Đồng Năm / FDI
+            </h3>
+            <div className="space-y-4 text-slate-600 text-base md:text-lg leading-relaxed font-light">
+              <div className="flex items-start gap-3">
+                <span className="material-symbols-outlined text-green-600 text-xl shrink-0 mt-0.5">check_circle</span>
+                <span>Thời hạn công nợ thanh toán từ 30 đến 45 ngày sau khi nhận đầy đủ bộ chứng từ và hóa đơn VAT.</span>
               </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/60">
-                  <span className="text-slate-400 font-semibold block text-[10px] uppercase">Mã Số Thuế Doanh Nghiệp:</span>
-                  <span className="font-heading font-bold text-navy-950 text-base mt-1 block">0314892039</span>
-                </div>
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/60">
-                  <span className="text-slate-400 font-semibold block text-[10px] uppercase">Giấy Phép Kinh Doanh Vận Tải:</span>
-                  <span className="font-heading font-bold text-orange-600 text-base mt-1 block">41-GPVT/SGTVT</span>
-                </div>
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/60">
-                  <span className="text-slate-400 font-semibold block text-[10px] uppercase">Cơ Quan Cấp Phép:</span>
-                  <span className="font-semibold text-navy-950 mt-1 block">Sở Giao Thông Vận Tải TP.HCM</span>
-                </div>
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/60">
-                  <span className="text-slate-400 font-semibold block text-[10px] uppercase">Vốn Điều Lệ Đăng Ký:</span>
-                  <span className="font-semibold text-navy-950 mt-1 block">20.000.000.000 VNĐ</span>
-                </div>
-                <div className="sm:col-span-2 p-4 bg-slate-50 rounded-xl border border-slate-200/60">
-                  <span className="text-slate-400 font-semibold block text-[10px] uppercase">Trụ Sở Văn Phòng Chính:</span>
-                  <span className="font-semibold text-navy-950 mt-1 block">Số 28 Đường số 8, Phường Linh Trung, Thành phố Thủ Đức, TP. Hồ Chí Minh</span>
-                </div>
+              <div className="flex items-start gap-3">
+                <span className="material-symbols-outlined text-green-600 text-xl shrink-0 mt-0.5">check_circle</span>
+                <span>Ưu đãi chiết khấu cước từ 5% đến 12% tính trên tổng doanh số vận chuyển lũy kế hàng tháng.</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="material-symbols-outlined text-green-600 text-xl shrink-0 mt-0.5">check_circle</span>
+                <span>Bố trí đội xe và tài xế chuyên trách phục vụ riêng cho các nhà máy của Quý khách.</span>
               </div>
             </div>
+          </div>
 
-            {/* Quick checklist */}
-            <div className="lg:col-span-5 bento-card-dark p-8 rounded-2xl space-y-5 border-navy-700/60">
-              <h3 className="font-heading font-bold text-base uppercase text-orange-400 flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-orange-400 animate-ping"></span>
-                Cam Kết Tuân Thủ Pháp Luật Tuyệt Đối:
-              </h3>
-              <div className="space-y-3.5 text-xs text-slate-300 font-light">
-                <div className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-green-400 text-lg shrink-0 mt-0.5">check_circle</span>
-                  <span>100% xe tải gắn phù hiệu &quot;XE TẢI&quot; hoặc &quot;XE ĐẦU KÉO&quot; do Sở GTVT cấp, còn hạn hiệu lực.</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-green-400 text-lg shrink-0 mt-0.5">check_circle</span>
-                  <span>Thiết bị giám sát hành trình (hộp đen) truyền dữ liệu liên tục về hệ thống máy chủ của Cục Đường Bộ.</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-green-400 text-lg shrink-0 mt-0.5">check_circle</span>
-                  <span>Tài xế có hợp đồng lao động chính thức, tham gia BHXH đầy đủ và khám sức khỏe định kỳ 6 tháng/lần.</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-green-400 text-lg shrink-0 mt-0.5">check_circle</span>
-                  <span>Xuất hóa đơn giá trị gia tăng (VAT) điện tử hợp lệ gửi về hộp thư kế toán ngay trong ngày hoàn tất đơn hàng.</span>
-                </div>
+          <div className="p-8 sm:p-10 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+            <h3 className="font-heading font-black text-2xl text-slate-900 uppercase flex items-center gap-3">
+              <span className="material-symbols-outlined text-3xl text-orange-600">local_shipping</span>
+              Đơn Hàng Theo Chuyến / Ngắn Hạn
+            </h3>
+            <div className="space-y-4 text-slate-600 text-base md:text-lg leading-relaxed font-light">
+              <div className="flex items-start gap-3">
+                <span className="material-symbols-outlined text-green-600 text-xl shrink-0 mt-0.5">check_circle</span>
+                <span>Đặt cọc 30% khi xe vào điểm bốc hàng, thanh toán 70% còn lại khi giao hàng và ký nhận POD.</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="material-symbols-outlined text-green-600 text-xl shrink-0 mt-0.5">check_circle</span>
+                <span>Chấp nhận thanh toán bằng chuyển khoản tài khoản công ty hoặc tiền mặt có phiếu thu kèm theo.</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="material-symbols-outlined text-green-600 text-xl shrink-0 mt-0.5">check_circle</span>
+                <span>Hóa đơn VAT điện tử được gửi qua email ngay sau khi kế toán xác nhận số dư thanh toán.</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ INSURANCE POLICY ═══ */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-10">
-          <div>
-            <span className="text-xs font-heading font-bold text-orange-600 uppercase tracking-widest block">
-              Bảo Vệ Tài Sản Khách Hàng
-            </span>
-            <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-navy-950 uppercase tracking-tight mt-1">
-              CHÍNH SÁCH BẢO HIỂM HÀNG HÓA TOÀN DIỆN — 10 TỶ VNĐ / VỤ
+      {/* ═══ CTA BANNER ═══ */}
+      <section className="py-24 bg-slate-900 text-white reveal-on-scroll">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
+          <div className="space-y-3 max-w-2xl">
+            <h2 className="font-heading font-black text-2xl sm:text-4xl uppercase tracking-tight">
+              Yêu Cầu Cung Cấp Bộ Hồ Sơ Năng Lực Pháp Lý?
             </h2>
+            <p className="text-slate-300 text-base md:text-lg font-light">
+              Chúng tôi sẽ gửi hồ sơ năng lực bản PDF hoàn chỉnh kèm bản sao công chứng giấy phép kinh doanh trong vòng 15 phút.
+            </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bento-card space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center">
-                <span className="material-symbols-outlined text-2xl">shield</span>
-              </div>
-              <h3 className="font-heading font-bold text-base text-navy-950 uppercase">
-                Đối Tác Bảo Hiểm PVI
-              </h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-light">
-                Hợp đồng bảo hiểm trách nhiệm dân sự của người vận chuyển được ký kết cùng Tổng Công ty Cổ phần Bảo hiểm Dầu khí Việt Nam (PVI), bảo vệ tối đa 10 Tỷ VNĐ cho mỗi vụ tổn thất.
-              </p>
-            </div>
-
-            <div className="bento-card space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center">
-                <span className="material-symbols-outlined text-2xl">published_with_changes</span>
-              </div>
-              <h3 className="font-heading font-bold text-base text-navy-950 uppercase">
-                Giải Quyết Bồi Thường 7 Ngày
-              </h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-light">
-                Khi có sự cố xảy ra, biên bản giám định hiện trường độc lập được lập trong 24 giờ. Cam kết chi trả bồi thường 100% giá trị thiệt hại trong vòng 7 ngày làm việc.
-              </p>
-            </div>
-
-            <div className="bento-card space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
-                <span className="material-symbols-outlined text-2xl">contract</span>
-              </div>
-              <h3 className="font-heading font-bold text-base text-navy-950 uppercase">
-                Hợp Đồng Kinh Tế Chặt Chẽ
-              </h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-light">
-                Điều khoản bồi thường thiệt hại và trách nhiệm bốc dỡ được ghi rõ ràng trong từng hợp đồng vận tải nguyên tắc hoặc đơn hàng lẻ, không dùng câu chữ mơ hồ trốn tránh trách nhiệm.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ B2B PAYMENT TERMS ═══ */}
-      <section className="py-16 md:py-20 bg-slate-50 border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-8">
-          <div>
-            <span className="text-xs font-heading font-bold text-orange-600 uppercase tracking-widest block">
-              Điều Kiện Thương Mại B2B
-            </span>
-            <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-navy-950 uppercase tracking-tight mt-1">
-              CHÍNH SÁCH THANH TOÁN &amp; HẠN MỨC CÔNG NỢ LINH HOẠT
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
-            <div className="bento-card space-y-4">
-              <h4 className="font-heading font-bold text-sm text-navy-950 uppercase flex items-center gap-2">
-                <span className="material-symbols-outlined text-orange-500">domain</span>
-                Dành Cho Doanh Nghiệp Ký Hợp Đồng Năm / Khách Hàng FDI:
-              </h4>
-              <ul className="space-y-3 text-slate-600 font-light">
-                <li className="flex items-start gap-2.5">
-                  <span className="material-symbols-outlined text-orange-500 text-base shrink-0 mt-0.5">check_circle</span>
-                  <span>Thời hạn công nợ thanh toán 30 đến 45 ngày sau khi nhận đầy đủ hóa đơn và biên bản POD.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="material-symbols-outlined text-orange-500 text-base shrink-0 mt-0.5">check_circle</span>
-                  <span>Ưu đãi chiết khấu cước từ 5% đến 12% tính trên tổng doanh số vận chuyển hàng tháng.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="material-symbols-outlined text-orange-500 text-base shrink-0 mt-0.5">check_circle</span>
-                  <span>Bố trí đội xe chuyên trách và cấp tài khoản xem telemetry GPS riêng cho phòng Logistics.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bento-card space-y-4">
-              <h4 className="font-heading font-bold text-sm text-navy-950 uppercase flex items-center gap-2">
-                <span className="material-symbols-outlined text-orange-500">local_shipping</span>
-                Dành Cho Đơn Hàng Theo Chuyến / Doanh Nghiệp Mới:
-              </h4>
-              <ul className="space-y-3 text-slate-600 font-light">
-                <li className="flex items-start gap-2.5">
-                  <span className="material-symbols-outlined text-orange-500 text-base shrink-0 mt-0.5">check_circle</span>
-                  <span>Đặt cọc 30% khi xe vào điểm bốc hàng, thanh toán 70% còn lại khi giao hàng và ký nhận POD.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="material-symbols-outlined text-orange-500 text-base shrink-0 mt-0.5">check_circle</span>
-                  <span>Chấp nhận thanh toán bằng chuyển khoản tài khoản công ty hoặc tiền mặt có phiếu thu kèm theo.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="material-symbols-outlined text-orange-500 text-base shrink-0 mt-0.5">check_circle</span>
-                  <span>Hóa đơn VAT điện tử được gửi qua email ngay sau khi kế toán xác nhận số dư thanh toán.</span>
-                </li>
-              </ul>
-            </div>
+          <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
+            <a
+              href="tel:0918456789"
+              className="px-8 py-5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-sm uppercase tracking-wider rounded-2xl shadow-xl shadow-orange-500/30 transition-all hover:scale-105"
+            >
+              Hotline Pháp Lý: 0918.456.789
+            </a>
+            <Link
+              href="/contact"
+              className="px-8 py-5 bg-navy-800 hover:bg-navy-700 text-white font-heading font-bold text-sm uppercase tracking-wider rounded-2xl border border-navy-700 transition-colors"
+            >
+              Liên Hệ Bộ Phận Thầu
+            </Link>
           </div>
         </div>
       </section>

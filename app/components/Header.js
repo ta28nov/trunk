@@ -34,41 +34,30 @@ export default function Header() {
   return (
     <>
       {/* ═══ TOPBAR ═══ */}
-      <div className="bg-navy-900 text-white text-xs md:text-sm">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-2 flex flex-wrap items-center justify-between gap-2">
+      <div className="bg-navy-950 text-white text-xs md:text-sm border-b border-navy-900/60">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse-dot" />
-              <span className="font-semibold text-orange-400 font-heading tracking-wide">
-                48/52 Xe Đang Lăn Bánh
-              </span>
-            </span>
-            <span className="hidden sm:inline text-slate-400">|</span>
-            <span className="hidden sm:inline text-slate-300">
-              Giám Sát GPS 24/7
+            <span className="text-slate-300 font-light text-xs">
+              Vận Tải Tiên Phong • Hạ Tầng &amp; Đội Xe Doanh Nghiệp Toàn Quốc
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="hidden md:inline text-slate-400">
-              Hotline Điều Vận:
+            <span className="hidden md:inline text-slate-400 font-light text-xs">
+              Trực Ban Điều Vận:
             </span>
             <a
               href="tel:0918456789"
-              className="font-heading font-bold text-orange-500 hover:text-orange-400 transition-colors"
+              className="font-heading font-bold text-orange-400 hover:text-orange-300 transition-colors text-xs sm:text-sm"
             >
               0918.456.789
             </a>
-            <span className="text-slate-500">—</span>
+            <span className="text-slate-600">—</span>
             <a
               href="tel:0903123456"
-              className="font-heading font-bold text-orange-500 hover:text-orange-400 transition-colors"
+              className="font-heading font-bold text-slate-200 hover:text-orange-400 transition-colors text-xs sm:text-sm"
             >
               0903.123.456
             </a>
-            <span className="hidden lg:inline-flex items-center gap-1 text-slate-400">
-              <span className="material-symbols-outlined text-sm">schedule</span>
-              24/7/365
-            </span>
           </div>
         </div>
       </div>

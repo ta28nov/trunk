@@ -9,9 +9,8 @@ export const metadata = {
 const SERVICES = [
   {
     id: "ftl",
-    icon: "front_loader",
     title: "Bao Xe Nguyên Chuyến (Full Truckload — FTL)",
-    badge: "Dịch Vụ Chủ Lực",
+    image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1200&q=80",
     desc: "Phương án vận chuyển tối ưu dành riêng cho các doanh nghiệp sản xuất cần giao nhận khối lượng lớn, yêu cầu bảo mật nghiêm ngặt và không muốn ghép chung với bất kỳ lô hàng nào khác.",
     features: [
       "Niêm phong kẹp chì seal điện tử / chì dây cáp trước khi xe rời cổng kho gửi.",
@@ -23,9 +22,8 @@ const SERVICES = [
   },
   {
     id: "ltl",
-    icon: "sync_alt",
     title: "Vận Tải Ghép Hàng Định Tuyến Bắc — Nam",
-    badge: "Lịch Chạy Hàng Ngày",
+    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80",
     desc: "Giải pháp tiết kiệm chi phí tối đa cho các đơn hàng từ 500kg đến 5 tấn với lịch trình xe xuất bến cố định 2 chuyến mỗi ngày dọc theo trục Quốc lộ 1A.",
     features: [
       "Kho gom và phân loại hàng hóa chuyên nghiệp tại KCN Sóng Thần và KCN Hòa Cầm (Đà Nẵng).",
@@ -37,9 +35,8 @@ const SERVICES = [
   },
   {
     id: "rigging",
-    icon: "precision_manufacturing",
     title: "Di Dời & Cẩu Hạ Máy Móc Nhà Xưởng",
-    badge: "Kỹ Thuật Cao",
+    image: "https://images.unsplash.com/photo-1508873696983-2df5293cb395?auto=format&fit=crop&w=1200&q=80",
     desc: "Dịch vụ trọn gói từ khảo sát kết cấu nền móng nhà xưởng, lập phương án chằng buộc chịu lực đến bốc dỡ, vận chuyển và đưa máy móc CNC vào đúng vị trí lắp đặt.",
     features: [
       "Đội xe cẩu tự hành 5T — 15T cùng hệ thống rùa đẩy tải nặng, kích thủy lực 50T chuyên dụng.",
@@ -51,9 +48,8 @@ const SERVICES = [
   },
   {
     id: "container",
-    icon: "directions_boat",
     title: "Vận Chuyển Container Cảng Biển & ICD (FCL)",
-    badge: "Trực Chiến 24/7",
+    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80",
     desc: "Dịch vụ kéo vỏ container, rút ruột hàng hóa và giao hàng xuất nhập khẩu tại các cụm cảng quốc tế lớn nhất miền Nam.",
     features: [
       "Trực chiến liên tục tại Cảng Cát Lái, Cảng Quốc tế Cái Mép (CMIT, SSIT, TCIT) và ICD Sóng Thần.",
@@ -68,89 +64,89 @@ const SERVICES = [
 const PROCESS_STEPS = [
   {
     step: "01",
-    title: "Tiếp Nhận & Khảo Sát",
-    desc: "Chủ hàng gọi hotline hoặc điền form. Điều phối viên tiếp nhận quy cách hàng, cự ly và gửi báo giá chính xác trong 15 phút.",
+    title: "Tiếp Nhận & Báo Giá Trong 15 Phút",
+    desc: "Tiếp nhận quy cách hàng, cự ly và khảo sát địa hình bốc trả để gửi báo giá trọn gói không phát sinh chi phí.",
   },
   {
     step: "02",
-    title: "Điều Xe & Ký Hợp Đồng",
-    desc: "Hệ thống phát lệnh điều xe gần nhất qua app điều vận nội bộ. Gửi thông tin biển số xe, số điện thoại tài xế và hợp đồng ký số.",
+    title: "Điều Xe Trực Tiếp & Ký Hợp Đồng",
+    desc: "Hệ thống điều phối xe gần nhất đến điểm hẹn, gửi biển số xe, thông tin tài xế và hợp đồng nguyên tắc.",
   },
   {
     step: "03",
-    title: "Bốc Hàng & Chằng Buộc",
-    desc: "Tài xế có mặt đúng giờ, hỗ trợ kiểm đếm số lượng, chụp ảnh hiện trạng hàng và chằng buộc chắc chắn theo đúng quy chuẩn an toàn.",
+    title: "Bốc Hàng & Chằng Buộc Chuyên Dụng",
+    desc: "Tài xế có mặt đúng giờ, hỗ trợ kiểm đếm kiện hàng, chụp ảnh hiện trạng và chằng buộc bằng cáp siết tiêu chuẩn.",
   },
   {
     step: "04",
-    title: "Giám Sát Hành Trình",
-    desc: "Hệ thống gửi link định vị GPS cho khách hàng theo dõi trực tiếp vị trí xe, tốc độ di chuyển và thời gian dự kiến đến nơi 24/7.",
+    title: "Giám Sát GPS & Cập Nhật Hành Trình",
+    desc: "Hệ thống giám sát định vị 24/7, cập nhật lộ trình xe chạy liên tục qua Zalo cho bộ phận logistics của khách hàng.",
   },
   {
     step: "05",
-    title: "Giao Hàng & Nghiệm Thu",
-    desc: "Bàn giao tận nơi, ký biên bản giao nhận (POD) đầy đủ. Xuất hóa đơn VAT điện tử và đối soát công nợ rõ ràng.",
+    title: "Giao Hàng & Bàn Giao Biên Bản POD",
+    desc: "Giao hàng an toàn tại kho nhận, ký biên bản nghiệm thu đầy đủ và gửi hóa đơn VAT điện tử trong ngày.",
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="flex flex-col w-full">
-      {/* ═══ CINEMATIC HEADER BANNER ═══ */}
-      <section className="relative bg-navy-950 text-white py-20 md:py-28 overflow-hidden">
+    <div className="flex flex-col w-full bg-white text-slate-900">
+      {/* ═══ CINEMATIC HERO BANNER ═══ */}
+      <section className="relative bg-navy-950 text-white py-24 md:py-36 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=2000&q=80"
+          src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=2400&q=80"
           alt="Cảng biển logistics container"
           className="absolute inset-0 w-full h-full object-cover opacity-25 filter contrast-125 brightness-75 scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40" />
-        <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400 text-xs font-heading font-bold uppercase tracking-wider backdrop-blur-md">
-            Dịch Vụ Vận Tải Toàn Diện & Hậu Cần
-          </div>
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight leading-tight">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 space-y-6">
+          <h1 className="font-heading font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight leading-[1.08]">
             HỆ THỐNG DỊCH VỤ
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-300 mt-1">
-              4 TRỤ CỘT VẬN TẢI CHUYÊN NGHIỆP
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-300 mt-2">
+              4 TRỤ CỘT VẬN TẢI DOANH NGHIỆP
             </span>
           </h1>
-          <p className="text-slate-300 text-base md:text-lg max-w-3xl leading-relaxed font-light">
-            Bao xe nguyên chuyến FTL, ghép hàng định tuyến Bắc — Nam, di dời & cẩu hạ máy móc xưởng, kéo container cảng Cát Lái & Cái Mép. Cam kết SLA đền bù 100%.
+          <p className="text-slate-200 text-lg sm:text-xl md:text-2xl max-w-4xl leading-relaxed font-light">
+            Bao xe nguyên chuyến FTL, ghép hàng định tuyến Bắc — Nam, di dời &amp; cẩu hạ máy móc xưởng, kéo container cảng Cát Lái &amp; Cái Mép. Cam kết SLA đền bù 100%.
           </p>
         </div>
       </section>
 
-      {/* ═══ 4 MAIN SERVICES DETAIL ═══ */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-10">
-          {SERVICES.map((srv, index) => (
+      {/* ═══ 4 MAIN SERVICES (Clean White, Split-Screen Alternating, Long Vertical Scroll) ═══ */}
+      <section className="py-28 md:py-36 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto w-full space-y-32">
+        {SERVICES.map((srv, index) => {
+          const isEven = index % 2 === 0;
+          return (
             <div
               key={srv.id}
-              className={`bento-card p-6 sm:p-8 md:p-10 flex flex-col lg:flex-row gap-8 items-start group ${
-                index % 2 === 1 ? "lg:flex-row-reverse bg-slate-50/50" : ""
-              }`}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal-on-scroll"
             >
-              <div className="lg:w-1/2 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-3xl">{srv.icon}</span>
-                  </div>
-                  <div>
-                    <span className="badge-pill bg-orange-50 text-orange-600 border border-orange-200">
-                      {srv.badge}
-                    </span>
-                    <h2 className="font-heading font-bold text-xl md:text-2xl text-navy-900 uppercase mt-1">
-                      {srv.title}
-                    </h2>
-                  </div>
+              {/* Image Column */}
+              <div className={`lg:col-span-6 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 h-80 sm:h-96 md:h-[480px] w-full">
+                  <img
+                    src={srv.image}
+                    alt={srv.title}
+                    className="w-full h-full object-cover img-hover-zoom"
+                  />
                 </div>
+              </div>
 
-                <p className="text-sm text-slate-600 leading-relaxed">{srv.desc}</p>
+              {/* Text Column */}
+              <div className={`lg:col-span-6 space-y-6 ${isEven ? "lg:order-2" : "lg:order-1"}`}>
+                <h2 className="font-heading font-black text-3xl sm:text-4xl text-slate-900 uppercase tracking-tight leading-tight">
+                  {srv.title}
+                </h2>
 
-                <div className="space-y-2 pt-2">
-                  {srv.features.map((feat) => (
-                    <div key={feat} className="flex items-start gap-2.5 text-xs text-slate-700">
-                      <span className="material-symbols-outlined text-green-600 text-base shrink-0 mt-0.5">
+                <p className="text-lg md:text-xl text-slate-600 font-light leading-relaxed">
+                  {srv.desc}
+                </p>
+
+                <div className="space-y-4 pt-2">
+                  {srv.features.map((feat, fIdx) => (
+                    <div key={fIdx} className="flex items-start gap-3.5 text-base md:text-lg text-slate-700 font-light">
+                      <span className="material-symbols-outlined text-green-600 text-xl shrink-0 mt-0.5">
                         check_circle
                       </span>
                       <span>{feat}</span>
@@ -158,98 +154,59 @@ export default function ServicesPage() {
                   ))}
                 </div>
 
-                <div className="p-3.5 bg-orange-50/80 rounded-xl border border-orange-200/80 text-xs text-orange-950 font-semibold flex items-center gap-2">
-                  <span className="material-symbols-outlined text-orange-600 text-lg shrink-0">
-                    verified
-                  </span>
-                  <span>{srv.highlight}</span>
+                <div className="p-5 bg-orange-50 rounded-2xl border border-orange-200 text-sm md:text-base text-orange-950 font-medium leading-relaxed">
+                  {srv.highlight}
                 </div>
 
-                <div className="pt-2 flex items-center gap-3">
+                <div className="pt-4 flex flex-wrap items-center gap-4">
                   <a
                     href="tel:0918456789"
-                    className="px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-lg transition-all shadow hover:shadow-orange-500/25"
+                    className="px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-2xl shadow-xl shadow-orange-500/25 transition-all hover:scale-105 flex items-center gap-2"
                   >
-                    Tư Vấn Điều Xe
+                    <span className="material-symbols-outlined text-lg">call</span>
+                    Tư Vấn Dịch Vụ Này
                   </a>
                   <Link
                     href="/pricing"
-                    className="px-5 py-2.5 border border-slate-300 hover:border-slate-400 text-navy-900 font-heading font-bold text-xs uppercase tracking-wider rounded-lg transition-colors"
+                    className="px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-2xl transition-colors"
                   >
-                    Xem Bảng Giá
+                    Xem Bảng Giá Cước
                   </Link>
                 </div>
               </div>
-
-              <div className="lg:w-1/2 w-full bg-slate-50 p-6 rounded-xl border border-slate-200/80 shadow-inner space-y-4">
-                <h3 className="font-heading font-bold text-xs text-navy-900 uppercase tracking-wider">
-                  Tiêu Chuẩn Thực Thi Dịch Vụ:
-                </h3>
-                <div className="grid grid-cols-2 gap-3 text-xs">
-                  <div className="bg-white p-3.5 rounded-lg border border-slate-200">
-                    <span className="text-slate-400 uppercase font-semibold block text-[10px]">Thời Gian Tiếp Nhận:</span>
-                    <span className="font-bold text-navy-900 mt-1 block">Dưới 15 Phút</span>
-                  </div>
-                  <div className="bg-white p-3.5 rounded-lg border border-slate-200">
-                    <span className="text-slate-400 uppercase font-semibold block text-[10px]">Phương Tiện Thực Hiện:</span>
-                    <span className="font-bold text-navy-900 mt-1 block">Xe Chính Chủ 100%</span>
-                  </div>
-                  <div className="bg-white p-3.5 rounded-lg border border-slate-200">
-                    <span className="text-slate-400 uppercase font-semibold block text-[10px]">Bảo Hiểm Hàng Hóa:</span>
-                    <span className="font-bold text-orange-600 mt-1 block">Tối đa 10 Tỷ VNĐ</span>
-                  </div>
-                  <div className="bg-white p-3.5 rounded-lg border border-slate-200">
-                    <span className="text-slate-400 uppercase font-semibold block text-[10px]">Hóa Đơn Chứng Từ:</span>
-                    <span className="font-bold text-navy-900 mt-1 block">Xuất Trong 24 Giờ</span>
-                  </div>
-                </div>
-
-                <div className="p-3 bg-navy-900 text-white rounded-lg text-xs flex items-center justify-between">
-                  <span className="text-slate-300">Cần giải pháp riêng cho dự án lớn?</span>
-                  <a href="tel:0903123456" className="text-orange-400 font-bold hover:underline">
-                    Gọi Điều Hành
-                  </a>
-                </div>
-              </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
       </section>
 
-      {/* ═══ 5-STEP PROCESS ═══ */}
-      <section className="py-16 md:py-20 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-12">
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs font-heading font-bold text-orange-600 uppercase tracking-widest block">
-              Chuẩn Hóa Chất Lượng
-            </span>
-            <h2 className="font-heading font-bold text-2xl md:text-3xl text-navy-900 uppercase tracking-tight">
-              Quy Trình Giao Nhận Vận Tải 5 Bước
+      {/* ═══ 5-STEP VERTICAL WORKFLOW (Spacious Vertical Process, Not Squeezed Horizontal) ═══ */}
+      <section className="py-28 md:py-36 px-6 md:px-12 lg:px-20 bg-slate-50 border-t border-slate-200 w-full reveal-on-scroll">
+        <div className="max-w-4xl mx-auto space-y-16">
+          <div className="text-center space-y-4">
+            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight text-slate-900 leading-tight">
+              QUY TRÌNH GIAO NHẬN VẬN TẢI
             </h2>
-            <p className="text-xs md:text-sm text-slate-500">
-              Kiểm soát chặt chẽ bằng phần mềm telemetry và biên bản nghiệm thu POD vật lý.
+            <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+              Kiểm soát chặt chẽ bằng phần mềm định vị GPS và biên bản bàn giao POD đầy đủ cho từng chuyến hàng.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div className="space-y-6">
             {PROCESS_STEPS.map((p) => (
               <div
                 key={p.step}
-                className="bento-card p-5 flex flex-col justify-between gap-4 group"
+                className="p-8 md:p-10 bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-6 md:gap-8"
               >
-                <div>
-                  <span className="font-heading font-bold text-2xl text-orange-500 block mb-1 group-hover:scale-110 transition-transform origin-left">
-                    {p.step}
-                  </span>
-                  <h3 className="font-heading font-bold text-sm text-navy-900 uppercase">
+                <div className="w-16 h-16 rounded-2xl bg-orange-500 text-white font-heading font-black text-2xl flex items-center justify-center shrink-0 shadow-lg shadow-orange-500/30">
+                  {p.step}
+                </div>
+                <div className="space-y-1">
+                  <h3 className="font-heading font-bold text-xl text-slate-900 uppercase">
                     {p.title}
                   </h3>
-                  <p className="text-xs text-slate-500 mt-2 leading-relaxed">
+                  <p className="text-slate-600 text-base md:text-lg font-light leading-relaxed">
                     {p.desc}
                   </p>
-                </div>
-                <div className="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-orange-500 w-1/3 group-hover:w-full transition-all duration-500" />
                 </div>
               </div>
             ))}
@@ -257,20 +214,20 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ═══ COMMITMENT BAR ═══ */}
-      <section className="bg-navy-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-          <div className="space-y-1">
-            <h3 className="font-heading font-bold text-xl uppercase">
+      {/* ═══ SLA COMMITMENT BANNER (Clean Light Gray) ═══ */}
+      <section className="py-24 bg-slate-100 border-t border-slate-200 reveal-on-scroll">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="space-y-3 max-w-3xl">
+            <h2 className="font-heading font-black text-2xl sm:text-4xl uppercase text-slate-900 tracking-tight">
               Cam Kết SLA Bồi Thường Rõ Ràng Trong Hợp Đồng
-            </h3>
-            <p className="text-xs text-slate-300">
-              Trễ hạn giao hàng bồi thường 500.000 VNĐ/giờ • Hư hỏng hàng hóa đền bù 100% giá trị thị trường.
+            </h2>
+            <p className="text-slate-600 text-base md:text-lg font-light leading-relaxed">
+              Trễ hạn giao hàng bồi thường 500.000 VNĐ/giờ • Hư hỏng hàng hóa đền bù 100% giá trị thị trường theo chính sách bảo hiểm PVI.
             </p>
           </div>
           <a
             href="tel:0918456789"
-            className="px-6 py-3.5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded transition-colors shrink-0"
+            className="px-8 py-5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-2xl shadow-xl shadow-orange-500/25 shrink-0 transition-all hover:scale-105"
           >
             Đăng Ký Vận Chuyển: 0918.456.789
           </a>

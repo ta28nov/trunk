@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FloatingZalo from "./components/FloatingZalo";
+import ScrollObserver from "./components/ScrollObserver";
 
 export const metadata = {
   title: {
@@ -39,7 +40,7 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <link
@@ -47,9 +48,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-surface text-slate-800 antialiased selection:bg-orange-500 selection:text-white pb-14 md:pb-0">
+      <body className="min-h-screen flex flex-col bg-white text-slate-900 antialiased selection:bg-orange-500 selection:text-white pb-14 md:pb-0 overflow-x-hidden">
+        <ScrollObserver />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 bg-white">{children}</main>
         <Footer />
         <FloatingZalo />
       </body>

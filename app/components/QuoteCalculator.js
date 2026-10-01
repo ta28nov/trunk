@@ -58,44 +58,40 @@ export default function QuoteCalculator({ compact = false }) {
   }).format(estimatedCost);
 
   return (
-    <div className={`bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden ${compact ? "p-4" : "p-6 md:p-8"}`}>
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-200 gap-3">
+    <div className={`bg-slate-50 rounded-3xl border border-slate-200 shadow-lg overflow-hidden ${compact ? "p-6" : "p-8 md:p-12"}`}>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 border-b border-slate-200 gap-4">
         <div>
-          <span className="font-heading text-xs font-bold text-orange-500 uppercase tracking-widest block">
-            Công Cụ Trực Tuyến
-          </span>
-          <h3 className="font-heading text-xl md:text-2xl font-bold text-navy-900 uppercase tracking-tight mt-0.5">
+          <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tight">
             Tính Nhanh Cước Vận Tải Tham Khảo
           </h3>
         </div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 border border-green-200 text-green-700 text-xs font-heading font-semibold rounded-full">
-          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          Giá Trực Tiếp Đội Xe — Không Phí Trung Gian
+        <div className="text-slate-500 text-base font-light">
+          Báo giá trực tiếp từ đội xe • Không phí trung gian
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-8">
         {/* Controls */}
-        <div className="lg:col-span-7 space-y-6">
+        <div className="lg:col-span-7 space-y-8">
           {/* Vehicle Select */}
           <div>
-            <label className="block text-xs font-heading font-bold uppercase tracking-wider text-slate-700 mb-2">
+            <strong className="block text-sm font-heading font-bold uppercase tracking-wider text-slate-900 mb-3">
               1. Chọn Loại Xe Vận Chuyển:
-            </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            </strong>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {VEHICLE_RATES.map((v) => (
                 <button
                   key={v.id}
                   type="button"
                   onClick={() => setVehicleId(v.id)}
-                  className={`text-left p-3.5 rounded-xl border transition-all duration-200 ${
+                  className={`text-left p-4 rounded-2xl border transition-all duration-300 ${
                     vehicleId === v.id
-                      ? "border-orange-500 bg-orange-50/70 shadow-sm ring-1 ring-orange-500 -translate-y-0.5"
-                      : "border-slate-200 hover:border-slate-300 hover:bg-slate-50 bg-white"
+                      ? "border-orange-500 bg-orange-50/80 shadow-md ring-2 ring-orange-500"
+                      : "border-slate-200 hover:border-slate-300 bg-white"
                   }`}
                 >
-                  <div className="font-heading font-bold text-sm text-navy-900">{v.name}</div>
-                  <div className="text-xs text-slate-500 mt-0.5">{v.capacity}</div>
+                  <div className="font-heading font-bold text-base text-slate-900">{v.name}</div>
+                  <div className="text-sm text-slate-500 mt-1">{v.capacity}</div>
                 </button>
               ))}
             </div>
@@ -103,10 +99,10 @@ export default function QuoteCalculator({ compact = false }) {
 
           {/* Route Presets */}
           <div>
-            <label className="block text-xs font-heading font-bold uppercase tracking-wider text-slate-700 mb-2">
+            <strong className="block text-sm font-heading font-bold uppercase tracking-wider text-slate-900 mb-3">
               2. Chọn Tuyến Đường Mẫu Hoặc Nhập Số Km:
-            </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
+            </strong>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-4">
               {ROUTE_PRESETS.map((r) => (
                 <button
                   key={r.name}
@@ -115,56 +111,56 @@ export default function QuoteCalculator({ compact = false }) {
                     setDistance(r.distance);
                     setCustomDistance("");
                   }}
-                  className={`text-left p-3 rounded-xl border text-xs transition-all duration-200 ${
+                  className={`text-left p-4 rounded-2xl border text-sm transition-all duration-300 ${
                     distance === r.distance && !customDistance
-                      ? "border-navy-900 bg-navy-900 text-white font-medium shadow -translate-y-0.5"
-                      : "border-slate-200 hover:border-slate-300 text-slate-700 bg-slate-50 hover:bg-slate-100"
+                      ? "border-slate-900 bg-slate-900 text-white font-bold shadow-md"
+                      : "border-slate-200 hover:border-slate-300 text-slate-700 bg-white"
                   }`}
                 >
                   <div className="truncate font-semibold">{r.name}</div>
-                  <div className={`text-[11px] mt-0.5 ${distance === r.distance && !customDistance ? "text-slate-300" : "text-slate-500"}`}>
+                  <div className={`text-xs mt-1 ${distance === r.distance && !customDistance ? "text-slate-300" : "text-slate-500"}`}>
                     {r.distance} km • Dự kiến: {r.time}
                   </div>
                 </button>
               ))}
             </div>
 
-            <div className="flex items-center gap-3">
-              <span className="text-xs text-slate-500 whitespace-nowrap">Hoặc nhập cự ly riêng:</span>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              <span className="text-sm text-slate-600 whitespace-nowrap">Hoặc nhập cự ly riêng:</span>
               <div className="relative flex-1">
                 <input
                   type="number"
                   placeholder="Nhập số km..."
                   value={customDistance}
                   onChange={(e) => setCustomDistance(e.target.value)}
-                  className="w-full px-3 py-2 text-sm border border-slate-300 rounded focus:outline-none focus:border-orange-500 pr-12"
+                  className="w-full px-4 py-3 text-base bg-white border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 text-slate-900 pr-12"
                 />
-                <span className="absolute right-3 top-2.5 text-xs text-slate-400 font-medium">km</span>
+                <span className="absolute right-4 top-3.5 text-sm text-slate-400 font-medium">km</span>
               </div>
             </div>
           </div>
 
           {/* Addons */}
           <div>
-            <label className="block text-xs font-heading font-bold uppercase tracking-wider text-slate-700 mb-2">
+            <strong className="block text-sm font-heading font-bold uppercase tracking-wider text-slate-900 mb-3">
               3. Dịch Vụ Đi Kèm (Tùy Chọn):
-            </label>
-            <div className="flex flex-wrap gap-4">
-              <label className="inline-flex items-center gap-2 cursor-pointer text-sm text-slate-700 select-none">
+            </strong>
+            <div className="flex flex-wrap gap-5">
+              <label className="inline-flex items-center gap-3 cursor-pointer text-base text-slate-700 select-none">
                 <input
                   type="checkbox"
                   checked={hasLoading}
                   onChange={(e) => setHasLoading(e.target.checked)}
-                  className="w-4 h-4 text-orange-500 rounded border-slate-300 focus:ring-orange-500"
+                  className="w-5 h-5 text-orange-500 rounded border-slate-300 focus:ring-orange-500"
                 />
                 <span>Hỗ trợ bốc xếp / Cẩu hạ 2 đầu (+800.000đ)</span>
               </label>
-              <label className="inline-flex items-center gap-2 cursor-pointer text-sm text-slate-700 select-none">
+              <label className="inline-flex items-center gap-3 cursor-pointer text-base text-slate-700 select-none">
                 <input
                   type="checkbox"
                   checked={isUrgent}
                   onChange={(e) => setIsUrgent(e.target.checked)}
-                  className="w-4 h-4 text-orange-500 rounded border-slate-300 focus:ring-orange-500"
+                  className="w-5 h-5 text-orange-500 rounded border-slate-300 focus:ring-orange-500"
                 />
                 <span>Hỏa tốc bốc ngay trong 30 phút (+15%)</span>
               </label>
@@ -173,28 +169,28 @@ export default function QuoteCalculator({ compact = false }) {
         </div>
 
         {/* Result Card */}
-        <div className="lg:col-span-5 flex flex-col justify-between bg-navy-950 text-white rounded-lg p-6 border border-navy-800">
+        <div className="lg:col-span-5 flex flex-col justify-between bg-slate-900 text-white rounded-3xl p-8 md:p-10 shadow-xl">
           <div>
-            <div className="flex items-center justify-between pb-4 border-b border-navy-800">
-              <span className="text-xs uppercase tracking-widest text-slate-400 font-heading">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+              <span className="text-xs uppercase tracking-widest text-slate-400 font-heading font-semibold">
                 Ước Tính Cước Phí
               </span>
-              <span className="px-2 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-orange-500/20 text-orange-400">
+              <span className="text-xs font-semibold text-slate-400">
                 Chưa Gồm VAT
               </span>
             </div>
 
-            <div className="my-6">
-              <span className="text-xs text-slate-400 block mb-1">Giá cước trọn chuyến dự kiến:</span>
-              <div className="text-3xl md:text-4xl font-heading font-bold text-orange-500 tracking-tight">
+            <div className="my-8">
+              <span className="text-sm text-slate-400 block mb-1">Giá cước trọn chuyến dự kiến:</span>
+              <div className="text-4xl md:text-5xl font-heading font-black text-orange-400 tracking-tight">
                 {formattedCost}
               </div>
-              <p className="text-xs text-slate-400 mt-2">
-                *Đã bao gồm: Phí cầu đường (BOT), lái xe, xăng dầu, định vị GPS giám sát 24/7 & bảo hiểm hàng hóa PVI.
+              <p className="text-xs text-slate-400 mt-3 font-light leading-relaxed">
+                *Đã bao gồm: Phí cầu đường (BOT), lái xe, xăng dầu, định vị GPS giám sát 24/7 &amp; bảo hiểm hàng hóa PVI.
               </p>
             </div>
 
-            <div className="bg-navy-900/80 rounded p-4 space-y-2 text-xs text-slate-300 border border-navy-800">
+            <div className="bg-slate-800/80 rounded-2xl p-5 space-y-3 text-sm text-slate-300 border border-slate-700">
               <div className="flex justify-between">
                 <span className="text-slate-400">Phương tiện:</span>
                 <span className="font-semibold text-white">{selectedVehicle.name}</span>
@@ -216,21 +212,21 @@ export default function QuoteCalculator({ compact = false }) {
             </div>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-navy-800 space-y-3">
+          <div className="mt-8 pt-6 border-t border-slate-800 space-y-3">
             <a
               href="tel:0918456789"
-              className="w-full py-3.5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-sm uppercase tracking-wider rounded text-center transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20"
+              className="w-full py-4 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-sm uppercase tracking-wider rounded-2xl text-center transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-500/30"
             >
-              <span className="material-symbols-outlined text-lg">phone_in_talk</span>
+              <span className="material-symbols-outlined text-xl">call</span>
               Chốt Giá Nhanh: 0918.456.789
             </a>
             <a
               href="https://zalo.me/0918456789"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-heading font-semibold text-xs uppercase tracking-wider rounded text-center transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-2xl text-center transition-colors flex items-center justify-center gap-2"
             >
-              <span className="material-symbols-outlined text-base">chat</span>
+              <span className="material-symbols-outlined text-lg">chat</span>
               Gửi Thông Tin Báo Giá Qua Zalo
             </a>
           </div>

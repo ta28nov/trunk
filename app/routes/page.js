@@ -11,13 +11,12 @@ export default function RoutesPage() {
       region: "south",
       title: "Hành Lang Đông Nam Bộ & Các KCN Vệ Tinh",
       time: "1.5H — 3.5H",
-      badge: "Xuất Bến Liên Tục",
-      badgeColor: "bg-orange-500 text-white",
-      desc: "Trọng tâm hoạt động với bãi xe trung tâm tại Sóng Thần. Kết nối các tỉnh công nghiệp lớn nhất cả nước trong ngày.",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+      desc: "Trọng tâm hoạt động với bãi xe trung tâm 15.000m² tại KCN Sóng Thần (Dĩ An). Đội xe túc trực 24/7, kết nối thông suốt giữa các tỉnh công nghiệp lớn nhất cả nước trong ngày.",
       routes: [
         { from: "KCN Sóng Thần (Bình Dương)", to: "KCN VSIP 1 & 2 / Mỹ Phước", dist: "25 - 45 km", eta: "1 - 1.5 Giờ" },
-        { from: "TP.HCM / Thủ Đức", to: "KCN Amata / Biên Hòa 2 / Nhơn Trạch (Đồng Nai)", dist: "35 - 55 km", eta: "1.5 - 2 Giờ" },
-        { from: "Bình Dương / TP.HCM", to: "Cụm Cảng Cái Mép — Thị Vải (Bà Rịa Vũng Tàu)", dist: "75 - 90 km", eta: "2.5 - 3 Giờ" },
+        { from: "TP.HCM / Thủ Đức", to: "KCN Amata / Biên Hòa 2 / Nhơn Trạch", dist: "35 - 55 km", eta: "1.5 - 2 Giờ" },
+        { from: "Bình Dương / TP.HCM", to: "Cụm Cảng Quốc Tế Cái Mép — Thị Vải", dist: "75 - 90 km", eta: "2.5 - 3 Giờ" },
         { from: "Bình Dương", to: "KCN Đức Hòa / Bến Lức / Long Hậu (Long An)", dist: "60 - 80 km", eta: "2 - 2.5 Giờ" },
       ],
     },
@@ -26,9 +25,8 @@ export default function RoutesPage() {
       region: "north",
       title: "Trục Huyết Mạch Quốc Lộ 1A: Bắc — Nam",
       time: "44H — 48H CAM KẾT",
-      badge: "2 Chuyến / Ngày",
-      badgeColor: "bg-navy-900 text-white",
-      desc: "Đội xe mui bạt 9.6M và đầu kéo container chạy xoay vòng liên tục giữa hai đầu đất nước, có trạm đổi lái an toàn tại Đà Nẵng.",
+      image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80",
+      desc: "Đội xe mui bạt 9.6M và đầu kéo container chạy xoay vòng liên tục giữa hai đầu đất nước. Bố trí 2 tài xế thay phiên lái an toàn và có trạm trung chuyển đổi ca tại Đà Nẵng.",
       routes: [
         { from: "Tổng kho Sóng Thần (TP.HCM)", to: "KCN Hòa Cầm / Liên Chiểu (Đà Nẵng)", dist: "950 km", eta: "24 - 28 Giờ" },
         { from: "Tổng kho Sóng Thần", to: "Kho Giáp Bát / Gia Lâm (Hà Nội)", dist: "1,720 km", eta: "44 - 48 Giờ" },
@@ -41,14 +39,13 @@ export default function RoutesPage() {
       region: "central",
       title: "Duyên Hải Miền Trung & Vùng Tây Nguyên",
       time: "18H — 28H",
-      badge: "Hàng Ngày",
-      badgeColor: "bg-blue-600 text-white",
-      desc: "Chuyên vận chuyển vật tư nông sản, phân bón, thiết bị điện gió năng lượng tái tạo và hàng tiêu dùng.",
+      image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1200&q=80",
+      desc: "Chuyên vận chuyển thiết bị công trình điện gió, năng lượng mặt trời, vật tư cơ khí, phân bón và hàng tiêu dùng nhanh tiếp vận các tỉnh Nam Trung Bộ và Tây Nguyên.",
       routes: [
         { from: "TP.HCM / Bình Dương", to: "Phan Thiết / Hàm Tân (Bình Thuận)", dist: "180 km", eta: "4 - 5 Giờ" },
         { from: "TP.HCM / Bình Dương", to: "Cam Ranh / Nha Trang (Khánh Hòa)", dist: "420 km", eta: "9 - 10 Giờ" },
         { from: "TP.HCM / Bình Dương", to: "Quy Nhơn (Bình Định) / KCN Nhơn Hội", dist: "650 km", eta: "16 - 18 Giờ" },
-        { from: "TP.HCM / Bình Dương", to: "Buôn Ma Thuột (Đắk Lắk) / Pleiku (Gia Lai)", dist: "350 - 520 km", eta: "9 - 14 Giờ" },
+        { from: "TP.HCM / Bình Dương", to: "Buôn Ma Thuột (Đắk Lắk) / Pleiku", dist: "350 - 520 km", eta: "9 - 14 Giờ" },
       ],
     },
     {
@@ -56,9 +53,8 @@ export default function RoutesPage() {
       region: "south",
       title: "Tuyến Cảng Biển Quốc Tế & Cảng Cạn (ICD)",
       time: "TRỰC CHIẾN 24/7",
-      badge: "Kẹp Chì Hải Quan",
-      badgeColor: "bg-green-600 text-white",
-      desc: "Chuyên kéo vỏ cont, rút ruột, bấm seal kiểm hóa và vận chuyển hàng xuất nhập khẩu bám sát giờ tàu.",
+      image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80",
+      desc: "Chuyên kéo vỏ cont, hạ bãi cảng Cát Lái, Cái Mép, rút ruột container, bấm seal hải quan và vận chuyển hàng xuất nhập khẩu bám sát lịch tàu chạy không trễ giờ cut-off.",
       routes: [
         { from: "Bãi Cát Lái", to: "Cảng Tân Cảng — Cát Lái (Cổng A/B/C/D)", dist: "2 - 5 km", eta: "15 - 30 Phút" },
         { from: "KCN Sóng Thần / VSIP", to: "ICD Sóng Thần / ICD Phước Long / Long Bình", dist: "10 - 25 km", eta: "30 - 45 Phút" },
@@ -82,156 +78,157 @@ export default function RoutesPage() {
   });
 
   return (
-    <div className="flex flex-col w-full">
-      {/* ═══ CINEMATIC HEADER BANNER ═══ */}
-      <section className="relative bg-navy-950 text-white py-20 md:py-28 overflow-hidden">
+    <div className="flex flex-col w-full bg-white text-slate-900">
+      {/* ═══ CINEMATIC HERO BANNER ═══ */}
+      <section className="relative bg-navy-950 text-white py-24 md:py-36 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=2000&q=80"
+          src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=2400&q=80"
           alt="Hành lang vận tải cao tốc Quốc Lộ 1A"
           className="absolute inset-0 w-full h-full object-cover opacity-25 filter contrast-125 brightness-75 scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40" />
-        <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400 text-xs font-heading font-bold uppercase tracking-wider backdrop-blur-md">
-            Mạng Lưới Vận Tải Trọng Điểm & Tuyến Đường
-          </div>
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight leading-tight">
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 space-y-6">
+          <h1 className="font-heading font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight leading-[1.08]">
             MẠNG LƯỚI TUYẾN ĐƯỜNG
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-300 mt-1">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-300 mt-2">
               KẾT NỐI 42+ KHU CÔNG NGHIỆP TRỌNG ĐIỂM
             </span>
           </h1>
-          <p className="text-slate-300 text-base md:text-lg max-w-3xl leading-relaxed font-light">
-            Vành đai Đông Nam Bộ (1.5H - 3H), Trục huyết mạch Bắc — Nam (48H cam kết), Duyên hải Miền Trung và Cảng biển quốc tế Cát Lái & Cái Mép trực chiến 24/7.
+          <p className="text-slate-200 text-lg sm:text-xl md:text-2xl max-w-4xl leading-relaxed font-light">
+            Vành đai công nghiệp Đông Nam Bộ (1.5H - 3H), Trục huyết mạch Bắc — Nam (48H cam kết), Duyên hải Miền Trung và Cảng biển quốc tế Cát Lái — Cái Mép trực chiến 24/7.
           </p>
+
+          {/* Region Filter Buttons */}
+          <div className="pt-6 flex flex-wrap items-center gap-3">
+            {[
+              { id: "all", label: "Tất Cả Tuyến Đường" },
+              { id: "south", label: "Đông Nam Bộ & Cảng Biển" },
+              { id: "north", label: "Trục Bắc — Nam (Hà Nội)" },
+              { id: "central", label: "Miền Trung & Tây Nguyên" },
+            ].map((b) => (
+              <button
+                key={b.id}
+                type="button"
+                onClick={() => setSelectedRegion(b.id)}
+                className={`px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-heading font-bold uppercase tracking-wider transition-all duration-300 ${
+                  selectedRegion === b.id
+                    ? "bg-orange-500 text-white shadow-xl shadow-orange-500/30 scale-105"
+                    : "bg-white/10 hover:bg-white/20 text-slate-200 border border-white/15"
+                }`}
+              >
+                {b.label}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ═══ MAP & CORRIDORS ═══ */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <span className="text-xs font-heading font-bold text-orange-600 uppercase tracking-widest block">
-                Hành Lang Vận Tải
-              </span>
-              <h2 className="font-heading font-bold text-2xl md:text-3xl text-navy-900 uppercase tracking-tight mt-1">
-                4 Trục Tuyến Đường Huyết Mạch
-              </h2>
-            </div>
-
-            {/* Filter buttons */}
-            <div className="flex items-center gap-2">
-              {[
-                { id: "all", label: "Tất Cả" },
-                { id: "south", label: "Đông Nam Bộ & Cảng" },
-                { id: "north", label: "Trục Bắc — Nam" },
-                { id: "central", label: "Miền Trung" },
-              ].map((b) => (
-                <button
-                  key={b.id}
-                  type="button"
-                  onClick={() => setSelectedRegion(b.id)}
-                  className={`px-3 py-1.5 rounded text-xs font-heading font-bold uppercase tracking-wider transition-all ${
-                    selectedRegion === b.id
-                      ? "bg-navy-900 text-white"
-                      : "bg-slate-100 hover:bg-slate-200 text-slate-700"
-                  }`}
-                >
-                  {b.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {filteredCorridors.map((c) => (
-              <div
-                key={c.id}
-                className="bg-slate-50 rounded-lg border border-slate-200 shadow-sm p-6 space-y-5"
-              >
-                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-4">
-                  <div>
-                    <span className={`px-2.5 py-0.5 rounded text-[10px] font-heading font-bold uppercase tracking-wider ${c.badgeColor}`}>
-                      {c.badge}
-                    </span>
-                    <h3 className="font-heading font-bold text-base md:text-lg text-navy-900 uppercase mt-1.5">
-                      {c.title}
-                    </h3>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-[11px] text-slate-500 uppercase font-semibold block">Tiến độ cam kết</span>
-                    <span className="font-heading font-bold text-sm text-orange-600">{c.time}</span>
-                  </div>
+      {/* ═══ EXPANSIVE SPLIT-SCREEN CORRIDORS (Clean White, Long Vertical Scroll) ═══ */}
+      <section className="py-28 md:py-36 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto w-full space-y-32">
+        {filteredCorridors.map((c, index) => {
+          const isEven = index % 2 === 0;
+          return (
+            <div
+              key={c.id}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal-on-scroll"
+            >
+              {/* Text Content Side */}
+              <div className={`lg:col-span-6 space-y-6 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
+                <div className="space-y-2">
+                  <span className="font-heading font-black text-2xl text-orange-600 block">
+                    Tiến độ: {c.time}
+                  </span>
+                  <h2 className="font-heading font-black text-3xl sm:text-4xl text-slate-900 uppercase leading-tight">
+                    {c.title}
+                  </h2>
                 </div>
 
-                <p className="text-xs text-slate-600 leading-relaxed">{c.desc}</p>
+                <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
+                  {c.desc}
+                </p>
 
-                {/* Sub-routes table */}
-                <div className="space-y-2">
-                  <span className="text-[11px] font-heading font-bold text-navy-900 uppercase tracking-wider block">
-                    Các Chặng Phổ Biến:
-                  </span>
-                  <div className="space-y-1.5">
-                    {c.routes.map((r, idx) => (
+                {/* Route Destinations */}
+                <div className="space-y-3 pt-2">
+                  <strong className="text-sm font-heading font-bold text-slate-900 uppercase tracking-wider block">
+                    Các Tuyến Điển Hình:
+                  </strong>
+                  <div className="space-y-3">
+                    {c.routes.map((r, rIdx) => (
                       <div
-                        key={idx}
-                        className="bg-white p-2.5 rounded border border-slate-200 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+                        key={rIdx}
+                        className="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                       >
-                        <div className="flex items-center gap-1.5 text-navy-900 font-medium">
-                          <span className="material-symbols-outlined text-orange-500 text-base">route</span>
+                        <div className="flex items-center gap-3 text-slate-900 font-medium text-base">
+                          <span className="material-symbols-outlined text-orange-600 text-xl">route</span>
                           <span>{r.from} ➔ {r.to}</span>
                         </div>
-                        <div className="flex items-center gap-3 text-slate-500 text-[11px] shrink-0">
+                        <div className="flex items-center gap-3 text-sm text-slate-500 shrink-0">
                           <span>{r.dist}</span>
-                          <span className="font-bold text-orange-600 bg-orange-50 px-1.5 py-0.5 rounded">{r.eta}</span>
+                          <span className="font-bold text-orange-600 bg-orange-100/60 px-3 py-1 rounded-xl">
+                            {r.eta}
+                          </span>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="pt-2 flex items-center justify-between">
+                <div className="pt-4 flex flex-wrap items-center gap-4">
                   <a
                     href="tel:0918456789"
-                    className="text-xs font-heading font-bold text-orange-600 hover:text-orange-700 uppercase flex items-center gap-1"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-2xl shadow-xl shadow-orange-500/25 transition-all hover:scale-105"
                   >
-                    <span>Kiểm Tra Lịch Xuất Bến Hôm Nay</span>
-                    <span className="material-symbols-outlined text-base">arrow_forward</span>
+                    <span className="material-symbols-outlined text-lg">call</span>
+                    Kiểm Tra Xe Hôm Nay: 0918.456.789
                   </a>
+                  <Link
+                    href="/pricing"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-2xl transition-colors"
+                  >
+                    Xem Bảng Cước Tuyến Này
+                  </Link>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
+
+              {/* Giant Image Frame Side */}
+              <div className={`lg:col-span-6 ${isEven ? "lg:order-2" : "lg:order-1"}`}>
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 h-80 sm:h-96 md:h-[480px] w-full">
+                  <img
+                    src={c.image}
+                    alt={c.title}
+                    className="w-full h-full object-cover img-hover-zoom"
+                  />
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </section>
 
-      {/* ═══ 42 INDUSTRIAL PARKS DIRECTORY ═══ */}
-      <section className="py-16 md:py-20 bg-slate-50 border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-8">
-          <div>
-            <span className="text-xs font-heading font-bold text-orange-600 uppercase tracking-widest block">
-              Danh Bạ Địa Bàn Hoạt Động
-            </span>
-            <h2 className="font-heading font-bold text-2xl md:text-3xl text-navy-900 uppercase tracking-tight mt-1">
-              Phủ Sóng 42+ Khu Công Nghiệp Trọng Điểm
+      {/* ═══ 42 INDUSTRIAL PARKS DIRECTORY (Clean Slate-50) ═══ */}
+      <section className="py-28 md:py-36 px-6 md:px-12 lg:px-20 bg-slate-50 border-t border-slate-200 reveal-on-scroll">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="max-w-3xl space-y-4">
+            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight text-slate-900 leading-tight">
+              PHỦ SÓNG 42+ KHU CÔNG NGHIỆP TRỌNG ĐIỂM
             </h2>
-            <p className="text-xs md:text-sm text-slate-500 mt-1">
-              Xe tải Tiên Phong có thẻ ra vào cố định tại hầu hết các KCN trọng điểm, giúp rút ngắn thời gian làm thủ tục qua cổng bảo vệ.
+            <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
+              Đội xe Tiên Phong có thẻ ra vào cố định tại hầu hết các KCN trọng điểm, giúp lái xe làm thủ tục cổng bảo vệ trong 5 phút và nhanh chóng tiếp cận bến bốc hàng.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {INDUSTRIAL_PARKS.map((ip) => (
               <div
                 key={ip.province}
-                className="bg-white p-5 rounded-lg border border-slate-200 shadow-sm space-y-2"
+                className="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm space-y-4"
               >
-                <div className="flex items-center gap-2 text-navy-900 font-heading font-bold text-sm uppercase">
-                  <span className="material-symbols-outlined text-orange-500 text-lg">domain</span>
+                <div className="flex items-center gap-3 text-orange-600 font-heading font-bold text-lg uppercase">
+                  <span className="material-symbols-outlined text-2xl">domain</span>
                   {ip.province}
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-base text-slate-600 leading-relaxed font-light">
                   {ip.list}
                 </p>
               </div>
@@ -240,23 +237,31 @@ export default function RoutesPage() {
         </div>
       </section>
 
-      {/* ═══ CTA SECTION ═══ */}
-      <section className="bg-navy-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-          <div className="space-y-1">
-            <h3 className="font-heading font-bold text-xl uppercase">
+      {/* ═══ CTA BANNER ═══ */}
+      <section className="py-24 bg-slate-900 text-white reveal-on-scroll">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
+          <div className="space-y-3 max-w-2xl">
+            <h2 className="font-heading font-black text-2xl sm:text-4xl uppercase tracking-tight">
               Tuyến Hàng Của Bạn Không Có Trong Danh Sách?
-            </h3>
-            <p className="text-xs text-slate-300">
-              Chúng tôi nhận điều xe đi khắp 63 tỉnh thành theo hợp đồng nguyên chuyến hoặc dự án dài hạn.
+            </h2>
+            <p className="text-slate-300 text-base md:text-lg font-light">
+              Chúng tôi nhận điều xe đi khắp 63 tỉnh thành theo hợp đồng nguyên chuyến hoặc dự án công nghiệp dài hạn.
             </p>
           </div>
-          <a
-            href="tel:0918456789"
-            className="px-6 py-3.5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded transition-colors shrink-0"
-          >
-            Hỏi Tuyến Đường: 0918.456.789
-          </a>
+          <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
+            <a
+              href="tel:0918456789"
+              className="px-8 py-5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-sm uppercase tracking-wider rounded-2xl shadow-xl shadow-orange-500/30 transition-all hover:scale-105"
+            >
+              Hỏi Tuyến Đường: 0918.456.789
+            </a>
+            <Link
+              href="/contact"
+              className="px-8 py-5 bg-navy-800 hover:bg-navy-700 text-white font-heading font-bold text-sm uppercase tracking-wider rounded-2xl border border-navy-700 transition-colors"
+            >
+              Gửi Thông Tin Kiện Hàng
+            </Link>
+          </div>
         </div>
       </section>
     </div>
