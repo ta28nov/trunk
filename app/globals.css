@@ -1,26 +1,173 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ═══════════════════════════════════════════════════════════════
+   FLEET OPS LOGISTICS PORTAL — DESIGN SYSTEM
+   Industrial Corporate Dark | Mobile-First | Vietnamese B2B
+   ═══════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ─── COLORS: NAVY INDUSTRIAL + SAFETY ORANGE ─── */
+  --color-navy-950: #060D18;
+  --color-navy-900: #0E1C2F;
+  --color-navy-800: #1A2B45;
+  --color-navy-700: #263B5A;
+  --color-navy-600: #3A4F6E;
+  --color-navy-500: #525F75;
+
+  --color-orange-500: #FE6B00;
+  --color-orange-600: #E55E00;
+  --color-orange-700: #C44F00;
+  --color-orange-400: #FF8A33;
+
+  --color-blue-500: #2563EB;
+  --color-blue-600: #1D4ED8;
+  --color-blue-100: #DBEAFE;
+
+  --color-slate-50: #F8FAFC;
+  --color-slate-100: #F1F5F9;
+  --color-slate-200: #E2E8F0;
+  --color-slate-300: #CBD5E1;
+  --color-slate-400: #94A3B8;
+  --color-slate-500: #64748B;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
+
+  --color-green-500: #059669;
+  --color-green-100: #D1FAE5;
+  --color-red-500: #DC2626;
+  --color-red-100: #FEE2E2;
+  --color-red-900: #7F1D1D;
+
+  --color-surface: #F9FAFF;
+  --color-surface-alt: #EFF3FF;
+  --color-surface-card: #FFFFFF;
+
+  /* ─── FONT FAMILIES ─── */
+  --font-heading: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* ─── BORDER RADIUS — INDUSTRIAL SHARP ─── */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  /* ─── SPACING TOKENS ─── */
+  --spacing-section: 5rem;
+  --spacing-section-mobile: 3rem;
+
+  /* ─── ANIMATIONS ─── */
+  --animate-fade-up: fade-up 0.6s ease-out forwards;
+  --animate-counter: counter 1.5s ease-out forwards;
+  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── KEYFRAMES ─── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes counter {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ─── BASE STYLES ─── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  color: var(--color-slate-800);
+  background: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ─── SCROLL REVEAL ANIMATION ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ─── COUNTER ANIMATION ─── */
+.counter-value {
+  display: inline-block;
+}
+
+/* ─── MATERIAL SYMBOLS ─── */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+
+/* ─── CUSTOM SCROLLBAR ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-slate-100);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-slate-400);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-slate-500);
+}
+
+/* ─── REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ─── SELECTION ─── */
+::selection {
+  background: var(--color-orange-500);
+  color: white;
 }
