@@ -96,18 +96,26 @@ const PROCESS_STEPS = [
 export default function ServicesPage() {
   return (
     <div className="flex flex-col w-full">
-      {/* ═══ HEADER BANNER ═══ */}
-      <section className="bg-navy-950 text-white py-14 md:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#d6e3fe_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+      {/* ═══ CINEMATIC HEADER BANNER ═══ */}
+      <section className="relative bg-navy-950 text-white py-20 md:py-28 overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=2000&q=80"
+          alt="Cảng biển logistics container"
+          className="absolute inset-0 w-full h-full object-cover opacity-25 filter contrast-125 brightness-75 scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40" />
         <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-navy-800/80 border border-navy-700 rounded text-orange-400 text-xs font-heading font-semibold uppercase tracking-wider">
-            Dịch Vụ Vận Tải Toàn Diện
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400 text-xs font-heading font-bold uppercase tracking-wider backdrop-blur-md">
+            Dịch Vụ Vận Tải Toàn Diện & Hậu Cần
           </div>
-          <h1 className="font-heading font-bold text-3xl md:text-5xl uppercase tracking-tight">
-            Hệ Thống Dịch Vụ Vận Tải Chuyên Nghiệp & Hậu Cần B2B
+          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight leading-tight">
+            HỆ THỐNG DỊCH VỤ
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-300 mt-1">
+              4 TRỤ CỘT VẬN TẢI CHUYÊN NGHIỆP
+            </span>
           </h1>
-          <p className="text-slate-300 text-base md:text-lg max-w-3xl leading-relaxed">
-            Giải pháp logistics trọn gói đáp ứng các yêu cầu khắt khe nhất của chuỗi cung ứng công nghiệp. Cam kết thời gian, an toàn hàng hóa và chi phí cạnh tranh không qua trung gian.
+          <p className="text-slate-300 text-base md:text-lg max-w-3xl leading-relaxed font-light">
+            Bao xe nguyên chuyến FTL, ghép hàng định tuyến Bắc — Nam, di dời & cẩu hạ máy móc xưởng, kéo container cảng Cát Lái & Cái Mép. Cam kết SLA đền bù 100%.
           </p>
         </div>
       </section>

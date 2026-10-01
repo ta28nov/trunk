@@ -62,27 +62,35 @@ export default function OperationsPage() {
 
   return (
     <div className="flex flex-col w-full">
-      {/* ═══ HEADER BANNER ═══ */}
-      <section className="bg-navy-950 text-white py-14 md:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#d6e3fe_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+      {/* ═══ CINEMATIC HEADER BANNER ═══ */}
+      <section className="relative bg-navy-950 text-white py-20 md:py-28 overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=2000&q=80"
+          alt="Bãi xe và hoạt động thực địa Vận Tải Tiên Phong"
+          className="absolute inset-0 w-full h-full object-cover opacity-25 filter contrast-125 brightness-75 scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40" />
         <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-navy-800/80 border border-navy-700 rounded text-orange-400 text-xs font-heading font-semibold uppercase tracking-wider">
-            Hình Ảnh Người Thật — Việc Thật
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400 text-xs font-heading font-bold uppercase tracking-wider backdrop-blur-md">
+            Hình Ảnh Thực Tế 100% — Không Dùng Mockup
           </div>
-          <h1 className="font-heading font-bold text-3xl md:text-5xl uppercase tracking-tight">
-            Thư Viện Thực Địa — Minh Chứng Năng Lực Vận Hành
+          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight leading-tight">
+            THƯ VIỆN THỰC ĐỊA
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-300 mt-1">
+              MINH CHỨNG NĂNG LỰC VẬN HÀNH 24/7
+            </span>
           </h1>
-          <p className="text-slate-300 text-base md:text-lg max-w-3xl leading-relaxed">
-            Mọi hình ảnh trên website đều được chụp thực tế tại các bãi xe, cảng biển và các nhà xưởng đối tác trong suốt quá trình hoạt động của Vận Tải Tiên Phong.
+          <p className="text-slate-300 text-base md:text-lg max-w-3xl leading-relaxed font-light">
+            Mọi hình ảnh tư liệu được ghi lại trực tiếp tại bãi xe trung tâm 15.000m², các cảng biển Cát Lái — Cái Mép và các nhà máy trong suốt 10+ năm phục vụ khách hàng doanh nghiệp.
           </p>
         </div>
       </section>
 
       {/* ═══ GALLERY SECTION WITH TABS ═══ */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-16 md:py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-10">
           {/* Tabs */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2 p-1.5 bg-white border border-slate-200 rounded-xl shadow-sm w-fit">
             {[
               { id: "all", label: "Tất Cả Hình Ảnh" },
               { id: "yard", label: "Kho Bãi & Xưởng Bảo Dưỡng" },
@@ -95,10 +103,10 @@ export default function OperationsPage() {
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2.5 rounded text-xs font-heading font-bold uppercase tracking-wider transition-all ${
+                className={`px-4 py-2 rounded-lg text-xs font-heading font-bold uppercase tracking-wider transition-all ${
                   activeTab === tab.id
-                    ? "bg-navy-900 text-white shadow"
-                    : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                    ? "bg-navy-950 text-white shadow"
+                    : "text-slate-600 hover:text-navy-900 hover:bg-slate-100"
                 }`}
               >
                 {tab.label}
@@ -111,31 +119,35 @@ export default function OperationsPage() {
             {filteredItems.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden flex flex-col group hover:border-slate-400 transition-all"
+                className="bento-card group flex flex-col justify-between overflow-hidden"
               >
-                <div className="relative h-64 w-full bg-slate-100 overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <span className="absolute top-3 left-3 bg-navy-900/90 text-white text-[10px] font-heading font-bold uppercase px-2.5 py-0.5 rounded shadow">
-                    {item.tag}
-                  </span>
+                <div>
+                  <div className="relative h-64 w-full bg-slate-900 overflow-hidden rounded-xl mb-4">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover img-hover-zoom"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                    <span className="absolute top-3 left-3 bg-navy-950/90 text-white text-[11px] font-heading font-bold uppercase px-3 py-1 rounded-full border border-white/20 backdrop-blur-md">
+                      {item.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-heading font-bold text-base text-navy-950 uppercase group-hover:text-orange-500 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed mt-2">
+                    {item.desc}
+                  </p>
                 </div>
-                <div className="p-5 flex-1 flex flex-col justify-between gap-3">
-                  <div className="space-y-1.5">
-                    <h3 className="font-heading font-bold text-sm md:text-base text-navy-900 uppercase">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                  <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
-                    <span>Ảnh thực tế • Tiên Phong Logistics</span>
-                    <span className="text-orange-600 font-semibold">Bản quyền lưu trữ</span>
-                  </div>
+                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+                  <span className="flex items-center gap-1.5 font-medium text-slate-500">
+                    <span className="w-2 h-2 rounded-full bg-green-500 inline-block animate-pulse"></span>
+                    Ảnh thực tế • Tiên Phong
+                  </span>
+                  <span className="text-orange-600 font-semibold uppercase text-[10px] tracking-wider">
+                    Lưu trữ hồ sơ
+                  </span>
                 </div>
               </div>
             ))}
@@ -144,24 +156,24 @@ export default function OperationsPage() {
       </section>
 
       {/* ═══ SAFETY & DRIVER STANDARDS ═══ */}
-      <section className="py-14 bg-slate-50 border-t border-slate-200">
+      <section className="py-14 bg-navy-950 border-t border-navy-800 text-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="bg-navy-900 text-white rounded-lg p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="bento-card-dark p-8 md:p-10 flex flex-col lg:flex-row items-center justify-between gap-8 border-navy-700/60">
             <div className="space-y-3">
               <span className="text-xs font-heading font-bold text-orange-400 uppercase tracking-widest block">
-                Văn Hóa Lái Xe Chuyên Nghiệp
+                Văn Hóa Lái Xe Chuyên Nghiệp &amp; An Toàn Tuyệt Đối
               </span>
-              <h3 className="font-heading font-bold text-xl md:text-2xl uppercase">
-                100% Tài Xế Được Kiểm Tra Nồng Độ Cồn & Thẻ An Toàn Trước Khi Lên Ca
+              <h3 className="font-heading font-extrabold text-2xl md:text-3xl uppercase tracking-tight text-white">
+                100% Tài Xế Được Kiểm Tra Nồng Độ Cồn &amp; Thẻ An Toàn Trước Khi Lên Ca
               </h3>
-              <p className="text-xs md:text-sm text-slate-300 max-w-2xl leading-relaxed">
+              <p className="text-xs md:text-sm text-slate-300 max-w-2xl leading-relaxed font-light">
                 Đội ngũ 70+ tài xế của Tiên Phong đều có thâm niên chạy đường dài từ 5 năm trở lên, có giấy phép lái xe hạng C, FC theo chuẩn quy định và thường xuyên được huấn luyện nghiệp vụ xếp dỡ hàng nguy hiểm.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
               <a
                 href="tel:0918456789"
-                className="w-full sm:w-auto px-6 py-3.5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded text-center transition-colors"
+                className="w-full sm:w-auto px-7 py-4 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl text-center shadow-lg shadow-orange-500/30 transition-all hover:scale-105"
               >
                 Hotline Giám Sát: 0918.456.789
               </a>

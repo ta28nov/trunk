@@ -9,18 +9,26 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div className="flex flex-col w-full">
-      {/* ═══ HEADER BANNER ═══ */}
-      <section className="bg-navy-950 text-white py-14 md:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#d6e3fe_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+      {/* ═══ CINEMATIC HEADER BANNER ═══ */}
+      <section className="relative bg-navy-950 text-white py-20 md:py-28 overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2000&q=80"
+          alt="Tổng kho bãi xe Sóng Thần"
+          className="absolute inset-0 w-full h-full object-cover opacity-25 filter contrast-125 brightness-75 scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40" />
         <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-navy-800/80 border border-navy-700 rounded text-orange-400 text-xs font-heading font-semibold uppercase tracking-wider">
-            Hồ Sơ Doanh Nghiệp
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-400 text-xs font-heading font-bold uppercase tracking-wider backdrop-blur-md">
+            Hồ Sơ Doanh Nghiệp • 10+ Năm Kinh Nghiệm
           </div>
-          <h1 className="font-heading font-bold text-3xl md:text-5xl uppercase tracking-tight">
-            Vận Tải Tiên Phong — Hành Trình 10+ Năm Kiến Tạo Năng Lực Thực Tế
+          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight leading-tight">
+            VẬN TẢI TIÊN PHONG
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-300 mt-1">
+              KIẾN TẠO NĂNG LỰC THỰC TẾ TỪ NĂM 2014
+            </span>
           </h1>
-          <p className="text-slate-300 text-base md:text-lg max-w-3xl leading-relaxed">
-            Khởi đầu từ năm 2014 với 5 đầu xe tải nhẹ, đến nay Vận Tải Tiên Phong đã phát triển thành đơn vị vận tải đường bộ hàng đầu Đông Nam Bộ với đội xe 52 chiếc chính chủ, phục vụ hơn 850 khách hàng B2B và FDI.
+          <p className="text-slate-300 text-base md:text-lg max-w-3xl leading-relaxed font-light">
+            Khởi đầu từ 5 đầu xe tải nhẹ, đến nay Vận Tải Tiên Phong đã phát triển thành đơn vị vận tải đường bộ hàng đầu Đông Nam Bộ với đội xe 52 chiếc chính chủ, 3 cụm bãi xe 15.000m² phục vụ hơn 850 khách hàng B2B và FDI.
           </p>
         </div>
       </section>

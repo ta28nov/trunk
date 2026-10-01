@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import FloatingZalo from "./components/FloatingZalo";
 
 export const metadata = {
   title: {
@@ -50,6 +51,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <FloatingZalo />
       </body>
     </html>
   );
