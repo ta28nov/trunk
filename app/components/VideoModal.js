@@ -1,26 +1,26 @@
 "use client";
-import { useState } from "react";
 
 export default function VideoModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/85 backdrop-blur-md animate-fade-up">
-      <div className="relative w-full max-w-4xl bg-navy-900 rounded-2xl overflow-hidden border border-navy-700 shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0B0B]/90 backdrop-blur-md">
+      <div className="relative w-full max-w-4xl bg-[#141414] border border-[#2A2A2A] shadow-2xl">
         {/* Modal Header */}
-        <div className="flex items-center justify-between p-4 border-b border-navy-800 bg-navy-950">
+        <div className="flex items-center justify-between p-4 border-b border-[#2A2A2A] bg-[#0B0B0B]">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+            <span className="w-2 h-2 bg-[#FF6A00]" />
             <span className="font-heading font-bold text-xs uppercase tracking-wider text-white">
-              Phim Thực Địa — Đội Xe Vận Tải Tiên Phong (Full HD)
+              Phim Tư Liệu Thực Địa — Đội Xe Vận Tải Tiên Phong
             </span>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-navy-800 hover:bg-navy-700 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+            className="px-2 py-1 text-xs text-[#A3A3A3] hover:text-white font-mono"
+            aria-label="Đóng"
           >
-            <span className="material-symbols-outlined text-lg">close</span>
+            [ĐÓNG ×]
           </button>
         </div>
 
@@ -42,17 +42,15 @@ export default function VideoModal({ isOpen, onClose }) {
         </div>
 
         {/* Modal Footer Info */}
-        <div className="p-4 bg-navy-950 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
-          <div className="flex items-center gap-4">
-            <span>📍 Bãi xe trung tâm Sóng Thần & Cát Lái</span>
-            <span>⏱️ Ghi hình thực tế tháng 08/2024</span>
+        <div className="p-4 bg-[#0B0B0B] flex flex-wrap items-center justify-between gap-3 text-xs text-[#737373]">
+          <div>
+            Ghi hình thực địa bãi xe trung tâm Sóng Thần &amp; Cảng Cát Lái
           </div>
           <a
             href="tel:0918456789"
-            className="text-orange-400 font-heading font-bold uppercase hover:underline flex items-center gap-1"
+            className="text-[#FF6A00] font-heading font-bold uppercase hover:underline"
           >
-            <span>Liên hệ điều xe ngay: 0918.456.789</span>
-            <span className="material-symbols-outlined text-sm">east</span>
+            Liên hệ điều xe: 0918.456.789 →
           </a>
         </div>
       </div>

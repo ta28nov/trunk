@@ -1,166 +1,245 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Giới Thiệu Doanh Nghiệp | Vận Tải Tiên Phong",
+  title: "Về Vận Tải Tiên Phong | Lịch Sử Hình Thành & Năng Lực Pháp Lý",
   description:
-    "Hơn 10 năm kinh nghiệm trong ngành vận tải công nghiệp đường bộ. Sở hữu 52+ đầu xe trực tiếp, 3 trung tâm bãi xe 15.000m² tại Bình Dương, TP.HCM và Đà Nẵng.",
+    "Thành lập từ năm 2014, Vận Tải Tiên Phong sở hữu 52 đầu xe chính chủ, 3 cụm bãi xe 15.000m² tại Bình Dương, TP.HCM và Đà Nẵng. Giấy phép Sở GTVT 41-GPVT/SGTVT.",
 };
+
+const TIMELINE = [
+  {
+    year: "2014",
+    title: "Thành Lập Doanh Nghiệp",
+    desc: "Khởi đầu từ 5 đầu xe tải nhẹ chuyên tuyến TP.HCM — Bình Dương, phục vụ các nhà xưởng cơ khí và bao bì tại KCN Sóng Thần.",
+  },
+  {
+    year: "2017",
+    title: "Đầu Tư Đội Xe Đầu Kéo & Cẩu Tự Hành",
+    desc: "Nâng quy mô đội xe lên 25 phương tiện, bổ sung đầu kéo container phục vụ Cảng Cát Lái và đội xe cẩu máy móc công nghiệp nặng.",
+  },
+  {
+    year: "2020",
+    title: "Xây Dựng Bãi Xe Trung Tâm 15.000m²",
+    desc: "Đưa vào vận hành bãi xe chính quy và xưởng cơ khí nội bộ tại KCN Sóng Thần 1 (Dĩ An), tích hợp trạm cân điện tử 80 tấn.",
+  },
+  {
+    year: "2024",
+    title: "Mở Rộng Quy Mô 52 Xe & Số Hóa Lộ Trình",
+    desc: "100% đầu xe đạt chuẩn khí thải Euro 5, phủ sóng vận tải 63 tỉnh thành, hợp tác chiến lược cùng hơn 850 doanh nghiệp sản xuất và tập đoàn FDI.",
+  },
+];
+
+const VALUES = [
+  {
+    num: "01",
+    title: "Tài Sản Thật — Năng Lực Thật",
+    desc: "Không làm trung gian hay bán lại đơn hàng. 100% phương tiện đứng tên công ty, trực tiếp chịu trách nhiệm trước đối tác.",
+  },
+  {
+    num: "02",
+    title: "Kỷ Luật Giờ Giấc Tuyệt Đối",
+    desc: "Hệ thống điều phối xe bám sát lịch sản xuất và giờ closing time của cảng biển, không để chậm trễ ảnh hưởng dây chuyền nhà máy.",
+  },
+  {
+    num: "03",
+    title: "An Toàn & Bảo Toàn Vốn Hàng Hóa",
+    desc: "Quy chuẩn chằng buộc khắt khe và hợp đồng bảo hiểm hàng hóa PVI hạn mức 10 Tỷ VNĐ/vụ bồi thường 100% giá trị.",
+  },
+  {
+    num: "04",
+    title: "Minh Bạch Chi Phí & Chứng Từ",
+    desc: "Báo giá trọn gói không phát sinh phụ phí vô lý. Hoàn trả biên bản giao nhận POD và xuất hóa đơn VAT điện tử trong 24 giờ.",
+  },
+];
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col w-full bg-white text-slate-900">
-      {/* ═══ CINEMATIC HERO BANNER ═══ */}
-      <section className="relative bg-navy-950 text-white py-24 md:py-36 overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2400&q=80"
-          alt="Tổng kho bãi xe Sóng Thần"
-          className="absolute inset-0 w-full h-full object-cover opacity-25 filter contrast-125 brightness-75 scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40" />
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 space-y-6">
-          <h1 className="font-heading font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight leading-[1.08]">
-            VẬN TẢI TIÊN PHONG
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-300 mt-2">
-              KIẾN TẠO NĂNG LỰC THỰC TẾ TỪ NĂM 2014
-            </span>
+    <div className="flex flex-col w-full bg-[#0B0B0B] text-white">
+      {/* ═══ HERO SECTION ═══ */}
+      <section className="relative py-24 sm:py-36 px-4 sm:px-8 lg:px-16 border-b border-[#1F1F1F]">
+        <div className="max-w-7xl mx-auto space-y-8">
+          <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
+            CÂU CHUYỆN DOANH NGHIỆP
+          </span>
+          <h1 className="font-heading font-black text-4xl sm:text-6xl md:text-8xl uppercase tracking-tighter leading-[0.95] max-w-4xl text-white">
+            CHÚNG TÔI KHÔNG CHỈ CHỞ HÀNG.
+            <span className="block text-[#FF6A00]">CHÚNG TÔI VẬN HÀNH</span>
+            <span className="block text-white">CHUỖI CUNG ỨNG.</span>
           </h1>
-          <p className="text-slate-200 text-lg sm:text-xl md:text-2xl max-w-4xl leading-relaxed font-light">
-            Khởi đầu từ 5 đầu xe tải nhẹ, đến nay Vận Tải Tiên Phong đã phát triển thành đơn vị vận tải đường bộ hàng đầu Đông Nam Bộ với đội xe 52 chiếc chính chủ, 3 cụm bãi xe 15.000m² phục vụ hơn 850 khách hàng B2B và FDI.
+          <p className="text-base sm:text-xl text-[#A3A3A3] font-light leading-relaxed max-w-3xl">
+            Hơn 10 năm kiên định xây dựng năng lực vận tải đường bộ dựa trên tài sản sở hữu thực tế, đội ngũ bác tài chính quy và kỷ luật thời gian khắt khe.
           </p>
-        </div>
-      </section>
 
-      {/* ═══ KEY METRICS (Clean Light Gray) ═══ */}
-      <section className="bg-slate-50 border-b border-slate-200 py-20 text-slate-900 reveal-on-scroll">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-            <div className="space-y-2 border-l-2 border-orange-500 pl-6">
-              <span className="font-heading font-black text-4xl sm:text-5xl md:text-6xl text-orange-600 block">10+ Năm</span>
-              <span className="text-base text-slate-600 font-light block">Kinh nghiệm thực chiến</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl pt-4">
+            <div className="p-4 bg-[#141414] border border-[#2A2A2A]">
+              <span className="font-heading font-black text-2xl sm:text-3xl text-[#FF6A00] block">10+ NĂM</span>
+              <span className="text-xs uppercase tracking-wider text-[#737373] mt-1 block">Kinh Nghiệm Thực Chiến</span>
             </div>
-            <div className="space-y-2 border-l-2 border-slate-300 pl-6">
-              <span className="font-heading font-black text-4xl sm:text-5xl md:text-6xl text-slate-900 block">52+ Xe</span>
-              <span className="text-base text-slate-600 font-light block">Chính chủ 100%</span>
+            <div className="p-4 bg-[#141414] border border-[#2A2A2A]">
+              <span className="font-heading font-black text-2xl sm:text-3xl text-white block">52 XE</span>
+              <span className="text-xs uppercase tracking-wider text-[#737373] mt-1 block">Sở Hữu Trực Tiếp</span>
             </div>
-            <div className="space-y-2 border-l-2 border-slate-300 pl-6">
-              <span className="font-heading font-black text-4xl sm:text-5xl md:text-6xl text-slate-900 block">15.000m²</span>
-              <span className="text-base text-slate-600 font-light block">3 Bãi xe chiến lược</span>
+            <div className="p-4 bg-[#141414] border border-[#2A2A2A]">
+              <span className="font-heading font-black text-2xl sm:text-3xl text-[#FF6A00] block">15.000M²</span>
+              <span className="text-xs uppercase tracking-wider text-[#737373] mt-1 block">Bãi Xe Trung Tâm</span>
             </div>
-            <div className="space-y-2 border-l-2 border-orange-500 pl-6">
-              <span className="font-heading font-black text-4xl sm:text-5xl md:text-6xl text-orange-600 block">99.4%</span>
-              <span className="text-base text-slate-600 font-light block">Đúng giờ tuyệt đối</span>
+            <div className="p-4 bg-[#141414] border border-[#2A2A2A]">
+              <span className="font-heading font-black text-2xl sm:text-3xl text-white block">850+</span>
+              <span className="text-xs uppercase tracking-wider text-[#737373] mt-1 block">Đối Tác Doanh Nghiệp</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ STORY & OPERATIONAL PHILOSOPHY (Clean White Split-Screen) ═══ */}
-      <section className="py-28 md:py-36 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto w-full reveal-on-scroll">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      {/* ═══ STORY & MISSION SECTION ═══ */}
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#F2F0EA] text-[#0B0B0B]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-6 space-y-6">
-            <h2 className="font-heading font-black text-3xl sm:text-4xl md:text-5xl text-slate-900 uppercase tracking-tight leading-tight">
-              LẤY XE THẬT — TUYẾN THẬT LÀM NỀN TẢNG UY TÍN
+            <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
+              SỨ MỆNH VẬN HÀNH
+            </span>
+            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight leading-tight text-[#0B0B0B]">
+              LÀM CHỦ HẠ TẦNG ĐỂ LÀM CHỦ CHẤT LƯỢNG
             </h2>
-            <div className="space-y-4 text-base md:text-lg text-slate-600 font-light leading-relaxed">
-              <p>
-                Trong ngành vận tải đường bộ Việt Nam, nhiều đơn vị trung gian chỉ làm môi giới chuyển tải, dẫn đến rủi ro đứt gãy thông tin, tài xế không quen thuộc quy định nhà máy và khó quy trách nhiệm khi xảy ra sự cố.
-              </p>
-              <p>
-                <strong>Vận Tải Tiên Phong</strong> chọn hướng đi khác biệt ngay từ ngày đầu thành lập: đầu tư 100% phương tiện trực thuộc công ty, trực tiếp tuyển dụng và đào tạo đội ngũ 70+ tài xế có chứng chỉ an toàn lao động, kiểm định kỹ thuật nghiêm ngặt định kỳ và trang bị telemetry GPS 24/7 trên từng phương tiện.
-              </p>
-              <p>
-                Chủ hàng khi làm việc với Tiên Phong sẽ luôn biết chính xác số xe nào bốc hàng, vị trí xe đang chạy ở đâu trên bản đồ và số điện thoại tài xế đang cầm lái.
-              </p>
-            </div>
+            <p className="text-base sm:text-lg text-[#525252] font-light leading-relaxed">
+              Trong ngành logistics, sự chậm trễ hoặc hư hao hàng hóa có thể kéo theo thiệt hại hàng tỷ đồng cho một dây chuyền sản xuất. Thấu hiểu điều đó, Tiên Phong không chọn con đường làm trung gian điều xe ngoài. Chúng tôi đầu tư đồng bộ từ phương tiện, bãi đỗ đến xưởng bảo trì để kiểm soát 100% mọi chuyến đi.
+            </p>
+            <p className="text-base sm:text-lg text-[#525252] font-light leading-relaxed">
+              Mỗi tài xế Tiên Phong là một nhân sự biên chế chính thức, có thâm niên lái xe tải nặng tối thiểu 8 năm, có chứng chỉ an toàn lao động và được kiểm tra y tế định kỳ.
+            </p>
           </div>
 
           <div className="lg:col-span-6">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 h-80 sm:h-96 md:h-[480px] w-full">
+            <div className="relative overflow-hidden h-80 sm:h-96 md:h-[480px] w-full border border-[#DDD9CF]">
               <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80"
-                alt="Tổng kho bãi xe Vận Tải Tiên Phong Sóng Thần"
-                className="w-full h-full object-cover img-hover-zoom"
+                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
+                alt="Đội ngũ vận tải Tiên Phong tại bãi xe trung tâm"
+                className="w-full h-full object-cover img-editorial"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ 3 STRATEGIC YARDS (Spacious Light Gray Section) ═══ */}
-      <section className="py-28 md:py-36 px-6 md:px-12 lg:px-20 bg-slate-50 border-t border-slate-200 w-full reveal-on-scroll">
+      {/* ═══ CORE VALUES ═══ */}
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F] reveal-on-scroll">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="max-w-3xl space-y-4">
-            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight text-slate-900 leading-tight">
-              HỆ THỐNG 3 TRUNG TÂM BÃI XE CHIẾN LƯỢC
+          <div className="space-y-4 max-w-3xl">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
+              TRIẾT LÝ VẬN HÀNH
+            </span>
+            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight leading-tight text-white">
+              4 NGUYÊN TẮC BẤT DI BẤT DỊCH
             </h2>
-            <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
-              Các bãi xe được bố trí sát các trục giao thông huyết mạch và cảng biển quốc tế lớn nhất miền Nam và miền Trung.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 md:p-10 bg-white rounded-3xl border border-slate-200 shadow-sm space-y-5">
-              <h3 className="font-heading font-black text-xl text-slate-900 uppercase">
-                Bãi Trung Tâm Sóng Thần (15.000m²)
-              </h3>
-              <p className="text-base text-slate-600 font-light leading-relaxed">
-                Sức chứa 120 đầu kéo &amp; rơ-moóc. Tọa lạc ngay ngã ba giao thông huyết mạch giữa TP.HCM, Bình Dương và Đồng Nai. Trực tiếp điều xe đến các KCN VSIP 1-2, Sóng Thần 1-2-3, Nam Tân Uyên chỉ mất 20–30 phút.
-              </p>
-              <div className="pt-4 text-xs font-semibold text-slate-500 border-t border-slate-100">
-                Đại lộ Độc Lập, KCN Sóng Thần, Dĩ An, Bình Dương
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {VALUES.map((val) => (
+              <div
+                key={val.num}
+                className="p-8 bg-[#141414] border border-[#2A2A2A] space-y-4 flex flex-col justify-between"
+              >
+                <div className="space-y-3">
+                  <span className="font-heading font-black text-4xl text-[#FF6A00] block">
+                    {val.num}
+                  </span>
+                  <h3 className="font-heading font-bold text-lg text-white uppercase">
+                    {val.title}
+                  </h3>
+                  <p className="text-sm text-[#A3A3A3] font-light leading-relaxed">
+                    {val.desc}
+                  </p>
+                </div>
               </div>
-            </div>
-
-            <div className="p-8 md:p-10 bg-white rounded-3xl border border-slate-200 shadow-sm space-y-5">
-              <h3 className="font-heading font-black text-xl text-slate-900 uppercase">
-                Bãi Cảng Biển Cát Lái (6.000m²)
-              </h3>
-              <p className="text-base text-slate-600 font-light leading-relaxed">
-                Chuyên dụng cho xe đầu kéo container và moóc lùn. Vị trí cách cổng Cảng Cát Lái chỉ 2km, phục vụ kéo vỏ, rút ruột container và giải phóng hàng hóa 24/7 theo giờ tàu biển quốc tế.
-              </p>
-              <div className="pt-4 text-xs font-semibold text-slate-500 border-t border-slate-100">
-                Đường Nguyễn Thị Định, Phường Cát Lái, TP. Thủ Đức, TP.HCM
-              </div>
-            </div>
-
-            <div className="p-8 md:p-10 bg-white rounded-3xl border border-slate-200 shadow-sm space-y-5">
-              <h3 className="font-heading font-black text-xl text-slate-900 uppercase">
-                Bãi Trung Chuyển Miền Trung
-              </h3>
-              <p className="text-base text-slate-600 font-light leading-relaxed">
-                Trạm dừng chân và đổi tài xế tại KCN Hòa Cầm (Đà Nẵng), đảm bảo an toàn tuyệt đối cho các chuyến chạy đường dài trục Bắc — Nam, luân chuyển hàng hóa hai chiều không bị ngắt quãng.
-              </p>
-              <div className="pt-4 text-xs font-semibold text-slate-500 border-t border-slate-100">
-                KCN Hòa Cầm, Phường Hòa Thọ Tây, Cẩm Lệ, TP. Đà Nẵng
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ CTA BANNER ═══ */}
-      <section className="py-24 bg-slate-900 text-white reveal-on-scroll">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="space-y-2">
-            <h2 className="font-heading font-black text-2xl sm:text-4xl uppercase tracking-tight">
-              Tham Quan Thực Tế Bãi Xe Hoặc Nhận Báo Giá
+      {/* ═══ TIMELINE SECTION ═══ */}
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#141414] border-t border-[#1F1F1F] reveal-on-scroll">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="space-y-4 max-w-3xl">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
+              CHẶNG ĐƯỜNG PHÁT TRIỂN
+            </span>
+            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight leading-tight text-white">
+              10 NĂM ĐỒNG HÀNH CÙNG DOANH NGHIỆP
             </h2>
-            <p className="text-slate-300 text-base md:text-lg font-light">
-              Chúng tôi luôn hoan nghênh quý khách hàng và các chủ quản logistics ghé thăm trực tiếp bãi xe.
-            </p>
           </div>
-          <div className="flex items-center gap-4 shrink-0">
-            <a
-              href="tel:0918456789"
-              className="px-8 py-5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-2xl shadow-xl shadow-orange-500/25 transition-all hover:scale-105"
-            >
-              Gọi: 0918.456.789
-            </a>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {TIMELINE.map((t) => (
+              <div
+                key={t.year}
+                className="p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-3"
+              >
+                <span className="font-heading font-black text-3xl text-[#FF6A00] block">
+                  {t.year}
+                </span>
+                <h3 className="font-heading font-bold text-base text-white uppercase">
+                  {t.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[#A3A3A3] font-light leading-relaxed">
+                  {t.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ LEGAL & LICENSING SPECIFICATION ═══ */}
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F] reveal-on-scroll">
+        <div className="max-w-7xl mx-auto space-y-12">
+          <div className="space-y-4 max-w-3xl">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
+              PHÁP LÝ CHÍNH NGẠCH
+            </span>
+            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight leading-tight text-white">
+              HỒ SƠ NĂNG LỰC DOANH NGHIỆP
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
+            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1">
+              <span className="text-xs uppercase tracking-wider text-[#737373]">Tên Doanh Nghiệp:</span>
+              <span className="font-heading font-bold text-base text-white block">Công Ty TNHH TM DV Vận Tải Tiên Phong</span>
+            </div>
+
+            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1">
+              <span className="text-xs uppercase tracking-wider text-[#737373]">Mã Số Doanh Nghiệp (MST):</span>
+              <span className="font-heading font-black text-lg text-[#FF6A00] block">0314892039</span>
+            </div>
+
+            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1">
+              <span className="text-xs uppercase tracking-wider text-[#737373]">Giấy Phép Vận Tải Ô Tô:</span>
+              <span className="font-heading font-bold text-base text-white block">41-GPVT/SGTVT (Sở GTVT TP.HCM)</span>
+            </div>
+
+            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1">
+              <span className="text-xs uppercase tracking-wider text-[#737373]">Vốn Điều Lệ Thực Góp:</span>
+              <span className="font-heading font-bold text-base text-white block">20.000.000.000 VNĐ</span>
+            </div>
+
+            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1">
+              <span className="text-xs uppercase tracking-wider text-[#737373]">Hạn Mức Bảo Hiểm Hàng Hóa:</span>
+              <span className="font-heading font-bold text-base text-[#FF6A00] block">10.000.000.000 VNĐ / Vụ (PVI)</span>
+            </div>
+
+            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1">
+              <span className="text-xs uppercase tracking-wider text-[#737373]">Bãi Xe Trung Tâm:</span>
+              <span className="font-heading font-bold text-base text-white block">KCN Sóng Thần 1, Dĩ An, Bình Dương</span>
+            </div>
+          </div>
+
+          <div className="pt-4 text-center">
             <Link
               href="/contact"
-              className="px-8 py-5 bg-navy-800 hover:bg-navy-700 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-2xl border border-navy-700 transition-colors"
+              className="btn-arrow-hover inline-block px-10 py-5 bg-[#FF6A00] hover:bg-[#E55F00] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all"
             >
-              Liên Hệ Ngay
+              <span>LIÊN HỆ HỢP TÁC VẬN TẢI</span>
+              <span className="arrow-move ml-2 font-bold">→</span>
             </Link>
           </div>
         </div>

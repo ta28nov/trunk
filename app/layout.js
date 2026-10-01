@@ -6,24 +6,24 @@ import ScrollObserver from "./components/ScrollObserver";
 
 export const metadata = {
   title: {
-    default: "Vận Tải Tiên Phong | Đội Xe Trực Tiếp — Không Qua Trung Gian",
+    default: "Vận Tải Tiên Phong | Dịch Vụ Vận Tải Đường Bộ & Đội Xe Trực Chiến",
     template: "%s | Vận Tải Tiên Phong",
   },
   description:
-    "Chuyên vận tải hàng công nghiệp, container, máy móc siêu trọng. 52+ đầu xe chính chủ, GPS 24/7, bảo hiểm hàng hóa 10 tỷ VNĐ. Phủ sóng 63 tỉnh thành & KCN trọng điểm.",
+    "Công ty vận tải hàng hóa thương mại và công nghiệp đường bộ hàng đầu Đông Nam Bộ. Đội xe 52 phương tiện chính chủ, bãi xe 15.000m² tại KCN Sóng Thần, bảo hiểm PVI 10 tỷ VNĐ.",
   keywords: [
-    "vận tải",
-    "xe tải",
+    "vận tải đường bộ",
+    "xe tải chở hàng",
     "đầu kéo container",
-    "vận chuyển hàng hóa",
-    "xe cẩu tự hành",
-    "logistics Việt Nam",
-    "KCN Bình Dương",
+    "vận chuyển hàng công nghiệp",
     "vận tải Bắc Nam",
+    "KCN Sóng Thần",
+    "bãi xe Bình Dương",
+    "vận tải Tiên Phong",
   ],
   openGraph: {
-    title: "Vận Tải Tiên Phong | Hồ Sơ Năng Lực Trực Tuyến",
-    description: "52+ đầu xe trực tiếp, GPS 24/7, bảo hiểm 10 tỷ VNĐ",
+    title: "Vận Tải Tiên Phong | Hồ Sơ Năng Lực Vận Tải Trực Tuyến",
+    description: "Vận chuyển những điều quan trọng. 52 phương tiện chính chủ, an toàn tuyệt đối.",
     locale: "vi_VN",
     type: "website",
   },
@@ -43,15 +43,11 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
-          rel="stylesheet"
-        />
       </head>
-      <body className="min-h-screen flex flex-col bg-white text-slate-900 antialiased selection:bg-orange-500 selection:text-white pb-14 md:pb-0 overflow-x-hidden">
+      <body className="min-h-screen flex flex-col bg-[#0B0B0B] text-white antialiased selection:bg-[#FF6A00] selection:text-white overflow-x-hidden">
         <ScrollObserver />
         <Header />
-        <main className="flex-1 bg-white">{children}</main>
+        <main className="flex-1 w-full pt-20">{children}</main>
         <Footer />
         <FloatingZalo />
       </body>

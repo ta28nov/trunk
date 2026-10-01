@@ -1,28 +1,49 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
   { href: "/", label: "Trang Chủ" },
-  { href: "/about", label: "Giới Thiệu" },
-  { href: "/fleet", label: "Đội Xe" },
   { href: "/services", label: "Dịch Vụ" },
-  { href: "/cargo", label: "Loại Hàng" },
-  { href: "/routes", label: "Tuyến Đường" },
-  { href: "/operations", label: "Thực Địa" },
-  { href: "/trust", label: "Uy Tín" },
+  { href: "/fleet", label: "Đội Xe" },
+  { href: "/coverage", label: "Mạng Lưới" },
   { href: "/pricing", label: "Bảng Giá" },
+  { href: "/about", label: "Giới Thiệu" },
   { href: "/contact", label: "Liên Hệ" },
 ];
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+
+          if (currentScrollY > 80) {
+            if (currentScrollY > lastScrollY.current && currentScrollY - lastScrollY.current > 8) {
+              setVisible(false);
+            } else if (lastScrollY.current - currentScrollY > 8) {
+              setVisible(true);
+            }
+          } else {
+            setVisible(true);
+          }
+
+          lastScrollY.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -32,72 +53,35 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <>
-      {/* ═══ TOPBAR ═══ */}
-      <div className="bg-navy-950 text-white text-xs md:text-sm border-b border-navy-900/60">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-3">
-            <span className="text-slate-300 font-light text-xs">
-              Vận Tải Tiên Phong • Hạ Tầng &amp; Đội Xe Doanh Nghiệp Toàn Quốc
+    <div
+      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out ${
+        visible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
+      <header className="bg-[#0B0B0B]/95 backdrop-blur-md border-b border-[#1F1F1F] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+          {/* Logo / Brand Name */}
+          <Link href="/" className="flex flex-col group shrink-0">
+            <span className="font-heading font-black text-lg sm:text-xl tracking-tight text-white group-hover:text-[#FF6A00] transition-colors">
+              TIÊN PHONG
             </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="hidden md:inline text-slate-400 font-light text-xs">
-              Trực Ban Điều Vận:
+            <span className="text-[10px] tracking-[0.2em] uppercase text-[#737373] font-medium">
+              VẬN TẢI ĐƯỜNG BỘ
             </span>
-            <a
-              href="tel:0918456789"
-              className="font-heading font-bold text-orange-400 hover:text-orange-300 transition-colors text-xs sm:text-sm"
-            >
-              0918.456.789
-            </a>
-            <span className="text-slate-600">—</span>
-            <a
-              href="tel:0903123456"
-              className="font-heading font-bold text-slate-200 hover:text-orange-400 transition-colors text-xs sm:text-sm"
-            >
-              0903.123.456
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* ═══ MAIN HEADER ═══ */}
-      <header
-        className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${
-          scrolled ? "shadow-lg shadow-slate-200/60" : "shadow-sm"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-18 flex items-center justify-between gap-4">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
-            <div className="w-9 h-9 md:w-10 md:h-10 bg-navy-900 rounded-sm flex items-center justify-center">
-              <span className="material-symbols-outlined text-orange-500 text-xl md:text-2xl">
-                local_shipping
-              </span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-heading font-bold text-sm md:text-base text-navy-900 uppercase tracking-tight leading-tight">
-                Vận Tải Tiên Phong
-              </span>
-              <span className="font-heading text-[10px] md:text-[11px] text-slate-500 uppercase tracking-widest leading-tight">
-                Hồ Sơ Năng Lực Trực Tuyến
-              </span>
-            </div>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden xl:flex items-center gap-0.5">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-2.5 py-1.5 text-xs font-heading font-semibold uppercase tracking-wide transition-colors rounded-sm ${
+                  className={`px-3.5 py-2 text-xs font-heading font-bold uppercase tracking-wider transition-colors ${
                     isActive
-                      ? "bg-navy-900 text-white"
-                      : "text-slate-600 hover:text-navy-900 hover:bg-slate-100"
+                      ? "text-[#FF6A00]"
+                      : "text-[#A3A3A3] hover:text-white"
                   }`}
                 >
                   {item.label}
@@ -106,62 +90,80 @@ export default function Header() {
             })}
           </nav>
 
-          {/* CTA + Hamburger */}
-          <div className="flex items-center gap-2 md:gap-3">
+          {/* Right Action / Hotline & CTA */}
+          <div className="flex items-center gap-3">
             <a
               href="tel:0918456789"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-navy-900 font-heading font-semibold text-xs uppercase tracking-wide rounded-sm transition-colors"
+              className="hidden md:flex flex-col text-right leading-tight pr-3 border-r border-[#2A2A2A]"
             >
-              <span className="material-symbols-outlined text-base">call</span>
-              <span className="hidden md:inline">Gọi Ngay</span>
+              <span className="text-[10px] uppercase tracking-widest text-[#737373]">
+                Hotline Điều Vận
+              </span>
+              <span className="font-heading font-bold text-xs text-white hover:text-[#FF6A00] transition-colors">
+                0918.456.789
+              </span>
             </a>
+
             <Link
               href="/contact"
-              className="inline-flex items-center gap-1.5 px-3 md:px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wide rounded-sm transition-colors shadow-sm shadow-orange-500/25"
+              className="btn-arrow-hover px-5 sm:px-6 py-2.5 sm:py-3 bg-[#FF6A00] hover:bg-[#E55F00] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200"
             >
-              <span className="material-symbols-outlined text-base">
-                request_quote
-              </span>
-              <span className="hidden sm:inline">Báo Giá 15 Phút</span>
-              <span className="sm:hidden">Báo Giá</span>
+              <span>YÊU CẦU BÁO GIÁ</span>
+              <span className="arrow-move ml-1.5 font-bold">→</span>
             </Link>
+
+            {/* Mobile Menu Toggle Button (No Icons) */}
             <button
               type="button"
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="xl:hidden w-9 h-9 flex items-center justify-center rounded-sm hover:bg-slate-100 transition-colors"
-              aria-label="Menu"
+              className="lg:hidden px-3 py-2 border border-[#2A2A2A] hover:border-[#FF6A00] text-xs font-heading font-bold uppercase tracking-wider text-white transition-colors"
+              aria-label="Chuyển đổi menu di động"
             >
-              <span className="material-symbols-outlined text-2xl text-navy-900">
-                {mobileOpen ? "close" : "menu"}
-              </span>
+              {mobileOpen ? "ĐÓNG [×]" : "MENU [=]"}
             </button>
           </div>
         </div>
 
-        {/* Mobile Nav */}
+        {/* Mobile Navigation Drawer */}
         {mobileOpen && (
-          <div className="xl:hidden bg-white border-t border-slate-200 shadow-lg">
-            <nav className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-0.5">
-              {NAV_ITEMS.map((item) => {
+          <div className="lg:hidden bg-[#0B0B0B] border-t border-[#1F1F1F] px-6 py-8 space-y-4">
+            <div className="space-y-1 divide-y divide-[#1F1F1F]">
+              {NAV_ITEMS.map((item, idx) => {
                 const isActive = pathname === item.href;
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`px-3 py-2.5 font-heading font-semibold text-sm uppercase tracking-wide rounded-sm transition-colors ${
-                      isActive
-                        ? "bg-navy-900 text-white"
-                        : "text-slate-700 hover:bg-slate-100"
+                    className={`flex items-center justify-between py-4 font-heading font-black text-lg uppercase tracking-tight transition-colors ${
+                      isActive ? "text-[#FF6A00]" : "text-white hover:text-[#FF6A00]"
                     }`}
                   >
-                    {item.label}
+                    <span>{item.label}</span>
+                    <span className="text-xs text-[#737373] font-normal">
+                      0{idx + 1} →
+                    </span>
                   </Link>
                 );
               })}
-            </nav>
+            </div>
+
+            <div className="pt-6 border-t border-[#1F1F1F] space-y-3">
+              <div className="text-xs text-[#737373] uppercase tracking-wider">
+                Trực ban điều phối 24/7
+              </div>
+              <a
+                href="tel:0918456789"
+                className="block font-heading font-black text-xl text-[#FF6A00]"
+              >
+                0918.456.789 — Anh Thắng
+              </a>
+              <p className="text-xs text-[#A3A3A3] font-light">
+                Số 28 Đường số 8, Phường Linh Trung, TP. Thủ Đức, TP.HCM
+              </p>
+            </div>
           </div>
         )}
       </header>
-    </>
+    </div>
   );
 }

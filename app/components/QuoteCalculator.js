@@ -13,10 +13,10 @@ const VEHICLE_RATES = [
 const ROUTE_PRESETS = [
   { name: "Nội vùng: Sóng Thần ⇄ KCN VSIP 1 & 2", distance: 35, time: "1.5 Giờ" },
   { name: "Cảng biển: KCN Sóng Thần ⇄ Cảng Cát Lái", distance: 45, time: "2 Giờ" },
-  { name: "Cảng sâu: TP.HCM ⇄ Cảng Cái Mép (Vũng Tàu)", distance: 85, time: "3 Giờ" },
-  { name: "Miền Tây: TP.HCM ⇄ TP. Cần Thơ", distance: 175, time: "5 - 6 Giờ" },
-  { name: "Miền Trung: TP.HCM ⇄ TP. Đà Nẵng", distance: 950, time: "24 - 28 Giờ" },
-  { name: "Bắc — Nam: TP.HCM ⇄ Hà Nội / Hải Phòng", distance: 1750, time: "44 - 48 Giờ" },
+  { name: "Cảng sâu: TP.HCM ⇄ Cảng Cái Mép", distance: 85, time: "3 Giờ" },
+  { name: "Miền Tây: TP.HCM ⇄ TP. Cần Thơ", distance: 175, time: "5 — 6 Giờ" },
+  { name: "Miền Trung: TP.HCM ⇄ TP. Đà Nẵng", distance: 950, time: "24 — 28 Giờ" },
+  { name: "Bắc — Nam: TP.HCM ⇄ Hà Nội", distance: 1750, time: "44 — 48 Giờ" },
 ];
 
 export default function QuoteCalculator({ compact = false }) {
@@ -58,14 +58,17 @@ export default function QuoteCalculator({ compact = false }) {
   }).format(estimatedCost);
 
   return (
-    <div className={`bg-slate-50 rounded-3xl border border-slate-200 shadow-lg overflow-hidden ${compact ? "p-6" : "p-8 md:p-12"}`}>
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 border-b border-slate-200 gap-4">
+    <div className={`bg-white border border-[#DDD9CF] ${compact ? "p-6" : "p-8 md:p-12"}`}>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 border-b border-[#DDD9CF] gap-4">
         <div>
-          <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tight">
-            Tính Nhanh Cước Vận Tải Tham Khảo
+          <span className="text-xs uppercase tracking-widest text-[#FF6A00] font-heading font-bold block mb-1">
+            CÔNG CỤ TÍNH CƯỚC TRỰC TUYẾN
+          </span>
+          <h3 className="font-heading text-2xl sm:text-3xl font-black text-[#0B0B0B] uppercase tracking-tight">
+            ƯỚC TÍNH CƯỚC VẬN TẢI THAM KHẢO
           </h3>
         </div>
-        <div className="text-slate-500 text-base font-light">
+        <div className="text-[#737373] text-xs font-heading uppercase tracking-wider">
           Báo giá trực tiếp từ đội xe • Không phí trung gian
         </div>
       </div>
@@ -74,8 +77,8 @@ export default function QuoteCalculator({ compact = false }) {
         {/* Controls */}
         <div className="lg:col-span-7 space-y-8">
           {/* Vehicle Select */}
-          <div>
-            <strong className="block text-sm font-heading font-bold uppercase tracking-wider text-slate-900 mb-3">
+          <div className="space-y-3">
+            <strong className="block text-xs font-heading font-bold uppercase tracking-wider text-[#0B0B0B]">
               1. Chọn Loại Xe Vận Chuyển:
             </strong>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -84,22 +87,22 @@ export default function QuoteCalculator({ compact = false }) {
                   key={v.id}
                   type="button"
                   onClick={() => setVehicleId(v.id)}
-                  className={`text-left p-4 rounded-2xl border transition-all duration-300 ${
+                  className={`text-left p-4 border transition-colors ${
                     vehicleId === v.id
-                      ? "border-orange-500 bg-orange-50/80 shadow-md ring-2 ring-orange-500"
-                      : "border-slate-200 hover:border-slate-300 bg-white"
+                      ? "border-[#FF6A00] bg-[#FFF3EB]"
+                      : "border-[#DDD9CF] hover:border-[#0B0B0B] bg-[#F2F0EA]"
                   }`}
                 >
-                  <div className="font-heading font-bold text-base text-slate-900">{v.name}</div>
-                  <div className="text-sm text-slate-500 mt-1">{v.capacity}</div>
+                  <div className="font-heading font-bold text-sm text-[#0B0B0B]">{v.name}</div>
+                  <div className="text-xs text-[#737373] mt-1">{v.capacity}</div>
                 </button>
               ))}
             </div>
           </div>
 
           {/* Route Presets */}
-          <div>
-            <strong className="block text-sm font-heading font-bold uppercase tracking-wider text-slate-900 mb-3">
+          <div className="space-y-3">
+            <strong className="block text-xs font-heading font-bold uppercase tracking-wider text-[#0B0B0B]">
               2. Chọn Tuyến Đường Mẫu Hoặc Nhập Số Km:
             </strong>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-4">
@@ -111,123 +114,127 @@ export default function QuoteCalculator({ compact = false }) {
                     setDistance(r.distance);
                     setCustomDistance("");
                   }}
-                  className={`text-left p-4 rounded-2xl border text-sm transition-all duration-300 ${
+                  className={`text-left p-3.5 border text-xs transition-colors ${
                     distance === r.distance && !customDistance
-                      ? "border-slate-900 bg-slate-900 text-white font-bold shadow-md"
-                      : "border-slate-200 hover:border-slate-300 text-slate-700 bg-white"
+                      ? "border-[#0B0B0B] bg-[#0B0B0B] text-white font-bold"
+                      : "border-[#DDD9CF] hover:border-[#0B0B0B] text-[#262626] bg-[#F2F0EA]"
                   }`}
                 >
                   <div className="truncate font-semibold">{r.name}</div>
-                  <div className={`text-xs mt-1 ${distance === r.distance && !customDistance ? "text-slate-300" : "text-slate-500"}`}>
-                    {r.distance} km • Dự kiến: {r.time}
+                  <div className={`text-[11px] mt-1 ${distance === r.distance && !customDistance ? "text-[#FF6A00]" : "text-[#737373]"}`}>
+                    {r.distance} km • Thời gian: {r.time}
                   </div>
                 </button>
               ))}
             </div>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-              <span className="text-sm text-slate-600 whitespace-nowrap">Hoặc nhập cự ly riêng:</span>
+              <span className="text-xs text-[#525252] uppercase font-heading font-semibold whitespace-nowrap">
+                Hoặc nhập cự ly riêng:
+              </span>
               <div className="relative flex-1">
                 <input
                   type="number"
                   placeholder="Nhập số km..."
                   value={customDistance}
                   onChange={(e) => setCustomDistance(e.target.value)}
-                  className="w-full px-4 py-3 text-base bg-white border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 text-slate-900 pr-12"
+                  className="w-full px-4 py-2.5 text-sm bg-[#F2F0EA] border border-[#DDD9CF] focus:outline-none focus:border-[#FF6A00] text-[#0B0B0B] pr-12"
                 />
-                <span className="absolute right-4 top-3.5 text-sm text-slate-400 font-medium">km</span>
+                <span className="absolute right-4 top-2.5 text-xs text-[#737373] font-medium">km</span>
               </div>
             </div>
           </div>
 
           {/* Addons */}
-          <div>
-            <strong className="block text-sm font-heading font-bold uppercase tracking-wider text-slate-900 mb-3">
-              3. Dịch Vụ Đi Kèm (Tùy Chọn):
+          <div className="space-y-3">
+            <strong className="block text-xs font-heading font-bold uppercase tracking-wider text-[#0B0B0B]">
+              3. Tùy Chọn Bổ Sung:
             </strong>
-            <div className="flex flex-wrap gap-5">
-              <label className="inline-flex items-center gap-3 cursor-pointer text-base text-slate-700 select-none">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <label className="inline-flex items-center gap-2.5 cursor-pointer text-xs text-[#262626] select-none">
                 <input
                   type="checkbox"
                   checked={hasLoading}
                   onChange={(e) => setHasLoading(e.target.checked)}
-                  className="w-5 h-5 text-orange-500 rounded border-slate-300 focus:ring-orange-500"
+                  className="w-4 h-4 text-[#FF6A00] accent-[#FF6A00]"
                 />
-                <span>Hỗ trợ bốc xếp / Cẩu hạ 2 đầu (+800.000đ)</span>
+                <span>Hỗ trợ bốc xếp / cẩu hạ 2 đầu (+800.000đ)</span>
               </label>
-              <label className="inline-flex items-center gap-3 cursor-pointer text-base text-slate-700 select-none">
+              <label className="inline-flex items-center gap-2.5 cursor-pointer text-xs text-[#262626] select-none">
                 <input
                   type="checkbox"
                   checked={isUrgent}
                   onChange={(e) => setIsUrgent(e.target.checked)}
-                  className="w-5 h-5 text-orange-500 rounded border-slate-300 focus:ring-orange-500"
+                  className="w-4 h-4 text-[#FF6A00] accent-[#FF6A00]"
                 />
-                <span>Hỏa tốc bốc ngay trong 30 phút (+15%)</span>
+                <span>Hỏa tốc bốc hàng sau 30 phút (+15%)</span>
               </label>
             </div>
           </div>
         </div>
 
         {/* Result Card */}
-        <div className="lg:col-span-5 flex flex-col justify-between bg-slate-900 text-white rounded-3xl p-8 md:p-10 shadow-xl">
-          <div>
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-              <span className="text-xs uppercase tracking-widest text-slate-400 font-heading font-semibold">
+        <div className="lg:col-span-5 flex flex-col justify-between bg-[#0B0B0B] text-white p-8 sm:p-10 border border-[#2A2A2A]">
+          <div className="space-y-6">
+            <div className="flex items-center justify-between pb-4 border-b border-[#1F1F1F]">
+              <span className="text-xs uppercase tracking-widest text-[#737373] font-heading font-semibold">
                 Ước Tính Cước Phí
               </span>
-              <span className="text-xs font-semibold text-slate-400">
+              <span className="text-xs font-semibold text-[#FF6A00]">
                 Chưa Gồm VAT
               </span>
             </div>
 
-            <div className="my-8">
-              <span className="text-sm text-slate-400 block mb-1">Giá cước trọn chuyến dự kiến:</span>
-              <div className="text-4xl md:text-5xl font-heading font-black text-orange-400 tracking-tight">
+            <div className="space-y-2">
+              <span className="text-xs text-[#737373] uppercase tracking-wider block">
+                Giá cước dự kiến:
+              </span>
+              <div className="text-3xl sm:text-4xl font-heading font-black text-[#FF6A00] tracking-tight">
                 {formattedCost}
               </div>
-              <p className="text-xs text-slate-400 mt-3 font-light leading-relaxed">
-                *Đã bao gồm: Phí cầu đường (BOT), lái xe, xăng dầu, định vị GPS giám sát 24/7 &amp; bảo hiểm hàng hóa PVI.
+              <p className="text-xs text-[#737373] font-light leading-relaxed pt-1">
+                Chi phí đã bao gồm: Lái xe, xăng dầu, vé cầu đường BOT, định vị GPS giám sát và bảo hiểm hàng hóa PVI.
               </p>
             </div>
 
-            <div className="bg-slate-800/80 rounded-2xl p-5 space-y-3 text-sm text-slate-300 border border-slate-700">
+            <div className="p-4 bg-[#141414] border border-[#2A2A2A] space-y-2.5 text-xs text-[#A3A3A3]">
               <div className="flex justify-between">
-                <span className="text-slate-400">Phương tiện:</span>
+                <span>Phương tiện:</span>
                 <span className="font-semibold text-white">{selectedVehicle.name}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Cự ly tính cước:</span>
+                <span>Cự ly tính cước:</span>
                 <span className="font-semibold text-white">{activeDistance} km</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Thời gian dự kiến:</span>
-                <span className="font-semibold text-green-400">
-                  {activeDistance <= 100 ? "1.5 - 3 Giờ" : activeDistance <= 900 ? "24 - 28 Giờ" : "44 - 48 Giờ"}
+                <span>Thời gian dự kiến:</span>
+                <span className="font-semibold text-white">
+                  {activeDistance <= 100 ? "1.5 — 3 Giờ" : activeDistance <= 900 ? "24 — 28 Giờ" : "44 — 48 Giờ"}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Hóa đơn VAT:</span>
+                <span>Hóa đơn VAT:</span>
                 <span className="font-semibold text-white">Xuất trong ngày (+8%)</span>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-slate-800 space-y-3">
+          <div className="mt-8 pt-6 border-t border-[#1F1F1F] space-y-3">
             <a
               href="tel:0918456789"
-              className="w-full py-4 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-sm uppercase tracking-wider rounded-2xl text-center transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-500/30"
+              className="btn-arrow-hover block w-full py-4 bg-[#FF6A00] hover:bg-[#E55F00] text-white font-heading font-bold text-xs uppercase tracking-wider text-center transition-colors"
             >
-              <span className="material-symbols-outlined text-xl">call</span>
-              Chốt Giá Nhanh: 0918.456.789
+              <span>CHỐT GIÁ NHANH: 0918.456.789</span>
+              <span className="arrow-move ml-2 font-bold">→</span>
             </a>
             <a
               href="https://zalo.me/0918456789"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-2xl text-center transition-colors flex items-center justify-center gap-2"
+              className="btn-arrow-hover block w-full py-3.5 bg-[#141414] hover:bg-[#1F1F1F] text-white border border-[#2A2A2A] font-heading font-bold text-xs uppercase tracking-wider text-center transition-colors"
             >
-              <span className="material-symbols-outlined text-lg">chat</span>
-              Gửi Thông Tin Báo Giá Qua Zalo
+              <span>GỬI YÊU CẦU QUA ZALO</span>
+              <span className="arrow-move ml-2 font-bold">→</span>
             </a>
           </div>
         </div>

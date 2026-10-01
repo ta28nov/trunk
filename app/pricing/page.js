@@ -2,9 +2,9 @@ import Link from "next/link";
 import QuoteCalculator from "../components/QuoteCalculator";
 
 export const metadata = {
-  title: "Bảng Giá Cước Vận Tải Minh Bạch | Vận Tải Tiên Phong",
+  title: "Bảng Giá Cước Vận Tải & Pháp Lý Doanh Nghiệp | Vận Tải Tiên Phong",
   description:
-    "Bảng giá cước khởi điểm theo cự ly và tải trọng xe: Xe tải 5T - 15T, đầu kéo container 40ft, xe cẩu tự hành. Báo giá trọn gói không phát sinh phụ phí.",
+    "Khung cước vận tải nguyên chuyến FTL theo cự ly và tải trọng xe. Chính sách bảo hiểm hàng hóa PVI 10 Tỷ VNĐ và công nợ B2B từ 30 đến 45 ngày.",
 };
 
 const PRICING_TABLE = [
@@ -40,172 +40,169 @@ const PRICING_TABLE = [
     type: "Xe Cẩu Tự Hành 10 Tấn (Chở 12 Tấn)",
     under50: "2.800.000 — 3.500.000 đ",
     range150: "5.200.000 — 6.500.000 đ",
-    central: "Khảo sát thực tế",
-    northSouth: "Khảo sát thực tế",
+    central: "Khảo sát thực địa",
+    northSouth: "Khảo sát thực địa",
   },
+];
+
+const LEGAL_CREDENTIALS = [
+  { label: "Doanh Nghiệp Đăng Ký", val: "Công Ty TNHH Thương Mại Dịch Vụ Vận Tải Tiên Phong" },
+  { label: "Mã Số Doanh Nghiệp (MST)", val: "0314892039 do Sở KH&ĐT TP.HCM cấp" },
+  { label: "Giấy Phép Kinh Doanh Vận Tải", val: "41-GPVT/SGTVT do Sở GTVT TP.HCM cấp" },
+  { label: "Vốn Điều Lệ Thực Góp", val: "20.000.000.000 VNĐ (Hai mươi tỷ đồng)" },
+  { label: "Bảo Hiểm Hàng Hóa Vận Chuyển", val: "Tổng Công Ty Bảo Hiểm PVI — 10 Tỷ VNĐ / Vụ" },
+  { label: "Địa Chỉ Trụ Sở Đăng Ký", val: "Số 28 Đường số 8, Phường Linh Trung, TP. Thủ Đức, TP.HCM" },
 ];
 
 export default function PricingPage() {
   return (
-    <div className="flex flex-col w-full bg-white text-slate-900">
-      {/* ═══ CINEMATIC HERO BANNER ═══ */}
-      <section className="relative bg-navy-950 text-white py-24 md:py-36 overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=2400&q=80"
-          alt="Bảng giá cước vận tải Tiên Phong"
-          className="absolute inset-0 w-full h-full object-cover opacity-25 filter contrast-125 brightness-75 scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40" />
-
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 space-y-6">
-          <h1 className="font-heading font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tight leading-[1.08]">
-            BẢNG GIÁ CƯỚC MINH BẠCH
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-300 mt-2">
-              CHÍNH SÁCH BÁO GIÁ TRỌN GÓI — KHÔNG PHÍ ẨN
-            </span>
+    <div className="flex flex-col w-full bg-[#0B0B0B] text-white">
+      {/* ═══ HERO SECTION ═══ */}
+      <section className="relative py-24 sm:py-36 px-4 sm:px-8 lg:px-16 border-b border-[#1F1F1F]">
+        <div className="max-w-7xl mx-auto space-y-8">
+          <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
+            CHÍNH SÁCH BÁO GIÁ &amp; PHÁP LÝ
+          </span>
+          <h1 className="font-heading font-black text-4xl sm:text-6xl md:text-8xl uppercase tracking-tighter leading-[0.95] max-w-4xl text-white">
+            BẢNG GIÁ &amp; PHÁP LÝ
+            <span className="block text-[#FF6A00]">MINH BẠCH CHI PHÍ.</span>
           </h1>
-          <p className="text-slate-200 text-lg sm:text-xl md:text-2xl max-w-4xl leading-relaxed font-light">
-            Chúng tôi cam kết báo giá trọn gói trực tiếp từ đội xe — tuyệt đối không phát sinh chi phí vô lý và luôn bảo đảm quyền lợi tối đa cho đối tác sản xuất.
+          <p className="text-base sm:text-xl text-[#A3A3A3] font-light leading-relaxed max-w-3xl">
+            Cam kết giá cước trọn gói trực tiếp từ đội xe chính chủ — tuyệt đối không phát sinh phụ phí vô lý. Hồ sơ pháp nhân đầy đủ và hợp đồng bảo hiểm hàng hóa PVI hạn mức 10 Tỷ VNĐ.
           </p>
 
-          <div className="pt-4 flex flex-wrap items-center gap-4">
+          <div className="pt-2 flex flex-wrap items-center gap-6">
             <a
               href="tel:0918456789"
-              className="inline-flex items-center gap-2 px-8 py-5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-2xl shadow-xl shadow-orange-500/25 transition-all hover:scale-105"
+              className="btn-arrow-hover px-8 py-4 sm:py-5 bg-[#FF6A00] hover:bg-[#E55F00] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all"
             >
-              <span className="material-symbols-outlined text-base">call</span>
-              Hotline Báo Giá: 0918.456.789
+              <span>HOTLINE BÁO GIÁ 15 PHÚT: 0918.456.789</span>
+              <span className="arrow-move ml-2 font-bold">→</span>
             </a>
           </div>
         </div>
       </section>
 
-      {/* ═══ INTERACTIVE CALCULATOR (Spacious White Section) ═══ */}
-      <section className="py-28 md:py-36 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto w-full reveal-on-scroll">
-        <QuoteCalculator />
+      {/* ═══ INTERACTIVE CALCULATOR SECTION ═══ */}
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#F2F0EA] text-[#0B0B0B]">
+        <div className="max-w-7xl mx-auto space-y-12">
+          <QuoteCalculator />
+        </div>
       </section>
 
-      {/* ═══ PRICING MATRIX TABLE (Clean White & Slate-50) ═══ */}
-      <section className="py-28 md:py-36 px-6 md:px-12 lg:px-20 bg-slate-50 border-t border-slate-200 w-full reveal-on-scroll">
+      {/* ═══ PRICING MATRIX TABLE SECTION ═══ */}
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F] reveal-on-scroll">
+        <div className="max-w-7xl mx-auto space-y-12">
+          <div className="space-y-4 max-w-3xl">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
+              KHUNG CƯỚC THAM KHẢO
+            </span>
+            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight leading-tight text-white">
+              BẢNG GIÁ CƯỚC NGUYÊN CHUYẾN (FTL)
+            </h2>
+            <p className="text-base sm:text-lg text-[#A3A3A3] font-light leading-relaxed">
+              Đơn giá trọn gói đã bao gồm tài xế, nhiên liệu, vé BOT cầu đường và định vị GPS giám sát. Chưa bao gồm thuế VAT và phí nâng hạ 2 đầu kho.
+            </p>
+          </div>
+
+          <div className="bg-[#141414] border border-[#2A2A2A] overflow-x-auto">
+            <table className="w-full text-left border-collapse min-w-[700px] text-xs sm:text-sm">
+              <thead>
+                <tr className="bg-[#0B0B0B] text-white border-b border-[#2A2A2A] font-heading text-xs uppercase tracking-wider">
+                  <th className="py-4 px-6">Chủng Loại Xe</th>
+                  <th className="py-4 px-6">Dưới 50km</th>
+                  <th className="py-4 px-6">50 — 150km</th>
+                  <th className="py-4 px-6">Miền Trung (Đà Nẵng)</th>
+                  <th className="py-4 px-6">Trục Bắc — Nam (Hà Nội)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#1F1F1F] text-[#E5E5E5]">
+                {PRICING_TABLE.map((row, idx) => (
+                  <tr key={idx} className="hover:bg-[#1A1A1A] transition-colors">
+                    <td className="py-4 px-6 font-heading font-bold text-white">
+                      {row.type}
+                    </td>
+                    <td className="py-4 px-6 text-[#A3A3A3]">{row.under50}</td>
+                    <td className="py-4 px-6 text-[#A3A3A3]">{row.range150}</td>
+                    <td className="py-4 px-6 text-[#A3A3A3]">{row.central}</td>
+                    <td className="py-4 px-6 text-[#FF6A00] font-bold">{row.northSouth}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ LEGAL CREDENTIALS & PVI INSURANCE ═══ */}
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#141414] border-t border-[#1F1F1F] reveal-on-scroll">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="max-w-3xl space-y-4">
-            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight text-slate-900 leading-tight">
-              KHUNG GIÁ CƯỚC NGUYÊN CHUYẾN (FTL)
+            <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
+              BẢO TOÀN VỐN HÀNG HÓA
+            </span>
+            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight leading-tight text-white">
+              BẢO HIỂM PVI 10 TỶ &amp; PHÁP LÝ CHÍNH NGẠCH
             </h2>
-            <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
-              *Đơn giá mang tính chất tham khảo. Đã bao gồm xăng dầu, tài xế và phí BOT cầu đường. Chưa bao gồm thuế VAT.
+            <p className="text-base sm:text-lg text-[#A3A3A3] font-light leading-relaxed">
+              Chúng tôi bảo vệ quyền lợi pháp lý và tài sản của bạn bằng hợp đồng bảo hiểm trách nhiệm dân sự vận chuyển chính ngạch và chính sách công nợ linh hoạt.
             </p>
           </div>
 
-          <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-base">
-                <thead className="bg-slate-900 text-white uppercase font-heading font-bold text-xs tracking-wider">
-                  <tr>
-                    <th className="p-6 md:p-8">Chủng Loại Phương Tiện</th>
-                    <th className="p-6 md:p-8">Nội Vùng (&lt; 50km)</th>
-                    <th className="p-6 md:p-8">Liên Tỉnh (50 — 150km)</th>
-                    <th className="p-6 md:p-8">Miền Trung (Đà Nẵng)</th>
-                    <th className="p-6 md:p-8">Trục Bắc — Nam (Hà Nội)</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {PRICING_TABLE.map((row, idx) => (
-                    <tr
-                      key={row.type}
-                      className={`hover:bg-orange-50/40 transition-colors ${
-                        idx % 2 === 1 ? "bg-slate-50/50" : "bg-white"
-                      }`}
-                    >
-                      <td className="p-6 md:p-8 font-heading font-bold text-slate-900">
-                        {row.type}
-                      </td>
-                      <td className="p-6 md:p-8 text-slate-700 font-semibold">{row.under50}</td>
-                      <td className="p-6 md:p-8 text-slate-600">{row.range150}</td>
-                      <td className="p-6 md:p-8 text-slate-600">{row.central}</td>
-                      <td className="p-6 md:p-8 text-orange-600 font-bold">{row.northSouth}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-3">
+              <span className="font-heading font-black text-2xl text-[#FF6A00] block">
+                10 TỶ VNĐ
+              </span>
+              <h3 className="font-heading font-bold text-base text-white uppercase">
+                Bảo Hiểm Hàng Hóa PVI
+              </h3>
+              <p className="text-xs sm:text-sm text-[#A3A3A3] font-light leading-relaxed">
+                Toàn bộ lô hàng vận chuyển bởi Tiên Phong đều thuộc đối tượng bảo hiểm trách nhiệm người vận chuyển của Tổng Công Ty Bảo Hiểm PVI, bồi thường tối đa 10 tỷ đồng mỗi vụ.
+              </p>
+            </div>
+
+            <div className="p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-3">
+              <span className="font-heading font-black text-2xl text-[#FF6A00] block">
+                100% ĐỀN BÙ
+              </span>
+              <h3 className="font-heading font-bold text-base text-white uppercase">
+                Cam Kết SLA Hợp Đồng
+              </h3>
+              <p className="text-xs sm:text-sm text-[#A3A3A3] font-light leading-relaxed">
+                Trường hợp xảy ra hư hại, thiếu hụt hay thất lạc do lỗi vận chuyển của Tiên Phong, chúng tôi cam kết bồi hoàn 100% giá trị trong vòng 7 ngày làm việc.
+              </p>
+            </div>
+
+            <div className="p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-3">
+              <span className="font-heading font-black text-2xl text-[#FF6A00] block">
+                30 — 45 NGÀY
+              </span>
+              <h3 className="font-heading font-bold text-base text-white uppercase">
+                Chính Sách Công Nợ B2B
+              </h3>
+              <p className="text-xs sm:text-sm text-[#A3A3A3] font-light leading-relaxed">
+                Áp dụng chu kỳ công nợ 30 đến 45 ngày đối với doanh nghiệp ký hợp đồng nguyên tắc. Bàn giao đầy đủ chứng từ gốc biên bản POD và xuất hóa đơn VAT điện tử trong ngày.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ═══ CALCULATION RULES (Clean White) ═══ */}
-      <section className="py-28 md:py-36 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto w-full space-y-16 reveal-on-scroll">
-        <div className="max-w-3xl space-y-4">
-          <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight text-slate-900 leading-tight">
-            QUY TẮC TÍNH CƯỚC HÀNG HÓA
-          </h2>
-          <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed">
-            Phương pháp phân loại hàng nặng và hàng cồng kềnh giúp tối ưu chi phí thùng xe cho chủ hàng.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-8 sm:p-10 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center">
-              <span className="material-symbols-outlined text-3xl">fitness_center</span>
-            </div>
-            <h3 className="font-heading font-black text-xl text-slate-900 uppercase">
-              1. Hàng Nặng (Tính Theo Tấn)
-            </h3>
-            <p className="text-slate-600 text-base leading-relaxed font-light">
-              Áp dụng cho sắt thép, cuộn đồng, máy móc cơ khí, xi măng, gạch men. Đơn giá được tính trực tiếp trên số tấn thực tế cân tại trạm cân điện tử đạt chuẩn.
-            </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 text-xs">
+            {LEGAL_CREDENTIALS.map((cred, idx) => (
+              <div key={idx} className="p-6 bg-[#0B0B0B] border border-[#2A2A2A] space-y-1">
+                <span className="text-[#737373] uppercase tracking-wider block">{cred.label}:</span>
+                <span className="font-heading font-bold text-white block text-sm">{cred.val}</span>
+              </div>
+            ))}
           </div>
 
-          <div className="p-8 sm:p-10 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center">
-              <span className="material-symbols-outlined text-3xl">aspect_ratio</span>
-            </div>
-            <h3 className="font-heading font-black text-xl text-slate-900 uppercase">
-              2. Hàng Cồng Kềnh (Tính Khối m³)
-            </h3>
-            <p className="text-slate-600 text-base leading-relaxed font-light">
-              Áp dụng cho hàng nhẹ nhưng chiếm thể tích lớn như thùng carton, hạt xốp, bao bì nhựa, bông sợi. Công thức: Dài × Rộng × Cao (mét) = Số m³.
-            </p>
-          </div>
-
-          <div className="p-8 sm:p-10 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center">
-              <span className="material-symbols-outlined text-3xl">loyalty</span>
-            </div>
-            <h3 className="font-heading font-black text-xl text-slate-900 uppercase">
-              3. Chiết Khấu Hợp Đồng Tháng
-            </h3>
-            <p className="text-slate-600 text-base leading-relaxed font-light">
-              Doanh nghiệp ký hợp đồng dài hạn có sản lượng vận chuyển đều đặn được hưởng chiết khấu trực tiếp từ 5% đến 15% trừ vào quyết toán tháng.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ CTA BANNER ═══ */}
-      <section className="py-24 bg-slate-900 text-white reveal-on-scroll">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
-          <div className="space-y-3 max-w-2xl">
-            <h2 className="font-heading font-black text-2xl sm:text-4xl uppercase tracking-tight">
-              CẦN BÁO GIÁ CHÍNH XÁC CHO LÔ HÀNG SẮP CHẠY?
-            </h2>
-            <p className="text-slate-300 text-base md:text-lg font-light">
-              Gửi ngay quy cách kiện hàng và địa điểm bốc - trả, điều hành viên sẽ liên hệ lại sau 15 phút.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
-            <a
-              href="tel:0918456789"
-              className="px-8 py-5 bg-orange-500 hover:bg-orange-600 text-white font-heading font-bold text-sm uppercase tracking-wider rounded-2xl shadow-xl shadow-orange-500/30 transition-all hover:scale-105"
-            >
-              Gọi Báo Giá: 0918.456.789
-            </a>
+          <div className="pt-4 text-center">
             <Link
               href="/contact"
-              className="px-8 py-5 bg-navy-800 hover:bg-navy-700 text-white font-heading font-bold text-sm uppercase tracking-wider rounded-2xl border border-navy-700 transition-colors"
+              className="btn-arrow-hover inline-block px-10 py-5 bg-[#FF6A00] hover:bg-[#E55F00] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all"
             >
-              Điền Mẫu Khảo Sát
+              <span>YÊU CẦU HỢP ĐỒNG NGUYÊN TẮC MẪU</span>
+              <span className="arrow-move ml-2 font-bold">→</span>
             </Link>
           </div>
         </div>
