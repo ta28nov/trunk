@@ -1,43 +1,11 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
-
-const SERVICES_PREVIEW = [
-  {
-    num: "01",
-    title: "Bao Xe Nguyên Chuyến (FTL)",
-    subtitle: "Dành riêng cho các đơn hàng khối lượng lớn",
-    desc: "Phương án vận chuyển chuyên biệt dành cho doanh nghiệp sản xuất cần giao nhận toàn bộ tải trọng thùng xe. Niêm phong seal kẹp chì tại kho gửi, chạy thẳng không dừng trả hàng phụ và cam kết thời gian giao nhận chính xác đến từng phút.",
-    specs: "Tải trọng: 8 Tấn — 32 Tấn • Niêm phong seal chì • Điều xe sau 30 phút",
-    image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1200&q=80",
-    href: "/services",
-  },
-  {
-    num: "02",
-    title: "Ghép Hàng Định Tuyến Bắc — Nam",
-    subtitle: "Lịch trình xuất bến cố định 2 chuyến mỗi ngày",
-    desc: "Giải pháp tối ưu chi phí cho kiện hàng từ 500kg đến 5 tấn dọc theo trục Quốc lộ 1A. Phân loại hàng hóa khoa học tại tổng kho Sóng Thần, cam kết TP.HCM — Đà Nẵng trong 28 giờ và TP.HCM — Hà Nội trong 48 giờ.",
-    specs: "Lịch xuất bến: 12:00 & 20:00 hàng ngày • Kho gom Sóng Thần • Giao tận nơi",
-    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80",
-    href: "/services",
-  },
-  {
-    num: "03",
-    title: "Di Dời & Cẩu Hạ Máy Móc Nhà Xưởng",
-    subtitle: "Thiết bị cẩu chuyên dụng và kỹ thuật an toàn",
-    desc: "Dịch vụ trọn gói từ khảo sát kết cấu nền xưởng, lập biện pháp chằng buộc gia cố lực đến cẩu hạ máy CNC vào đúng vị trí lắp đặt. Đội ngũ kỹ sư có chứng chỉ an toàn nhóm 3 và bảo hiểm lắp đặt trọn gói.",
-    specs: "Xe cẩu 5T — 15T • Rùa đẩy thủy lực 50T • Bảo hiểm máy móc 10 tỷ VNĐ",
-    image: "https://images.unsplash.com/photo-1508873696983-2df5293cb395?auto=format&fit=crop&w=1200&q=80",
-    href: "/services",
-  },
-  {
-    num: "04",
-    title: "Vận Chuyển Container Cảng Biển & ICD",
-    subtitle: "Kéo cont 20ft, 40ft, 45ft bám sát lịch tàu chạy",
-    desc: "Trực chiến thường trực tại Cảng Tân Cảng — Cát Lái, Cụm cảng Cái Mép — Thị Vải và ICD Sóng Thần. Theo dõi sát sao thời hạn Closing Time của từng hãng tàu, hoàn tất thủ tục mượn vỏ và kiểm hóa hải quan.",
-    specs: "Đầu kéo Hyundai Xcient 440HP • Moóc sàn & xương 40ft • Trực cảng 24/7",
-    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80",
-    href: "/services",
-  },
-];
+import HeroVideo from "./components/HeroVideo";
+import VideoModal from "./components/VideoModal";
+import InteractiveServices from "./components/InteractiveServices";
+import ProcessStorytelling from "./components/ProcessStorytelling";
+import CounterStat from "./components/CounterStat";
 
 const CARGO_CATEGORIES = [
   {
@@ -90,29 +58,6 @@ const FLEET_HIGHLIGHTS = [
   },
 ];
 
-const PROCESS_STEPS = [
-  {
-    num: "01",
-    title: "Yêu Cầu & Báo Giá 15 Phút",
-    desc: "Tiếp nhận quy cách kiện hàng, trọng lượng, địa điểm bốc dỡ và gửi báo giá trọn gói không phát sinh chi phí phụ.",
-  },
-  {
-    num: "02",
-    title: "Điều Xe & Bốc Hàng",
-    desc: "Phương tiện có mặt đúng giờ tại kho gửi. Kiểm đếm số lượng, chụp ảnh hiện trạng và chằng buộc bằng cáp xích tiêu chuẩn.",
-  },
-  {
-    num: "03",
-    title: "Vận Chuyển Giám Sát GPS",
-    desc: "Xe di chuyển theo đúng lộ trình số hóa. Cập nhật vị trí thời gian thực qua vệ tinh kết nối Tổng cục Đường bộ 24/7.",
-  },
-  {
-    num: "04",
-    title: "Bàn Giao & Chứng Từ POD",
-    desc: "Giao hàng an toàn tại điểm nhận. Ký biên bản giao nhận có xác nhận của thủ kho và gửi hóa đơn VAT điện tử.",
-  },
-];
-
 const CLIENTS = [
   { name: "Tập Đoàn Hoa Sen", field: "Tôn & Thép Cuộn Công Nghiệp" },
   { name: "Thép Pomina", field: "Sắt Thép & Kết Cấu Xây Dựng" },
@@ -123,40 +68,37 @@ const CLIENTS = [
 ];
 
 export default function HomePage() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
     <div className="flex flex-col w-full bg-[#0B0B0B] text-white">
+      <VideoModal isOpen={videoOpen} onClose={() => setVideoOpen(false)} />
+
       {/* ════════════════════════════════════════════════════════════════
-          SECTION 01: HERO (Cinematic Editorial Transportation)
+          SECTION 01: HERO WITH AMBIENT VIDEO & CHOREOGRAPHED ENTRANCE (§07, §08)
          ════════════════════════════════════════════════════════════════ */}
       <section className="relative min-h-[92vh] flex flex-col justify-end pb-16 sm:pb-24 px-4 sm:px-8 lg:px-16 overflow-hidden">
-        {/* Background Visual */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=2400&q=85"
-            alt="Đội xe tải container Vận Tải Tiên Phong trên đường cao tốc"
-            className="w-full h-full object-cover filter brightness-[0.4] contrast-125 scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0B] via-[#0B0B0B]/60 to-transparent" />
-        </div>
+        {/* Real-world Motion Video Background */}
+        <HeroVideo onOpenDoc={() => setVideoOpen(true)} />
 
-        {/* Hero Content */}
+        {/* Hero Choreographed Content */}
         <div className="relative z-10 max-w-7xl mx-auto w-full space-y-8">
           <div className="space-y-4">
-            <span className="text-xs sm:text-sm uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
+            <span className="text-xs sm:text-sm uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block hero-animate-1">
               VẬN TẢI THƯƠNG MẠI &amp; CÔNG NGHIỆP ĐƯỜNG BỘ
             </span>
-            <h1 className="font-heading font-black text-4xl sm:text-6xl md:text-8xl lg:text-9xl uppercase tracking-tighter leading-[0.95] max-w-5xl">
+            <h1 className="font-heading font-black text-4xl sm:text-6xl md:text-8xl lg:text-9xl uppercase tracking-tighter leading-[0.95] max-w-5xl hero-animate-2">
               VẬN CHUYỂN
               <span className="block text-white">NHỮNG ĐIỀU</span>
               <span className="block text-[#FF6A00]">QUAN TRỌNG.</span>
             </h1>
           </div>
 
-          <p className="text-base sm:text-xl text-[#E5E5E5] font-light leading-relaxed max-w-2xl">
+          <p className="text-base sm:text-xl text-[#E5E5E5] font-light leading-relaxed max-w-2xl hero-animate-3">
             Vận chuyển hàng hóa công nghiệp an toàn và chuẩn xác. 52 phương tiện chính chủ, bãi xe trung tâm 15.000m² tại Sóng Thần và bảo hiểm hàng hóa PVI 10 tỷ VNĐ.
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6">
+          <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6 hero-animate-4">
             <Link
               href="/contact"
               className="btn-arrow-hover px-8 py-4 sm:py-5 bg-[#FF6A00] hover:bg-[#E55F00] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200"
@@ -165,49 +107,45 @@ export default function HomePage() {
               <span className="arrow-move ml-2 font-bold">→</span>
             </Link>
 
-            <Link
-              href="/services"
+            <button
+              type="button"
+              onClick={() => setVideoOpen(true)}
               className="btn-arrow-hover px-8 py-4 sm:py-5 bg-transparent hover:bg-white/10 text-white border border-[#2A2A2A] hover:border-white font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200"
             >
-              <span>KHÁM PHÁ DỊCH VỤ</span>
-              <span className="arrow-move ml-2 font-bold">→</span>
-            </Link>
+              <span>XEM PHIM TƯ LIỆU ĐỘI XE [ ▶ ]</span>
+            </button>
           </div>
 
-          {/* Quick Metrics Strip */}
-          <div className="pt-12 border-t border-[#1F1F1F] grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
-            <div>
-              <span className="font-heading font-black text-2xl sm:text-4xl text-[#FF6A00] block">
-                52 XE
-              </span>
-              <span className="text-xs uppercase tracking-wider text-[#A3A3A3] mt-1 block">
-                Chính Chủ 100%
-              </span>
-            </div>
-            <div>
-              <span className="font-heading font-black text-2xl sm:text-4xl text-white block">
-                15.000M²
-              </span>
-              <span className="text-xs uppercase tracking-wider text-[#A3A3A3] mt-1 block">
-                Bãi Xe Sóng Thần
-              </span>
-            </div>
-            <div>
-              <span className="font-heading font-black text-2xl sm:text-4xl text-[#FF6A00] block">
-                10 TỶ VNĐ
-              </span>
-              <span className="text-xs uppercase tracking-wider text-[#A3A3A3] mt-1 block">
-                Bảo Hiểm Hàng Hóa PVI
-              </span>
-            </div>
-            <div>
-              <span className="font-heading font-black text-2xl sm:text-4xl text-white block">
-                48 GIỜ
-              </span>
-              <span className="text-xs uppercase tracking-wider text-[#A3A3A3] mt-1 block">
-                Cam Kết Tuyến Bắc — Nam
-              </span>
-            </div>
+          {/* Quick Metrics Strip with Animated Number Counters (§10) */}
+          <div className="pt-12 border-t border-[#1F1F1F] grid grid-cols-2 md:grid-cols-4 gap-6 text-left hero-animate-4">
+            <CounterStat
+              target={52}
+              suffix=" XE"
+              label="Chính Chủ 100%"
+              sublabel="Không bán thầu trung gian"
+              accent={true}
+            />
+            <CounterStat
+              target={15000}
+              suffix=" M²"
+              label="Bãi Xe Sóng Thần"
+              sublabel="KCN Sóng Thần 1, Dĩ An"
+              accent={false}
+            />
+            <CounterStat
+              target={10}
+              suffix=" TỶ VNĐ"
+              label="Bảo Hiểm Hàng Hóa PVI"
+              sublabel="Bảo lãnh mọi chuyến đi"
+              accent={true}
+            />
+            <CounterStat
+              target={48}
+              suffix=" GIỜ"
+              label="Cam Kết Bắc — Nam"
+              sublabel="2 tài xế luân phiên"
+              accent={false}
+            />
           </div>
         </div>
       </section>
@@ -268,110 +206,129 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          SECTION 03: SERVICES (Large Editorial Presentations)
+          SECTION 03: INTERACTIVE SERVICES SHOWCASE (§14, §15)
          ════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#F2F0EA] text-[#0B0B0B]">
-        <div className="max-w-7xl mx-auto space-y-24 sm:space-y-36">
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#F2F0EA] text-[#0B0B0B] border-t border-[#DDD9CF]">
+        <div className="max-w-7xl mx-auto space-y-16">
           <div className="space-y-4 max-w-3xl">
             <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
               DỊCH VỤ TRỌNG TÂM
             </span>
             <h2 className="font-heading font-black text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight leading-tight text-[#0B0B0B]">
-              GIẢI PHÁP VẬN TẢI ĐƯỢC THIẾT KẾ CHO DOANH NGHIỆP
+              GIẢI PHÁP VẬN TẢI THIẾT KẾ CHO DOANH NGHIỆP
             </h2>
             <p className="text-base sm:text-lg text-[#525252] font-light leading-relaxed">
-              Mỗi dịch vụ được tổ chức theo quy trình chuyên biệt với trang thiết bị bốc dỡ phù hợp cho từng loại mặt hàng công nghiệp.
+              Nhấp vào từng dịch vụ để mở rộng thông số kỹ thuật, phương tiện phù hợp, phạm vi vận hành và quy trình an toàn.
             </p>
           </div>
 
-          {/* Large Editorial Services List */}
-          <div className="space-y-28 sm:space-y-36">
-            {SERVICES_PREVIEW.map((srv, idx) => {
-              const isEven = idx % 2 === 0;
-              return (
-                <div
-                  key={srv.num}
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center reveal-on-scroll"
-                >
-                  {/* Photo Side */}
-                  <div
-                    className={`lg:col-span-6 ${
-                      isEven ? "lg:order-1" : "lg:order-2"
-                    }`}
-                  >
-                    <div className="relative overflow-hidden h-72 sm:h-96 md:h-[460px] w-full border border-[#DDD9CF]">
-                      <img
-                        src={srv.image}
-                        alt={srv.title}
-                        className="w-full h-full object-cover img-editorial"
-                      />
-                    </div>
-                  </div>
+          {/* Interactive Expandable Services Accordion */}
+          <InteractiveServices />
+        </div>
+      </section>
 
-                  {/* Narrative Side */}
-                  <div
-                    className={`lg:col-span-6 space-y-6 ${
-                      isEven ? "lg:order-2" : "lg:order-1"
-                    }`}
-                  >
-                    <div className="space-y-2">
-                      <span className="font-heading font-black text-4xl sm:text-5xl text-[#FF6A00] block">
-                        {srv.num}
-                      </span>
-                      <h3 className="font-heading font-black text-2xl sm:text-4xl text-[#0B0B0B] uppercase leading-tight">
-                        {srv.title}
-                      </h3>
-                      <p className="text-sm font-heading font-semibold uppercase tracking-wider text-[#737373]">
-                        {srv.subtitle}
-                      </p>
-                    </div>
+      {/* ════════════════════════════════════════════════════════════════
+          SECTION 04: OPERATIONAL VIDEO FEATURE (§24, §25)
+         ════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#070707] border-t border-[#1F1F1F] reveal-on-scroll">
+        <div className="max-w-7xl mx-auto space-y-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#1F1F1F] pb-8">
+            <div className="space-y-3 max-w-2xl">
+              <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
+                BẰNG CHỨNG THỰC ĐỊA
+              </span>
+              <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight text-white">
+                PHIM TƯ LIỆU ĐỘI XE &amp; BÃI XE SÓNG THẦN
+              </h2>
+              <p className="text-xs sm:text-sm text-[#A3A3A3] font-light leading-relaxed">
+                Ghi hình chân thực hoạt động xếp dỡ máy móc, điều hành bãi xe 15.000m² và vận hành kéo container tại Cảng Cát Lái.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setVideoOpen(true)}
+              className="btn-arrow-hover px-6 py-3.5 bg-[#FF6A00] hover:bg-[#E55F00] text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors self-start md:self-auto"
+            >
+              <span>MỞ PHIM TOÀN MÀN HÌNH [ ▶ ]</span>
+              <span className="arrow-move ml-1.5 font-bold">→</span>
+            </button>
+          </div>
 
-                    <p className="text-base text-[#525252] font-light leading-relaxed">
-                      {srv.desc}
-                    </p>
+          {/* Embedded Industrial Video Showcase */}
+          <div className="relative aspect-video w-full bg-[#141414] border border-[#2A2A2A] overflow-hidden group shadow-2xl">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1600&q=80"
+              className="w-full h-full object-cover filter brightness-90 group-hover:scale-102 transition-transform duration-700"
+            >
+              <source src="/videos/traffic-hero.webm" type="video/webm" />
+              <source
+                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/9/90/Jane_M._Byrne_Interchange_Traffic.webm/Jane_M._Byrne_Interchange_Traffic.webm.720p.vp9.webm"
+                type="video/webm"
+              />
+            </video>
 
-                    <div className="p-4 bg-white border border-[#DDD9CF] text-xs font-medium text-[#262626]">
-                      {srv.specs}
-                    </div>
+            {/* Video Technical Telemetry Overlay */}
+            <div className="absolute top-4 left-4 bg-[#0B0B0B]/85 border border-[#2A2A2A] px-3 py-1.5 text-[11px] font-mono text-white backdrop-blur-sm">
+              <span className="text-[#FF6A00] font-bold">● TRỰC TIẾP:</span> BÃI XE TRUNG TÂM SÓNG THẦN 1
+            </div>
 
-                    <div className="pt-2 flex items-center gap-4">
-                      <Link
-                        href={srv.href}
-                        className="btn-arrow-hover px-6 py-3.5 bg-[#0B0B0B] hover:bg-[#FF6A00] text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors"
-                      >
-                        <span>TÌM HIỂU THÊM</span>
-                        <span className="arrow-move ml-1.5 font-bold">→</span>
-                      </Link>
-                      <Link
-                        href="/contact"
-                        className="text-xs font-heading font-bold uppercase tracking-wider text-[#0B0B0B] hover:text-[#FF6A00] transition-colors"
-                      >
-                        Báo giá nhanh →
-                      </Link>
-                    </div>
-                  </div>
+            <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-4 p-4 bg-[#0B0B0B]/90 border border-[#2A2A2A] backdrop-blur-md text-xs">
+              <div className="flex items-center gap-6">
+                <div>
+                  <span className="text-[10px] text-[#737373] uppercase block font-mono">CHỦNG LOẠI:</span>
+                  <span className="text-white font-bold">52 Đầu kéo &amp; Tải nặng</span>
                 </div>
-              );
-            })}
+                <div>
+                  <span className="text-[10px] text-[#737373] uppercase block font-mono">ĐỊA BÀN:</span>
+                  <span className="text-white font-bold">Đông Nam Bộ &amp; Bắc Nam</span>
+                </div>
+                <div>
+                  <span className="text-[10px] text-[#737373] uppercase block font-mono">GIÁM SÁT:</span>
+                  <span className="text-[#FF6A00] font-bold">GPS Vệ Tinh 24/7</span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setVideoOpen(true)}
+                className="text-[#FF6A00] font-heading font-bold uppercase hover:underline"
+              >
+                Xem đầy đủ có âm thanh →
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          SECTION 04: CARGO / CAPABILITIES (What We Move)
+          SECTION 05: CARGO / CAPABILITIES (What We Move)
          ════════════════════════════════════════════════════════════════ */}
       <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F] reveal-on-scroll">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="space-y-4 max-w-3xl">
-            <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
-              DANH MỤC HÀNG HÓA
-            </span>
-            <h2 className="font-heading font-black text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight leading-tight text-white">
-              CHÚNG TÔI CHUYÊN CHỞ NHỮNG GÌ
-            </h2>
-            <p className="text-base sm:text-lg text-[#A3A3A3] font-light leading-relaxed">
-              Mọi nhóm hàng hóa được phân bổ phương tiện chuyên biệt, dụng cụ chằng buộc kỹ thuật và giải pháp bảo vệ tối đa trên đường dài.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="space-y-4 max-w-3xl">
+              <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
+                DANH MỤC HÀNG HÓA
+              </span>
+              <h2 className="font-heading font-black text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight leading-tight text-white">
+                CHÚNG TÔI CHUYÊN CHỞ NHỮNG GÌ
+              </h2>
+              <p className="text-base sm:text-lg text-[#A3A3A3] font-light leading-relaxed">
+                Mọi nhóm hàng hóa được phân bổ phương tiện chuyên biệt, dụng cụ chằng buộc kỹ thuật và giải pháp bảo hiểm tối đa trên đường dài.
+              </p>
+            </div>
+
+            <Link
+              href="/cargo"
+              className="btn-arrow-hover text-xs font-heading font-bold uppercase tracking-wider text-[#FF6A00] hover:underline whitespace-nowrap"
+            >
+              <span>Xem bảng tra cứu &amp; đề xuất xe</span>
+              <span className="arrow-move ml-1">→</span>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -396,7 +353,7 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          SECTION 05: COVERAGE / ROUTES (Network Visualization)
+          SECTION 06: COVERAGE / ROUTES (Network Visualization)
          ════════════════════════════════════════════════════════════════ */}
       <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#141414] border-t border-[#1F1F1F] reveal-on-scroll">
         <div className="max-w-7xl mx-auto space-y-16">
@@ -473,10 +430,10 @@ export default function HomePage() {
 
           <div className="pt-4 text-center">
             <Link
-              href="/coverage"
+              href="/routes"
               className="btn-arrow-hover inline-block px-8 py-4 bg-transparent hover:bg-white text-white hover:text-black border border-[#2A2A2A] hover:border-white font-heading font-bold text-xs uppercase tracking-wider transition-all"
             >
-              <span>XEM TOÀN BỘ BẢN ĐỒ &amp; 42+ KHU CÔNG NGHIỆP</span>
+              <span>XEM SƠ ĐỒ TRỰC QUAN HÀNH TRÌNH CHI TIẾT</span>
               <span className="arrow-move ml-2">→</span>
             </Link>
           </div>
@@ -484,7 +441,7 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          SECTION 06: FLEET (Our Fleet Product Showcase)
+          SECTION 07: FLEET HIGHLIGHTS
          ════════════════════════════════════════════════════════════════ */}
       <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F] reveal-on-scroll">
         <div className="max-w-7xl mx-auto space-y-16">
@@ -553,7 +510,7 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          SECTION 07: PROCESS (4 Stages of Transportation)
+          SECTION 08: PROCESS STORYTELLING WITH STICKY VISUAL (§22, §23)
          ════════════════════════════════════════════════════════════════ */}
       <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#F2F0EA] text-[#0B0B0B] border-t border-[#DDD9CF] reveal-on-scroll">
         <div className="max-w-7xl mx-auto space-y-16">
@@ -565,35 +522,16 @@ export default function HomePage() {
               CÁCH CHÚNG TÔI HOẠT ĐỘNG
             </h2>
             <p className="text-base sm:text-lg text-[#525252] font-light leading-relaxed">
-              Quy trình khép kín, minh bạch từ lúc nhận yêu cầu đến khi bàn giao chứng từ POD và hóa đơn điện tử cho doanh nghiệp.
+              Quy trình 6 bước khép kín từ lúc nhận yêu cầu đến khi bàn giao biên bản POD và xuất hóa đơn điện tử cho doanh nghiệp.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {PROCESS_STEPS.map((step) => (
-              <div
-                key={step.num}
-                className="p-8 bg-white border border-[#DDD9CF] space-y-4 flex flex-col justify-between"
-              >
-                <div className="space-y-3">
-                  <span className="font-heading font-black text-4xl text-[#FF6A00] block">
-                    {step.num}
-                  </span>
-                  <h3 className="font-heading font-bold text-lg text-[#0B0B0B] uppercase">
-                    {step.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#525252] font-light leading-relaxed">
-                    {step.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProcessStorytelling />
         </div>
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          SECTION 08 & 09: ABOUT & TRUST (Evidence & Enterprise Partners)
+          SECTION 09: ABOUT & ENTERPRISE PARTNERS (§08, §09)
          ════════════════════════════════════════════════════════════════ */}
       <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F] reveal-on-scroll">
         <div className="max-w-7xl mx-auto space-y-24">

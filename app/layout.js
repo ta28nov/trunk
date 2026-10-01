@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FloatingZalo from "./components/FloatingZalo";
+import MobileBottomBar from "./components/MobileBottomBar";
 import ScrollObserver from "./components/ScrollObserver";
 
 export const metadata = {
@@ -44,13 +45,15 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#0B0B0B] text-white antialiased selection:bg-[#FF6A00] selection:text-white overflow-x-hidden">
+      <body className="min-h-screen flex flex-col bg-[#0B0B0B] text-white antialiased selection:bg-[#FF6A00] selection:text-white overflow-x-hidden pb-mobile-dock">
         <ScrollObserver />
         <Header />
         <main className="flex-1 w-full pt-20">{children}</main>
         <Footer />
         <FloatingZalo />
+        <MobileBottomBar />
       </body>
     </html>
   );
 }
+

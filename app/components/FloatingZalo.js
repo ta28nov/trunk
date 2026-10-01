@@ -15,7 +15,7 @@ export default function FloatingZalo() {
   return (
     <aside
       aria-label="Liên hệ nhanh với điều phối viên"
-      className="fixed bottom-6 right-4 sm:right-6 z-40 flex flex-col items-end gap-2 select-none"
+      className="fixed bottom-6 right-4 sm:right-6 z-40 hidden md:flex flex-col items-end gap-2 select-none"
     >
       {/* Speech Prompt */}
       {showPrompt && !closed && (
