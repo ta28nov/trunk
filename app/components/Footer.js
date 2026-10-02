@@ -1,119 +1,124 @@
 import Link from "next/link";
+import company from "../data/company.json";
 
-const FOOTER_SECTIONS = [
+const FOOTER_LINKS = [
   {
-    title: "Dịch Vụ Vận Tải",
+    title: "Dịch Vụ",
     links: [
-      { href: "/services", label: "Bao Xe Nguyên Chuyến (FTL)" },
-      { href: "/services", label: "Ghép Hàng Định Tuyến Bắc — Nam" },
-      { href: "/services", label: "Di Dời & Cẩu Hạ Máy Xưởng" },
-      { href: "/services", label: "Kéo Container Cảng Biển & ICD" },
-      { href: "/services", label: "Vận Tải Vùng Đông Nam Bộ" },
+      { href: "/fleet", label: "Đội xe thùng kín" },
+      { href: "/fleet", label: "Đội xe thùng bạt" },
+      { href: "/pricing", label: "Bảng giá cước" },
+      { href: "/routes", label: "Tuyến đường" },
     ],
   },
   {
-    title: "Đội Xe & Năng Lực",
+    title: "Công Ty",
     links: [
-      { href: "/fleet", label: "Đầu Kéo Container 40ft & 45ft" },
-      { href: "/fleet", label: "Xe Tải Thùng Mui Bạt 15 Tấn" },
-      { href: "/fleet", label: "Xe Tải Thùng Mui Bạt 8 Tấn" },
-      { href: "/fleet", label: "Xe Cẩu Tự Hành 10 Tấn" },
-      { href: "/fleet", label: "Bãi Xe 15.000m² Sóng Thần" },
-    ],
-  },
-  {
-    title: "Mạng Lưới & Pháp Lý",
-    links: [
-      { href: "/coverage", label: "Mạng Lưới Tuyến Đường" },
-      { href: "/coverage", label: "42+ Khu Công Nghiệp Trọng Điểm" },
-      { href: "/pricing", label: "Bảng Giá Cước Minh Bạch" },
-      { href: "/pricing", label: "Bảo Hiểm Hàng Hóa PVI 10 Tỷ" },
-      { href: "/about", label: "Năng Lực & Giấy Phép Sở GTVT" },
+      { href: "/about", label: "Giới thiệu" },
+      { href: "/contact", label: "Liên hệ" },
+      { href: "/fleet", label: "Đội xe" },
     ],
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0B0B0B] text-white border-t border-[#1F1F1F]">
-      {/* Main Footer Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
-          {/* Brand & Identity Column */}
-          <div className="lg:col-span-2 space-y-6">
+    <footer className="footer">
+      <div className="wrap">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "3rem" }}>
+          {/* Desktop grid */}
+          <div className="footer-grid" style={{ display: "grid", gap: "3rem" }}>
+            {/* Brand column */}
+            <div style={{ maxWidth: "420px" }}>
+              <div style={{ marginBottom: "1.5rem" }}>
+                <span style={{ fontWeight: 800, fontSize: "1.5rem", color: "var(--text-on-dark)", display: "block", letterSpacing: "-0.02em" }}>
+                  HẬU NGUYỄN
+                </span>
+                <span style={{ fontSize: "0.75rem", color: "var(--gold-300)", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600, display: "block", marginTop: "0.25rem" }}>
+                  {company.slogan}
+                </span>
+              </div>
+              <p style={{ fontSize: "0.8125rem", color: "rgba(255,252,245,.6)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
+                {company.name}
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", fontSize: "0.8125rem", color: "rgba(255,252,245,.5)" }}>
+                <div>
+                  <strong style={{ color: "rgba(255,252,245,.7)", fontWeight: 500 }}>Địa chỉ:</strong>{" "}
+                  {company.address}
+                </div>
+                <div>
+                  <strong style={{ color: "rgba(255,252,245,.7)", fontWeight: 500 }}>MST:</strong>{" "}
+                  {company.taxCode}
+                </div>
+                <div>
+                  <strong style={{ color: "rgba(255,252,245,.7)", fontWeight: 500 }}>Email:</strong>{" "}
+                  <a href={`mailto:${company.email}`} style={{ color: "var(--gold-300)" }}>{company.email}</a>
+                </div>
+              </div>
+              <div style={{ marginTop: "1.5rem" }}>
+                <a
+                  href={company.hotlineTel}
+                  style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--gold-300)", display: "inline-block" }}
+                >
+                  {company.hotline}
+                </a>
+              </div>
+            </div>
+
+            {/* Link columns */}
+            {FOOTER_LINKS.map((col, idx) => (
+              <div key={idx}>
+                <h4 style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700, marginBottom: "1.25rem", paddingBottom: "0.75rem", borderBottom: "1px solid rgba(255,252,245,.1)" }}>
+                  {col.title}
+                </h4>
+                <ul style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                  {col.links.map((link, lIdx) => (
+                    <li key={lIdx}>
+                      <Link
+                        href={link.href}
+                        style={{ fontSize: "0.8125rem", color: "rgba(255,252,245,.5)", transition: "color .2s" }}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            {/* Contact column */}
             <div>
-              <span className="font-heading font-black text-2xl tracking-tight text-white block">
-                TIÊN PHONG
-              </span>
-              <span className="text-xs uppercase tracking-[0.25em] text-[#737373] font-semibold block mt-1">
-                VẬN TẢI THƯƠNG MẠI &amp; CÔNG NGHIỆP ĐƯỜNG BỘ
-              </span>
-            </div>
-
-            <p className="text-sm text-[#A3A3A3] font-light leading-relaxed max-w-sm">
-              Đơn vị vận tải chính ngạch sở hữu 52 đầu xe chính chủ, bãi xe trung tâm 15.000m² tại Dĩ An — Bình Dương. Đáp ứng các tiêu chuẩn khắt khe nhất của doanh nghiệp FDI và nhà máy sản xuất.
-            </p>
-
-            <div className="space-y-2 text-xs text-[#737373] pt-2 border-t border-[#1F1F1F]">
-              <div>
-                <strong className="text-[#A3A3A3] font-medium">Trụ sở:</strong> Số 28 Đường số 8, Phường Linh Trung, TP. Thủ Đức, TP.HCM
-              </div>
-              <div>
-                <strong className="text-[#A3A3A3] font-medium">Bãi xe trung tâm:</strong> KCN Sóng Thần 1, TP. Dĩ An, Tỉnh Bình Dương
-              </div>
-              <div>
-                <strong className="text-[#A3A3A3] font-medium">Mã số thuế:</strong> 0314892039 — GP Vận tải: 41-GPVT/SGTVT
-              </div>
-            </div>
-
-            <div className="pt-2">
-              <a
-                href="tel:0918456789"
-                className="inline-block font-heading font-black text-xl text-[#FF6A00] hover:underline"
-              >
-                0918.456.789 — Điều Vận 24/7
-              </a>
-            </div>
-          </div>
-
-          {/* Links Columns */}
-          {FOOTER_SECTIONS.map((col, idx) => (
-            <div key={idx} className="space-y-4">
-              <h4 className="font-heading font-bold text-xs uppercase tracking-widest text-white border-b border-[#1F1F1F] pb-3">
-                {col.title}
+              <h4 style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700, marginBottom: "1.25rem", paddingBottom: "0.75rem", borderBottom: "1px solid rgba(255,252,245,.1)" }}>
+                Liên Hệ Nhanh
               </h4>
-              <ul className="space-y-3">
-                {col.links.map((link, lIdx) => (
-                  <li key={lIdx}>
-                    <Link
-                      href={link.href}
-                      className="text-xs text-[#A3A3A3] hover:text-white transition-colors duration-150 block"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                <a
+                  href={company.hotlineTel}
+                  style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.75rem 1.25rem", background: "rgba(255,252,245,.08)", borderRadius: "var(--radius-sm)", fontSize: "0.875rem", fontWeight: 700, color: "var(--text-on-dark)", transition: "background .2s" }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-300)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  Gọi ngay
+                </a>
+                <a
+                  href={company.zaloLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.75rem 1.25rem", background: "var(--gold-500)", borderRadius: "var(--radius-sm)", fontSize: "0.875rem", fontWeight: 700, color: "var(--navy-900)", transition: "background .2s" }}
+                >
+                  Zalo báo giá
+                </a>
+              </div>
             </div>
-          ))}
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="footer-bottom" style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "1rem", fontSize: "0.75rem", color: "rgba(255,252,245,.35)" }}>
+          <span>© 2026 {company.shortName}. Tất cả các quyền được bảo lưu.</span>
+          <span>MST: {company.taxCode}</span>
         </div>
       </div>
 
-      {/* Bottom Bar / Copyright */}
-      <div className="border-t border-[#1F1F1F] bg-[#070707]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#737373]">
-          <div>
-            © 2024 Vận Tải Tiên Phong. Tất cả các quyền được bảo lưu.
-          </div>
-          <div className="flex items-center gap-6">
-            <span>Bảo hiểm PVI 10 Tỷ VNĐ</span>
-            <span>•</span>
-            <span>Chuẩn Euro 5</span>
-            <span>•</span>
-            <span>Giám sát GPS 24/7</span>
-          </div>
-        </div>
-      </div>
     </footer>
   );
 }

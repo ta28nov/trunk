@@ -1,252 +1,182 @@
+import company from "../data/company.json";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Về Vận Tải Tiên Phong | Lịch Sử Hình Thành & Năng Lực Pháp Lý",
-  description:
-    "Thành lập từ năm 2014, Vận Tải Tiên Phong sở hữu 52 đầu xe chính chủ, 3 cụm bãi xe 15.000m² tại Bình Dương, TP.HCM và Đà Nẵng. Giấy phép Sở GTVT 41-GPVT/SGTVT.",
+  title: "Giới thiệu – Hậu Nguyễn Transport",
+  description: `${company.name} – Đơn vị vận tải uy tín tại Thanh Hóa, chuyên xe thùng kín và thùng bạt dòng Hino và Hyundai chạy Hà Tĩnh, Nghệ An, Thanh Hóa đi các tỉnh phía Bắc, Tây Bắc.`,
 };
-
-const TIMELINE = [
-  {
-    year: "2014",
-    title: "Thành Lập Doanh Nghiệp",
-    desc: "Khởi đầu từ 5 đầu xe tải nhẹ chuyên tuyến TP.HCM — Bình Dương, phục vụ các nhà xưởng cơ khí và bao bì tại KCN Sóng Thần.",
-  },
-  {
-    year: "2017",
-    title: "Đầu Tư Đội Xe Đầu Kéo & Cẩu Tự Hành",
-    desc: "Nâng quy mô đội xe lên 25 phương tiện, bổ sung đầu kéo container phục vụ Cảng Cát Lái và đội xe cẩu máy móc công nghiệp nặng.",
-  },
-  {
-    year: "2020",
-    title: "Xây Dựng Bãi Xe Trung Tâm 15.000m²",
-    desc: "Đưa vào vận hành bãi xe chính quy và xưởng cơ khí nội bộ tại KCN Sóng Thần 1 (Dĩ An), tích hợp trạm cân điện tử 80 tấn.",
-  },
-  {
-    year: "2024",
-    title: "Mở Rộng Quy Mô 52 Xe & Số Hóa Lộ Trình",
-    desc: "100% đầu xe đạt chuẩn khí thải Euro 5, phủ sóng vận tải 63 tỉnh thành, hợp tác chiến lược cùng hơn 850 doanh nghiệp sản xuất và tập đoàn FDI.",
-  },
-];
-
-const VALUES = [
-  {
-    num: "01",
-    title: "Tài Sản Thật — Năng Lực Thật",
-    desc: "Không làm trung gian hay bán lại đơn hàng. 100% phương tiện đứng tên công ty, trực tiếp chịu trách nhiệm trước đối tác.",
-  },
-  {
-    num: "02",
-    title: "Kỷ Luật Giờ Giấc Tuyệt Đối",
-    desc: "Hệ thống điều phối xe bám sát lịch sản xuất và giờ closing time của cảng biển, không để chậm trễ ảnh hưởng dây chuyền nhà máy.",
-  },
-  {
-    num: "03",
-    title: "An Toàn & Bảo Toàn Vốn Hàng Hóa",
-    desc: "Quy chuẩn chằng buộc khắt khe và hợp đồng bảo hiểm hàng hóa PVI hạn mức 10 Tỷ VNĐ/vụ bồi thường 100% giá trị.",
-  },
-  {
-    num: "04",
-    title: "Minh Bạch Chi Phí & Chứng Từ",
-    desc: "Báo giá trọn gói không phát sinh phụ phí vô lý. Hoàn trả biên bản giao nhận POD và xuất hóa đơn VAT điện tử trong 24 giờ.",
-  },
-];
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col w-full bg-[#0B0B0B] text-white">
-      {/* ═══ HERO SECTION ═══ */}
-      <section className="relative py-24 sm:py-36 px-4 sm:px-8 lg:px-16 border-b border-[#1F1F1F]">
-        <div className="max-w-7xl mx-auto space-y-8">
-          <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
-            CÂU CHUYỆN DOANH NGHIỆP
-          </span>
-          <h1 className="font-heading font-black text-4xl sm:text-6xl md:text-8xl uppercase tracking-tighter leading-[0.95] max-w-4xl text-white">
-            CHÚNG TÔI KHÔNG CHỈ CHỞ HÀNG.
-            <span className="block text-[#FF6A00]">CHÚNG TÔI VẬN HÀNH</span>
-            <span className="block text-white">CHUỖI CUNG ỨNG.</span>
+    <div style={{ background: "var(--cream-50)", minHeight: "100vh" }}>
+      {/* Hero */}
+      <section style={{ background: "var(--cream-100)", padding: "var(--section-y) 0 var(--space-12)" }}>
+        <div className="wrap">
+          <div className="eyebrow hero-animate-1" style={{ marginBottom: "1rem" }}>VỀ CHÚNG TÔI</div>
+          <h1 className="hero-animate-2" style={{ fontSize: "var(--fs-h1)", color: "var(--navy-700)", marginBottom: "1.25rem", lineHeight: 1.2 }}>
+            Vận Tải Hậu Nguyễn<br />
+            <span style={{ color: "var(--gold-600)" }}>Thực Tế · Chuyên Nghiệp · An Tâm</span>
           </h1>
-          <p className="text-base sm:text-xl text-[#A3A3A3] font-light leading-relaxed max-w-3xl">
-            Hơn 10 năm kiên định xây dựng năng lực vận tải đường bộ dựa trên tài sản sở hữu thực tế, đội ngũ bác tài chính quy và kỷ luật thời gian khắt khe.
+          <p className="hero-animate-3" style={{ fontSize: "var(--fs-body)", color: "var(--text-muted)", maxWidth: "720px", lineHeight: 1.7 }}>
+            Đơn vị vận tải hàng hóa chuyên tuyến xuất phát từ Hà Tĩnh, Nghệ An, Thanh Hóa kết nối đi các tỉnh phía Bắc và Tây Bắc. Vận hành 100% bằng đội xe chuyên dụng Hino và Hyundai thùng kín, thùng bạt được tuyển chọn khắt khe.
           </p>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl pt-4">
-            <div className="p-4 bg-[#141414] border border-[#2A2A2A]">
-              <span className="font-heading font-black text-2xl sm:text-3xl text-[#FF6A00] block">10+ NĂM</span>
-              <span className="text-xs uppercase tracking-wider text-[#737373] mt-1 block">Kinh Nghiệm Thực Chiến</span>
+      {/* Brand Story & Value Proposition */}
+      <section className="section" style={{ background: "var(--white)" }}>
+        <div className="wrap">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "3rem", alignItems: "center" }}>
+            <div>
+              <div className="eyebrow" style={{ marginBottom: "0.75rem" }}>CÂU CHUYỆN VẬN HÀNH</div>
+              <h2 style={{ fontSize: "var(--fs-h2)", color: "var(--navy-700)", marginBottom: "1.5rem" }}>
+                Tại sao Hậu Nguyễn chỉ chuyên dòng xe Hino &amp; Hyundai?
+              </h2>
+              <p style={{ fontSize: "var(--fs-body)", color: "var(--text-muted)", lineHeight: 1.7, marginBottom: "1.25rem" }}>
+                Trên các tuyến vận chuyển từ Bắc Trung Bộ ngược lên các tỉnh miền núi phía Bắc và Tây Bắc, địa hình có nhiều cung đường đèo dốc hiểm trở, thời tiết sương mù và mưa rào bất chợt. Để đảm bảo an toàn tuyệt đối cho tài sản của khách hàng, Hậu Nguyễn kiên định chỉ đầu tư hai dòng xe uy tín hàng đầu: <strong>Hino (Nhật Bản)</strong> và <strong>Hyundai (Hàn Quốc)</strong>.
+              </p>
+              <p style={{ fontSize: "var(--fs-body)", color: "var(--text-muted)", lineHeight: 1.7, marginBottom: "1.75rem" }}>
+                Hệ thống khung gầm đúc chịu tải cao, máy khỏe êm, kết hợp kết cấu thùng kín Inox chống dột nước và thùng bạt mui phủ gia cố kiên cố giúp hàng hóa luôn giữ trọn phẩm chất từ lúc bốc lên xe đến khi hạ hàng tại kho nhận.
+              </p>
+
+              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+                <a href={company.hotlineTel} className="btn btn-primary">
+                  Hotline điều xe: {company.hotline}
+                </a>
+                <Link href="/fleet" className="btn btn-secondary">
+                  Khám phá đội xe →
+                </Link>
+              </div>
             </div>
-            <div className="p-4 bg-[#141414] border border-[#2A2A2A]">
-              <span className="font-heading font-black text-2xl sm:text-3xl text-white block">52 XE</span>
-              <span className="text-xs uppercase tracking-wider text-[#737373] mt-1 block">Sở Hữu Trực Tiếp</span>
-            </div>
-            <div className="p-4 bg-[#141414] border border-[#2A2A2A]">
-              <span className="font-heading font-black text-2xl sm:text-3xl text-[#FF6A00] block">15.000M²</span>
-              <span className="text-xs uppercase tracking-wider text-[#737373] mt-1 block">Bãi Xe Trung Tâm</span>
-            </div>
-            <div className="p-4 bg-[#141414] border border-[#2A2A2A]">
-              <span className="font-heading font-black text-2xl sm:text-3xl text-white block">850+</span>
-              <span className="text-xs uppercase tracking-wider text-[#737373] mt-1 block">Đối Tác Doanh Nghiệp</span>
+
+            <div style={{ display: "grid", gap: "1.25rem" }}>
+              <div className="card" style={{ borderLeft: "4px solid var(--gold-500)" }}>
+                <h3 style={{ fontSize: "1.125rem", color: "var(--navy-700)", marginBottom: "0.5rem" }}>
+                  Chủ xe trực tiếp điều phối
+                </h3>
+                <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.6 }}>
+                  Không qua các khâu trung gian môi giới, giúp khách hàng làm việc trực tiếp với đội ngũ quản lý xe, chủ động thời gian bốc xếp và nắm rõ biểu phí minh bạch.
+                </p>
+              </div>
+
+              <div className="card" style={{ borderLeft: "4px solid var(--navy-700)" }}>
+                <h3 style={{ fontSize: "1.125rem", color: "var(--navy-700)", marginBottom: "0.5rem" }}>
+                  Tài xế bản địa giàu kinh nghiệm
+                </h3>
+                <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.6 }}>
+                  Đội ngũ lái xe am hiểu tường tận từng khúc cua, điểm nghỉ và quy định tải trọng trên từng cung đường quốc lộ, cao tốc và đường đèo Tây Bắc.
+                </p>
+              </div>
+
+              <div className="card" style={{ borderLeft: "4px solid var(--gold-500)" }}>
+                <h3 style={{ fontSize: "1.125rem", color: "var(--navy-700)", marginBottom: "0.5rem" }}>
+                  Đầy đủ trang thiết bị chằng buộc
+                </h3>
+                <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.6 }}>
+                  Mỗi xe đều trang bị đầy đủ tăng đơ bạt, nẹp góc cao su, thanh chống xô lệch và bạt chống thấm 2 lớp chuyên dụng.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ STORY & MISSION SECTION ═══ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#F2F0EA] text-[#0B0B0B]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-6 space-y-6 reveal-left">
-            <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
-              SỨ MỆNH VẬN HÀNH
-            </span>
-            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight leading-tight text-[#0B0B0B]">
-              LÀM CHỦ HẠ TẦNG ĐỂ LÀM CHỦ CHẤT LƯỢNG
-            </h2>
-            <p className="text-base sm:text-lg text-[#525252] font-light leading-relaxed">
-              Trong ngành logistics, sự chậm trễ hoặc hư hao hàng hóa có thể kéo theo thiệt hại hàng tỷ đồng cho một dây chuyền sản xuất. Thấu hiểu điều đó, Tiên Phong không chọn con đường làm trung gian điều xe ngoài. Chúng tôi đầu tư đồng bộ từ phương tiện, bãi đỗ đến xưởng bảo trì để kiểm soát 100% mọi chuyến đi.
-            </p>
-            <p className="text-base sm:text-lg text-[#525252] font-light leading-relaxed">
-              Mỗi tài xế Tiên Phong là một nhân sự biên chế chính thức, có thâm niên lái xe tải nặng tối thiểu 8 năm, có chứng chỉ an toàn lao động và được kiểm tra y tế định kỳ.
-            </p>
-          </div>
-
-          <div className="lg:col-span-6 reveal-right">
-            <div className="relative overflow-hidden h-80 sm:h-96 md:h-[480px] w-full border border-[#DDD9CF] card-hover">
-              <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
-                alt="Đội ngũ vận tải Tiên Phong tại bãi xe trung tâm"
-                className="w-full h-full object-cover img-editorial"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ CORE VALUES ═══ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F]">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <div className="space-y-4 max-w-3xl reveal-on-scroll">
-            <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
-              TRIẾT LÝ VẬN HÀNH
-            </span>
-            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight leading-tight text-white">
-              4 NGUYÊN TẮC BẤT DI BẤT DỊCH
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {VALUES.map((val, idx) => {
-              const delays = ["delay-75", "delay-150", "delay-200", "delay-250"];
-              return (
-                <div
-                  key={val.num}
-                  className={`p-8 bg-[#141414] border border-[#2A2A2A] space-y-4 flex flex-col justify-between reveal-on-scroll card-hover ${delays[idx % delays.length]}`}
-                >
-                  <div className="space-y-3">
-                    <span className="font-heading font-black text-4xl text-[#FF6A00] block">
-                      {val.num}
-                    </span>
-                    <h3 className="font-heading font-bold text-lg text-white uppercase">
-                      {val.title}
-                    </h3>
-                    <p className="text-sm text-[#A3A3A3] font-light leading-relaxed">
-                      {val.desc}
-                    </p>
+      {/* Company details */}
+      <section className="section" style={{ background: "var(--cream-50)" }}>
+        <div className="wrap">
+          <div style={{ display: "grid", gap: "3rem" }} className="about-grid">
+            {/* Legal Info */}
+            <div>
+              <div className="eyebrow" style={{ marginBottom: "0.75rem" }}>HỒ SƠ PHÁP LÝ</div>
+              <h2 className="reveal" style={{ fontSize: "var(--fs-h2)", color: "var(--navy-700)", marginBottom: "var(--space-6)" }}>
+                Thông tin doanh nghiệp
+              </h2>
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                <div className="card reveal delay-1">
+                  <span style={{ fontSize: "var(--fs-small)", color: "var(--text-muted)", display: "block", marginBottom: "0.25rem" }}>Tên đầy đủ theo ĐKKD</span>
+                  <span style={{ fontWeight: 800, color: "var(--navy-700)", fontSize: "1rem" }}>{company.name}</span>
+                </div>
+                <div className="card reveal delay-2">
+                  <span style={{ fontSize: "var(--fs-small)", color: "var(--text-muted)", display: "block", marginBottom: "0.25rem" }}>Địa chỉ trụ sở chính</span>
+                  <span style={{ fontWeight: 600, color: "var(--navy-700)" }}>{company.address}</span>
+                </div>
+                <div className="card reveal delay-3">
+                  <span style={{ fontSize: "var(--fs-small)", color: "var(--text-muted)", display: "block", marginBottom: "0.25rem" }}>Mã số thuế doanh nghiệp</span>
+                  <span style={{ fontWeight: 700, color: "var(--gold-600)", fontSize: "1.125rem" }}>{company.taxCode}</span>
+                </div>
+                <div className="card reveal delay-4">
+                  <span style={{ fontSize: "var(--fs-small)", color: "var(--text-muted)", display: "block", marginBottom: "0.25rem" }}>Lĩnh vực kinh doanh</span>
+                  <span style={{ fontWeight: 600, color: "var(--navy-700)" }}>{company.services.join(" · ")}</span>
+                </div>
+                <div className="card reveal delay-5">
+                  <span style={{ fontSize: "var(--fs-small)", color: "var(--text-muted)", display: "block", marginBottom: "0.25rem" }}>Đường dây nóng tiếp nhận 24/7</span>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem", alignItems: "center" }}>
+                    <a href={company.hotlineTel} style={{ fontWeight: 800, color: "var(--gold-600)", fontSize: "1.25rem" }}>{company.hotline}</a>
+                    <a href={`mailto:${company.email}`} style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>{company.email}</a>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            </div>
+
+            {/* Commitments */}
+            <div>
+              <div className="eyebrow" style={{ marginBottom: "0.75rem" }}>CAM KẾT DỊCH VỤ</div>
+              <h2 className="reveal" style={{ fontSize: "var(--fs-h2)", color: "var(--navy-700)", marginBottom: "var(--space-6)" }}>
+                4 tiêu chí vàng khi giao nhận
+              </h2>
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                {[
+                  { title: "Đúng giờ & Giữ chữ tín", desc: "Xuất bến đúng hẹn, duy trì tốc độ an toàn và bàn giao đúng thời gian cam kết trong hợp đồng." },
+                  { title: "Thùng kín khô ráo – Thùng bạt kiên cố", desc: "Thùng xe luôn được vệ sinh sạch sẽ trước khi bốc hàng, chống nước mưa và bụi đường 100%." },
+                  { title: "Cập nhật định vị hành trình liên tục", desc: "Chủ hàng được thông báo vị trí xe theo thời gian thực qua Zalo, an tâm kiểm soát tiến độ chuyến hàng." },
+                  { title: "Báo giá trực tiếp – Không phát sinh", desc: "Mức cước rõ ràng theo từng loại xe và lộ trình thực tế, hóa đơn chứng từ đầy đủ hợp lệ." },
+                ].map((item, idx) => (
+                  <div key={idx} className={`card reveal delay-${idx + 1}`}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.375rem" }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-600)" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "var(--navy-700)" }}>{item.title}</h3>
+                    </div>
+                    <p style={{ fontSize: "var(--fs-small)", color: "var(--text-muted)", lineHeight: 1.6, paddingLeft: "1.65rem" }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ TIMELINE SECTION ═══ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#141414] border-t border-[#1F1F1F]">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <div className="space-y-4 max-w-3xl reveal-on-scroll">
-            <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
-              CHẶNG ĐƯỜNG PHÁT TRIỂN
-            </span>
-            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight leading-tight text-white">
-              10 NĂM ĐỒNG HÀNH CÙNG DOANH NGHIỆP
+      {/* Company profile images */}
+      <section className="section section-cream-alt">
+        <div className="wrap">
+          <div className="reveal" style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto var(--space-8)" }}>
+            <div className="eyebrow" style={{ marginBottom: "0.5rem" }}>HỒ SƠ NĂNG LỰC DOANH NGHIỆP</div>
+            <h2 style={{ fontSize: "var(--fs-h2)", color: "var(--navy-700)" }}>
+              Tài liệu năng lực pháp nhân Hậu Nguyễn
             </h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {TIMELINE.map((t, idx) => {
-              const delays = ["delay-75", "delay-150", "delay-200", "delay-250"];
-              return (
-                <div
-                  key={t.year}
-                  className={`p-8 bg-[#0B0B0B] border border-[#2A2A2A] space-y-3 reveal-on-scroll card-hover ${delays[idx % delays.length]}`}
-                >
-                  <span className="font-heading font-black text-3xl text-[#FF6A00] block">
-                    {t.year}
-                  </span>
-                  <h3 className="font-heading font-bold text-base text-white uppercase">
-                    {t.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#A3A3A3] font-light leading-relaxed">
-                    {t.desc}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ LEGAL & LICENSING SPECIFICATION ═══ */}
-      <section className="py-24 sm:py-36 px-4 sm:px-8 lg:px-16 bg-[#0B0B0B] border-t border-[#1F1F1F]">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <div className="space-y-4 max-w-3xl reveal-on-scroll">
-            <span className="text-xs uppercase tracking-[0.25em] text-[#FF6A00] font-heading font-bold block">
-              PHÁP LÝ CHÍNH NGẠCH
-            </span>
-            <h2 className="font-heading font-black text-3xl sm:text-5xl uppercase tracking-tight leading-tight text-white">
-              HỒ SƠ NĂNG LỰC DOANH NGHIỆP
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
-            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1 reveal-on-scroll delay-75 card-hover">
-              <span className="text-xs uppercase tracking-wider text-[#737373]">Tên Doanh Nghiệp:</span>
-              <span className="font-heading font-bold text-base text-white block">Công Ty TNHH TM DV Vận Tải Tiên Phong</span>
+          <div className="grid-2">
+            <div className="photo-wrap reveal delay-1" style={{ borderRadius: "var(--radius-md)", overflow: "hidden", boxShadow: "var(--shadow-md)" }}>
+              <img
+                src="/images/ho-so/Ho_so_nang_luc_Hau_Nguyen_20_trang_pages-to-jpg-0001.jpg"
+                alt="Trang bìa hồ sơ năng lực Hậu Nguyễn"
+                loading="lazy"
+                width={800}
+                height={600}
+                style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                className="photo"
+              />
             </div>
-
-            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1 reveal-on-scroll delay-150 card-hover">
-              <span className="text-xs uppercase tracking-wider text-[#737373]">Mã Số Doanh Nghiệp (MST):</span>
-              <span className="font-heading font-black text-lg text-[#FF6A00] block">0314892039</span>
+            <div className="photo-wrap reveal delay-2" style={{ borderRadius: "var(--radius-md)", overflow: "hidden", boxShadow: "var(--shadow-md)" }}>
+              <img
+                src="/images/ho-so/Ho_so_nang_luc_Hau_Nguyen_20_trang_pages-to-jpg-0002.jpg"
+                alt="Giới thiệu công ty trong hồ sơ năng lực"
+                loading="lazy"
+                width={800}
+                height={600}
+                style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                className="photo"
+              />
             </div>
-
-            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1 reveal-on-scroll delay-200 card-hover">
-              <span className="text-xs uppercase tracking-wider text-[#737373]">Giấy Phép Vận Tải Ô Tô:</span>
-              <span className="font-heading font-bold text-base text-white block">41-GPVT/SGTVT (Sở GTVT TP.HCM)</span>
-            </div>
-
-            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1">
-              <span className="text-xs uppercase tracking-wider text-[#737373]">Vốn Điều Lệ Thực Góp:</span>
-              <span className="font-heading font-bold text-base text-white block">20.000.000.000 VNĐ</span>
-            </div>
-
-            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1">
-              <span className="text-xs uppercase tracking-wider text-[#737373]">Hạn Mức Bảo Hiểm Hàng Hóa:</span>
-              <span className="font-heading font-bold text-base text-[#FF6A00] block">10.000.000.000 VNĐ / Vụ (PVI)</span>
-            </div>
-
-            <div className="p-6 bg-[#141414] border border-[#2A2A2A] space-y-1">
-              <span className="text-xs uppercase tracking-wider text-[#737373]">Bãi Xe Trung Tâm:</span>
-              <span className="font-heading font-bold text-base text-white block">KCN Sóng Thần 1, Dĩ An, Bình Dương</span>
-            </div>
-          </div>
-
-          <div className="pt-4 text-center">
-            <Link
-              href="/contact"
-              className="btn-arrow-hover inline-block px-10 py-5 bg-[#FF6A00] hover:bg-[#E55F00] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all"
-            >
-              <span>LIÊN HỆ HỢP TÁC VẬN TẢI</span>
-              <span className="arrow-move ml-2 font-bold">→</span>
-            </Link>
           </div>
         </div>
       </section>

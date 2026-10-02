@@ -1,0 +1,22 @@
+{
+  "name": "CÔNG TY TNHH XÂY DỰNG VÀ DỊCH VỤ VẬN TẢI HẬU NGUYỄN",
+  "shortName": "Hậu Nguyễn",
+  "brandName": "Hậu Nguyễn Transport",
+  "slogan": "Vận tải – Xây dựng – Dịch vụ",
+  "address": "92 Đông Xuân, Xã Trường Văn, Tỉnh Thanh Hóa",
+  "hotline": "0823 040 412",
+  "hotlineTel": "tel:0823040412",
+  "zalo": "0823 040 412",
+  "zaloLink": "https://zalo.me/0823040412",
+  "email": "nguyenhau1707hhh@gmail.com",
+  "taxCode": "2803219353",
+  "established": "13/03/2026",
+  "services": ["Vận tải hàng hoá", "Xây dựng", "Dịch vụ"],
+  "mainRoutes": {
+    "from": ["Hà Tĩnh", "Nghệ An", "Thanh Hóa"],
+    "to": "các tỉnh phía Bắc và Tây Bắc"
+  },
+  "brands": ["Hino", "Hyundai"],
+  "bodyTypes": ["Thùng kín", "Thùng bạt"],
+  "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3746.5!2d105.75!3d19.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z4bqg4buLYSBjaOG7iSA5MiDEkMO0bmcgWHXDom4sIFRyxrDhu51uZyBWxINuLCBUaGFuaCBIw7Nh!5e0!3m2!1svi!2svn!4v1"
+}
