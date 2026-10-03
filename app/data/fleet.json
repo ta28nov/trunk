@@ -5,10 +5,10 @@
     "group": "nhỏ",
     "tonnage": 3.5,
     "volume_m3": 18,
-    "body": null,
-    "brand": null,
+    "body": "Thùng kín",
+    "brand": "Hyundai",
     "image": "/images/anh-xe/hyundai-thung-kin-04-xeo.jpg",
-    "suitable_for": "Hàng tiêu dùng, nội thất nhỏ, hàng lẻ nội thành & liên tỉnh cự ly gần",
+    "suitable_for": "Hàng tiêu dùng, bao bì đóng hộp, nội thất, hàng lẻ liên tỉnh",
     "price": null
   },
   {
@@ -17,10 +17,10 @@
     "group": "trung",
     "tonnage": 6,
     "volume_m3": 35,
-    "body": null,
-    "brand": null,
-    "image": "/images/anh-xe/2aobor2bwezaofexh8djevyqev5lhuxmkjzhyvsc4.jpg",
-    "suitable_for": "Hàng tiêu dùng, bao bì, hạt nhựa, vật liệu nhẹ, hàng đóng kiện",
+    "body": "Thùng kín / Thùng bạt",
+    "brand": "Hyundai",
+    "image": "/images/anh-xe/dauxemautrang.jpg",
+    "suitable_for": "Hàng thương mại, bao bì, hạt nhựa, thiết bị nhẹ đóng pallet",
     "price": null
   },
   {
@@ -29,10 +29,10 @@
     "group": "trung",
     "tonnage": 8,
     "volume_m3": 55,
-    "body": null,
-    "brand": null,
+    "body": "Thùng kín & Thùng bạt",
+    "brand": "Hino",
     "image": "/images/anh-xe/hino-thung-kin-trang-va-xe-thung-bat-03.jpg",
-    "suitable_for": "Điện máy, nội thất, hàng công nghiệp cỡ vừa, máy móc thiết bị",
+    "suitable_for": "Điện máy, nội thất, máy móc cỡ vừa, kiện hàng cồng kềnh",
     "price": null
   },
   {
@@ -41,10 +41,10 @@
     "group": "nặng",
     "tonnage": 10,
     "volume_m3": 60,
-    "body": null,
-    "brand": null,
-    "image": "/images/anh-xe/2aobor2ds0wcrwmfn6felo7xcnbykze8dc0usey48.jpg",
-    "suitable_for": "Vật liệu xây dựng, nông sản, hàng cồng kềnh, hàng theo dự án",
+    "body": "Thùng bạt",
+    "brand": "Hino",
+    "image": "/images/anh-xe/2xe.jpg",
+    "suitable_for": "Vật liệu xây dựng, nông sản, hàng dự án theo chuyến",
     "price": null
   },
   {
@@ -53,10 +53,10 @@
     "group": "nặng",
     "tonnage": 15,
     "volume_m3": 60,
-    "body": null,
-    "brand": null,
-    "image": "/images/anh-xe/2aobor2dsq0ovyscdkx33jpr6gc3vqc12uu56br212.jpg",
-    "suitable_for": "Hàng nặng, máy móc tải trọng lớn, hàng dài, vận chuyển liên tỉnh đường dài",
+    "body": "Thùng bạt đường dài",
+    "brand": "Hino",
+    "image": "/images/anh-xe/duoi2xetai.jpg",
+    "suitable_for": "Hàng nặng tải lớn, sắt thép, máy móc công trình, đường dài lên Tây Bắc",
     "price": null
   }
 ]

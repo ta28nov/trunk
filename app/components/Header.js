@@ -55,35 +55,57 @@ export default function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
+  const isDarkHeader = pathname === "/" && !scrolled;
+
   return (
     <>
       <div
         className={`header ${scrolled ? "scrolled" : ""} ${!visible && !mobileOpen ? "hidden-up" : ""}`}
+        style={{
+          background: isDarkHeader
+            ? "linear-gradient(180deg, rgba(10, 14, 23, 0.85) 0%, rgba(10, 14, 23, 0) 100%)"
+            : undefined,
+          borderBottom: isDarkHeader
+            ? "1px solid rgba(255, 255, 255, 0.08)"
+            : undefined,
+        }}
       >
         <div className="wrap" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "0 1.25rem" }}>
-          {/* Logo */}
-          <Link href="/" style={{ display: "flex", alignItems: "center", gap: "0.75rem", textDecoration: "none" }}>
+          {/* Logo - pure logo without text */}
+          <Link
+            href="/"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              textDecoration: "none",
+              padding: "0.25rem 0",
+            }}
+          >
             <img
-              src="/images/logo/logo-hn.svg"
-              alt="Logo Hậu Nguyễn"
-              style={{ height: "40px", width: "auto" }}
-              width={120}
-              height={40}
+              src="/images/logo/logo-brand.png"
+              alt="Logo Hậu Nguyễn Transport"
+              style={{
+                height: "44px",
+                width: "auto",
+                maxHeight: "44px",
+                objectFit: "contain",
+                display: "block",
+                filter: isDarkHeader ? "drop-shadow(0 1px 4px rgba(255, 255, 255, 0.45))" : "none",
+                transition: "filter 0.3s ease",
+              }}
+              height={44}
             />
-            <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.2 }}>
-              <span style={{ fontWeight: 800, fontSize: "1.125rem", color: "var(--navy-700)", letterSpacing: "-0.02em" }}>
-                HẬU NGUYỄN
-              </span>
-              <span style={{ fontSize: "0.625rem", color: "var(--text-muted)", letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 500 }}>
-                {company.slogan}
-              </span>
-            </div>
           </Link>
 
           {/* Desktop Nav */}
           <nav style={{ display: "flex", alignItems: "center", gap: "0.25rem" }} className="desktop-nav">
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href;
+              const linkColor = isActive
+                ? "var(--gold-500)"
+                : isDarkHeader
+                ? "rgba(255, 255, 255, 0.85)"
+                : "var(--text-muted)";
               return (
                 <Link
                   key={item.href}
@@ -92,7 +114,7 @@ export default function Header() {
                     padding: "0.5rem 0.875rem",
                     fontSize: "0.8125rem",
                     fontWeight: 600,
-                    color: isActive ? "var(--gold-600)" : "var(--text-muted)",
+                    color: linkColor,
                     transition: "color .2s",
                     textDecoration: "none",
                   }}
@@ -115,14 +137,27 @@ export default function Header() {
                 textAlign: "right",
                 lineHeight: 1.3,
                 paddingRight: "0.75rem",
-                borderRight: "1px solid var(--cream-200)",
+                borderRight: isDarkHeader ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid var(--cream-200)",
                 textDecoration: "none",
+                transition: "border-color .3s",
               }}
             >
-              <span style={{ fontSize: "0.625rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--text-muted)", fontWeight: 500 }}>
+              <span style={{
+                fontSize: "0.625rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.15em",
+                color: isDarkHeader ? "rgba(255, 255, 255, 0.6)" : "var(--text-muted)",
+                fontWeight: 500,
+                transition: "color .3s"
+              }}>
                 Hotline
               </span>
-              <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--navy-700)" }}>
+              <span style={{
+                fontSize: "0.8125rem",
+                fontWeight: 700,
+                color: isDarkHeader ? "var(--gold-300)" : "var(--navy-700)",
+                transition: "color .3s"
+              }}>
                 {company.hotline}
               </span>
             </a>
@@ -163,9 +198,9 @@ export default function Header() {
                 display: "block",
                 width: "22px",
                 height: "2px",
-                background: "var(--navy-700)",
+                background: isDarkHeader && !mobileOpen ? "#FFFFFF" : "var(--navy-700)",
                 borderRadius: "1px",
-                transition: "transform .3s, opacity .3s",
+                transition: "transform .3s, opacity .3s, background .3s",
                 transform: mobileOpen ? "rotate(45deg) translateY(0px)" : "none",
                 position: mobileOpen ? "absolute" : "relative",
               }} />
@@ -173,18 +208,18 @@ export default function Header() {
                 display: "block",
                 width: "22px",
                 height: "2px",
-                background: "var(--navy-700)",
+                background: isDarkHeader && !mobileOpen ? "#FFFFFF" : "var(--navy-700)",
                 borderRadius: "1px",
-                transition: "opacity .3s",
+                transition: "opacity .3s, background .3s",
                 opacity: mobileOpen ? 0 : 1,
               }} />
               <span style={{
                 display: "block",
                 width: "22px",
                 height: "2px",
-                background: "var(--navy-700)",
+                background: isDarkHeader && !mobileOpen ? "#FFFFFF" : "var(--navy-700)",
                 borderRadius: "1px",
-                transition: "transform .3s, opacity .3s",
+                transition: "transform .3s, opacity .3s, background .3s",
                 transform: mobileOpen ? "rotate(-45deg) translateY(0px)" : "none",
                 position: mobileOpen ? "absolute" : "relative",
               }} />

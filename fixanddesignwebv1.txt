@@ -1,0 +1,1848 @@
+# HẬU NGUYỄN TRANSPORT
+
+# COMPREHENSIVE UI/UX REDESIGN + CONTENT ARCHITECTURE + RESPONSIVE FIX
+
+## ROLE
+
+Bạn là một Senior Product Designer + UI/UX Designer + Frontend Engineer chuyên xây dựng các website:
+
+* Logistics
+* Transportation
+* Automotive
+* Industrial
+* Corporate
+* Editorial-style business websites
+
+Bạn có nhiệm vụ cải tổ giao diện hiện tại của website Hậu Nguyễn Transport.
+
+Đây KHÔNG phải nhiệm vụ "sửa vài lỗi CSS".
+
+Đây là một đợt:
+
+> UI/UX restructuring + content architecture + visual redesign + responsive reconstruction + asset direction + brand/logo redesign
+
+Mục tiêu là đưa website từ trạng thái hiện tại thành một website logistics hiện đại, chuyên nghiệp, có chiều sâu thị giác và có chất lượng thiết kế tiệm cận các website Business / Logistics / Transportation nổi bật trên Awwwards.
+
+---
+
+# 0. TÀI LIỆU BẮT BUỘC PHẢI ĐỌC TRƯỚC
+hình ảnh sẽ được lấy trong  C:\Users\Admin\Downloads\trunk\files\anh-xe-hau-nguyen\anh-xe, đảm bảo xem hình để không bị trùng ảnh khi đưa vào, ngoài ra nếu thiếu ảnh có thể cho phép lấy ảnh và video bên ngoài nhưng phải liên quan
+Trong project/conversation có báo cáo:
+
+`Pasted markdown(4).md`
+
+Đây là:
+
+# HẬU NGUYỄN TRANSPORT — BÁO CÁO KIỂM THỬ TOÀN DIỆN (BASELINE AUDIT REPORT)
+
+Hãy đọc TOÀN BỘ báo cáo trước khi bắt đầu sửa.
+
+Không chỉ đọc phần Critical Bugs.
+
+Phải đọc:
+
+* Environment
+* Route Inventory
+* Page-by-Page Audit
+* Responsive Matrix
+* Interaction Test Matrix
+* Critical Bugs
+* UI/UX Problems
+* Awwwards-Level Design Review
+* Recommended Fix Order
+* Files Likely Requiring Changes
+
+Báo cáo đã có evidence từ Chrome/CDP và source code.
+
+Hãy coi nó là:
+
+> BASELINE TECHNICAL + UX EVIDENCE
+
+chứ không phải một thiết kế bắt buộc phải sao chép.
+
+---
+
+# 1. NGUYÊN TẮC QUAN TRỌNG NHẤT
+
+## KHÔNG SỬA MÙ
+
+Trước khi sửa:
+
+1. Đọc report.
+2. Đọc source code thực tế.
+3. Chạy project.
+4. Mở website bằng browser.
+5. Kiểm tra UI thực tế.
+6. Đối chiếu report với implementation hiện tại.
+7. Sau đó mới quyết định giải pháp.
+
+Nếu report nói một element bị lỗi nhưng code hiện tại đã thay đổi:
+
+> Tin code/UI hiện tại sau khi xác minh bằng browser.
+
+Không áp dụng máy móc kết luận cũ.
+
+---
+
+# 2. MỤC TIÊU THIẾT KẾ
+
+Website cần hướng tới:
+
+> MODERN LOGISTICS / EDITORIAL / INDUSTRIAL / PREMIUM CORPORATE
+
+Không phải:
+
+* SaaS landing page
+* AI startup
+* Web3
+* Crypto
+* Gaming
+* Dashboard
+* Template React generic
+
+Website phải vẫn có cảm giác:
+
+* doanh nghiệp vận tải thật
+* phương tiện thật
+* hoạt động thật
+* đáng tin cậy
+* dễ liên hệ
+* dễ hiểu dịch vụ
+
+Nhưng cách trình bày phải hiện đại hơn website vận tải truyền thống.
+
+---
+
+# 3. 6 VẤN ĐỀ LỚN PHẢI GIẢI QUYẾT
+
+Đây là 6 mục tiêu bắt buộc.
+
+## ISSUE 01 — HOMEPAGE QUÁ TẢI THÔNG TIN
+
+Homepage hiện tại chứa quá nhiều thông tin mà các page khác đã có.
+
+Homepage đang có nhiều section:
+
+* Hero
+* Marquee
+* Intro
+* Video
+* Fleet
+* Gallery
+* Process
+* Routes
+* Bento
+* Quote
+* Map
+
+Bản thân việc có nhiều section không phải vấn đề.
+
+Vấn đề là:
+
+> Homepage đang cố kể gần như toàn bộ câu chuyện doanh nghiệp.
+
+Hãy tái cấu trúc information architecture.
+
+Homepage chỉ nên trả lời nhanh:
+
+1. Họ là ai?
+2. Họ cung cấp gì?
+3. Họ có loại dịch vụ/phương tiện nào?
+4. Họ hoạt động ở đâu?
+5. Tại sao khách hàng nên tìm hiểu thêm?
+6. Tôi liên hệ ở đâu?
+
+Các nội dung chuyên sâu phải được đưa về:
+
+`/fleet`
+
+`/pricing`
+
+`/routes`
+
+`/about`
+
+`/contact`
+
+Homepage phải là:
+
+> OVERVIEW + TRUST + DISCOVERY + CONVERSION
+
+không phải:
+
+> EVERYTHING PAGE
+
+---
+
+# 4. PAGE ROLES
+
+Thiết kế lại content hierarchy của từng page.
+
+## `/`
+
+### Purpose
+
+Brand introduction + overview + conversion.
+
+### Không cần
+
+* toàn bộ thông tin đội xe
+* toàn bộ tuyến đường
+* toàn bộ pricing explanation
+* toàn bộ company profile
+* toàn bộ contact details
+
+### Cần
+
+* strong hero
+* short value proposition
+* representative fleet
+* service/coverage preview
+* brief process/trust
+* visual storytelling
+* clear CTA
+* navigation sang các page chuyên sâu.
+
+---
+
+# `/fleet`
+
+Purpose:
+
+> giúp khách hiểu đội xe.
+
+Ưu tiên:
+
+* ảnh xe thực tế
+* tải trọng
+* loại thùng
+* hãng xe nếu dữ liệu xác thực
+* đặc điểm xe
+* use case nếu có căn cứ
+* gallery
+* filter
+* CTA báo giá.
+
+Không được tự tạo thông tin kỹ thuật.
+
+---
+
+# `/pricing`
+
+Purpose:
+
+> giúp khách hiểu cách nhận báo giá.
+
+Nếu client không cung cấp giá:
+
+KHÔNG tự tạo giá.
+
+KHÔNG tự tạo:
+
+* giá/km
+* giá tối thiểu
+* bảng giá giả
+* thời gian giao hàng giả
+* phụ phí giả.
+
+Có thể giải thích:
+
+* khoảng cách
+* loại xe
+* loại hàng
+* loại thùng
+* tuyến
+* yêu cầu vận chuyển
+
+nếu các thông tin đó đã có trong project.
+
+CTA:
+
+> Nhận báo giá.
+
+---
+
+# `/routes`
+
+Purpose:
+
+> giúp khách hiểu phạm vi vận chuyển.
+
+Ưu tiên:
+
+* geographic storytelling
+* map
+* route visualization
+* location grouping
+* visual route representation
+* concise explanation.
+
+Không biến page thành danh sách địa danh dài.
+
+---
+
+# `/about`
+
+Purpose:
+
+> xây dựng trust.
+
+Ưu tiên:
+
+* company story
+* operational reality
+* actual imagery
+* business information
+* capabilities
+* process
+* legal/company information nếu đã xác thực.
+
+Không biến page thành một đống văn bản pháp lý.
+
+---
+
+# `/contact`
+
+Purpose:
+
+> conversion.
+
+Ưu tiên:
+
+* hotline
+* Zalo
+* form
+* location
+* map
+* CTA.
+
+Thông tin liên hệ phải tìm được trong vài giây.
+
+---
+
+# 5. HOMEPAGE HERO — PHẢI THIẾT KẾ LẠI
+
+Đây là lỗi nghiêm trọng nhất trong report.
+
+Hiện tại `.hero-sub-images` sử dụng absolute positioning và đè lên phần mô tả Hero.
+
+Không được chỉ sửa bằng:
+
+```css
+z-index
+```
+
+hoặc:
+
+```css
+overflow: hidden
+```
+
+Đó chỉ là che lỗi.
+
+Phải redesign composition.
+
+Hero phải có visual hierarchy rõ:
+
+```text
+EYEBROW
+
+PRIMARY HEADLINE
+
+SUPPORTING COPY
+
+PRIMARY CTA + SECONDARY CTA
+
+VISUAL / VEHICLE IMAGE
+```
+
+Hình ảnh phải hỗ trợ text.
+
+Không được cạnh tranh với text.
+
+Không được che text.
+
+Không được để background truck trở thành visual mạnh hơn headline.
+
+---
+
+# 6. HERO MOBILE
+
+Đặc biệt kiểm tra:
+
+320
+375
+390
+430
+768
+
+Hero mobile phải đảm bảo:
+
+* headline nhìn thấy ngay
+* supporting copy không bị đẩy quá xa
+* CTA không nằm below-the-fold một cách vô lý
+* image không chiếm toàn bộ viewport
+* không có horizontal overflow
+* không có collision.
+
+Không được chỉ thu nhỏ desktop Hero.
+
+Mobile có thể có composition riêng.
+
+---
+
+# 7. LOGO — REDESIGN HOÀN TOÀN
+
+Logo hiện tại cần được xem là một vấn đề branding riêng.
+
+Report phát hiện logo SVG đã chứa chữ thương hiệu, trong khi Header lại render thêm text HTML, dẫn tới duplication.
+
+Nhưng mục tiêu hiện tại còn lớn hơn:
+
+> thiết kế một logo mới tốt hơn.
+
+## Không thay đổi:
+
+* tên HẬU NGUYỄN
+* bản chất thương hiệu
+* thông tin thương hiệu đã xác thực.
+
+## Nghiên cứu:
+
+* transportation branding
+* logistics branding
+* trucking identity
+* industrial identity
+* modern monogram
+* wordmark
+* responsive logo
+* favicon.
+
+## Logo system cần có:
+
+### Primary
+
+Icon + wordmark.
+
+### Compact
+
+Icon + abbreviated wordmark hoặc icon-only.
+
+### Favicon
+
+Hoạt động tốt ở kích thước nhỏ.
+
+### Mobile
+
+Không bị ép sát hamburger.
+
+---
+
+# 8. LOGO DESIGN DIRECTION
+
+Không tạo logo kiểu:
+
+* xe tải cartoon
+* bánh xe generic
+* mũi tên generic
+* road icon generic
+* logistics icon stock
+* quá nhiều chi tiết.
+
+Hãy nghiên cứu khả năng phát triển một:
+
+> distinctive HN monogram / geometric symbol / transportation-inspired mark
+
+nhưng phải phù hợp với thương hiệu thật.
+
+Logo phải hoạt động tốt ở:
+
+* navbar
+* footer
+* favicon
+* social avatar
+* mobile.
+
+Nếu có thể:
+
+* tạo SVG vector sạch
+* không phụ thuộc raster
+* dễ scale
+* không quá nhiều path không cần thiết.
+
+---
+
+# 9. ASSET AUDIT
+
+Kiểm tra toàn bộ:
+
+`public/images`
+
+và các asset khác.
+
+Tạo mental model:
+
+```text
+Asset
+→ Page
+→ Section
+→ Purpose
+```
+
+Tìm:
+
+* ảnh trùng
+* ảnh thiếu
+* ảnh sai context
+* ảnh crop xấu
+* ảnh quá nhỏ
+* ảnh quá lớn
+* ảnh bị stretched
+* ảnh bị dùng lại quá nhiều.
+
+---
+
+# 10. ẢNH VÀ VIDEO KHÔNG ĐƯỢC DÙNG CHỈ ĐỂ LẤP ĐẦY KHOẢNG TRỐNG
+
+Mỗi visual phải có vai trò.
+
+Ví dụ:
+
+## Fleet
+
+Vehicle photography.
+
+## Routes
+
+Map / route visual.
+
+## About
+
+Operational/company imagery.
+
+## Contact
+
+Location/map.
+
+## Homepage
+
+Best representative imagery.
+
+Không dùng cùng một ảnh hero ở mọi page chỉ vì ảnh đó đẹp.
+
+---
+
+# 11. ẢNH HỒ SƠ NĂNG LỰC
+
+Report phát hiện hai ảnh:
+
+* gần 4MB
+* gần 5.7MB
+
+tổng gần 10MB.
+
+Đây là vấn đề performance thực tế.
+
+Phải xử lý.
+
+Ưu tiên:
+
+* WebP/AVIF nếu phù hợp
+* responsive sizing
+* lazy loading
+* proper dimensions.
+
+Không cần giữ file JPG khổng lồ để hiển thị thumbnail.
+
+Nếu tài liệu cần xem chất lượng cao:
+
+* thumbnail tối ưu
+* click để mở bản lớn
+
+thay vì tải bản 10MB ngay từ đầu.
+
+---
+
+# 12. RESPONSIVE — PHẢI SỬA TẬN GỐC
+
+Report đã xác minh:
+
+Homepage:
+
+320–820 FAIL
+
+Contact:
+
+320–768 FAIL
+
+Routes:
+
+320 FAIL
+
+About:
+
+320 FAIL
+
+Fleet:
+
+PASS
+
+Pricing:
+
+PASS
+
+Các số liệu cụ thể nằm trong Responsive Matrix của report.
+
+Không được giải quyết bằng:
+
+```css
+body {
+    overflow-x: hidden;
+}
+```
+
+Đây là PROHIBITED SHORTCUT.
+
+Phải tìm nguyên nhân.
+
+---
+
+# 13. RESPONSIVE BREAKPOINTS
+
+Test tối thiểu:
+
+320
+375
+390
+430
+768
+820
+1024
+1280
+1440
+1920
+2560
+
+Test:
+
+* homepage
+* fleet
+* pricing
+* routes
+* about
+* contact
+
+Không chỉ kiểm tra `scrollWidth`.
+
+Phải kiểm tra:
+
+* visual hierarchy
+* section height
+* content wrapping
+* typography
+* image crop
+* card width
+* CTA
+* form
+* navbar
+* modal
+* map
+* footer
+* whitespace.
+
+---
+
+# 14. FIX GRID CORRECTLY
+
+Report đã xác định các nguyên nhân như:
+
+```css
+minmax(320px, 1fr)
+```
+
+ở `/about`
+
+và:
+
+```css
+minmax(300px, 1fr)
+```
+
+ở `/routes`.
+
+Đây là nguyên nhân gây overflow tại 320px.
+
+Sửa theo responsive composition phù hợp.
+
+Không nhất thiết phải dùng đúng solution được đề xuất trong report.
+
+Hãy chọn solution sạch nhất dựa trên layout thực tế.
+
+---
+
+# 15. FORM GRID
+
+Homepage và Contact đang có form grid gây overflow.
+
+Đặc biệt:
+
+```text
+Điểm đi
+Điểm đến
+```
+
+không được ép 2 cột ở mobile.
+
+Mobile:
+
+```text
+Điểm đi
+
+Điểm đến
+```
+
+Desktop có thể:
+
+```text
+Điểm đi | Điểm đến
+```
+
+Nhưng hãy quyết định dựa trên actual UI.
+
+---
+
+# 16. FLEET FILTER — PHẢI SỬA FUNCTIONAL BUG
+
+Report xác định:
+
+`brand` và `body` trong `fleet.json` đang null.
+
+Do đó filter:
+
+* Hino
+* Hyundai
+* Thùng kín
+* Thùng bạt
+
+không thực sự filter.
+
+PHẢI sửa.
+
+NHƯNG:
+
+## CỰC KỲ QUAN TRỌNG
+
+Không lấy các giá trị ví dụ trong report và coi đó là sự thật.
+
+Report có đưa ví dụ như:
+
+```text
+xe-3t5 → Hyundai
+xe-8t → Hino
+```
+
+Đó chỉ là ví dụ hướng xử lý.
+
+Hãy kiểm tra:
+
+* actual vehicle data
+* ảnh xe
+* text hiện tại
+* các thông tin client đã cung cấp
+
+rồi mới populate.
+
+Nếu không xác định được:
+
+> Không được tự bịa.
+
+Có thể để filter disabled/ẩn hoặc đánh dấu TODO cần dữ liệu xác thực.
+
+---
+
+# 17. FLEET CARD HIERARCHY
+
+Chuẩn hóa heading hierarchy.
+
+Nếu page section đã dùng H2:
+
+Vehicle card nên sử dụng:
+
+```html
+<h3>
+```
+
+không dùng H2 cho mọi card.
+
+Đồng thời kiểm tra:
+
+* title
+* specs
+* image
+* CTA
+* badge
+* spacing.
+
+---
+
+# 18. MODAL
+
+Modal báo giá Fleet phải kiểm tra:
+
+* focus trap
+* ESC
+* close button
+* keyboard
+* scroll lock
+* screen reader
+* mobile layout
+* viewport height.
+
+Không chỉ làm modal "trông đẹp".
+
+---
+
+# 19. ACCESSIBILITY
+
+Sửa toàn bộ form.
+
+Các:
+
+```html
+<label>
+```
+
+phải liên kết với:
+
+```html
+<input id="">
+```
+
+bằng:
+
+```html
+<label htmlFor="">
+```
+
+Kiểm tra:
+
+* focus ring
+* keyboard navigation
+* button states
+* aria-label
+* modal accessibility
+* map iframe title
+* alt text
+* heading hierarchy
+* color contrast.
+
+Report đã xác định form inputs thiếu liên kết label/input.
+
+---
+
+# 20. COLOR CONTRAST
+
+Không dùng gold quá sáng làm body text.
+
+Kiểm tra contrast thực tế.
+
+Đặc biệt các màu accent vàng trên background cream/white.
+
+Accent có thể dùng cho:
+
+* decorative line
+* icon
+* badge
+* highlight
+* large display text
+
+nhưng body text cần đủ contrast.
+
+---
+
+# 21. FLOATING ZALO
+
+Floating Zalo hiện có thể che content.
+
+Không được chỉ đẩy nó:
+
+```right: 20px;
+```
+
+Hãy thiết kế behavior phù hợp.
+
+Ví dụ:
+
+Desktop:
+
+* floating CTA
+
+Mobile:
+
+* bottom action bar hoặc compact button
+
+Trong các section quan trọng:
+
+* không che heading
+* không che table
+* không che form
+* không che navigation.
+
+---
+
+# 22. CONTENT ARCHITECTURE
+
+Đừng chỉ sửa visual.
+
+Đọc toàn bộ content hiện tại.
+
+Đánh dấu từng block:
+
+```text
+KEEP
+MOVE
+CONDENSE
+REWRITE
+REMOVE
+MISSING
+VERIFY
+```
+
+## KEEP
+
+Thông tin quan trọng.
+
+## MOVE
+
+Thông tin đang nằm sai page.
+
+## CONDENSE
+
+Thông tin bị lặp.
+
+## REWRITE
+
+Copy chưa tự nhiên hoặc không đúng logic logistics.
+
+## REMOVE
+
+Nội dung không giúp khách hiểu hoặc chuyển đổi.
+
+## MISSING
+
+Thông tin visual/UX cần thiết nhưng chưa có.
+
+## VERIFY
+
+Business claim chưa thể xác minh.
+
+---
+
+# 23. BUSINESS DATA SAFETY
+
+Đây là RULE TUYỆT ĐỐI.
+
+Không được tự tạo:
+
+* số lượng xe
+* doanh thu
+* số khách hàng
+* số chuyến
+* số năm kinh nghiệm
+* bảo hiểm
+* chứng nhận
+* giá
+* giá/km
+* thời gian giao hàng
+* năng lực vận tải
+* tuyến mới
+* địa chỉ mới
+* hotline mới
+* cam kết mới.
+
+Không được biến:
+
+> "có thể đề xuất"
+
+thành:
+
+> "đã có".
+
+Nếu thiếu data:
+
+`CONTENT NEEDS VERIFICATION`
+
+---
+
+# 24. CONTENT LOGIC LOGISTICS
+
+Kiểm tra nội dung theo góc nhìn của khách hàng.
+
+Ví dụ user journey:
+
+```text
+Tôi cần vận chuyển hàng
+↓
+Tôi cần loại xe nào?
+↓
+Xe có phù hợp hàng của tôi không?
+↓
+Tuyến nào?
+↓
+Chi phí xác định thế nào?
+↓
+Tôi liên hệ bằng cách nào?
+```
+
+Website phải hỗ trợ flow này.
+
+Không chỉ đưa thông tin theo thứ tự doanh nghiệp muốn kể.
+
+---
+
+# 25. AWWWARDS RESEARCH
+
+Trước khi redesign, hãy nghiên cứu các website thực tế.
+
+Tìm kiếm:
+
+* Awwwards logistics
+* Awwwards transportation
+* Awwwards trucking
+* Awwwards freight
+* Awwwards fleet
+* Awwwards industrial
+* Awwwards corporate
+* Awwwards business services
+
+Nghiên cứu thêm:
+
+* editorial web design
+* asymmetric grid
+* broken grid
+* art direction
+* content architecture
+* visual storytelling
+* typography hierarchy
+* responsive composition
+* image art direction
+* microinteraction
+* navigation design.
+
+KHÔNG COPY.
+
+Không clone.
+
+Không lấy layout của một website rồi đổi text.
+
+Mục tiêu là tìm:
+
+```text
+REFERENCE
+↓
+PATTERN
+↓
+WHY IT WORKS
+↓
+ADAPTATION TO HẬU NGUYỄN
+```
+
+---
+
+# 26. AWWWARDS — KHÔNG CHẠY THEO TREND
+
+Không được hiểu:
+
+> Awwwards = càng nhiều animation càng tốt.
+
+Một website tốt phải đồng thời giải quyết:
+
+* design
+* usability
+* content
+* mobile
+* performance
+* accessibility
+* interaction.
+
+Do đó:
+
+> một layout đẹp nhưng khó sử dụng = thất bại.
+
+> một animation đẹp nhưng làm content khó đọc = thất bại.
+
+> một desktop đẹp nhưng mobile vỡ = thất bại.
+
+---
+
+# 27. UI/UX TERMINOLOGY PHẢI ĐƯỢC NGHIÊN CỨU VÀ ÁP DỤNG
+
+Trong quá trình research, hãy tự tìm hiểu các pattern sau:
+
+## Layout
+
+* Editorial Layout
+* Asymmetric Grid
+* Broken Grid
+* Modular Grid
+* Full Bleed
+* Overlap Composition
+* Layered Composition
+* Offset Grid
+* Fluid Layout
+* Visual Rhythm
+* Negative Space
+
+## Typography
+
+* Display Typography
+* Typographic Hierarchy
+* Fluid Typography
+* Type Scale
+* Measure
+* Leading
+* Tracking
+* Editorial Typography
+
+## UX
+
+* Information Architecture
+* Content Architecture
+* Visual Hierarchy
+* Scannability
+* Progressive Disclosure
+* Cognitive Load
+* CTA Hierarchy
+* Wayfinding
+* Interaction Design
+* Microinteractions
+
+## Imagery
+
+* Art Direction
+* Image Focal Point
+* Image Cropping
+* Full Bleed Photography
+* Image Masking
+* Visual Storytelling
+* Editorial Image Treatment
+
+## Responsive
+
+* Adaptive Layout
+* Responsive Composition
+* Content Reflow
+* Breakpoint Strategy
+* Fluid Typography
+* Responsive Image Art Direction.
+
+Không chỉ tìm định nghĩa.
+
+Hãy nghiên cứu cách các website thực tế sử dụng chúng.
+
+---
+
+# 28. REACT BITS / COMPONENT RESEARCH
+
+Có thể nghiên cứu React Bits và các component library khác.
+
+Ưu tiên những pattern có thể phù hợp với:
+
+* image gallery
+* hover preview
+* image reveal
+* bento
+* card interaction
+* carousel
+* subtle parallax
+* navigation interaction.
+
+Nhưng:
+
+## KHÔNG ĐƯỢC biến website thành React Bits showcase.
+
+Component phải đáp ứng:
+
+```text
+Purpose
+↓
+UX Benefit
+↓
+Brand Compatibility
+↓
+Responsive
+↓
+Performance
+```
+
+Nếu không đáp ứng → không dùng.
+
+---
+
+# 29. LICENSE / SOURCE RULE
+
+Nếu component thuộc paid/proprietary source:
+
+Không được giả vờ rằng source code có thể dùng miễn phí.
+
+Có thể:
+
+* nghiên cứu interaction
+* nghiên cứu visual behavior
+* tự implement lại pattern nếu license/project cho phép
+* dùng component miễn phí/open-source phù hợp.
+
+Không copy source code proprietary.
+
+---
+
+# 30. TẠM THỜI KHÔNG REDESIGN MOTION SYSTEM
+
+Đây là phiên:
+
+> UI / UX / Content / Responsive / Brand / Asset
+
+Không phải animation overhaul.
+
+Tạm thời KHÔNG tập trung vào:
+
+* GSAP scroll system
+* WebGL
+* shader
+* particle
+* complex parallax
+* smooth scrolling framework
+* giant scroll storytelling
+* pinned video choreography.
+
+Nếu animation hiện tại gây lỗi hoặc làm UX xấu:
+
+> sửa hoặc giảm nó.
+
+Nhưng chưa xây dựng motion system mới.
+
+---
+
+# 31. MICROINTERACTION ĐƯỢC PHÉP
+
+Có thể sử dụng nhẹ:
+
+* hover state
+* button feedback
+* image hover
+* filter transition
+* modal transition
+* navigation transition
+* subtle image reveal.
+
+Nhưng:
+
+> Interaction phải hỗ trợ usability.
+
+Không dùng để khoe kỹ thuật.
+
+---
+
+# 32. DESIGN SYSTEM
+
+Sau khi research, chuẩn hóa:
+
+## Typography
+
+* display
+* H1
+* H2
+* H3
+* body
+* small
+* label
+* CTA.
+
+## Spacing
+
+Thiết lập rhythm nhất quán.
+
+## Grid
+
+Thiết lập container/grid rõ ràng.
+
+## Color
+
+Giữ DNA:
+
+* cream
+* navy
+* warm gold
+
+nếu sau audit thấy phù hợp.
+
+Không thêm quá nhiều màu.
+
+## Radius
+
+Không bo mọi thứ thành pill/card.
+
+## Shadows
+
+Không shadow mọi component.
+
+## Buttons
+
+Chuẩn hóa:
+
+* primary
+* secondary
+* text/link.
+
+---
+
+# 33. THIẾT KẾ SECTION
+
+Không để tất cả section có cùng cấu trúc:
+
+```text
+Heading
+Paragraph
+3 Cards
+```
+
+Đây là nguyên nhân khiến website có cảm giác template.
+
+Thay đổi composition có chủ đích:
+
+* full bleed image
+* split editorial
+* asymmetric grid
+* large typography
+* image + text offset
+* horizontal gallery
+* compact information block
+* map storytelling
+* CTA composition.
+
+Nhưng không dùng pattern ngẫu nhiên.
+
+---
+
+# 34. WHITESPACE
+
+Website hiện tại cần thêm chiều sâu bằng:
+
+> intentional whitespace
+
+Không phải:
+
+> padding thật lớn ở mọi nơi.
+
+Whitespace phải tạo:
+
+* hierarchy
+* rhythm
+* focus
+* separation.
+
+---
+
+# 35. IMAGE COMPOSITION
+
+Không để image:
+
+* tự do absolute
+* che text
+* crop mất subject
+* stretch
+* quá nhỏ
+* quá nhiều ảnh cùng một vùng.
+
+Mỗi ảnh phải có:
+
+* aspect ratio
+* focal point
+* purpose.
+
+---
+
+# 36. RESPONSIVE ART DIRECTION
+
+Không bắt buộc desktop và mobile giống nhau.
+
+Ví dụ:
+
+Desktop:
+
+```text
+TEXT ───────── IMAGE
+```
+
+Mobile có thể:
+
+```text
+IMAGE
+TEXT
+CTA
+```
+
+Hoặc:
+
+```text
+TEXT
+IMAGE
+```
+
+Hãy chọn composition phù hợp.
+
+---
+
+# 37. HEADER
+
+Header phải được redesign.
+
+Desktop:
+
+* logo
+* nav
+* CTA nếu phù hợp.
+
+Mobile:
+
+* logo compact
+* hamburger
+* clear CTA.
+
+Không được có:
+
+> logo SVG + HTML logo text trùng nhau.
+
+Đây là bug đã được report xác minh.
+
+---
+
+# 38. SEO / METADATA
+
+Sửa các lỗi đã xác minh:
+
+`/routes`
+
+`/contact`
+
+cần metadata riêng.
+
+`/pricing`
+
+không được:
+
+```text
+Bảng giá cước – Hậu Nguyễn Transport | Hậu Nguyễn Transport
+```
+
+Không cần biến SEO thành trọng tâm redesign, nhưng các lỗi cơ bản phải được sửa.
+
+---
+
+# 39. PERFORMANCE
+
+Kiểm tra:
+
+* image sizes
+* lazy loading
+* responsive images
+* video loading
+* unnecessary JS
+* unnecessary dependencies
+* DOM complexity.
+
+Đặc biệt xử lý 2 ảnh hồ sơ gần 10MB.
+
+Không hy sinh performance cho visual.
+
+---
+
+# 40. IMPLEMENTATION RULE
+
+Không rewrite toàn bộ project nếu không cần.
+
+Ưu tiên:
+
+> surgical refactor + architectural improvement
+
+Nhưng nếu một section thực sự cần redesign hoàn toàn:
+
+> được phép rewrite section.
+
+Không giữ layout cũ chỉ vì "ít code hơn".
+
+Chất lượng UI/UX quan trọng hơn việc giữ nguyên implementation.
+
+---
+
+# 41. TRƯỚC KHI CODE
+
+Sau khi đọc report + inspect source + research:
+
+Hãy tạo một internal plan gồm:
+
+```text
+1. Information Architecture changes
+2. Homepage changes
+3. Page-specific changes
+4. Logo strategy
+5. Asset strategy
+6. Responsive strategy
+7. Component strategy
+8. Content changes
+9. Performance changes
+10. Accessibility changes
+```
+
+Không cần hỏi tôi từng bước.
+
+Nếu thông tin có thể xác minh từ project → tự xác minh.
+
+Nếu business data không thể xác minh → KHÔNG tự tạo.
+
+---
+
+# 42. IMPLEMENTATION ORDER
+
+Ưu tiên:
+
+## PHASE 1
+
+Fix P0:
+
+* Hero collision
+* mobile horizontal overflow
+* contact horizontal overflow.
+
+## PHASE 2
+
+Fix P1:
+
+* fleet filters
+* logo/header duplication
+* heavy assets
+* mobile hero composition
+* modal accessibility.
+
+## PHASE 3
+
+Information Architecture:
+
+* reduce homepage
+* move/condense duplicate content
+* improve page roles.
+
+## PHASE 4
+
+Visual redesign:
+
+* typography
+* grid
+* whitespace
+* image art direction
+* section composition
+* buttons
+* cards.
+
+## PHASE 5
+
+Responsive redesign:
+
+* 320
+* 375
+* 390
+* 430
+* 768
+* 820
+* 1024
+* 1280
+* 1440
+* 1920
+* 2560.
+
+## PHASE 6
+
+Accessibility / SEO / performance.
+
+## PHASE 7
+
+Final visual polish.
+
+---
+
+# 43. DO NOT OVERDESIGN
+
+Nếu phải lựa chọn:
+
+```text
+simple + elegant
+```
+
+thay vì:
+
+```text
+complex + impressive
+```
+
+hãy ưu tiên:
+
+> simple + elegant.
+
+Website logistics cần:
+
+* trust
+* clarity
+* confidence
+* professionalism.
+
+Không cần biến nó thành art experiment.
+
+---
+
+# 44. DEFINITION OF DONE
+
+Không được nói "done" chỉ vì build pass.
+
+Website chỉ hoàn thành khi:
+
+## Functional
+
+* navigation hoạt động
+* filter hoạt động
+* modal hoạt động
+* form hoạt động
+* CTA hoạt động
+* map hoạt động.
+
+## Responsive
+
+Không có uncontrolled horizontal overflow.
+
+Không có collision.
+
+Không có broken composition.
+
+## UI
+
+* hierarchy rõ
+* typography tốt
+* spacing nhất quán
+* image composition tốt
+* section rhythm tốt
+* homepage không quá tải.
+
+## UX
+
+Khách có thể nhanh chóng tìm:
+
+* đội xe
+* tuyến đường
+* cách báo giá
+* liên hệ.
+
+## Brand
+
+* logo mới
+* responsive logo
+* favicon
+* header sạch.
+
+## Content
+
+* không duplicate vô nghĩa
+* không business claim bịa
+* mỗi page có purpose rõ.
+
+## Performance
+
+* heavy assets được xử lý
+* không thêm dependency nặng vô lý
+* mobile load hợp lý.
+
+## Accessibility
+
+* labels
+* focus
+* keyboard
+* contrast
+* alt
+* heading hierarchy
+* modal behavior.
+
+---
+
+# 45. FINAL QA
+
+Sau khi implementation:
+
+Chạy:
+
+```bash
+npm run build
+```
+
+Sau đó chạy production/local preview.
+
+Browser test:
+
+```text
+320
+375
+390
+430
+768
+820
+1024
+1280
+1440
+1920
+2560
+```
+
+Test tất cả:
+
+```text
+/
+ /fleet
+ /pricing
+ /routes
+ /about
+ /contact
+```
+
+Kiểm tra:
+
+* screenshots
+* overflow
+* collisions
+* broken images
+* console errors
+* navigation
+* forms
+* filters
+* modal
+* responsive
+* accessibility.
+
+---
+
+# 46. FINAL REPORT SAU KHI SỬA
+
+Cuối cùng báo cáo:
+
+## A. Fixed
+
+Danh sách bug đã sửa.
+
+## B. Redesigned
+
+Danh sách section đã redesign.
+
+## C. Content Architecture
+
+Homepage/page nào đã thay đổi vai trò.
+
+## D. Logo
+
+Logo mới nằm ở đâu, các variant nào đã tạo.
+
+## E. Assets
+
+Ảnh nào đã thay đổi/tối ưu.
+
+## F. Responsive
+
+Kết quả 11 viewport.
+
+## G. Accessibility
+
+Các vấn đề đã xử lý.
+
+## H. Performance
+
+Các asset/dependency đã tối ưu.
+
+## I. Remaining
+
+Những vấn đề còn cần dữ liệu/client verification.
+
+---
+
+# 47. ABSOLUTE RULES
+
+KHÔNG:
+
+* bịa business data
+* bịa giá
+* bịa số lượng xe
+* bịa năng lực
+* bịa tuyến
+* bịa chứng nhận
+* bịa khách hàng
+* bịa thời gian giao hàng.
+
+KHÔNG:
+
+* copy Awwwards website.
+* clone layout của reference.
+* copy proprietary React Bits code.
+* thêm WebGL chỉ để đẹp.
+* thêm animation chỉ để gây ấn tượng.
+* giải quyết overflow bằng `overflow-x:hidden`.
+* giải quyết collision bằng z-index mà không sửa composition.
+* biến homepage thành bản sao của tất cả pages.
+* dùng cùng một ảnh ở mọi page một cách vô lý.
+* thu nhỏ desktop layout một cách máy móc xuống mobile.
+
+LUÔN:
+
+```text
+RESEARCH
+→ UNDERSTAND
+→ PLAN
+→ IMPLEMENT
+→ VERIFY
+→ POLISH
+```
+
+Và trong mọi quyết định thiết kế:
+
+```text
+CONTENT
+→ INFORMATION ARCHITECTURE
+→ VISUAL HIERARCHY
+→ LAYOUT
+→ TYPOGRAPHY
+→ IMAGERY
+→ RESPONSIVE
+→ UX
+→ MICROINTERACTION
+```
+
+Animation system lớn sẽ được xử lý ở một phase riêng sau.
+
+---
+
+# START NOW
+
+Bắt đầu bằng:
+
+1. Đọc toàn bộ `Pasted markdown(4).md`.
+2. Inspect repository.
+3. Chạy project.
+4. Mở website bằng browser.
+5. Xác minh các lỗi trong report.
+6. Research Awwwards + logistics/transportation web design patterns.
+7. Research React Bits/component patterns phù hợp.
+8. Lập implementation plan.
+9. Bắt đầu sửa theo priority.
+10. Sau mỗi nhóm thay đổi phải verify lại bằng browser.
+
+Không cần hỏi lại những thông tin đã có trong repository.
+
+Không được sửa business facts bằng suy đoán.
+
+Mục tiêu cuối cùng:
+
+> Một website Hậu Nguyễn Transport hiện đại, rõ ràng, tinh tế, có bản sắc logistics thực tế, responsive tốt, không rối mắt và có chất lượng visual đủ cao để đứng cạnh các website corporate/logistics hiện đại — nhưng vẫn là một website doanh nghiệp vận tải thực dụng và dễ chuyển đổi.
+tối ưu hóa câu chuyện logicstic vận tải và đánh SEO cho đầy đủ .

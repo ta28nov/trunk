@@ -1,216 +1,295 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+import Link from "next/link";
 import company from "../data/company.json";
 
 export default function RoutesPage() {
-  const routeRef = useRef(null);
-  const [animated, setAnimated] = useState(false);
+  const videoRef = useRef(null);
 
   useEffect(() => {
-    if (!routeRef.current) return;
+    if (!videoRef.current) return;
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setAnimated(true); },
-      { threshold: 0.2 }
+      ([e]) => {
+        if (e.isIntersecting) {
+          videoRef.current?.play().catch(() => { });
+        } else {
+          videoRef.current?.pause();
+        }
+      },
+      { threshold: 0.25 }
     );
-    obs.observe(routeRef.current);
+    obs.observe(videoRef.current);
     return () => obs.disconnect();
   }, []);
 
   return (
     <div style={{ background: "var(--cream-50)", minHeight: "100vh" }}>
-      {/* Hero */}
-      <section style={{ background: "var(--cream-100)", padding: "var(--section-y) 0 var(--space-12)" }}>
-        <div className="wrap">
-          <div className="eyebrow hero-animate-1" style={{ marginBottom: "1rem" }}>MẠNG LƯỚI TUYẾN ĐƯỜNG</div>
-          <h1 className="hero-animate-2" style={{ fontSize: "var(--fs-h1)", color: "var(--navy-700)", marginBottom: "1rem", lineHeight: 1.2 }}>
-            Hà Tĩnh · Nghệ An · Thanh Hóa<br />
-            <span style={{ color: "var(--gold-600)" }}>đi các tỉnh phía Bắc và Tây Bắc</span>
-          </h1>
-          <p className="hero-animate-3" style={{ fontSize: "var(--fs-body)", color: "var(--text-muted)", maxWidth: "680px", lineHeight: 1.65 }}>
-            Xuất phát thường xuyên từ dải đất Bắc Trung Bộ (Hà Tĩnh, Nghệ An, Thanh Hóa), kết nối nhanh chóng lên hệ thống đường cao tốc và quốc lộ để vận chuyển hàng hóa đến khắp các tỉnh đồng bằng, trung du và miền núi phía Bắc.
-          </p>
+      {/* ═══════════════════════════════════════════════════════════════
+          HERO BANNER — 100SVH FULL VIEWPORT (LIKE HOMEPAGE)
+          Visual: /images/routes/corridor.jpg (Misty mountain pass at twilight)
+         ═══════════════════════════════════════════════════════════════ */}
+      <section className="subpage-hero" id="hero">
+        <div className="subpage-hero-bg">
+          <img
+            src="/images/routes/corridor.jpg"
+            alt="Hành lang vận tải miền núi Tây Bắc lúc chạng vạng"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
         </div>
-      </section>
 
-      {/* Route visualization */}
-      <section className="section" ref={routeRef}>
-        <div className="wrap">
-          <div style={{ display: "grid", gap: "3rem", alignItems: "center" }} className="route-layout">
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <svg
-                viewBox="0 0 400 500"
-                width="400"
-                height="500"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                style={{ maxWidth: "100%" }}
-              >
-                {/* Route path */}
-                <path
-                  d="M 200 480 C 200 400, 120 350, 140 280 C 160 210, 260 180, 240 120 C 220 60, 200 30, 200 10"
-                  stroke="var(--gold-500)"
-                  strokeWidth="3"
-                  strokeDasharray="10 8"
-                  className={`route-line ${animated ? "animate" : ""}`}
-                  fill="none"
-                />
+        <div className="subpage-hero-vignette" />
 
-                {/* Origin points */}
-                <circle cx="200" cy="480" r="10" fill="var(--gold-500)" opacity={animated ? 1 : 0} style={{ transition: "opacity .6s .3s" }} />
-                <text x="220" y="486" fill="var(--navy-700)" fontSize="16" fontWeight="700">Hà Tĩnh</text>
+        <div className="subpage-hero-container">
+          <div className="subpage-hero-eyebrow">
+            <span className="subpage-hero-line" />
+            <span>MẠNG LƯỚI TUYẾN ĐƯỜNG VẬN HÀNH</span>
+          </div>
 
-                <circle cx="140" cy="350" r="10" fill="var(--gold-500)" opacity={animated ? 1 : 0} style={{ transition: "opacity .6s .6s" }} />
-                <text x="160" y="356" fill="var(--navy-700)" fontSize="16" fontWeight="700">Nghệ An</text>
+          <h1 className="subpage-hero-title">
+            Hà Tĩnh · Nghệ An · Thanh Hóa <br />
+            <span style={{ color: "var(--gold-300)" }}>lên các tỉnh phía Bắc &amp; Tây Bắc</span>
+          </h1>
 
-                <circle cx="160" cy="260" r="10" fill="var(--gold-500)" opacity={animated ? 1 : 0} style={{ transition: "opacity .6s .9s" }} />
-                <text x="180" y="266" fill="var(--navy-700)" fontSize="16" fontWeight="700">Thanh Hóa</text>
+          <p className="subpage-hero-desc">
+            Các chuyến xe chạy liên tục trên trục cao tốc Bắc – Nam và hệ thống quốc lộ huyết mạch.
+            Nhận hàng linh hoạt tận nơi, bốc xếp an toàn và cam kết giao đúng hẹn.
+          </p>
 
-                {/* Destination marker */}
-                <circle cx="200" cy="30" r="14" fill="var(--gold-500)" opacity={animated ? 1 : 0} style={{ transition: "opacity .6s 1.5s" }} />
-                <text x="224" y="36" fill="var(--navy-700)" fontSize="16" fontWeight="700">Phía Bắc &amp; Tây Bắc</text>
-
-                {/* Arrow */}
-                <polygon points="193,18 207,18 200,4" fill="var(--gold-500)" opacity={animated ? 1 : 0} style={{ transition: "opacity .6s 1.8s" }} />
+          <div className="subpage-hero-actions">
+            <a href={company.hotlineTel} className="btn btn-primary">
+              <span>Hotline điều xe: {company.hotline}</span>
+            </a>
+            <a
+              href={company.zaloLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary"
+              style={{ borderColor: "rgba(255,255,255,0.4)", color: "#FFFFFF" }}
+            >
+              <span>Hỏi lịch xe qua Zalo</span>
+            </a>
+            <a href="#video-tuyen-duong" className="monolith-explore" style={{ marginLeft: "auto" }}>
+              <span>Xem luồng xe thực tế</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
               </svg>
-            </div>
-
-            <div>
-              <div className="eyebrow" style={{ marginBottom: "0.75rem" }}>ĐIỂM NHẬN HÀNG THƯỜNG XUYÊN</div>
-              <h2 className="reveal" style={{ fontSize: "var(--fs-h2)", color: "var(--navy-700)", marginBottom: "1.5rem" }}>
-                3 Điểm xuất phát trọng điểm
-              </h2>
-              <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                <div className="card reveal delay-1" style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-                  <div style={{ width: "48px", height: "48px", borderRadius: "var(--radius-sm)", background: "var(--cream-100)", display: "grid", placeItems: "center", flexShrink: 0 }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-600)" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  </div>
-                  <div>
-                    <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "var(--navy-700)" }}>Thanh Hóa (Tổng trạm điều phối)</h3>
-                    <p style={{ fontSize: "var(--fs-small)", color: "var(--text-muted)" }}>
-                      Trụ sở bãi xe tại 92 Đông Xuân, Xã Trường Văn. Đầy đủ các dòng xe từ 3,5t đến 15t, hỗ trợ nhận hàng tận nơi 24/7.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="card reveal delay-2" style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-                  <div style={{ width: "48px", height: "48px", borderRadius: "var(--radius-sm)", background: "var(--cream-100)", display: "grid", placeItems: "center", flexShrink: 0 }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-600)" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  </div>
-                  <div>
-                    <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "var(--navy-700)" }}>Nghệ An</h3>
-                    <p style={{ fontSize: "var(--fs-small)", color: "var(--text-muted)" }}>
-                      Nhận hàng tại TP. Vinh, KCN Nam Cấm, Hoàng Mai và các huyện dọc tuyến Quốc lộ 1A. Chạy thẳng ra Bắc theo giờ hẹn.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="card reveal delay-3" style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-                  <div style={{ width: "48px", height: "48px", borderRadius: "var(--radius-sm)", background: "var(--cream-100)", display: "grid", placeItems: "center", flexShrink: 0 }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-600)" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  </div>
-                  <div>
-                    <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "var(--navy-700)" }}>Hà Tĩnh</h3>
-                    <p style={{ fontSize: "var(--fs-small)", color: "var(--text-muted)" }}>
-                      Tiếp nhận hàng tại TP. Hà Tĩnh, Kỳ Anh, Hồng Lĩnh và khu vực lân cận. Lịch xe chạy liên tục ghép chuyến hoặc nguyên xe.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="reveal delay-4" style={{ marginTop: "2rem" }}>
-                <a
-                  href={company.zaloLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary"
-                >
-                  Hỏi lịch xe tuyến này qua Zalo →
-                </a>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* 3 Hành lang tuyến chi tiết */}
-      <section className="section" style={{ background: "var(--white)" }}>
+      {/* ═══════════════════════════════════════════════════════════════
+          STANDALONE VIDEO SECTION (NẰM 1 MÌNH HỆT NHƯ TRANG CHỦ)
+          Video: traffic-hero.webm (High-speed traffic & highway corridor motion)
+         ═══════════════════════════════════════════════════════════════ */}
+      <section className="cinematic-standalone-section" id="video-tuyen-duong">
         <div className="wrap">
-          <div className="reveal" style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto var(--space-12)" }}>
-            <div className="eyebrow" style={{ marginBottom: "0.5rem" }}>HÀNH LANG VẬN TẢI CHI TIẾT</div>
-            <h2 style={{ fontSize: "var(--fs-h2)", color: "var(--navy-700)" }}>
-              Các trục tuyến kết nối trọng điểm
+          <div className="cinematic-standalone-header">
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "0.75rem", color: "var(--gold-300)" }}>
+              <span style={{ width: "24px", height: "2px", background: "var(--gold-500)" }} />
+              <span style={{ fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+                NHỊP LĂN BÁNH TRÊN ĐẠI LỘ CAO TỐC
+              </span>
+            </div>
+            <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 3.25rem)", fontWeight: 900, color: "#FFFFFF", letterSpacing: "-0.02em", margin: 0 }}>
+              Chuyển động không ngừng nghỉ xuyên đêm
             </h2>
-            <p style={{ fontSize: "var(--fs-body)", color: "var(--text-muted)", marginTop: "0.5rem" }}>
-              Tùy thuộc vào tính chất mặt hàng và vị trí kho nhận, Hậu Nguyễn bố trí lộ trình thông suốt và phương tiện phù hợp.
+            <p style={{ fontSize: "1.125rem", color: "rgba(255, 255, 255, 0.75)", lineHeight: 1.6, maxWidth: "680px", margin: 0 }}>
+              Hệ thống phương tiện Hậu Nguyễn bám sát trục cao tốc và quốc lộ huyết mạch, duy trì hành trình an toàn và chính xác từng giờ.
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem" }}>
-            <div className="card reveal delay-1" style={{ borderTop: "4px solid var(--gold-500)" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.75rem" }}>
-                <span className="fleet-tag">Trục Đồng Bằng</span>
-              </div>
-              <h3 style={{ fontSize: "1.125rem", color: "var(--navy-700)", marginBottom: "0.5rem" }}>
-                Hà Nội &amp; Các Tỉnh Vùng Thủ Đô
-              </h3>
-              <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.6, marginBottom: "1rem" }}>
-                Kết nối Thanh Hóa ➔ Ninh Bình, Hà Nam, Hà Nội, Hưng Yên, Bắc Ninh, Hải Dương, Hải Phòng, Quảng Ninh.
+          {/* Video nằm độc lập một mình */}
+          <div className="cinematic-standalone-frame">
+            <video
+              ref={videoRef}
+              src="/videos/traffic-hero.webm"
+              muted
+              loop
+              playsInline
+              autoPlay
+              className="cinematic-standalone-video"
+              aria-label="Video luồng giao thông cao tốc và hành lang vận chuyển"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Transition Zone: Standalone Video (#0A0E17) → Layer 1 (#FFFFFF) */}
+      <div className="transition-zone tz-dark-to-white" aria-hidden="true" />
+
+      {/* ═══════════════════════════════════════════════════════════════
+          CÁC LAYER NẰM Ở DƯỚI VIDEO (HỆT NHƯ TRANG CHỦ)
+         ═══════════════════════════════════════════════════════════════ */}
+
+      {/* Layer 1: Hành lang vận tải đặc thù */}
+      <section style={{ padding: "clamp(4.5rem, 6vw, 7.5rem) 0", background: "#FFFFFF" }}>
+        <div className="wrap">
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "clamp(2.5rem, 4vw, 5rem)",
+            alignItems: "center",
+          }}>
+            <div>
+              <div className="eyebrow" style={{ marginBottom: "0.75rem" }}>HÀNH LANG VẬN TẢI ĐẶC THÙ</div>
+              <h2 style={{ fontSize: "var(--fs-h2)", color: "var(--navy-900)", lineHeight: 1.25, marginBottom: "1.25rem" }}>
+                Vận chuyển chuyên tuyến đường đèo dốc &amp; cao tốc liên tỉnh
+              </h2>
+              <p style={{ fontSize: "1.0625rem", color: "var(--text-muted)", lineHeight: 1.7, marginBottom: "1.25rem" }}>
+                Từ miền Trung ngược ra Bắc là những cung đường có sự chuyển tiếp địa hình phức tạp: từ đồng bằng duyên hải lên các cung đèo dốc quanh co vùng Tây Bắc (Hòa Bình, Sơn La, Điện Biên, Lai Châu) hay các vùng cao Đông Bắc (Yên Bái, Lào Cai).
               </p>
-              <div style={{ padding: "0.75rem", background: "var(--cream-100)", borderRadius: "var(--radius-sm)", fontSize: "0.8125rem", color: "var(--navy-700)" }}>
-                <strong>Thời gian giao hàng:</strong> Trong ngày hoặc sáng sớm hôm sau theo yêu cầu vào phố cấm giờ.
+              <p style={{ fontSize: "1.0625rem", color: "var(--text-muted)", lineHeight: 1.7, marginBottom: "2rem" }}>
+                Hậu Nguyễn chuẩn bị phương tiện khắt khe: máy khỏe, gầm đúc chịu tải, hệ thống phanh khí xả an toàn, kết hợp nẹp chằng buộc bạt 2 lớp chống xô lệch và chống thấm nước tuyệt đối.
+              </p>
+
+              <div style={{ display: "flex", gap: "2.5rem" }}>
+                <div>
+                  <span style={{ fontSize: "2rem", fontWeight: 900, color: "var(--gold-600)", display: "block", lineHeight: 1 }}>100%</span>
+                  <span style={{ fontSize: "0.875rem", color: "var(--text-muted)", fontWeight: 600, marginTop: "0.35rem", display: "block" }}>Tài xế chuyên đường dài</span>
+                </div>
+                <div>
+                  <span style={{ fontSize: "2rem", fontWeight: 900, color: "var(--navy-900)", display: "block", lineHeight: 1 }}>24/7</span>
+                  <span style={{ fontSize: "0.875rem", color: "var(--text-muted)", fontWeight: 600, marginTop: "0.35rem", display: "block" }}>Điều xe &amp; hỗ trợ bốc xếp</span>
+                </div>
               </div>
             </div>
 
-            <div className="card reveal delay-2" style={{ borderTop: "4px solid var(--navy-700)" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.75rem" }}>
-                <span className="fleet-tag" style={{ background: "rgba(27,42,87,.1)", color: "var(--navy-700)" }}>Trục Tây Bắc</span>
+            {/* Feature Cards Column */}
+            <div style={{ display: "grid", gap: "1.25rem" }}>
+              <div className="card" style={{ borderLeft: "4px solid var(--gold-500)" }}>
+                <h3 style={{ fontSize: "1.125rem", color: "var(--navy-900)", marginBottom: "0.5rem" }}>
+                  Tối ưu thời gian qua trục cao tốc mới
+                </h3>
+                <p style={{ fontSize: "0.9375rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>
+                  Kết nối trực tiếp các đoạn cao tốc Diễn Châu – Bãi Vọt – Nghi Sơn – Mai Sơn – Cao Bồ, giảm 30-40% thời gian chạy xe so với quốc lộ cũ.
+                </p>
               </div>
-              <h3 style={{ fontSize: "1.125rem", color: "var(--navy-700)", marginBottom: "0.5rem" }}>
-                Cung Đường Đèo Dốc Tây Bắc
-              </h3>
-              <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.6, marginBottom: "1rem" }}>
-                Kết nối Thanh Hóa ➔ Hòa Bình, Sơn La, Điện Biên, Lai Châu. Sử dụng đội xe Hino &amp; Hyundai gầm cao máy khỏe.
-              </p>
-              <div style={{ padding: "0.75rem", background: "var(--cream-100)", borderRadius: "var(--radius-sm)", fontSize: "0.8125rem", color: "var(--navy-700)" }}>
-                <strong>Lưu ý nghiệp vụ:</strong> Chằng buộc đai xích chuyên sâu, lái xe chuyên tuyến đèo dốc nhiều kinh nghiệm.
-              </div>
-            </div>
 
-            <div className="card reveal delay-3" style={{ borderTop: "4px solid var(--gold-500)" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.75rem" }}>
-                <span className="fleet-tag">Trục Đông Bắc</span>
+              <div className="card" style={{ borderLeft: "4px solid var(--navy-700)" }}>
+                <h3 style={{ fontSize: "1.125rem", color: "var(--navy-900)", marginBottom: "0.5rem" }}>
+                  Kinh nghiệm vượt đèo Tây Bắc an toàn
+                </h3>
+                <p style={{ fontSize: "0.9375rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>
+                  Đội xe Hino trang bị phanh khí xả phụ trợ, tài xế bản địa thông thuộc từng cua dốc Dốc Cun, đèo Thung Khe, đèo Chiềng Đông.
+                </p>
               </div>
-              <h3 style={{ fontSize: "1.125rem", color: "var(--navy-700)", marginBottom: "0.5rem" }}>
-                Khu Công Nghiệp &amp; Cửa Khẩu
-              </h3>
-              <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.6, marginBottom: "1rem" }}>
-                Kết nối Thanh Hóa ➔ Vĩnh Phúc, Phú Thọ, Thái Nguyên, Tuyên Quang, Yên Bái, Lào Cai, Lạng Sơn.
-              </p>
-              <div style={{ padding: "0.75rem", background: "var(--cream-100)", borderRadius: "var(--radius-sm)", fontSize: "0.8125rem", color: "var(--navy-700)" }}>
-                <strong>Loại hàng chuyên chở:</strong> Thiết bị máy móc, nguyên vật liệu xây dựng, nông sản xuất nhập khẩu.
+
+              <div className="card" style={{ borderLeft: "4px solid var(--gold-500)" }}>
+                <h3 style={{ fontSize: "1.125rem", color: "var(--navy-900)", marginBottom: "0.5rem" }}>
+                  Bốc hạ hàng tận nơi 2 đầu
+                </h3>
+                <p style={{ fontSize: "0.9375rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>
+                  Hỗ trợ sang tải vào các tuyến phố cấm giờ hoặc đường nhỏ bằng các dòng xe tải trung 3.5T – 6T linh hoạt.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Google Map Showcase */}
-      <section className="section" style={{ background: "var(--cream-100)", paddingTop: "var(--gap-m)", paddingBottom: "var(--gap-l)" }}>
+      {/* Transition Zone: White (#FFFFFF) → Navy (#14203F) */}
+      <div className="transition-zone tz-white-to-navy" aria-hidden="true" />
+
+      {/* Layer 2: Chi tiết 2 trục phân phối trọng điểm (High contrast Navy) */}
+      <section style={{ padding: "clamp(5rem, 6vw, 8rem) 0", background: "#14203F", color: "#FFFFFF" }}>
         <div className="wrap">
-          <div className="reveal" style={{ textAlign: "center", marginBottom: "var(--space-8)" }}>
-            <div className="eyebrow" style={{ marginBottom: "0.5rem" }}>VỊ TRÍ BÃI XE TRUNG TÂM</div>
-            <h2 style={{ fontSize: "var(--fs-h2)", color: "var(--navy-700)" }}>
-              Trụ sở xuất phát tại Thanh Hóa
+          <div style={{ textAlign: "center", maxWidth: "760px", margin: "0 auto 3.5rem" }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem", color: "var(--gold-300)" }}>
+              <span style={{ width: "24px", height: "2px", background: "var(--gold-500)" }} />
+              <span style={{ fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>CHI TIẾT MẠNG LƯỚI ĐIỂM ĐẾN</span>
+            </div>
+            <h2 style={{ fontSize: "var(--fs-h1)", color: "#FFFFFF", marginBottom: "1rem" }}>
+              Hai trục phân phối trọng điểm phía Bắc
+            </h2>
+            <p style={{ fontSize: "1.125rem", color: "rgba(255, 255, 255, 0.8)", lineHeight: 1.65 }}>
+              Dù hàng hóa là máy móc công nghiệp, bao bì tiêu dùng hay vật liệu xây dựng, chúng tôi luôn có giải pháp tuyến đường tối ưu chi phí và thời gian cho bạn.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem" }}>
+            {/* Trục 1 */}
+            <div style={{
+              background: "#182342",
+              border: "1.5px solid rgba(217, 162, 27, 0.35)",
+              borderRadius: "var(--radius-lg)",
+              padding: "2.5rem 2rem",
+              boxShadow: "0 20px 48px rgba(0, 0, 0, 0.35)",
+            }}>
+              <div style={{ display: "inline-block", background: "rgba(217, 162, 27, 0.2)", color: "var(--gold-300)", padding: "0.35rem 0.85rem", borderRadius: "var(--radius-pill)", fontSize: "0.8125rem", fontWeight: 700, marginBottom: "1.25rem" }}>
+                TRỤC ĐỒNG BẰNG &amp; KHU CÔNG NGHIỆP
+              </div>
+              <h3 style={{ fontSize: "1.5rem", fontWeight: 800, color: "#FFFFFF", marginBottom: "0.85rem" }}>
+                Hà Nội, Hải Phòng &amp; Vùng Thủ Đô
+              </h3>
+              <p style={{ fontSize: "0.9375rem", color: "rgba(255, 255, 255, 0.75)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
+                Kết nối từ Thanh Hóa – Nghệ An – Hà Tĩnh chạy thẳng theo cao tốc đến các trung tâm logistics, cảng biển và các KCN lớn:
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}>
+                {["Hà Nội", "Hải Phòng", "Quảng Ninh", "Bắc Ninh", "Hưng Yên", "Hải Dương", "Hà Nam", "Nam Định"].map((c) => (
+                  <span key={c} style={{ background: "rgba(255, 255, 255, 0.1)", border: "1px solid rgba(255, 255, 255, 0.15)", padding: "0.35rem 0.75rem", borderRadius: "var(--radius-pill)", fontSize: "0.8125rem", color: "#FFFFFF" }}>
+                    {c}
+                  </span>
+                ))}
+              </div>
+              <div style={{ padding: "1rem", background: "rgba(10, 16, 32, 0.6)", borderRadius: "var(--radius-sm)", border: "1px solid rgba(255, 255, 255, 0.08)", fontSize: "0.875rem", color: "rgba(255, 255, 255, 0.85)" }}>
+                <strong style={{ color: "var(--gold-300)" }}>Thời gian giao hàng:</strong> Trong ngày hoặc sáng sớm ngày hôm sau theo lịch hẹn bốc hạ hàng.
+              </div>
+            </div>
+
+            {/* Trục 2 */}
+            <div style={{
+              background: "#182342",
+              border: "1.5px solid rgba(255, 255, 255, 0.15)",
+              borderRadius: "var(--radius-lg)",
+              padding: "2.5rem 2rem",
+              boxShadow: "0 20px 48px rgba(0, 0, 0, 0.35)",
+            }}>
+              <div style={{ display: "inline-block", background: "rgba(255, 255, 255, 0.1)", color: "#FFFFFF", padding: "0.35rem 0.85rem", borderRadius: "var(--radius-pill)", fontSize: "0.8125rem", fontWeight: 700, marginBottom: "1.25rem" }}>
+                TRỤC VÙNG CAO &amp; CỬA KHẨU
+              </div>
+              <h3 style={{ fontSize: "1.5rem", fontWeight: 800, color: "#FFFFFF", marginBottom: "0.85rem" }}>
+                Tây Bắc, Yên Bái &amp; Lào Cai
+              </h3>
+              <p style={{ fontSize: "0.9375rem", color: "rgba(255, 255, 255, 0.75)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
+                Đội xe chuyên dụng leo đèo khỏe, tài xế bản địa thông thạo các dốc cua nguy hiểm và cung đường đèo cao:
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}>
+                {["Hòa Bình", "Sơn La", "Điện Biên", "Lai Châu", "Lào Cai", "Yên Bái", "Phú Thọ", "Tuyên Quang"].map((c) => (
+                  <span key={c} style={{ background: "rgba(255, 255, 255, 0.1)", border: "1px solid rgba(255, 255, 255, 0.15)", padding: "0.35rem 0.75rem", borderRadius: "var(--radius-pill)", fontSize: "0.8125rem", color: "#FFFFFF" }}>
+                    {c}
+                  </span>
+                ))}
+              </div>
+              <div style={{ padding: "1rem", background: "rgba(10, 16, 32, 0.6)", borderRadius: "var(--radius-sm)", border: "1px solid rgba(255, 255, 255, 0.08)", fontSize: "0.875rem", color: "rgba(255, 255, 255, 0.85)" }}>
+                <strong style={{ color: "var(--gold-300)" }}>Nghiệp vụ an toàn:</strong> Tăng đơ gia cố, chằng buộc xích cẩn trọng, kiểm tra áp suất lốp và phanh tại từng trạm dừng chân.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Transition Zone: Navy (#14203F) → White (#FFFFFF) */}
+      <div className="transition-zone tz-navy-to-white-standard" aria-hidden="true" />
+
+      {/* Layer 3: Bãi xe trung tâm & Bản đồ */}
+      <section style={{ padding: "clamp(4.5rem, 5vw, 7rem) 0", background: "#FFFFFF" }}>
+        <div className="wrap">
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+            <div className="eyebrow" style={{ justifyContent: "center", marginBottom: "0.5rem" }}>VỊ TRÍ BÃI XE TRUNG TÂM</div>
+            <h2 style={{ fontSize: "var(--fs-h2)", color: "var(--navy-900)" }}>
+              Trụ sở điều phối tại Thanh Hóa
             </h2>
           </div>
 
-          <div className="map-showcase reveal">
+          <div className="map-showcase">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3746.5!2d105.75!3d19.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z4bqg4buLYSBjaOG7iSA5MiDEkMO0bmcgWHXDom4sIFRyxrDhu51uZyBWxg3uLCBUaGFuaCBIw7Nh!5e0!3m2!1svi!2svn!4v1"
+              src={company.mapEmbed}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Bản đồ 92 Đông Xuân, Xã Trường Văn, Tỉnh Thanh Hóa"
+              title="Bản đồ vị trí Hậu Nguyễn Transport tại Thanh Hóa"
               style={{ width: "100%", height: "100%", border: 0 }}
             />
 
@@ -232,6 +311,9 @@ export default function RoutesPage() {
           </div>
         </div>
       </section>
+
+      {/* Transition Zone: Content White (#FFFFFF) → Footer Paper (#ebeee7) */}
+      <div className="transition-zone tz-white-to-paper" aria-hidden="true" />
     </div>
   );
 }

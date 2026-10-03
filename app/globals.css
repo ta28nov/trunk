@@ -4,8 +4,9 @@
    Mobile-first · Be Vietnam Pro · Vanilla CSS
    ═══════════════════════════════════════════════════════════════ */
 
-/* ─── FONT ─── */
+/* ─── FONT & MODULES ─── */
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap');
+@import "./journey.css";
 
 /* ─── CSS CUSTOM PROPERTIES (Design Tokens) ─── */
 :root {
