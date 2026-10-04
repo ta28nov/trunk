@@ -33,32 +33,12 @@ export default function Footer() {
 
   return (
     <footer className="footer footer--meridian" id="footer">
-      {/* Background Video — Stone Viaduct & Stagecoach */}
-      <video
-        ref={videoRef}
-        className="footer__video"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-        tabIndex={-1}
-        disablePictureInPicture
-      >
-        <source src="/videos/meridian-footer.mp4" type="video/mp4" />
-        <source
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_144832_2b6b23aa-4416-4fcb-9df4-132349c59edc.mp4"
-          type="video/mp4"
-        />
-      </video>
-
       {/* Content Block */}
       <div className="footer__content">
         {/* (a) Official Hậu Nguyễn Logo */}
-        <Link href="/" aria-label="Trang chủ Hậu Nguyễn">
+        <Link href="/" aria-label="Trang chủ Hậu Nguyễn" className="footer__mark-link">
           <img
-            src="/images/logo/logo-brand.png"
+            src="/images/logo/logofinal-removebg.png"
             alt="Logo Hậu Nguyễn Transport"
             className="footer__mark"
           />
@@ -71,12 +51,26 @@ export default function Footer() {
           </Link>
         </p>
 
-        {/* (c) Tagline */}
-        <p className="footer__tagline">
-          Hàng đi đúng đường, đến đúng nơi. Chuyên tuyến Bắc Trung Bộ vươn khắp các tỉnh phía Bắc.
+        {/* Caption */}
+        <p
+          style={{
+            color: "var(--gold-400, #F2D27A)",
+            fontSize: "0.8125rem",
+            fontWeight: 700,
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            margin: "0.4rem 0 0.25rem",
+          }}
+        >
+          Vận Tải — Xây Dựng — Dịch Vụ
         </p>
 
-        {/* (d) 8 Navigation Links with drawing underline animation */}
+        {/* (c) Tagline */}
+        <p className="footer__tagline">
+          Hàng đi đúng đường, đến đúng nơi. Chuyên tuyến Bắc Trung Bộ kết nối các tỉnh phía Bắc và Tây Bắc.
+        </p>
+
+        {/* (d) Navigation Links with drawing underline animation */}
         <nav className="footer__nav" aria-label="Footer">
           <ul>
             <li>
@@ -98,7 +92,10 @@ export default function Footer() {
               <Link href="/about">Giới Thiệu</Link>
             </li>
             <li>
-              <Link href="/contact">Bản Đồ</Link>
+              <Link href="/privacy">Bảo Mật</Link>
+            </li>
+            <li>
+              <Link href="/terms">Quy Chế Vận Chuyển</Link>
             </li>
             <li>
               <Link href="/contact">Liên Hệ</Link>
@@ -110,6 +107,31 @@ export default function Footer() {
         <p className="footer__copy">
           © {new Date().getFullYear()} <strong>Hậu Nguyễn Transport</strong> · MST: <span>{company.taxCode}</span> · Hotline: <span>{company.hotline}</span>
         </p>
+        <p className="footer__address">
+          {company.name} · {company.address}
+        </p>
+      </div>
+
+      {/* Background Video — Placed at the very bottom */}
+      <div className="footer__video-bottom">
+        <video
+          ref={videoRef}
+          className="footer__video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          tabIndex={-1}
+          disablePictureInPicture
+        >
+          <source src="/videos/meridian-footer.mp4" type="video/mp4" />
+          <source
+            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_144832_2b6b23aa-4416-4fcb-9df4-132349c59edc.mp4"
+            type="video/mp4"
+          />
+        </video>
       </div>
     </footer>
   );

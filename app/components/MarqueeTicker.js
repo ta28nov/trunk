@@ -2,6 +2,9 @@
 
 export default function MarqueeTicker() {
   const items = [
+    "VẬN TẢI",
+    "XÂY DỰNG",
+    "DỊCH VỤ",
     "HINO",
     "HYUNDAI",
     "THÙNG KÍN",
@@ -9,7 +12,7 @@ export default function MarqueeTicker() {
     "HÀ TĨNH",
     "NGHỆ AN",
     "THANH HOÁ",
-    "BẮC",
+    "LIÊN TỈNH PHÍA BẮC",
     "TÂY BẮC",
     "3,5 TẤN",
     "6 TẤN",

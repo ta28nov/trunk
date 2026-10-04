@@ -73,8 +73,8 @@ export default function HomePage() {
         {/* Cinematic Background Layer */}
         <div className="monolith-bg">
           <img
-            src="/images/hero/kinetic_monolith_hero.jpg"
-            alt="Đoàn xe vận tải Hậu Nguyễn trên cung đường miền núi phía Bắc"
+            src="/images/hero/hau-nguyen-clean-full.png"
+            alt="Đoàn xe vận tải Hino VT Hậu Nguyễn trên cung đường đèo dốc miền núi phía Bắc"
             fetchPriority="high"
             loading="eager"
           />
@@ -87,8 +87,7 @@ export default function HomePage() {
         <div className="monolith-container">
           <div className="monolith-content">
             <div className="monolith-eyebrow">
-              <span className="monolith-eyebrow-line" />
-              <span>VẬN TẢI - XÂY DỰNG - DỊCH VỤ</span>
+              <span>VẬN TẢI · XÂY DỰNG · DỊCH VỤ</span>
             </div>
 
             <h1 className="monolith-title">
@@ -98,10 +97,7 @@ export default function HomePage() {
             <p className="monolith-tagline">
               Hàng đi đúng đường, đến đúng nơi.
             </p>
-          </div>
 
-          {/* Minimalist Action & Explore Cue */}
-          <div className="monolith-footer">
             <div className="monolith-cta-group">
               <a href="#dat-chuyen" className="btn btn-primary">
                 <span>Hỏi giá chuyến hàng</span>
@@ -119,8 +115,11 @@ export default function HomePage() {
                 <span>Hotline: {company.hotline}</span>
               </a>
             </div>
+          </div>
 
-            <a href="#chuyen-cua-hang" className="monolith-explore">
+          {/* Minimalist Action & Explore Cue */}
+          <div className="monolith-footer">
+            <a href="#chuyen-cua-hang" className="monolith-explore" style={{ marginLeft: "auto" }}>
               <span>Hành trình vận chuyển</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -152,6 +151,16 @@ export default function HomePage() {
               <span className="ch2-author-line" />
             </div>
           </div>
+        </div>
+
+        {/* Truck on Viaduct Bridge Illustration */}
+        <div className="ch2-illustration" aria-hidden="true">
+          <img
+            src="/images/truck-bridge-manifesto.png"
+            alt="Minh họa xe tải Hậu Nguyễn vận hành trên cầu cạn"
+            className="ch2-truck-img"
+            loading="lazy"
+          />
         </div>
       </section>
 

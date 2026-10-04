@@ -82,7 +82,7 @@ export default function Header() {
             }}
           >
             <img
-              src="/images/logo/logo-brand.png"
+              src="/images/logo/logofinal-removebg.png"
               alt="Logo Hậu Nguyễn Transport"
               style={{
                 height: "44px",
@@ -90,8 +90,10 @@ export default function Header() {
                 maxHeight: "44px",
                 objectFit: "contain",
                 display: "block",
-                filter: isDarkHeader ? "drop-shadow(0 1px 4px rgba(255, 255, 255, 0.45))" : "none",
-                transition: "filter 0.3s ease",
+                filter: isDarkHeader
+                  ? "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 10px rgba(242, 210, 122, 0.45))"
+                  : "drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15))",
+                transition: "filter 0.3s ease, transform 0.3s ease",
               }}
               height={44}
             />
@@ -242,6 +244,9 @@ export default function Header() {
           ))}
         </nav>
         <div style={{ marginTop: "2rem", paddingTop: "1.5rem", borderTop: "1px solid var(--cream-200)" }}>
+          <p style={{ fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--gold-600)", margin: "0 0 0.5rem" }}>
+            VẬN TẢI — XÂY DỰNG — DỊCH VỤ
+          </p>
           <a href={company.hotlineTel} style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--gold-600)", display: "block", marginBottom: "0.5rem" }}>
             {company.hotline}
           </a>

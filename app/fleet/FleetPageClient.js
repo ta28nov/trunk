@@ -59,7 +59,6 @@ export default function FleetPageClient({ fleet, company }) {
 
         <div className="subpage-hero-container">
           <div className="subpage-hero-eyebrow">
-            <span className="subpage-hero-line" />
             <span>HINO &amp; HYUNDAI CHUYÊN DỤNG</span>
           </div>
 
@@ -241,8 +240,7 @@ export default function FleetPageClient({ fleet, company }) {
       <section style={{ padding: "clamp(5rem, 6vw, 8rem) 0", background: "#FFFFFF", borderTop: "1px solid var(--cream-200)" }}>
         <div className="wrap">
           <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 3.5rem" }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem", color: "var(--gold-600)" }}>
-              <span style={{ width: "24px", height: "2px", background: "var(--gold-500)" }} />
+            <div style={{ display: "inline-flex", alignItems: "center", marginBottom: "0.75rem", color: "var(--gold-600)" }}>
               <span style={{ fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>TƯ VẤN QUY CÁCH XE</span>
             </div>
             <h2 style={{ fontSize: "var(--fs-h1)", color: "var(--navy-900)", marginBottom: "1rem" }}>
@@ -275,7 +273,7 @@ export default function FleetPageClient({ fleet, company }) {
                   "Lý tưởng cho hàng điện máy, điện tử, dược phẩm, bao bì, thực phẩm khô.",
                 ].map((txt, i) => (
                   <li key={i} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start", fontSize: "0.9375rem", color: "var(--text-muted)", lineHeight: 1.55 }}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-600)" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12" /></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-600)" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"/></svg>
                     <span>{txt}</span>
                   </li>
                 ))}
@@ -303,7 +301,7 @@ export default function FleetPageClient({ fleet, company }) {
                   "Lý tưởng cho hàng sắt thép, vật liệu công trình, nông sản đóng bao tải.",
                 ].map((txt, i) => (
                   <li key={i} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start", fontSize: "0.9375rem", color: "var(--text-muted)", lineHeight: 1.55 }}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-600)" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12" /></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-600)" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"/></svg>
                     <span>{txt}</span>
                   </li>
                 ))}
@@ -369,7 +367,7 @@ export default function FleetPageClient({ fleet, company }) {
 
             {quoteSuccess ? (
               <div style={{ textAlign: "center", padding: "1.5rem 0" }}>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold-500)" strokeWidth="2" style={{ margin: "0 auto 1rem" }}><path d="M20 6L9 17l-5-5" /></svg>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold-500)" strokeWidth="2" style={{ margin: "0 auto 1rem" }}><path d="M20 6L9 17l-5-5"/></svg>
                 <h3 style={{ color: "var(--navy-900)", marginBottom: "0.5rem" }}>Đã mở Zalo tiếp nhận báo giá!</h3>
                 <p style={{ color: "var(--text-muted)", fontSize: "0.875rem", marginBottom: "1.5rem" }}>
                   Điều xe sẽ liên hệ phản hồi ngay cho quý khách.
@@ -384,8 +382,8 @@ export default function FleetPageClient({ fleet, company }) {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleQuoteSubmit}>
-                <div style={{ marginBottom: "1.5rem" }}>
+              <form onSubmit={handleQuoteSubmit} className="ch7-form">
+                <div style={{ marginBottom: "0.5rem" }}>
                   <span className="eyebrow" style={{ display: "block", marginBottom: "0.25rem" }}>YÊU CẦU BÁO GIÁ XE</span>
                   <h3 style={{ fontSize: "1.375rem", color: "var(--navy-900)", fontWeight: 800 }}>
                     {selectedTruck.name}
@@ -395,38 +393,40 @@ export default function FleetPageClient({ fleet, company }) {
                   </p>
                 </div>
 
-                <div style={{ display: "grid", gap: "1rem" }}>
+                <div className="ch7-form-row">
                   <div className="form-group">
                     <label className="form-label">Họ tên của bạn *</label>
-                    <input type="text" name="name" className="form-input" placeholder="Nguyễn Văn A" required />
+                    <input type="text" name="name" className="ch7-input" placeholder="Nguyễn Văn A" required />
                   </div>
                   <div className="form-group">
                     <label className="form-label">Số điện thoại *</label>
-                    <input type="tel" name="phone" inputMode="tel" className="form-input" placeholder="09xx xxx xxx" required />
+                    <input type="tel" name="phone" inputMode="tel" className="ch7-input" placeholder="09xx xxx xxx" required />
                   </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
-                    <div className="form-group">
-                      <label className="form-label">Điểm lấy hàng</label>
-                      <input type="text" name="from" className="form-input" placeholder="VD: Thanh Hóa" />
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label">Điểm trả hàng</label>
-                      <input type="text" name="to" className="form-input" placeholder="VD: Hà Nội" />
-                    </div>
+                </div>
+
+                <div className="ch7-form-row">
+                  <div className="form-group">
+                    <label className="form-label">Điểm lấy hàng</label>
+                    <input type="text" name="from" className="ch7-input" placeholder="VD: Thanh Hóa" />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Loại hàng hoá</label>
-                    <input type="text" name="cargo" className="form-input" placeholder="VD: Hàng khô, thiết bị..." />
+                    <label className="form-label">Điểm trả hàng</label>
+                    <input type="text" name="to" className="ch7-input" placeholder="VD: Hà Nội" />
                   </div>
+                </div>
 
-                  <div style={{ display: "flex", gap: "0.75rem", marginTop: "0.5rem" }}>
-                    <button type="submit" className="btn btn-primary" style={{ flex: 1, justifyContent: "center" }}>
-                      Gửi báo giá qua Zalo
-                    </button>
-                    <a href={company.hotlineTel} className="btn btn-secondary" style={{ padding: "0 1.25rem" }}>
-                      Gọi điện
-                    </a>
-                  </div>
+                <div className="form-group">
+                  <label className="form-label">Loại hàng hoá</label>
+                  <input type="text" name="cargo" className="ch7-input" placeholder="VD: Hàng khô, thiết bị..." />
+                </div>
+
+                <div style={{ display: "flex", gap: "0.75rem", marginTop: "0.5rem" }}>
+                  <button type="submit" className="ch7-submit-btn" style={{ flex: 1, minHeight: "48px", marginTop: 0 }}>
+                    <span>Gửi báo giá qua Zalo</span>
+                  </button>
+                  <a href={company.hotlineTel} className="btn btn-secondary" style={{ padding: "0 1.25rem", minHeight: "48px", borderRadius: "var(--radius-pill)" }}>
+                    Gọi điện
+                  </a>
                 </div>
               </form>
             )}
