@@ -81,38 +81,74 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": ["LocalBusiness", "LogisticsService"],
-              name: "CÔNG TY TNHH XÂY DỰNG VÀ DỊCH VỤ VẬN TẢI HẬU NGUYỄN",
-              alternateName: "Hậu Nguyễn Transport",
-              url: "https://vantaihaunguyen.com",
-              logo: "https://vantaihaunguyen.com/images/logo/logofinal-removebg.png",
-              image: "https://vantaihaunguyen.com/images/hero/hau-nguyen-clean-full.png",
-              telephone: "0823040412",
-              email: "nguyenhau1707hhh@gmail.com",
-              taxID: "2803219353",
-              priceRange: "$$",
-              openingHours: "Mo-Su 00:00-24:00",
-              sameAs: ["https://zalo.me/0823040412"],
-              description:
-                "Đội xe chuyên dụng Hino, Hyundai thùng kín và thùng bạt từ 3,5 đến 15 tấn. Nhận hàng từ Hà Tĩnh, Nghệ An, Thanh Hóa đi các tỉnh phía Bắc, Tây Bắc.",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "92 Đông Xuân",
-                addressLocality: "Xã Trường Văn",
-                addressRegion: "Thanh Hóa",
-                addressCountry: "VN",
-              },
-              areaServed: [
-                "Hà Tĩnh",
-                "Nghệ An",
-                "Thanh Hóa",
-                "Hà Nội",
-                "Hải Phòng",
-                "Sơn La",
-                "Lào Cai",
-                "các tỉnh phía Bắc",
-                "Tây Bắc",
-              ],
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.vantaihaunguyen.com/#website",
+                  "url": "https://www.vantaihaunguyen.com",
+                  "name": "Vận Tải Hậu Nguyễn",
+                  "alternateName": ["Hậu Nguyễn Transport", "vantaihaunguyen.com", "Vận Tải Thanh Hóa Hậu Nguyễn"],
+                  "description": "Dịch vụ vận tải hàng hóa chuyên tuyến Bắc Trung Bộ kết nối các tỉnh phía Bắc và Tây Bắc.",
+                  "inLanguage": "vi-VN"
+                },
+                {
+                  "@type": ["LocalBusiness", "LogisticsService"],
+                  "@id": "https://www.vantaihaunguyen.com/#organization",
+                  "name": "CÔNG TY TNHH XÂY DỰNG VÀ DỊCH VỤ VẬN TẢI HẬU NGUYỄN",
+                  "alternateName": "Hậu Nguyễn Transport",
+                  "url": "https://www.vantaihaunguyen.com",
+                  "logo": "https://www.vantaihaunguyen.com/images/logo/logofinal-removebg.png",
+                  "image": "https://www.vantaihaunguyen.com/images/hero/hau-nguyen-clean-full.png",
+                  "telephone": "+84823040412",
+                  "email": "nguyenhau1707hhh@gmail.com",
+                  "taxID": "2803219353",
+                  "priceRange": "$$",
+                  "openingHours": "Mo-Su 00:00-24:00",
+                  "sameAs": ["https://zalo.me/0823040412"],
+                  "description":
+                    "Đội xe chuyên dụng Hino, Hyundai thùng kín và thùng bạt từ 3,5 đến 15 tấn. Nhận hàng từ Hà Tĩnh, Nghệ An, Thanh Hóa đi các tỉnh phía Bắc và Tây Bắc.",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "92 Đông Xuân",
+                    "addressLocality": "Xã Trường Văn",
+                    "addressRegion": "Thanh Hóa",
+                    "addressCountry": "VN"
+                  },
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+84823040412",
+                    "contactType": "Điều xe trực ban 24/7",
+                    "areaServed": "VN",
+                    "availableLanguage": "Vietnamese"
+                  },
+                  "areaServed": [
+                    "Hà Tĩnh",
+                    "Nghệ An",
+                    "Thanh Hóa",
+                    "Hà Nội",
+                    "Hải Phòng",
+                    "Quảng Ninh",
+                    "Bắc Ninh",
+                    "Hưng Yên",
+                    "Hải Dương",
+                    "Hòa Bình",
+                    "Sơn La",
+                    "Điện Biên",
+                    "Lai Châu",
+                    "Lào Cai",
+                    "Yên Bái"
+                  ],
+                  "knowsAbout": [
+                    "Vận tải đường bộ",
+                    "Vận chuyển hàng hóa Bắc Nam",
+                    "Cho thuê xe tải 3.5 tấn",
+                    "Cho thuê xe tải 8 tấn",
+                    "Cho thuê xe tải 15 tấn",
+                    "Vận chuyển vật liệu xây dựng",
+                    "Logistics hàng hóa công nghiệp"
+                  ]
+                }
+              ]
             }),
           }}
         />

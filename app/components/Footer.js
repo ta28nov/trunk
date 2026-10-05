@@ -103,12 +103,49 @@ export default function Footer() {
           </ul>
         </nav>
 
-        {/* (e) Copyright with white and gold highlights */}
-        <p className="footer__copy">
-          © {new Date().getFullYear()} <strong>Hậu Nguyễn Transport</strong> · MST: <span>{company.taxCode}</span> · Hotline: <span>{company.hotline}</span>
-        </p>
-        <p className="footer__address">
-          {company.name} · {company.address}
+        {/* (e) Bộ Công Thương Regulatory & Compliance Block */}
+        <div
+          style={{
+            marginTop: "2rem",
+            paddingTop: "1.75rem",
+            borderTop: "1px solid rgba(255, 255, 255, 0.12)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "1rem",
+            textAlign: "center",
+          }}
+        >
+          <a
+            href="http://online.gov.vn"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Đã thông báo Bộ Công Thương"
+            style={{ display: "inline-block", transition: "transform 0.2s ease" }}
+          >
+            <img
+              src="/images/logo-da-thong-bao-bo-cong-thuong.svg"
+              alt="Đã thông báo Bộ Công Thương - Cổng thông tin Quản lý hoạt động TMĐT"
+              style={{ height: "46px", width: "auto", display: "block" }}
+            />
+          </a>
+
+          <div style={{ fontSize: "0.8125rem", color: "rgba(255, 255, 255, 0.72)", lineHeight: "1.65", maxWidth: "800px" }}>
+            <p style={{ margin: "0 0 0.35rem" }}>
+              <strong>{company.name}</strong> · Người đại diện theo pháp luật: <strong>Nguyễn Hậu</strong>
+            </p>
+            <p style={{ margin: "0 0 0.35rem" }}>
+              Giấy chứng nhận đăng ký kinh doanh số: <strong>{company.taxCode}</strong> do Sở Kế hoạch và Đầu tư Tỉnh Thanh Hóa cấp ngày 13/03/2026.
+            </p>
+            <p style={{ margin: 0 }}>
+              Trụ sở &amp; Bãi xe: {company.address} · Hotline 24/7: <strong>{company.hotline}</strong> · Email: {company.email}
+            </p>
+          </div>
+        </div>
+
+        {/* (f) Copyright */}
+        <p className="footer__copy" style={{ marginTop: "1rem", opacity: 0.85 }}>
+          © {new Date().getFullYear()} <strong>Hậu Nguyễn Transport</strong> · vantaihaunguyen.com. Bảo lưu mọi quyền theo quy định của pháp luật.
         </p>
       </div>
 

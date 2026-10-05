@@ -56,13 +56,28 @@ export default function TermsPage() {
           </ul>
 
           <h2 style={{ fontSize: "1.25rem", color: "var(--navy-900)", marginTop: "2rem", marginBottom: "0.75rem" }}>
-            4. Liên hệ ban điều xe &amp; xử lý sự cố
+            4. Quy trình tiếp nhận và giải quyết khiếu nại, bồi thường
+          </h2>
+          <p style={{ marginBottom: "0.75rem" }}>
+            Hậu Nguyễn Transport luôn đề cao quyền lợi chính đáng của Quý khách hàng và tuân thủ chặt chẽ quy định tại Nghị định số 52/2013/NĐ-CP và Nghị định số 85/2021/NĐ-CP của Chính phủ về thương mại điện tử:
+          </p>
+          <ul style={{ paddingLeft: "1.5rem", marginBottom: "1.25rem" }}>
+            <li><strong>Thời hạn gửi khiếu nại:</strong> Trong vòng 03 ngày làm việc kể từ thời điểm ký biên bản bàn giao hàng hóa (POD).</li>
+            <li><strong>Hình thức tiếp nhận:</strong> Qua Hotline trực ban <strong>{company.hotline}</strong> hoặc văn bản/hình ảnh gửi tới email chính thức: <strong>{company.email}</strong>.</li>
+            <li><strong>Thời gian xử lý:</strong> Ban điều vận Hậu Nguyễn sẽ xác minh dữ liệu hành trình GPS, biên bản hiện trường và phản hồi phương án bồi thường trong vòng 24–48 giờ làm việc.</li>
+            <li><strong>Nguyên tắc thương lượng:</strong> Mọi tranh chấp phát sinh được ưu tiên giải quyết thông qua thương lượng hòa giải thiện chí. Trường hợp không đạt được thỏa thuận, vụ việc sẽ được đưa ra Tòa án nhân dân có thẩm quyền tại Tỉnh Thanh Hóa để giải quyết theo luật định.</li>
+          </ul>
+
+          <h2 style={{ fontSize: "1.25rem", color: "var(--navy-900)", marginTop: "2rem", marginBottom: "0.75rem" }}>
+            5. Đơn vị sở hữu và chịu trách nhiệm pháp lý
           </h2>
           <ul style={{ paddingLeft: "1.5rem", marginBottom: "1.5rem" }}>
+            <li><strong>Tên pháp nhân:</strong> {company.name}</li>
+            <li><strong>Người đại diện theo pháp luật:</strong> Nguyễn Hậu</li>
+            <li><strong>Mã số doanh nghiệp:</strong> {company.taxCode} do Sở KH&amp;ĐT Tỉnh Thanh Hóa cấp ngày 13/03/2026</li>
             <li><strong>Hotline điều xe 24/7:</strong> {company.hotline}</li>
-            <li><strong>Pháp nhân chịu trách nhiệm:</strong> {company.name}</li>
-            <li><strong>Mã số thuế:</strong> {company.taxCode}</li>
-            <li><strong>Địa chỉ bãi xe &amp; văn phòng:</strong> {company.address}</li>
+            <li><strong>Email:</strong> {company.email}</li>
+            <li><strong>Trụ sở chính:</strong> {company.address}</li>
           </ul>
         </div>
       </div>
