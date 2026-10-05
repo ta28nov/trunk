@@ -5,21 +5,54 @@ import FloatingZalo from "./components/FloatingZalo";
 import company from "./data/company.json";
 import fleetData from "./data/fleet.json";
 
+// Accurate geographic route profiles for Northern & Northwest logistics
+const DESTINATION_INFO = {
+  "Hà Nội": { time: "Khoảng 2.5 – 3.5 giờ", route: "Cao tốc Mai Sơn – QL45 – Pháp Vân", note: "Giao nhận tận kho nội thành & KCN ngoại thành" },
+  "Hải Phòng": { time: "Khoảng 3.5 – 4.5 giờ", route: "Trục ven biển & QL10 – Cao tốc Hà Nội Hải Phòng", note: "Kết nối cảng Đình Vũ, Lạch Huyện" },
+  "Quảng Ninh": { time: "Khoảng 4.5 – 5.5 giờ", route: "Cao tốc Hải Phòng – Hạ Long – Vân Đồn", note: "Phục vụ vật liệu, thiết bị công nghiệp" },
+  "Bắc Ninh": { time: "Khoảng 3.0 – 4.0 giờ", route: "Cao tốc Hà Nội – Bắc Giang", note: "Giao nhận các KCN Quế Võ, Yên Phong" },
+  "Hải Dương": { time: "Khoảng 3.0 – 4.0 giờ", route: "QL5A & Cao tốc Hà Nội – Hải Phòng", note: "Kết nối trung chuyển hàng công nghiệp" },
+  "Hưng Yên": { time: "Khoảng 2.5 – 3.5 giờ", route: "Trục QL39 & Cao tốc Hà Nội – Hải Phòng", note: "Phục vụ KCN Phố Nối và vùng phụ cận" },
+  "Hòa Bình": { time: "Khoảng 3.5 – 4.5 giờ", route: "Đường Hồ Chí Minh & QL6", note: "Cửa ngõ Tây Bắc, địa hình dốc thoải" },
+  "Sơn La": { time: "Khoảng 7.0 – 9.0 giờ", route: "QL6 vượt đèo Mộc Châu", note: "Lái xe kinh nghiệm đèo dốc núi cao" },
+  "Điện Biên": { time: "Khoảng 11 – 13 giờ", route: "Trục QL279 & QL6 vượt đèo Pha Đin", note: "Hàng chằng buộc gia cố chống xô lệch" },
+  "Lai Châu": { time: "Khoảng 12 – 14 giờ", route: "Cao tốc Nội Bài – Lào Cai ➔ QL4D đèo Ô Quy Hồ", note: "Kiểm tra kỹ thuật phanh & lốp chuyên sâu" },
+  "Lào Cai": { time: "Khoảng 6.0 – 7.5 giờ", route: "Cao tốc Nội Bài – Lào Cai xuyên suốt", note: "Giao thương cửa khẩu quốc tế Kim Thành" },
+  "Yên Bái": { time: "Khoảng 5.0 – 6.0 giờ", route: "Cao tốc Nội Bài – Lào Cai (IC12)", note: "Kết nối trung chuyển kho bãi miền núi" },
+};
+
+const QUICK_ROUTES = [
+  "Thanh Hóa → Hà Nội",
+  "Nghệ An → Hải Phòng",
+  "Hà Tĩnh → Bắc Ninh",
+  "Thanh Hóa → Sơn La",
+  "Nghệ An → Lào Cai",
+];
+
 export default function HomePage() {
   // Load selector state (Chapter 4) - default to 8 tấn
   const [selectedLoadId, setSelectedLoadId] = useState("xe-8t");
   const selectedVehicle = fleetData.find((v) => v.id === selectedLoadId) || fleetData[2];
+  const [isSwitchingVehicle, setIsSwitchingVehicle] = useState(false);
 
-  // Chapter 7 form state
+  // Chapter 5 route details interactive state
+  const [activeDestName, setActiveDestName] = useState("Hà Nội");
+
+  // Chapter 7 form state & Anti-bot security defenses
   const [cargoDesc, setCargoDesc] = useState("");
   const [routeDesc, setRouteDesc] = useState("");
   const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [hpToken, setHpToken] = useState(""); // Honeypot trap field (hidden from humans)
   const [formSent, setFormSent] = useState(false);
+  const mountTimeRef = useRef(0);
+  const lastSubmitRef = useRef(0);
 
-  // Video IntersectionObserver (Chapter 3)
+  // Video IntersectionObserver (Chapter 3) & Mount time recorder
   const videoRef = useRef(null);
 
   useEffect(() => {
+    mountTimeRef.current = Date.now();
     if (!videoRef.current) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -35,9 +68,18 @@ export default function HomePage() {
     return () => observer.disconnect();
   }, []);
 
+  const handleSelectTonnage = (vehicleId) => {
+    if (vehicleId === selectedLoadId) return;
+    setIsSwitchingVehicle(true);
+    setSelectedLoadId(vehicleId);
+    setTimeout(() => {
+      setIsSwitchingVehicle(false);
+    }, 280);
+  };
+
   // Quick select tonnage and smooth scroll to quote form
   const handleSelectTonnageToQuote = (vehicle) => {
-    setSelectedLoadId(vehicle.id);
+    handleSelectTonnage(vehicle.id);
     setCargoDesc(`Cần vận chuyển xe tải ${vehicle.tonnage} tấn (${vehicle.body || "thùng bạt/kín"})`);
     const formElement = document.getElementById("dat-chuyen");
     if (formElement) {
@@ -47,17 +89,54 @@ export default function HomePage() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (!phone.trim()) return;
+    setPhoneError("");
+
+    // 1. Honeypot check: Bots fill hidden inputs; humans do not
+    if (hpToken && hpToken.trim().length > 0) {
+      // Silently pretend success to deceive bot without running payload
+      setFormSent(true);
+      return;
+    }
+
+    // 2. Speed-trap check: Submissions under 1.2s are automated crawler scripts
+    if (mountTimeRef.current > 0 && Date.now() - mountTimeRef.current < 1200) {
+      setFormSent(true);
+      return;
+    }
+
+    // 3. Flood rate-limiting cooldown (min 4s between clicks)
+    const now = Date.now();
+    if (now - lastSubmitRef.current < 4000) {
+      setPhoneError("Thao tác quá nhanh. Quý khách vui lòng chờ 3-5 giây.");
+      return;
+    }
+
+    // 4. Validate phone format (Vietnamese mobile 10 digits)
+    const rawPhone = phone.replace(/[\s.-]/g, "");
+    const vnPhoneRegex = /^(0|\+84)(3|5|7|8|9)[0-9]{8}$/;
+    if (!vnPhoneRegex.test(rawPhone)) {
+      setPhoneError("Vui lòng nhập đúng định dạng số điện thoại di động (10 chữ số, VD: 0823040412).");
+      return;
+    }
+
+    // 5. Input sanitization (strip dangerous injection chars)
+    const cleanCargo = cargoDesc.replace(/[<>'"`;(){}[\]\\/]/g, "").trim().slice(0, 150);
+    const cleanRoute = routeDesc.replace(/[<>'"`;(){}[\]\\/]/g, "").trim().slice(0, 150);
+    const cleanPhone = rawPhone.slice(0, 15);
+
+    lastSubmitRef.current = now;
 
     const message = `Yêu cầu báo giá vận chuyển Hậu Nguyễn:
-- Hàng gì: ${cargoDesc || "Chưa ghi cụ thể"}
-- Tuyến đường: ${routeDesc || "Chưa ghi cụ thể"}
-- Số điện thoại khách: ${phone}`;
+- Hàng gì: ${cleanCargo || "Chưa ghi cụ thể"}
+- Tuyến đường: ${cleanRoute || "Chưa ghi cụ thể"}
+- Số điện thoại khách: ${cleanPhone}`;
 
     const encoded = encodeURIComponent(message);
-    window.open(`${company.zaloLink}?text=${encoded}`, "_blank");
+    window.open(`${company.zaloLink}?text=${encoded}`, "_blank", "noopener,noreferrer");
     setFormSent(true);
   };
+
+  const activeRouteData = DESTINATION_INFO[activeDestName] || DESTINATION_INFO["Hà Nội"];
 
   return (
     <div className="journey-stream">
@@ -140,21 +219,19 @@ export default function HomePage() {
       <section className="ch2-manifesto journey-stage-morning" id="chuyen-cua-hang">
         <div className="wrap">
           <div className="ch2-wrap">
-            <blockquote className="ch2-quote">
+            <blockquote className="ch2-quote reveal-up">
               Mỗi chuyến hàng là một lời hứa với người đang chờ ở đầu bên kia.
               Chúng tôi giữ lời đó, từ kho đến tận bàn giao.
             </blockquote>
 
-            <div className="ch2-author">
-              <span className="ch2-author-line" />
+            <div className="ch2-author reveal-up" data-delay="0.15s">
               <span>Hậu Nguyễn Transport · Nguyên tắc vận hành từng chuyến xe</span>
-              <span className="ch2-author-line" />
             </div>
           </div>
         </div>
 
         {/* Truck on Viaduct Bridge Illustration */}
-        <div className="ch2-illustration" aria-hidden="true">
+        <div className="ch2-illustration reveal-scale" aria-hidden="true">
           <img
             src="/images/truck-bridge-manifesto.png"
             alt="Minh họa xe tải Hậu Nguyễn vận hành trên cầu cạn"
@@ -166,16 +243,15 @@ export default function HomePage() {
 
       {/* ═══════════════════════════════════════════════════════════════
           TRÊN ĐƯỜNG (CINEMATIC ROAD FILM)
-          Video is the protagonist. Minimal copy: "Kho. Đường. Đèo. Nơi nhận."
-          Label: "Hình ảnh minh họa"
+          Video is the protagonist. Clean, pristine visual.
          ═══════════════════════════════════════════════════════════════ */}
       <section className="ch3-film journey-stage-road" id="tren-duong">
         <div className="wrap">
-          <div className="ch3-header">
+          <div className="ch3-header reveal-up">
             <h2 className="ch3-cadence">Kho. Đường. Đèo. Nơi nhận.</h2>
           </div>
 
-          <div className="ch3-video-wrapper">
+          <div className="ch3-video-wrapper reveal-scale">
             <video
               ref={videoRef}
               src="/videos/videoxechaycang.mp4"
@@ -197,7 +273,7 @@ export default function HomePage() {
          ═══════════════════════════════════════════════════════════════ */}
       <section className="ch4-load journey-stage-depot" id="tai-trong">
         <div className="wrap">
-          <div className="ch4-header">
+          <div className="ch4-header reveal-up">
             <h2 className="ch4-title">Hàng của bạn nặng bao nhiêu?</h2>
             <p className="ch4-subtitle">
               Chọn mức tải dự kiến để xem phương tiện và cấu hình thùng phù hợp với tính chất hàng hóa của bạn.
@@ -205,7 +281,7 @@ export default function HomePage() {
           </div>
 
           {/* Selector toggle bar */}
-          <div className="ch4-selector-bar" role="tablist" aria-label="Chọn mức tải trọng xe tải">
+          <div className="ch4-selector-bar reveal-up" role="tablist" aria-label="Chọn mức tải trọng xe tải">
             {fleetData.map((vehicle) => {
               const isActive = vehicle.id === selectedLoadId;
               return (
@@ -214,7 +290,7 @@ export default function HomePage() {
                   role="tab"
                   aria-selected={isActive}
                   className={`ch4-selector-btn ${isActive ? "active" : ""}`}
-                  onClick={() => setSelectedLoadId(vehicle.id)}
+                  onClick={() => handleSelectTonnage(vehicle.id)}
                 >
                   <span>{vehicle.tonnage} tấn</span>
                 </button>
@@ -223,8 +299,8 @@ export default function HomePage() {
           </div>
 
           {/* Single Dynamic Vehicle Showcase Panel */}
-          <div className="ch4-display-panel">
-            <div className="ch4-panel-image">
+          <div className="ch4-display-panel reveal-scale">
+            <div className={`ch4-panel-image ${isSwitchingVehicle ? "is-switching" : ""}`}>
               <img
                 src={selectedVehicle.image}
                 alt={selectedVehicle.name}
@@ -245,11 +321,11 @@ export default function HomePage() {
               <div className="ch4-specs-grid">
                 <div className="ch4-spec-item">
                   <span className="ch4-spec-label">Tải trọng tối đa</span>
-                  <span className="ch4-spec-value">{selectedVehicle.tonnage} Tấn</span>
+                  <span className="ch4-spec-value counter-num">{selectedVehicle.tonnage} Tấn</span>
                 </div>
                 <div className="ch4-spec-item">
                   <span className="ch4-spec-label">Thể tích ước tính</span>
-                  <span className="ch4-spec-value">~{selectedVehicle.volume_m3} m³</span>
+                  <span className="ch4-spec-value counter-num">~{selectedVehicle.volume_m3} m³</span>
                 </div>
                 <div className="ch4-spec-item">
                   <span className="ch4-spec-label">Quy cách thùng</span>
@@ -294,18 +370,19 @@ export default function HomePage() {
          ═══════════════════════════════════════════════════════════════ */}
       <section className="ch5-route journey-stage-sunset" id="len-bac">
         <div className="wrap">
-          <div className="ch5-header">
+          <div className="ch5-header reveal-up">
             <h2 className="ch5-title">Ba điểm đi. Một hướng: lên Bắc.</h2>
             <p className="ch5-subtitle">
               Sơ đồ minh hoạ. Hỏi chúng tôi lịch xe chạy tuyến bạn cần để có phương án tối ưu nhất.
             </p>
           </div>
 
-          <div className="ch5-map-diagram">
+          <div className="ch5-map-diagram reveal-scale">
             <div className="ch5-diagram-flow">
               {/* Origin nodes */}
               <div className="ch5-origins">
                 <div className="ch5-origin-node">
+                  <span className="pulse-radar-ring" />
                   <span className="ch5-node-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <circle cx="12" cy="12" r="4"></circle>
@@ -318,6 +395,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="ch5-origin-node">
+                  <span className="pulse-radar-ring" style={{ animationDelay: "0.9s" }} />
                   <span className="ch5-node-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <circle cx="12" cy="12" r="4"></circle>
@@ -330,6 +408,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="ch5-origin-node">
+                  <span className="pulse-radar-ring" style={{ animationDelay: "1.8s" }} />
                   <span className="ch5-node-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <circle cx="12" cy="12" r="4"></circle>
@@ -362,12 +441,16 @@ export default function HomePage() {
                     <span>Phía Bắc & Đồng Bằng Sông Hồng</span>
                   </h4>
                   <div className="ch5-dest-tags">
-                    <span className="ch5-dest-pill">Hà Nội</span>
-                    <span className="ch5-dest-pill">Hải Phòng</span>
-                    <span className="ch5-dest-pill">Quảng Ninh</span>
-                    <span className="ch5-dest-pill">Bắc Ninh</span>
-                    <span className="ch5-dest-pill">Hải Dương</span>
-                    <span className="ch5-dest-pill">Hưng Yên</span>
+                    {["Hà Nội", "Hải Phòng", "Quảng Ninh", "Bắc Ninh", "Hải Dương", "Hưng Yên"].map((dest) => (
+                      <span
+                        key={dest}
+                        className={`ch5-dest-pill ${activeDestName === dest ? "active" : ""}`}
+                        onClick={() => setActiveDestName(dest)}
+                        onMouseEnter={() => setActiveDestName(dest)}
+                      >
+                        {dest}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
@@ -379,14 +462,32 @@ export default function HomePage() {
                     <span>Tây Bắc & Vùng Cao</span>
                   </h4>
                   <div className="ch5-dest-tags">
-                    <span className="ch5-dest-pill">Hòa Bình</span>
-                    <span className="ch5-dest-pill">Sơn La</span>
-                    <span className="ch5-dest-pill">Điện Biên</span>
-                    <span className="ch5-dest-pill">Lai Châu</span>
-                    <span className="ch5-dest-pill">Lào Cai</span>
-                    <span className="ch5-dest-pill">Yên Bái</span>
+                    {["Hòa Bình", "Sơn La", "Điện Biên", "Lai Châu", "Lào Cai", "Yên Bái"].map((dest) => (
+                      <span
+                        key={dest}
+                        className={`ch5-dest-pill ${activeDestName === dest ? "active" : ""}`}
+                        onClick={() => setActiveDestName(dest)}
+                        onMouseEnter={() => setActiveDestName(dest)}
+                      >
+                        {dest}
+                      </span>
+                    ))}
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Dynamic Live Route Details Inspector */}
+            <div className="route-live-preview">
+              <div className="route-live-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                <span>Hành trình đến {activeDestName}: {activeRouteData.route}</span>
+              </div>
+              <div className="route-live-meta">
+                <span className="route-live-pill">Thời gian: {activeRouteData.time}</span>
+                <span style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.75)" }}>{activeRouteData.note}</span>
               </div>
             </div>
           </div>
@@ -394,12 +495,12 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          NGƯỜI VÀ XE (ASYMMETRIC PURPOSEFUL COLLAGE)
-          No generic gallery. Genuine context and verified captions.
+          NGƯỜI VÀ XE (PURE ARTISTIC PHOTOGRAPHIC COLLAGE)
+          No fake labels, no captions, purely clean visual atmosphere.
          ═══════════════════════════════════════════════════════════════ */}
       <section className="ch6-crew journey-stage-night" id="nguoi-va-xe">
         <div className="wrap">
-          <div className="ch6-header">
+          <div className="ch6-header reveal-up">
             <h2 className="ch6-title">Người và xe trên từng cây số.</h2>
             <p className="ch6-subtitle">
               Những hình ảnh chân thực từ kho bốc dỡ, quá trình kiểm tra phương tiện đến những cung đường thực tế.
@@ -408,63 +509,48 @@ export default function HomePage() {
 
           <div className="ch6-collage">
             {/* Image 1: Driver checking vehicle & cargo before departure */}
-            <div className="ch6-item ch6-item-1">
+            <div className="ch6-item ch6-item-1 reveal-up">
               <img
                 src="/images/anh-xe/anhthem2.jpg"
                 alt="Đội ngũ lái xe Hậu Nguyễn kiểm tra kỹ thuật trước giờ xuất bến"
                 loading="lazy"
               />
-              <div className="ch6-item-caption">
-                Tài xế và phụ xe kiểm tra kỹ thuật, rà soát an toàn hàng hóa trước giờ xuất bến.
-              </div>
             </div>
 
             {/* Image 2: Loading & lashing at depot */}
-            <div className="ch6-item ch6-item-2">
+            <div className="ch6-item ch6-item-2 reveal-up" data-delay="0.1s">
               <img
                 src="/images/anh-xe/anhthem4.jpg"
                 alt="Bốc xếp và chằng buộc hàng hóa tại kho bãi"
                 loading="lazy"
               />
-              <div className="ch6-item-caption">
-                Bốc xếp, chèn lót hàng cẩn trọng tại kho bãi Thanh Hóa.
-              </div>
             </div>
 
             {/* Image 3: Fleet staging at transit hub */}
-            <div className="ch6-item ch6-item-3">
+            <div className="ch6-item ch6-item-3 reveal-up" data-delay="0.15s">
               <img
                 src="/images/anh-xe/anhthem5.jpg"
                 alt="Đội hình phương tiện Hậu Nguyễn tập kết tại bãi trung chuyển"
                 loading="lazy"
               />
-              <div className="ch6-item-caption">
-                Đội hình xe tập kết sẵn sàng phục vụ các tuyến cao điểm.
-              </div>
             </div>
 
             {/* Image 4: Highway and mountain pass transit */}
-            <div className="ch6-item ch6-item-4">
+            <div className="ch6-item ch6-item-4 reveal-up" data-delay="0.2s">
               <img
                 src="/images/anh-xe/anhthem6.jpg"
                 alt="Chuyến xe tải Hậu Nguyễn di chuyển trên cung đường dài"
                 loading="lazy"
               />
-              <div className="ch6-item-caption">
-                Chuyến xe lăn bánh xuyên ngày đêm trên các cung đường liên tỉnh.
-              </div>
             </div>
 
             {/* Image 5: Rear seal intact at delivery point */}
-            <div className="ch6-item ch6-item-5">
+            <div className="ch6-item ch6-item-5 reveal-up" data-delay="0.25s">
               <img
                 src="/images/anh-xe/duoixemautrang.jpg"
                 alt="Khâu kiểm tra niêm phong thùng kín tại điểm giao nhận"
                 loading="lazy"
               />
-              <div className="ch6-item-caption">
-                Niêm phong thùng kín nguyên vẹn khi đến điểm giao hàng.
-              </div>
             </div>
           </div>
         </div>
@@ -481,7 +567,7 @@ export default function HomePage() {
          ═══════════════════════════════════════════════════════════════ */}
       <section className="ch7-conversion" id="dat-chuyen">
         <div className="wrap">
-          <div className="ch7-card ch7-card--overlap">
+          <div className="ch7-card ch7-card--overlap reveal-scale">
             <div className="ch7-header">
               <h2 className="ch7-title">Hàng gì, đi đâu?</h2>
               <p className="ch7-subtitle">
@@ -540,6 +626,35 @@ export default function HomePage() {
                   </div>
                 </div>
 
+                {/* Quick Route Preset Suggestion Chips */}
+                <div className="ch7-quick-routes">
+                  <span className="ch7-quick-label">Tuyến phổ biến:</span>
+                  {QUICK_ROUTES.map((route) => (
+                    <button
+                      key={route}
+                      type="button"
+                      className="ch7-quick-chip"
+                      onClick={() => setRouteDesc(route)}
+                    >
+                      {route}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Anti-bot Honeypot Trap (invisible to real visitors) */}
+                <div style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden" }} aria-hidden="true">
+                  <label htmlFor="company-fax-field">Fax Number</label>
+                  <input
+                    id="company-fax-field"
+                    type="text"
+                    name="company_fax_field"
+                    value={hpToken}
+                    onChange={(e) => setHpToken(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div className="form-group">
                   <label className="form-label" htmlFor="phone-field">
                     Số điện thoại nhận báo giá *
@@ -548,11 +663,20 @@ export default function HomePage() {
                     id="phone-field"
                     type="tel"
                     required
+                    maxLength={15}
                     className="ch7-input"
                     placeholder="Nhập số điện thoại của bạn (bắt buộc)"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                      if (phoneError) setPhoneError("");
+                    }}
                   />
+                  {phoneError && (
+                    <div style={{ color: "#ef4444", fontSize: "0.8125rem", marginTop: "0.4rem", fontWeight: 600 }}>
+                      ⚠️ {phoneError}
+                    </div>
+                  )}
                 </div>
 
                 <button type="submit" className="ch7-submit-btn">

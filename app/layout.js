@@ -32,19 +32,39 @@ export const metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-icon.png",
   },
+  metadataBase: new URL("https://vantaihaunguyen.com"),
+  alternates: {
+    canonical: "https://vantaihaunguyen.com",
+  },
   openGraph: {
     title: "Hậu Nguyễn – Vận Tải · Xây Dựng · Dịch Vụ",
     description:
       "Công ty TNHH Xây Dựng và Dịch Vụ Vận Tải Hậu Nguyễn. Đội xe chuyên dụng Hino, Hyundai thùng kín và thùng bạt từ 3,5 đến 15 tấn kết nối liên tỉnh phía Bắc và Tây Bắc.",
+    url: "https://vantaihaunguyen.com",
+    siteName: "Hậu Nguyễn Transport",
+    images: [
+      {
+        url: "/images/hero/hau-nguyen-clean-full.png",
+        width: 1200,
+        height: 630,
+        alt: "Hậu Nguyễn Transport - Vận Tải Xây Dựng Dịch Vụ Thanh Hóa",
+      },
+    ],
     locale: "vi_VN",
     type: "website",
-    siteName: "Hậu Nguyễn Transport",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hậu Nguyễn Transport – Vận Tải Bắc Trung Bộ Đi Phía Bắc",
+    description:
+      "Đội xe chuyên dụng Hino, Hyundai 3.5T – 15T. Nhận hàng từ Hà Tĩnh, Nghệ An, Thanh Hóa đi các tỉnh phía Bắc và Tây Bắc.",
+    images: ["/images/hero/hau-nguyen-clean-full.png"],
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="vi">
+    <html lang="vi" data-scroll-behavior="smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -64,8 +84,9 @@ export default function RootLayout({ children }) {
               "@type": ["LocalBusiness", "LogisticsService"],
               name: "CÔNG TY TNHH XÂY DỰNG VÀ DỊCH VỤ VẬN TẢI HẬU NGUYỄN",
               alternateName: "Hậu Nguyễn Transport",
-              url: "https://haunguyen.vn",
-              logo: "https://haunguyen.vn/images/logo/logofinal-removebg.png",
+              url: "https://vantaihaunguyen.com",
+              logo: "https://vantaihaunguyen.com/images/logo/logofinal-removebg.png",
+              image: "https://vantaihaunguyen.com/images/hero/hau-nguyen-clean-full.png",
               telephone: "0823040412",
               email: "nguyenhau1707hhh@gmail.com",
               taxID: "2803219353",

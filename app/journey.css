@@ -446,6 +446,7 @@
   margin-bottom: 2.5rem;
   padding: 0.5rem;
   background: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border-radius: var(--radius-pill);
   border: 1px solid var(--cream-200);
@@ -1244,6 +1245,7 @@ select.ch7-input {
   top: 1.25rem;
   left: 1.25rem;
   background: rgba(10, 14, 23, 0.8);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   padding: 0.4rem 0.95rem;
   border-radius: var(--radius-pill);
@@ -1455,6 +1457,7 @@ select.ch7-input {
   filter: invert(1) contrast(1.05) brightness(0.92);
   mix-blend-mode: screen;
   pointer-events: none;
+  -webkit-user-select: none;
   user-select: none;
   background-color: #0D1529;
   margin: 0 auto;
@@ -1463,7 +1466,7 @@ select.ch7-input {
 
 @media (min-width: 901px) {
   .footer--meridian {
-    min-height: auto;
+    min-height: 0;
   }
 
   .footer--meridian .footer__video-bottom {
@@ -1482,7 +1485,7 @@ select.ch7-input {
 @media (max-width: 900px) {
   .footer--meridian {
     height: auto !important;
-    min-height: auto !important;
+    min-height: 0 !important;
     padding-bottom: 0 !important;
   }
 
@@ -1605,6 +1608,7 @@ select.ch7-input {
   width: 100%;
   height: clamp(48px, 5vw, 72px);
   pointer-events: none;
+  -webkit-user-select: none;
   user-select: none;
   z-index: 4;
   margin: 0;

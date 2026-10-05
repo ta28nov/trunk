@@ -1,0 +1,1089 @@
+/* ═══════════════════════════════════════════════════════════════
+   HẬU NGUYỄN — AWWWARDS MOTION & INTERACTION SYSTEM
+   Clean Cinematic Mobility · Fluid Kinetic Physics · Lenis Smooth Scroll
+   Zero Artificial Clutter · Clean Image/Video Displays · Native Cursor Preserved
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── 0. LENIS SMOOTH INERTIAL SCROLLING ─── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ─── 2. BACK TO TOP BUTTON (CLEANLY POSITIONED ON LEFT TO PREVENT ZALO OVERLAP) ─── */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 3.5rem;
+  left: 2rem;
+  right: auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(14, 22, 42, 0.92);
+  border: 1.5px solid rgba(242, 210, 122, 0.45);
+  color: #F2D27A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 990;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(16px) scale(0.9);
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 1023px) {
+  .back-to-top-btn {
+    bottom: 4.75rem;
+    left: 1.25rem;
+    right: auto;
+  }
+}
+
+.back-to-top-btn.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.back-to-top-btn:hover {
+  background: var(--navy-900);
+  border-color: var(--gold-500);
+  color: #FFFFFF;
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 14px 36px rgba(217, 162, 27, 0.3);
+}
+
+.back-to-top-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.back-to-top-btn:hover svg {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .back-to-top-btn {
+    bottom: 5.5rem;
+    right: 1.25rem;
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* ─── 3. BUTTON SHIMMER & GLOW ─── */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  animation: btnSheen 5s infinite;
+}
+
+@keyframes btnSheen {
+  0%, 80% {
+    left: -60%;
+    opacity: 0;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: 140%;
+    opacity: 0;
+  }
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(217, 162, 27, 0.45);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ─── 4. HERO CINEMATIC ENHANCEMENTS ─── */
+.monolith-hero {
+  position: relative;
+}
+
+/* Hide artificial lines */
+.monolith-eyebrow-line {
+  display: none !important;
+}
+
+.ch2-author-line {
+  display: none !important;
+}
+
+.monolith-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 50% 30%,
+    rgba(217, 162, 27, 0.08) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.monolith-title {
+  animation: monolithEntrance 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.monolith-tagline {
+  animation: monolithEntrance 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.monolith-cta-group {
+  animation: monolithEntrance 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+@keyframes monolithEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── 5. MANIFESTO (CHUYỆN CỦA HÀNG) ELEGANCE ─── */
+.ch2-manifesto {
+  position: relative;
+}
+
+.ch2-quote {
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+/* User strictly requested: NO border-radius and NO hover scale on this bridge illustration */
+.ch2-illustration,
+.ch2-illustration img,
+.ch2-truck-img {
+  position: relative;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  transform: none !important;
+  transition: none !important;
+  box-shadow: none !important;
+}
+
+.ch2-manifesto:hover .ch2-truck-img,
+.ch2-illustration:hover .ch2-truck-img,
+.ch2-truck-img:hover {
+  transform: none !important;
+}
+
+/* ─── 6. CINEMATIC VIDEO (PURE & PRISTINE) ─── */
+.ch3-video-wrapper {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  background: #000000;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+}
+
+.ch3-video-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 75px rgba(0, 0, 0, 0.45);
+}
+
+.ch3-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── 7. INTERACTIVE BLUEPRINT FLEET CONFIGURATOR ─── */
+.ch4-selector-bar {
+  position: relative;
+  box-shadow: 0 4px 20px rgba(138, 97, 10, 0.08);
+}
+
+.ch4-selector-btn {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ch4-selector-btn:hover {
+  transform: translateY(-1px);
+}
+
+.ch4-display-panel {
+  position: relative;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  overflow: hidden;
+}
+
+.ch4-display-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--gradient-gold);
+}
+
+.ch4-display-panel:hover {
+  border-color: var(--gold-300);
+  box-shadow: 0 20px 50px rgba(20, 32, 63, 0.14);
+}
+
+/* Truck Image Container & Transition */
+.ch4-panel-image {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--cream-200);
+  border-radius: var(--radius-md);
+}
+
+.ch4-panel-image img {
+  transform-origin: center center;
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ch4-panel-image.is-switching img {
+  opacity: 0.25;
+  transform: scale(0.96) translateX(12px);
+}
+
+/* Counter odometer transition */
+.counter-num {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
+}
+
+.ch4-spec-item {
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--cream-50);
+  border: 1px solid rgba(242, 210, 122, 0.25);
+  transition: all 0.3s ease;
+}
+
+.ch4-spec-item:hover {
+  background: #FFFFFF;
+  border-color: var(--gold-500);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(217, 162, 27, 0.15);
+}
+
+/* ─── 8. VIETNAM LOGISTICS NETWORK (CORPORATE PREMIUM EDITORIAL) ───
+   Palette: Background #14264A | Map base #31558A | Map secondary #41699F
+            Border #6FA9E8 | Highlight #F6C84A | Marker #FFD45A
+            Text chính #FFFFFF | Text phụ #B9C9E3 | Route line #6FCBFF */
+.ch5-route {
+  position: relative;
+  background: #14264A !important;
+  color: #FFFFFF;
+}
+
+.ch5-route::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(111, 203, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ch5-eyebrow-tag {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #FFD45A;
+  background: rgba(246, 200, 74, 0.12);
+  border: 1px solid rgba(246, 200, 74, 0.35);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.ch5-header .ch5-title {
+  color: #FFFFFF !important;
+}
+
+.ch5-header .ch5-subtitle {
+  color: #B9C9E3 !important;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Two-column Editorial Layout: Desktop Map 62% | Info Panel 38% */
+.vnl-network-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .vnl-network-layout {
+    grid-template-columns: 1.3fr 0.85fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Map Card */
+.vnl-network-card {
+  position: relative;
+  background: radial-gradient(circle at 50% 30%, #1A315E 0%, #14264A 100%);
+  border: 1.5px solid rgba(111, 169, 232, 0.35);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.5rem 1.5rem 2rem;
+  box-shadow: 0 24px 60px rgba(10, 18, 36, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.vnl-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(111, 169, 232, 0.2);
+}
+
+.vnl-sub-badge {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: #6FCBFF;
+  text-transform: uppercase;
+}
+
+.vnl-card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0.2rem 0 0;
+}
+
+.vnl-legend-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.75rem;
+  color: #B9C9E3;
+  flex-wrap: wrap;
+}
+
+.vnl-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.vnl-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.vnl-legend-origin {
+  background: #FFD45A;
+  box-shadow: 0 0 8px rgba(255, 212, 90, 0.8);
+}
+
+.vnl-legend-dest {
+  background: #FFFFFF;
+  border: 1.5px solid #FFD45A;
+}
+
+.vnl-legend-line {
+  width: 18px;
+  height: 2px;
+  background: #6FCBFF;
+  box-shadow: 0 0 6px #6FCBFF;
+}
+
+.vnl-svg-container {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-md, 12px);
+  overflow: hidden;
+  background: rgba(14, 26, 52, 0.45);
+  border: 1px solid rgba(111, 169, 232, 0.18);
+}
+
+.vnl-map-svg {
+  width: 100%;
+  height: auto;
+  max-height: 680px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* South & Central Base (Non-serviced, kept in faint secondary blue #41699F) */
+.vnl-map-base-south {
+  fill: #41699F;
+  fill-opacity: 0.28;
+  stroke: #6FA9E8;
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+/* Northern Serviced Base (#31558A) */
+.vnl-map-base-north {
+  fill: #31558A;
+  fill-opacity: 0.78;
+  stroke: #6FA9E8;
+  stroke-width: 1.35;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 10px rgba(111, 169, 232, 0.2));
+}
+
+/* Archipelago */
+.vnl-island-box {
+  fill: rgba(49, 85, 138, 0.3);
+  stroke: rgba(111, 169, 232, 0.35);
+  stroke-width: 0.8;
+  stroke-dasharray: 2 2;
+}
+
+.vnl-island-dot {
+  fill: #6FA9E8;
+}
+
+.vnl-island-label {
+  fill: #B9C9E3;
+  font-size: 9.5px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* Cyan Route Lines (#6FCBFF) with gentle flowing light */
+.vnl-cyan-route-line {
+  fill: none;
+  stroke: #6FCBFF;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 6 5;
+  animation: cyanRouteDash 2.5s linear infinite;
+  filter: drop-shadow(0 0 5px rgba(111, 203, 255, 0.8));
+}
+
+.vnl-route-dashed {
+  stroke-dasharray: 4 4;
+  stroke-width: 1.8;
+  opacity: 0.85;
+}
+
+@keyframes cyanRouteDash {
+  from {
+    stroke-dashoffset: 33;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.vnl-focus-beam {
+  stroke: #FFD45A;
+  stroke-width: 1.75;
+  stroke-dasharray: 3 3;
+  animation: cyanRouteDash 1.5s linear infinite;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 6px #FFD45A);
+}
+
+/* Markers & Pulse Animations */
+.vnl-node-group {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.vnl-node-group:hover {
+  transform: scale(1.08);
+}
+
+.vnl-orbital-ring {
+  fill: none;
+  stroke: #FFD45A;
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  opacity: 0.75;
+}
+
+.vnl-halo-pulse {
+  fill: none;
+  stroke: #6FCBFF;
+  stroke-width: 1.2;
+  animation: vnlPulseWave 2.2s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+  transform-origin: center;
+}
+
+@keyframes vnlPulseWave {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.vnl-marker-outer {
+  fill: #FFD45A;
+  stroke: #FFFFFF;
+  stroke-width: 1.25;
+  filter: drop-shadow(0 0 6px rgba(255, 212, 90, 0.8));
+}
+
+.vnl-marker-inner {
+  fill: #14264A;
+}
+
+.vnl-city-text {
+  fill: #B9C9E3;
+  font-size: 11px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+  transition: all 0.2s ease;
+}
+
+.vnl-city-text.is-origin-text {
+  fill: #FFD45A;
+  font-weight: 700;
+}
+
+.vnl-city-text.is-active-text,
+.vnl-node-group:hover .vnl-city-text {
+  fill: #FFFFFF;
+  font-weight: 800;
+  text-shadow: 0 0 8px rgba(111, 203, 255, 0.9);
+}
+
+/* Dynamic Live Popover Card on Map */
+.vnl-live-popover {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  background: rgba(20, 38, 74, 0.92);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(111, 169, 232, 0.35);
+  border-radius: var(--radius-md, 10px);
+  padding: 1rem 1.25rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 640px) {
+  .vnl-live-popover {
+    max-width: 320px;
+    right: auto;
+  }
+}
+
+.vnl-popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(111, 169, 232, 0.2);
+  padding-bottom: 0.4rem;
+}
+
+.vnl-popover-tag {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #6FCBFF;
+}
+
+.vnl-popover-name {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: #FFD45A;
+}
+
+.vnl-popover-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+}
+
+.vnl-popover-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.vnl-popover-label {
+  color: #B9C9E3;
+}
+
+.vnl-popover-val {
+  color: #FFFFFF;
+  font-weight: 600;
+  text-align: right;
+}
+
+.vnl-time-val {
+  color: #FFD45A;
+  font-weight: 700;
+}
+
+/* ─── INFORMATION & ROUTING PANEL (RIGHT COLUMN) ─── */
+.vnl-info-panel {
+  background: rgba(20, 38, 74, 0.72);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(111, 169, 232, 0.25);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 20px 50px rgba(10, 18, 36, 0.45);
+}
+
+.vnl-panel-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(111, 169, 232, 0.35), transparent);
+  width: 100%;
+}
+
+.vnl-group-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #6FCBFF;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.vnl-origin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.vnl-origin-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md, 8px);
+  background: rgba(49, 85, 138, 0.2);
+  border: 1px solid rgba(111, 169, 232, 0.2);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.vnl-origin-card:hover,
+.vnl-origin-card.is-active {
+  background: rgba(49, 85, 138, 0.45);
+  border-color: #FFD45A;
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.vnl-origin-bullet {
+  color: #FFD45A;
+  font-size: 1.125rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px rgba(255, 212, 90, 0.7));
+}
+
+.vnl-origin-details {
+  flex: 1;
+}
+
+.vnl-origin-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #FFFFFF;
+  font-size: 0.9375rem;
+}
+
+.vnl-hub-badge {
+  font-size: 0.6875rem;
+  background: rgba(255, 212, 90, 0.15);
+  border: 1px solid rgba(255, 212, 90, 0.4);
+  color: #FFD45A;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.vnl-origin-sub {
+  font-size: 0.75rem;
+  color: #B9C9E3;
+  margin-top: 0.15rem;
+}
+
+.vnl-tag-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.vnl-dest-btn {
+  appearance: none;
+  border: 1px solid rgba(111, 169, 232, 0.3);
+  background: rgba(49, 85, 138, 0.25);
+  color: #B9C9E3;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vnl-dest-btn:hover {
+  color: #FFFFFF;
+  border-color: #6FCBFF;
+  background: rgba(111, 203, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.vnl-dest-btn.is-active {
+  background: linear-gradient(135deg, #F6C84A 0%, #FFD45A 100%);
+  color: #14264A;
+  border-color: #FFD45A;
+  font-weight: 700;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(246, 200, 74, 0.35);
+}
+
+.vnl-live-inspector {
+  margin-top: 0.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md, 8px);
+  background: rgba(14, 26, 52, 0.75);
+  border: 1px solid rgba(111, 203, 255, 0.35);
+}
+
+.vnl-inspector-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.vnl-inspector-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6FCBFF;
+  box-shadow: 0 0 8px #6FCBFF;
+}
+
+.vnl-inspector-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+}
+
+.vnl-inspector-time {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #FFD45A;
+  font-weight: 700;
+}
+
+.vnl-inspector-note {
+  color: #B9C9E3;
+  line-height: 1.45;
+}
+
+/* ─── 9. CLEAN PHOTOGRAPHIC COLLAGE (NGƯỜI VÀ XE) ─── */
+/* Pure images, no captions, no subtitles, no badges */
+.ch6-item-caption {
+  display: none !important;
+}
+
+.ch6-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease, border-color 0.45s ease;
+}
+
+.ch6-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  border-color: rgba(217, 162, 27, 0.5);
+}
+
+.ch6-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ch6-item:hover img {
+  transform: scale(1.05);
+}
+
+/* ─── 10. CONVERSION FORM ENHANCEMENTS ─── */
+.ch7-card {
+  position: relative;
+  transition: box-shadow 0.4s ease;
+}
+
+.ch7-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+  height: 4px;
+  background: var(--gradient-gold);
+  border-radius: 4px 4px 0 0;
+}
+
+.ch7-quick-routes {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.ch7-quick-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.ch7-quick-chip {
+  background: #FFFFFF;
+  border: 1px solid var(--cream-200);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--navy-700);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ch7-quick-chip:hover {
+  background: var(--cream-100);
+  border-color: var(--gold-500);
+  color: var(--navy-900);
+  transform: translateY(-1px);
+}
+
+.ch7-input:focus {
+  border-color: var(--gold-500) !important;
+  box-shadow: 0 0 0 4px rgba(217, 162, 27, 0.2) !important;
+  background: #FFFFFF !important;
+}
+
+.ch7-submit-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ch7-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(217, 162, 27, 0.45);
+}
+
+/* ─── 11. LUXURY SCROLL REVEAL TIMING ─── */
+.reveal, .reveal-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.in, .reveal-up.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-left.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-right.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale.in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Keyframe animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── 12. DESKTOP NAV REFINED INDICATOR ─── */
+.desktop-nav a {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.desktop-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gold-500);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.desktop-nav a:hover::after {
+  width: 60%;
+}
+
+/* ─── 13. SUBPAGE HEROES & CARDS POLISH ─── */
+.subpage-hero-title {
+  animation: monolithEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.subpage-hero-desc {
+  animation: monolithEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.subpage-hero-actions {
+  animation: monolithEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.subpage-hero-bg img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.subpage-hero:hover .subpage-hero-bg img {
+  transform: scale(1.03);
+}
+
+/* Interactive Cards Hover Elevation */
+.fleet-card, .tier-card, .route-card, .about-card, .faq-item {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+}
+
+.fleet-card:hover, .tier-card:hover, .route-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(20, 32, 63, 0.12);
+  border-color: var(--gold-300);
+}

@@ -1,15 +1,83 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import company from "../data/company.json";
 import fleetData from "../data/fleet.json";
 import FAQSection from "../components/FAQSection";
 
 export default function ContactPageClient() {
   const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    vehicle: "",
+    from: "",
+    to: "",
+    cargo: "",
+  });
+  const [hpToken, setHpToken] = useState(""); // Honeypot field
+  const [errorMsg, setErrorMsg] = useState("");
+  const mountTimeRef = useRef(0);
+  const lastSubmitRef = useRef(0);
+
+  useEffect(() => {
+    mountTimeRef.current = Date.now();
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errorMsg) setErrorMsg("");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    window.open(company.zaloLink, "_blank");
+    setErrorMsg("");
+
+    // 1. Honeypot check: automated spam bots fill invisible fields
+    if (hpToken && hpToken.trim().length > 0) {
+      setSubmitted(true);
+      return;
+    }
+
+    // 2. Speed-trap: submissions faster than 1.2s are headless bots
+    if (mountTimeRef.current > 0 && Date.now() - mountTimeRef.current < 1200) {
+      setSubmitted(true);
+      return;
+    }
+
+    // 3. Flood rate-limiting cooldown (min 4s)
+    const now = Date.now();
+    if (now - lastSubmitRef.current < 4000) {
+      setErrorMsg("Thao tác quá nhanh. Quý khách vui lòng chờ 3-5 giây.");
+      return;
+    }
+
+    // 4. Validate phone format
+    const rawPhone = formData.phone.replace(/[\s.-]/g, "");
+    const vnPhoneRegex = /^(0|\+84)(3|5|7|8|9)[0-9]{8}$/;
+    if (!vnPhoneRegex.test(rawPhone)) {
+      setErrorMsg("Vui lòng nhập đúng định dạng số điện thoại di động (10 chữ số, VD: 0823040412).");
+      return;
+    }
+
+    // 5. Input sanitization (strip dangerous injection chars, enforce bounds)
+    const cleanName = formData.name.replace(/[<>'"`;(){}[\]\\/]/g, "").trim().slice(0, 80);
+    const cleanVehicle = formData.vehicle.replace(/[<>'"`;(){}[\]\\/]/g, "").trim().slice(0, 80);
+    const cleanFrom = formData.from.replace(/[<>'"`;(){}[\]\\/]/g, "").trim().slice(0, 100);
+    const cleanTo = formData.to.replace(/[<>'"`;(){}[\]\\/]/g, "").trim().slice(0, 100);
+    const cleanCargo = formData.cargo.replace(/[<>'"`;(){}[\]\\/]/g, "").trim().slice(0, 150);
+
+    lastSubmitRef.current = now;
+
+    const message = `Yêu cầu vận chuyển Hậu Nguyễn:
+- Khách hàng: ${cleanName || "Khách"}
+- SĐT: ${rawPhone}
+- Loại xe: ${cleanVehicle || "Tư vấn thêm"}
+- Tuyến: ${cleanFrom || "..."} ➔ ${cleanTo || "..."}
+- Loại hàng: ${cleanCargo || "Chưa ghi rõ"}`;
+
+    const encoded = encodeURIComponent(message);
+    window.open(`${company.zaloLink}?text=${encoded}`, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
 
@@ -196,21 +264,66 @@ export default function ContactPageClient() {
                     </h3>
                   </div>
 
+                  {/* Anti-bot Honeypot Trap (hidden from human visitors) */}
+                  <div style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden" }} aria-hidden="true">
+                    <label htmlFor="contact-fax-field">Fax Number</label>
+                    <input
+                      id="contact-fax-field"
+                      type="text"
+                      name="contact_fax_field"
+                      value={hpToken}
+                      onChange={(e) => setHpToken(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+
                   <div className="ch7-form-row">
                     <div className="form-group">
                       <label className="form-label">Họ và tên của bạn *</label>
-                      <input type="text" name="name" className="ch7-input" placeholder="Nguyễn Văn A" required />
+                      <input
+                        type="text"
+                        name="name"
+                        maxLength={80}
+                        className="ch7-input"
+                        placeholder="Nguyễn Văn A"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                      />
                     </div>
 
                     <div className="form-group">
                       <label className="form-label">Số điện thoại liên hệ *</label>
-                      <input type="tel" name="phone" inputMode="tel" className="ch7-input" placeholder="09xx xxx xxx" required />
+                      <input
+                        type="tel"
+                        name="phone"
+                        inputMode="tel"
+                        maxLength={15}
+                        className="ch7-input"
+                        placeholder="09xx xxx xxx"
+                        required
+                        value={formData.phone}
+                        onChange={handleChange}
+                      />
                     </div>
                   </div>
 
+                  {errorMsg && (
+                    <div style={{ color: "#ef4444", fontSize: "0.8125rem", marginBottom: "0.75rem", fontWeight: 600 }}>
+                      ⚠️ {errorMsg}
+                    </div>
+                  )}
+
                   <div className="form-group">
                     <label className="form-label">Dự kiến loại xe</label>
-                    <select name="vehicle" className="ch7-input" style={{ color: "var(--navy-900)", fontWeight: 500 }}>
+                    <select
+                      name="vehicle"
+                      className="ch7-input"
+                      style={{ color: "var(--navy-900)", fontWeight: 500 }}
+                      value={formData.vehicle}
+                      onChange={handleChange}
+                    >
                       <option value="" style={{ color: "#14203F", backgroundColor: "#FFFFFF" }}>-- Chọn loại xe phù hợp --</option>
                       {fleetData.map((t) => (
                         <option key={t.id} value={t.name} style={{ color: "#14203F", backgroundColor: "#FFFFFF" }}>
@@ -223,17 +336,41 @@ export default function ContactPageClient() {
                   <div className="ch7-form-row">
                     <div className="form-group">
                       <label className="form-label">Điểm nhận hàng</label>
-                      <input type="text" name="from" className="ch7-input" placeholder="VD: Thanh Hóa" />
+                      <input
+                        type="text"
+                        name="from"
+                        maxLength={100}
+                        className="ch7-input"
+                        placeholder="VD: Thanh Hóa"
+                        value={formData.from}
+                        onChange={handleChange}
+                      />
                     </div>
                     <div className="form-group">
                       <label className="form-label">Điểm trả hàng</label>
-                      <input type="text" name="to" className="ch7-input" placeholder="VD: Hà Nội, Sơn La..." />
+                      <input
+                        type="text"
+                        name="to"
+                        maxLength={100}
+                        className="ch7-input"
+                        placeholder="VD: Hà Nội, Sơn La..."
+                        value={formData.to}
+                        onChange={handleChange}
+                      />
                     </div>
                   </div>
 
                   <div className="form-group">
                     <label className="form-label">Quy cách &amp; loại hàng</label>
-                    <input type="text" name="cargo" className="ch7-input" placeholder="VD: Điện máy, nội thất, vật tư..." />
+                    <input
+                      type="text"
+                      name="cargo"
+                      maxLength={150}
+                      className="ch7-input"
+                      placeholder="VD: Điện máy, nội thất, vật tư..."
+                      value={formData.cargo}
+                      onChange={handleChange}
+                    />
                   </div>
 
                   <button type="submit" className="ch7-submit-btn">
