@@ -1,8 +1,8 @@
 import company from "../data/company.json";
 
 export const metadata = {
-  title: "Quy Chế Giao Nhận & Cam Kết Bồi Thường",
-  description: "Quy chuẩn giao nhận, trách nhiệm vận hành và chính sách cam kết bồi thường 100% của Hậu Nguyễn Transport.",
+  title: "Quy Chế Giao Nhận & Giải Quyết Khiếu Nại",
+  description: "Quy chuẩn giao nhận, trách nhiệm vận hành và quy trình giải quyết khiếu nại của Hậu Nguyễn Transport.",
 };
 
 export default function TermsPage() {
@@ -10,20 +10,20 @@ export default function TermsPage() {
     <div style={{ background: "var(--cream-50)", minHeight: "100vh", padding: "4rem 1.25rem 6rem" }}>
       <div style={{ maxWidth: "800px", margin: "0 auto", background: "#FFFFFF", padding: "clamp(2rem, 4vw, 3.5rem)", borderRadius: "16px", boxShadow: "0 4px 24px rgba(20, 32, 63, 0.06)", border: "1px solid var(--cream-200)" }}>
         <span style={{ fontSize: "0.8125rem", fontWeight: "700", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-600)", display: "block", marginBottom: "0.5rem" }}>
-          QUY TRÌNH & CAM KẾT PHÁP LÝ
+          QUY TRÌNH &amp; CHÍNH SÁCH DỊCH VỤ
         </span>
         <h1 style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", color: "var(--navy-900)", marginBottom: "1.5rem", lineHeight: "1.2" }}>
-          Quy Chế Giao Nhận &amp; Cam Kết Bồi Thường
+          Quy Chế Giao Nhận &amp; Giải Quyết Khiếu Nại
         </h1>
 
         <div style={{ color: "var(--text)", lineHeight: "1.75", fontSize: "0.95rem" }}>
-          {/* Highlighted Guarantee Banner */}
+          {/* Transparent Policy Banner */}
           <div style={{ background: "rgba(217, 162, 27, 0.08)", border: "1.5px solid var(--gold-500)", borderRadius: "12px", padding: "1.25rem 1.5rem", marginBottom: "2rem" }}>
             <h3 style={{ color: "var(--navy-900)", fontSize: "1.1rem", margin: "0 0 0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <span>🛡️</span> Cam Kết Bảo Hiểm &amp; Bồi Thường 100%
+              <span>🛡️</span> Cam Kết Trách Nhiệm Vận Chuyển Hàng Hóa
             </h3>
             <p style={{ margin: 0, color: "var(--text)", fontSize: "0.925rem" }}>
-              Hậu Nguyễn Transport cam kết <strong>bồi thường 100% giá trị thiệt hại</strong> theo thỏa thuận hợp đồng nếu xảy ra hư hỏng, ướt hàng, móp méo hoặc thất thoát do lỗi vận hành, chằng buộc hay sơ suất của đội xe chúng tôi.
+              Hậu Nguyễn Transport cam kết thực hiện trách nhiệm bảo quản hàng hóa trên suốt hành trình; trường hợp phát sinh hư hỏng, thất thoát do lỗi vận hành hoặc sơ suất của đội xe, việc bồi thường thiệt hại được thực hiện căn cứ theo thỏa thuận cụ thể tại hợp đồng vận chuyển và quy định của pháp luật hiện hành.
             </p>
           </div>
 
@@ -56,10 +56,10 @@ export default function TermsPage() {
           </ul>
 
           <h2 style={{ fontSize: "1.25rem", color: "var(--navy-900)", marginTop: "2rem", marginBottom: "0.75rem" }}>
-            4. Quy trình tiếp nhận và giải quyết khiếu nại, bồi thường
+            4. Quy trình tiếp nhận và giải quyết khiếu nại, tranh chấp
           </h2>
           <p style={{ marginBottom: "0.75rem" }}>
-            Hậu Nguyễn Transport luôn đề cao quyền lợi chính đáng của Quý khách hàng và tuân thủ chặt chẽ quy định tại Nghị định số 52/2013/NĐ-CP và Nghị định số 85/2021/NĐ-CP của Chính phủ về thương mại điện tử:
+            Hậu Nguyễn Transport tuân thủ Luật Thương mại điện tử 2025 (Luật số 122/2025/QH15), Nghị định 248/2026/NĐ-CP và các quy định của pháp luật hiện hành về cung cấp dịch vụ thương mại:
           </p>
           <ul style={{ paddingLeft: "1.5rem", marginBottom: "1.25rem" }}>
             <li><strong>Thời hạn gửi khiếu nại:</strong> Trong vòng 03 ngày làm việc kể từ thời điểm ký biên bản bàn giao hàng hóa (POD).</li>

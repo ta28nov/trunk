@@ -103,7 +103,7 @@ export default function Footer() {
           </ul>
         </nav>
 
-        {/* (e) Bộ Công Thương Regulatory & Compliance Block */}
+        {/* (e) Enterprise Legal Transparency Block */}
         <div
           style={{
             marginTop: "2rem",
@@ -112,24 +112,10 @@ export default function Footer() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "1rem",
+            gap: "0.75rem",
             textAlign: "center",
           }}
         >
-          <a
-            href="http://online.gov.vn"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Đã thông báo Bộ Công Thương"
-            style={{ display: "inline-block", transition: "transform 0.2s ease" }}
-          >
-            <img
-              src="/images/logo-da-thong-bao-bo-cong-thuong.svg"
-              alt="Đã thông báo Bộ Công Thương - Cổng thông tin Quản lý hoạt động TMĐT"
-              style={{ height: "46px", width: "auto", display: "block" }}
-            />
-          </a>
-
           <div style={{ fontSize: "0.8125rem", color: "rgba(255, 255, 255, 0.72)", lineHeight: "1.65", maxWidth: "800px" }}>
             <p style={{ margin: "0 0 0.35rem" }}>
               <strong>{company.name}</strong> · Người đại diện theo pháp luật: <strong>Nguyễn Hậu</strong>
