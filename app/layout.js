@@ -32,15 +32,15 @@ export const metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-icon.png",
   },
-  metadataBase: new URL("https://vantaihaunguyen.com"),
+  metadataBase: new URL("https://www.vantaihaunguyen.com"),
   alternates: {
-    canonical: "https://vantaihaunguyen.com",
+    canonical: "https://www.vantaihaunguyen.com",
   },
   openGraph: {
-    title: "Hậu Nguyễn – Vận Tải · Xây Dựng · Dịch Vụ",
+    title: "Hậu Nguyễn – Vận Tải · Xây Dựng · Dịch Vụ | Thanh Hóa",
     description:
-      "Công ty TNHH Xây Dựng và Dịch Vụ Vận Tải Hậu Nguyễn. Đội xe chuyên dụng Hino, Hyundai thùng kín và thùng bạt từ 3,5 đến 15 tấn kết nối liên tỉnh phía Bắc và Tây Bắc.",
-    url: "https://vantaihaunguyen.com",
+      "Công ty TNHH Xây Dựng và Dịch Vụ Vận Tải Hậu Nguyễn. Đội xe chuyên dụng Hino, Hyundai thùng kín và thùng bạt từ 3,5 đến 15 tấn kết nối liên tỉnh phía Bắc và Tây Bắc. Hotline 0823 040 412.",
+    url: "https://www.vantaihaunguyen.com",
     siteName: "Hậu Nguyễn Transport",
     images: [
       {

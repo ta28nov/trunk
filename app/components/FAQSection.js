@@ -37,6 +37,24 @@ export default function FAQSection({ title = "Câu hỏi thường gặp về d�
 
   return (
     <section style={{ padding: "clamp(4rem, 6vw, 6.5rem) 0", background: "var(--cream-50, #FAF8F2)" }}>
+      {/* Google FAQ Rich Snippet Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQ_ITEMS.map((item) => ({
+              "@type": "Question",
+              name: item.q,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: item.a,
+              },
+            })),
+          }),
+        }}
+      />
       <div className="wrap">
         <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 3rem" }}>
           <span
