@@ -19,6 +19,11 @@ const DESTINATION_INFO = {
   "Lai Châu": { time: "Khoảng 12 – 14 giờ", route: "Cao tốc Nội Bài – Lào Cai ➔ QL4D đèo Ô Quy Hồ", note: "Kiểm tra kỹ thuật phanh & lốp chuyên sâu" },
   "Lào Cai": { time: "Khoảng 6.0 – 7.5 giờ", route: "Cao tốc Nội Bài – Lào Cai xuyên suốt", note: "Giao thương cửa khẩu quốc tế Kim Thành" },
   "Yên Bái": { time: "Khoảng 5.0 – 6.0 giờ", route: "Cao tốc Nội Bài – Lào Cai (IC12)", note: "Kết nối trung chuyển kho bãi miền núi" },
+  "Đà Nẵng": { time: "Khoảng 8.0 – 10 giờ", route: "Trục cao tốc Bắc – Nam & QL1A", note: "Cảng biển Tiên Sa & KCN Hòa Khánh" },
+  "TP. Hồ Chí Minh": { time: "Khoảng 28 – 34 giờ", route: "Trục cao tốc Bắc – Nam xuyên suốt", note: "Giao nhận tận kho nội ngoại thành & KCN phía Nam" },
+  "Bình Dương": { time: "Khoảng 27 – 33 giờ", route: "QL13 & Vành đai công nghiệp", note: "KCN VSIP, Sóng Thần, Mỹ Phước" },
+  "Đồng Nai": { time: "Khoảng 26 – 32 giờ", route: "Cao tốc Phan Thiết – Dầu Giây & Long Thành", note: "KCN Biên Hòa, Amata, Nhơn Trạch" },
+  "Cần Thơ": { time: "Khoảng 32 – 38 giờ", route: "Cao tốc Trung Lương – Mỹ Thuận – Cần Thơ", note: "Trung tâm logistics Đồng bằng Sông Cửu Long" },
 };
 
 const QUICK_ROUTES = [
@@ -27,6 +32,8 @@ const QUICK_ROUTES = [
   "Hà Tĩnh → Bắc Ninh",
   "Thanh Hóa → Sơn La",
   "Nghệ An → Lào Cai",
+  "Thanh Hóa → TP. Hồ Chí Minh",
+  "Hà Tĩnh → Bình Dương",
 ];
 
 export default function HomePage() {
@@ -132,7 +139,7 @@ export default function HomePage() {
 - Số điện thoại khách: ${cleanPhone}`;
 
     const encoded = encodeURIComponent(message);
-    window.open(`${company.zaloLink}?text=${encoded}`, "_blank", "noopener,noreferrer");
+    window.open(`${company.zalo2Link || company.zaloLink}?text=${encoded}`, "_blank", "noopener,noreferrer");
     setFormSent(true);
   };
 
@@ -191,7 +198,7 @@ export default function HomePage() {
                 className="btn btn-secondary"
                 style={{ borderColor: "rgba(255,255,255,0.35)", color: "#FFFFFF" }}
               >
-                <span>Hotline: {company.hotline}</span>
+                <span>Hotline: {company.hotline} (A. Hậu)</span>
               </a>
             </div>
           </div>
@@ -209,8 +216,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Transition Zone: Monolith Hero (Dark #0A0E17) → Manifesto (Morning Light #FAF8F2) */}
-      <div className="transition-zone tz-hero-to-light" aria-hidden="true" />
+      {/* Transition: Dark Monolith Hero (#0A0E17) → Manifesto (#FAF8F2) */}
+      <div className="transition-zone tz-hero-to-cream" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════════════════════════════
           CHUYỆN CỦA HÀNG (EDITORIAL MANIFESTO)
@@ -360,7 +367,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Transition Zone: Cream (#EFE8D6) → Deep Navy (#14203F) */}
+      {/* Transition: Warm Cream (#FAF8F2) → Deep Navy (#14203F) */}
       <div className="transition-zone tz-cream-to-navy" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -424,7 +431,7 @@ export default function HomePage() {
               {/* Trunk route connector */}
               <div className="ch5-connector">
                 <div className="ch5-connector-arrow">
-                  <span>Trục Bắc</span>
+                  <span>Toàn Quốc</span>
                   <svg className="ch5-connector-svg" viewBox="0 0 64 32" fill="none">
                     <path d="M0 16H52M52 16L40 6M52 16L40 26" stroke="#D9A21B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -438,7 +445,7 @@ export default function HomePage() {
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
                     </svg>
-                    <span>Phía Bắc & Đồng Bằng Sông Hồng</span>
+                    <span>Phía Bắc &amp; Đồng Bằng Sông Hồng</span>
                   </h4>
                   <div className="ch5-dest-tags">
                     {["Hà Nội", "Hải Phòng", "Quảng Ninh", "Bắc Ninh", "Hải Dương", "Hưng Yên"].map((dest) => (
@@ -459,10 +466,31 @@ export default function HomePage() {
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
                     </svg>
-                    <span>Tây Bắc & Vùng Cao</span>
+                    <span>Tây Bắc &amp; Vùng Cao</span>
                   </h4>
                   <div className="ch5-dest-tags">
                     {["Hòa Bình", "Sơn La", "Điện Biên", "Lai Châu", "Lào Cai", "Yên Bái"].map((dest) => (
+                      <span
+                        key={dest}
+                        className={`ch5-dest-pill ${activeDestName === dest ? "active" : ""}`}
+                        onClick={() => setActiveDestName(dest)}
+                        onMouseEnter={() => setActiveDestName(dest)}
+                      >
+                        {dest}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="ch5-dest-branch">
+                  <h4 className="ch5-dest-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+                    </svg>
+                    <span>Miền Trung &amp; Các Tỉnh Phía Nam</span>
+                  </h4>
+                  <div className="ch5-dest-tags">
+                    {["Đà Nẵng", "TP. Hồ Chí Minh", "Bình Dương", "Đồng Nai", "Cần Thơ"].map((dest) => (
                       <span
                         key={dest}
                         className={`ch5-dest-pill ${activeDestName === dest ? "active" : ""}`}
@@ -556,7 +584,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Transition Zone: Dark Navy (#0E162A) → White / Cream (#FFFFFF) */}
+      {/* Transition: Deep Navy (#14203F) → Pure White (#FFFFFF) */}
       <div className="transition-zone tz-navy-to-white" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -693,11 +721,11 @@ export default function HomePage() {
             <div className="ch7-direct-contacts">
               <span className="ch7-direct-label">Hoặc liên hệ trao đổi trực tiếp:</span>
               <div className="ch7-direct-btns">
-                <a href={company.hotlineTel} className="ch7-hotline-link">
+                <a href={company.hotlineTel} className="ch7-hotline-link" title="Nguyễn Hậu - Hotline chính">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                   </svg>
-                  <span>{company.hotline}</span>
+                  <span>{company.hotline} (A. Hậu - Chính)</span>
                 </a>
 
                 <a
@@ -705,11 +733,16 @@ export default function HomePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ch7-zalo-btn"
+                  title="Chat Zalo Nguyễn Hậu"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                   </svg>
-                  <span>Nhắn Zalo</span>
+                  <span>Zalo A. Hậu</span>
+                </a>
+
+                <a href={company.hotline2Tel} className="ch7-hotline-link" style={{ background: "rgba(20,32,63,0.06)", borderColor: "var(--cream-200)" }} title="Nguyễn Hữu Phúc - Hotline 2">
+                  <span>{company.hotline2} (A. Phúc)</span>
                 </a>
               </div>
             </div>
@@ -717,8 +750,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Transition Zone: White (#FFFFFF) → Footer Vintage Paper (#ebeee7) */}
-      <div className="transition-zone tz-white-to-paper" aria-hidden="true" />
+      {/* Transition: Pure White (#FFFFFF) → Dark Navy Footer (#0D1529) */}
+      <div className="transition-zone tz-white-to-footer" aria-hidden="true" />
     </div>
   );
 }

@@ -363,6 +363,145 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   THƯ NGỎ BAN LÃNH ĐẠO (EXECUTIVE OPEN LETTER SECTION)
+   Clean, light-toned, prestigious corporate memorandum
+   ═══════════════════════════════════════════════════════════════ */
+.open-letter-section {
+  padding: clamp(5rem, 4.5rem + 3vw, 7.5rem) 0;
+  position: relative;
+  background: var(--cream-50, #FAF8F2);
+  color: #1E293B;
+  overflow: hidden;
+}
+
+.open-letter-card {
+  max-width: 920px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border: 1px solid rgba(20, 32, 63, 0.08);
+  border-radius: 20px;
+  padding: clamp(2.25rem, 4vw + 1rem, 4.5rem) clamp(1.75rem, 4.5vw + 1rem, 4.5rem);
+  box-shadow: 0 20px 50px rgba(10, 17, 40, 0.05), 0 2px 8px rgba(0, 0, 0, 0.02);
+  position: relative;
+  z-index: 2;
+}
+
+.open-letter-badge {
+  display: none !important;
+}
+
+.open-letter-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.open-letter-heading {
+  font-size: clamp(1.65rem, 1.25rem + 1.4vw, 2.25rem);
+  font-weight: 800;
+  color: var(--navy-900, #0A1128);
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.open-letter-salutation {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy-900, #0A1128);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.open-letter-body {
+  font-size: clamp(1.025rem, 0.98rem + 0.2vw, 1.1rem);
+  color: #334155;
+  line-height: 1.9;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.open-letter-body p {
+  margin: 0;
+  text-align: left;
+}
+
+.open-letter-body strong {
+  color: var(--navy-900, #0A1128);
+  font-weight: 700;
+}
+
+.open-letter-callout {
+  margin: 1.75rem 0;
+  padding: 1.25rem 2rem;
+  background: rgba(217, 162, 27, 0.04);
+  border-left: 3px solid var(--gold-500, #D9A21B);
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 4px 16px rgba(20, 32, 63, 0.02);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--navy-900, #0A1128);
+  font-style: italic;
+  letter-spacing: -0.01em;
+  line-height: 1.6;
+}
+
+.open-letter-footer {
+  margin-top: 2.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(20, 32, 63, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.open-letter-signature {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.open-letter-closing {
+  font-size: 0.9375rem;
+  color: var(--text-muted, #64748B);
+  font-style: italic;
+}
+
+.open-letter-signoff {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--navy-900, #0A1128);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.open-letter-company {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #B88510;
+}
+
+.open-letter-contacts-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.8125rem;
+  color: #475569;
+}
+
+.open-letter-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
    CHƯƠNG 03 — TRÊN ĐƯỜNG (CINEMATIC FILM)
    ═══════════════════════════════════════════════════════════════ */
 .ch3-film {
@@ -1602,118 +1741,61 @@ select.ch7-input {
    Refined, organic, depth-layering transitions between contrasting zones
    ═══════════════════════════════════════════════════════════════ */
 
-/* Base transition zone container */
+/* Base transition zone container: compact, silky smooth, no color banding */
 .transition-zone {
+  display: block !important;
   position: relative;
   width: 100%;
-  height: clamp(48px, 5vw, 72px);
+  height: clamp(24px, 2.2vw, 36px);
   pointer-events: none;
   -webkit-user-select: none;
   user-select: none;
-  z-index: 4;
+  z-index: 3;
   margin: 0;
   overflow: hidden;
 }
 
-/* 1. Cream (#EFE8D6 / #FAF8F2) → Deep Navy (#14203F) */
+/* 1. Dark Hero / Obsidian (#0A0E17) → Warm Cream (#FAF8F2) */
+.tz-hero-to-light,
+.tz-hero-to-cream {
+  background: linear-gradient(180deg, #0A0E17 0%, #FAF8F2 100%);
+}
+
+/* 2. Warm Cream (#FAF8F2) → Dark Video Section (#0A0E17) */
+.tz-cream-to-dark {
+  background: linear-gradient(180deg, #FAF8F2 0%, #0A0E17 100%);
+}
+
+/* 3. Warm Cream (#FAF8F2) → Deep Navy (#14203F) */
 .tz-cream-to-navy {
-  background: linear-gradient(
-    180deg,
-    #EFE8D6 0%,
-    #DDD7C8 22%,
-    #8493B0 58%,
-    #253558 84%,
-    #14203F 100%
-  );
+  background: linear-gradient(180deg, #FAF8F2 0%, #14203F 100%);
 }
 
-.tz-cream-to-navy::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 1px;
-  background: linear-gradient(
-    180deg,
-    rgba(217, 162, 27, 0.4) 0%,
-    rgba(217, 162, 27, 0.75) 50%,
-    rgba(217, 162, 27, 0.15) 100%
-  );
-  transform: translateX(-50%);
-  opacity: 0.6;
-}
-
-/* 2. Navy (#0E162A) → White / Cream (#FFFFFF / #FAF8F2) */
-.tz-navy-to-white {
-  background: linear-gradient(
-    180deg,
-    #0E162A 0%,
-    #1E2A44 24%,
-    #7B89A2 62%,
-    #E8E6E0 86%,
-    #FFFFFF 100%
-  );
-}
-
-/* 3. Deep Navy (#14203F) → White (#FFFFFF) */
-.tz-navy-to-white-standard {
-  background: linear-gradient(
-    180deg,
-    #14203F 0%,
-    #26365D 24%,
-    #8291AC 60%,
-    #EDEAE3 86%,
-    #FFFFFF 100%
-  );
-}
-
-/* 4. White (#FFFFFF) → Dark Navy (#14203F) */
-.tz-white-to-navy {
-  background: linear-gradient(
-    180deg,
-    #FFFFFF 0%,
-    #EDEAE3 16%,
-    #8291AC 58%,
-    #243358 84%,
-    #14203F 100%
-  );
-}
-
-/* 5. Dark Hero / Dark Obsidian (#0A0E17) → Light (#FAF8F2 / #FFFFFF) */
-.tz-hero-to-light {
-  background: linear-gradient(
-    180deg,
-    #0A0E17 0%,
-    #182234 26%,
-    #73819B 60%,
-    #EDE9E1 86%,
-    #FAF8F2 100%
-  );
-}
-
-/* 6. Dark Video Section (#0A0E17) → White (#FFFFFF) */
+/* 4. Dark Video Section (#0A0E17) → Pure White (#FFFFFF) */
 .tz-dark-to-white {
-  background: linear-gradient(
-    180deg,
-    #0A0E17 0%,
-    #192336 26%,
-    #74819C 60%,
-    #EDE9E1 86%,
-    #FFFFFF 100%
-  );
+  background: linear-gradient(180deg, #0A0E17 0%, #FFFFFF 100%);
 }
 
-/* 7. White (#FFFFFF) → Dark Navy Footer (#0D1529) */
-.tz-white-to-paper {
-  height: clamp(48px, 6vw, 96px);
-  background: linear-gradient(
-    180deg,
-    #FFFFFF 0%,
-    #8493B0 38%,
-    #253558 72%,
-    #0D1529 100%
-  );
+/* 5. Pure White (#FFFFFF) → Deep Navy (#14203F) */
+.tz-white-to-navy {
+  background: linear-gradient(180deg, #FFFFFF 0%, #14203F 100%);
+}
+
+/* 6. Deep Navy (#14203F) → Pure White (#FFFFFF) */
+.tz-navy-to-white,
+.tz-navy-to-white-standard {
+  background: linear-gradient(180deg, #14203F 0%, #FFFFFF 100%);
+}
+
+/* 7. Pure White (#FFFFFF) → Deep Navy Footer (#0D1529) */
+.tz-white-to-paper,
+.tz-white-to-footer {
+  background: linear-gradient(180deg, #FFFFFF 0%, #0D1529 100%);
+}
+
+/* 8. Warm Cream (#FAF8F2) → Deep Navy Footer (#0D1529) */
+.tz-cream-to-footer {
+  background: linear-gradient(180deg, #FAF8F2 0%, #0D1529 100%);
 }
 
 /* Visual element overlap for Chapter 7 Conversion Card */

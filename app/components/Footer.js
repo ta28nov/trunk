@@ -118,13 +118,13 @@ export default function Footer() {
         >
           <div style={{ fontSize: "0.8125rem", color: "rgba(255, 255, 255, 0.72)", lineHeight: "1.65", maxWidth: "800px" }}>
             <p style={{ margin: "0 0 0.35rem" }}>
-              <strong>{company.name}</strong> · Người đại diện theo pháp luật: <strong>Nguyễn Hậu</strong>
+              <strong>{company.name}</strong> · Người đại diện theo pháp luật: <strong>Cao Thị Trí</strong> · Phụ trách điều hành &amp; kinh doanh: <strong>Nguyễn Hậu</strong> &amp; <strong>Nguyễn Hữu Phúc</strong>
             </p>
             <p style={{ margin: "0 0 0.35rem" }}>
-              Giấy chứng nhận đăng ký kinh doanh số: <strong>{company.taxCode}</strong> do Sở Kế hoạch và Đầu tư Tỉnh Thanh Hóa cấp ngày 13/03/2026.
+              Giấy chứng nhận đăng ký kinh doanh số: <strong>{company.taxCode}</strong> do Sở Kế hoạch và Đầu tư Tỉnh Thanh Hóa cấp ngày 13/03/2026 (Thay đổi lần 1: 23/09/2026).
             </p>
             <p style={{ margin: 0 }}>
-              Trụ sở &amp; Bãi xe: {company.address} · Hotline 24/7: <strong>{company.hotline}</strong> · Email: {company.email}
+              Trụ sở &amp; Bãi xe: {company.address} · Hotline / Zalo: <strong>{company.hotline}</strong> (A. Hậu - Chính) · <strong>{company.hotline2}</strong> (A. Phúc) · Email: {company.email}
             </p>
           </div>
         </div>

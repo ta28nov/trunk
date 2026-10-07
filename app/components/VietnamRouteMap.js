@@ -174,6 +174,63 @@ export const SERVICED_HUBS = {
     dx: 14,
     dy: 8,
   },
+
+  // Tuyến Xuyên Việt & Mạng Lưới Phía Nam
+  "Đà Nẵng": {
+    x: 275,
+    y: 390,
+    region: "south",
+    name: "Đà Nẵng",
+    role: "Cảng Biển Tiên Sa & Vùng Kinh Tế Miền Trung",
+    route: "Trục Cao Tốc Bắc – Nam & Quốc Lộ 1A",
+    time: "Khoảng 8.0 – 10 giờ",
+    dx: 14,
+    dy: 4,
+  },
+  "Khánh Hòa": {
+    x: 335,
+    y: 535,
+    region: "south",
+    name: "Khánh Hòa",
+    role: "Nha Trang, Cam Ranh & Nam Trung Bộ",
+    route: "Cao tốc Nha Trang – Cam Lâm & QL1A",
+    time: "Khoảng 16 – 20 giờ",
+    dx: 14,
+    dy: 4,
+  },
+  "Đồng Nai": {
+    x: 260,
+    y: 635,
+    region: "south",
+    name: "Đồng Nai",
+    role: "KCN Biên Hòa, Long Thành & Nhơn Trạch",
+    route: "Cao tốc Phan Thiết – Dầu Giây & Long Thành",
+    time: "Khoảng 26 – 30 giờ",
+    dx: 14,
+    dy: -4,
+  },
+  "TP. Hồ Chí Minh": {
+    x: 235,
+    y: 655,
+    region: "south",
+    name: "TP. Hồ Chí Minh",
+    role: "Trung Tâm Kinh Tế & Cảng Biển Phía Nam",
+    route: "Trục Cao Tốc Bắc – Nam Xuyên Suốt",
+    time: "Khoảng 28 – 34 giờ",
+    dx: -110,
+    dy: 4,
+  },
+  "Cần Thơ": {
+    x: 195,
+    y: 705,
+    region: "south",
+    name: "Cần Thơ",
+    role: "Trung Tâm Logistics Đồng Bằng Sông Cửu Long",
+    route: "Cao tốc Trung Lương – Mỹ Thuận – Cần Thơ",
+    time: "Khoảng 32 – 38 giờ",
+    dx: -80,
+    dy: 14,
+  },
 };
 
 export default function VietnamRouteMap({ activeDest, onSelectDest }) {
@@ -199,11 +256,11 @@ export default function VietnamRouteMap({ activeDest, onSelectDest }) {
           </span>
           <span className="vnl-legend-item">
             <span className="vnl-legend-dot vnl-legend-dest" />
-            <span>12 Tỉnh đích lên Bắc</span>
+            <span>Mạng lưới toàn quốc (Bắc · Trung · Nam)</span>
           </span>
           <span className="vnl-legend-item">
             <span className="vnl-legend-line" />
-            <span>Tuyến hành lang</span>
+            <span>Trục hành lang</span>
           </span>
         </div>
       </div>
@@ -354,6 +411,12 @@ export default function VietnamRouteMap({ activeDest, onSelectDest }) {
             className="vnl-cyan-route-line vnl-route-dashed"
           />
 
+          {/* Southbound Artery 6: Hà Tĩnh ➔ Đà Nẵng ➔ Khánh Hòa ➔ Đồng Nai ➔ TP. Hồ Chí Minh ➔ Cần Thơ */}
+          <path
+            d="M 225,320 L 275,390 L 335,535 L 260,635 L 235,655 L 195,705"
+            className="vnl-cyan-route-line"
+          />
+
           {/* Active direct focus line to currently selected hub */}
           {selectedInfo && selectedName !== "Thanh Hóa" && (
             <line
@@ -437,7 +500,11 @@ export default function VietnamRouteMap({ activeDest, onSelectDest }) {
         <div className="vnl-live-popover">
           <div className="vnl-popover-header">
             <span className="vnl-popover-tag">
-              {selectedInfo.region === "origin" ? "ĐIỂM XUẤT PHÁT / GOM HÀNG" : "ĐIỂM TRẢ HÀNG LÊN BẮC"}
+              {selectedInfo.region === "origin"
+                ? "ĐIỂM XUẤT PHÁT / GOM HÀNG"
+                : selectedInfo.region === "south"
+                ? "ĐIỂM GIAO NHẬN XUYÊN VIỆT PHÍA NAM"
+                : "ĐIỂM TRẢ HÀNG PHÍA BẮC & TÂY BẮC"}
             </span>
             <span className="vnl-popover-name">{selectedInfo.name}</span>
           </div>

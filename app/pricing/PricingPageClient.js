@@ -15,7 +15,7 @@ export default function PricingPageClient() {
   const handleConsultZalo = (e) => {
     e.preventDefault();
     const msg = `Xin chào Hậu Nguyễn, tôi cần báo giá vận chuyển:\n- Từ: ${fromLoc || "..."}\n- Đến: ${toLoc || "..."}\n- Loại hàng: ${cargoType || "..."}\n- Tải trọng dự kiến: ${weight || "..."}`;
-    window.open(company.zaloLink, "_blank");
+    window.open(company.zalo2Link || company.zaloLink, "_blank");
   };
 
   return (
@@ -53,15 +53,15 @@ export default function PricingPageClient() {
             <a href="#tinh-toan-cuoc" className="btn btn-primary">
               Tính phương án cước ngay ↓
             </a>
-            <a href={company.hotlineTel} className="btn btn-secondary">
-              Hotline: {company.hotline}
+            <a href={company.hotlineTel} className="btn btn-secondary" title="Nguyễn Hậu - Hotline chính">
+              Hotline: {company.hotline} (A. Hậu)
             </a>
           </div>
         </div>
       </section>
 
-      {/* Transition Zone: Hero (Dark #0A0E17) → Pricing Grid (Light #FAF8F2) */}
-      <div className="transition-zone tz-hero-to-light" aria-hidden="true" />
+      {/* Transition: Hero (#0A0E17) → Pricing Grid (#FAF8F2) */}
+      <div className="transition-zone tz-hero-to-cream" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════════════════════════════
           BẢNG GIÁ DÒNG XE (VEHICLE TIERS)
@@ -178,8 +178,8 @@ export default function PricingPageClient() {
         </div>
       </section>
 
-      {/* Transition Zone: White (#FFFFFF) → Navy (#14203F) */}
-      <div className="transition-zone tz-white-to-navy" aria-hidden="true" />
+      {/* Transition: Pricing Grid (#FAF8F2) → 4 Yếu Tố (#14203F) */}
+      <div className="transition-zone tz-cream-to-navy" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════════════════════════════
           4 YẾU TỐ CẤU THÀNH CHI PHÍ (HIGH CONTRAST NAVY)
@@ -252,8 +252,8 @@ export default function PricingPageClient() {
         </div>
       </section>
 
-      {/* Transition Zone: Navy (#14203F) → White (#FFFFFF) */}
-      <div className="transition-zone tz-navy-to-white-standard" aria-hidden="true" />
+      {/* Transition: 4 Yếu Tố (#14203F) → Quy trình & Báo Giá (#FFFFFF) */}
+      <div className="transition-zone tz-navy-to-white" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════════════════════════════
           QUY TRÌNH 6 BƯỚC MINH BẠCH & CAM KẾT BỒI THƯỜNG 100%
@@ -343,8 +343,8 @@ export default function PricingPageClient() {
         </div>
       </section>
 
-      {/* Transition Zone: Content White (#FFFFFF) → Footer Paper (#0D1529) */}
-      <div className="transition-zone tz-white-to-paper" aria-hidden="true" />
+      {/* Transition: Quick Quote (#FFFFFF) → Dark Navy Footer (#0D1529) */}
+      <div className="transition-zone tz-white-to-footer" aria-hidden="true" />
     </div>
   );
 }

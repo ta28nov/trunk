@@ -55,8 +55,8 @@ export default function AboutPageClient() {
           </p>
 
           <div className="subpage-hero-actions">
-            <a href={company.hotlineTel} className="btn btn-primary">
-              <span>Hotline trực ban: {company.hotline}</span>
+            <a href={company.hotlineTel} className="btn btn-primary" title="Gọi Hotline chính Nguyễn Hậu">
+              <span>Hotline: {company.hotline} (A. Hậu)</span>
             </a>
             <Link
               href="/fleet"
@@ -65,8 +65,8 @@ export default function AboutPageClient() {
             >
               <span>Xem đội xe chuyên dụng →</span>
             </Link>
-            <a href="#quy-trinh-van-hanh" className="monolith-explore" style={{ marginLeft: "auto" }}>
-              <span>Xem video quy trình</span>
+            <a href="#thu-ngo" className="monolith-explore" style={{ marginLeft: "auto" }}>
+              <span>Đọc thư ngỏ</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <polyline points="19 12 12 19 5 12"></polyline>
@@ -76,8 +76,101 @@ export default function AboutPageClient() {
         </div>
       </section>
 
+      {/* Transition: Dark Hero (#0A0E17) → Thư Ngỏ (#FAF8F2) */}
+      <div className="transition-zone tz-hero-to-cream" aria-hidden="true" />
+
       {/* ═══════════════════════════════════════════════════════════════
-          STANDALONE VIDEO SECTION (NẰM 1 MÌNH HỆT NHƯ TRANG CHỦ)
+          SECTION 1: THƯ NGỎ BAN LÃNH ĐẠO (EXECUTIVE OPEN LETTER)
+          Tone sáng, trang nhã, dễ đọc, cấu trúc thư chuẩn mực
+         ═══════════════════════════════════════════════════════════════ */}
+      <section className="open-letter-section" id="thu-ngo">
+        <div className="wrap">
+          <div className="open-letter-card reveal-up">
+            <div className="open-letter-header">
+              <h2 className="open-letter-heading">
+                Đồng hành cùng khách hàng, kiến tạo giá trị bền vững
+              </h2>
+            </div>
+
+            <div className="open-letter-salutation">
+              <span>Kính gửi Quý Khách hàng &amp; Quý Đối tác,</span>
+            </div>
+
+            <div className="open-letter-body">
+              <p>
+                Lời đầu tiên, <strong>Công ty TNHH Xây dựng và Dịch vụ Vận tải Hậu Nguyễn</strong> xin gửi tới Quý khách hàng và Quý đối tác lời chào trân trọng, lời chúc sức khỏe, an khang và thành công thịnh vượng! Chúng tôi xin bày tỏ lòng tri ân sâu sắc nhất tới Quý vị đã luôn tin tưởng, lựa chọn và đồng hành cùng Hậu Nguyễn trên mọi hành trình trong suốt thời gian qua.
+              </p>
+
+              <p>
+                Với đội ngũ nhân sự giàu kinh nghiệm thực chiến, hệ thống phương tiện vận tải hiện đại (đội xe Hino &amp; Hyundai chất lượng cao) cùng phương châm hành động bất biến <strong>“Uy tín – Chuyên nghiệp – Hiệu quả”</strong>, Hậu Nguyễn cam kết cung cấp các giải pháp vận tải hàng hóa đường bộ, thi công xây dựng và kết cấu đảm bảo an toàn tuyệt đối, chuẩn xác tiến độ và tối ưu chi phí cho Quý khách.
+              </p>
+
+              <p>
+                Chúng tôi luôn lấy <strong>uy tín và sự hài lòng của khách hàng làm nền tảng cốt lõi cho sự phát triển bền vững</strong>, đồng thời không ngừng nâng cao chất lượng dịch vụ, chuẩn hóa quy trình điều xe để mang đến những giá trị thiết thực và lâu dài cho quý đối tác.
+              </p>
+
+              <div className="open-letter-callout">
+                “Hậu Nguyễn – Đồng hành cùng khách hàng, kiến tạo giá trị bền vững.”
+              </div>
+
+              <p style={{ fontWeight: 600, color: "var(--navy-900)" }}>
+                Hậu Nguyễn trân trọng cảm ơn và hân hạnh được tiếp tục phục vụ, đồng hành cùng sự thành công của Quý khách!
+              </p>
+            </div>
+
+            <div className="open-letter-footer">
+              <div className="open-letter-signature">
+                <span className="open-letter-closing">Trân trọng cảm ơn,</span>
+                <span className="open-letter-signoff">
+                  BAN LÃNH ĐẠO HẬU NGUYỄN TRANSPORT
+                </span>
+                <span className="open-letter-company">
+                  CÔNG TY TNHH XÂY DỰNG VÀ DỊCH VỤ VẬN TẢI HẬU NGUYỄN
+                </span>
+                <div className="open-letter-contacts-row">
+                  <span>
+                    <strong style={{ color: "var(--navy-900)" }}>Nguyễn Hậu</strong> · Hotline chính 24/7: <strong>{company.hotline}</strong>
+                  </span>
+                  <span style={{ opacity: 0.35 }}>|</span>
+                  <span>
+                    <strong style={{ color: "var(--navy-900)" }}>Nguyễn Hữu Phúc</strong> · Hotline 2: <strong>{company.hotline2}</strong>
+                  </span>
+                </div>
+              </div>
+
+              <div className="open-letter-actions">
+                <a href={company.hotlineTel} className="btn btn-primary" style={{ padding: "0 1.25rem", minHeight: "44px" }} title="Gọi Hotline chính Nguyễn Hậu">
+                  <span>Hotline: {company.hotline} (A. Hậu)</span>
+                </a>
+                <a
+                  href={company.zaloLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary"
+                  style={{ padding: "0 1.25rem", minHeight: "44px", borderColor: "var(--cream-200)", color: "var(--navy-900)", background: "#FFFFFF" }}
+                  title="Chat Zalo Nguyễn Hậu"
+                >
+                  <span>Chat Zalo A. Hậu</span>
+                </a>
+                <a
+                  href={company.hotline2Tel}
+                  className="btn btn-secondary"
+                  style={{ padding: "0 1.25rem", minHeight: "44px", borderColor: "var(--cream-200)", color: "var(--navy-900)", background: "#FFFFFF" }}
+                  title="Gọi Hotline 2 Nguyễn Hữu Phúc"
+                >
+                  <span>Hotline 2: {company.hotline2} (A. Phúc)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Transition: Thư Ngỏ (#FAF8F2) → Standalone Video (#0A0E17) */}
+      <div className="transition-zone tz-cream-to-dark" aria-hidden="true" />
+
+      {/* ═══════════════════════════════════════════════════════════════
+          STANDALONE VIDEO SECTION (QUY TRÌNH THỰC TẾ)
           Video: videoquytrinhchay.mp4 (Live freight departure and operations)
          ═══════════════════════════════════════════════════════════════ */}
       <section className="cinematic-standalone-section" id="quy-trinh-van-hanh">
@@ -172,7 +265,7 @@ export default function AboutPageClient() {
         </div>
       </section>
 
-      {/* Transition Zone: Video Section (#0A0E17) → Triết lý phương tiện (#FFFFFF) */}
+      {/* Transition: Standalone Video (#0A0E17) → Triết lý phương tiện (#FFFFFF) */}
       <div className="transition-zone tz-dark-to-white" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -223,7 +316,7 @@ export default function AboutPageClient() {
         </div>
       </section>
 
-      {/* Transition Zone: White (#FFFFFF) → Navy (#14203F) */}
+      {/* Transition: Triết lý phương tiện (#FFFFFF) → Tiêu chí vàng (#14203F) */}
       <div className="transition-zone tz-white-to-navy" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -270,8 +363,8 @@ export default function AboutPageClient() {
         </div>
       </section>
 
-      {/* Transition Zone: Navy (#14203F) → White (#FFFFFF) */}
-      <div className="transition-zone tz-navy-to-white-standard" aria-hidden="true" />
+      {/* Transition: Tiêu chí vàng (#14203F) → Hồ sơ năng lực (#FFFFFF) */}
+      <div className="transition-zone tz-navy-to-white" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════════════════════════════
           HỒ SƠ NĂNG LỰC DOANH NGHIỆP — SCAN DOCUMENTS
@@ -313,8 +406,8 @@ export default function AboutPageClient() {
         </div>
       </section>
 
-      {/* Transition Zone: Content White (#FFFFFF) → Footer Paper (#ebeee7) */}
-      <div className="transition-zone tz-white-to-paper" aria-hidden="true" />
+      {/* Transition: Hồ sơ năng lực (#FFFFFF) → Dark Footer (#0D1529) */}
+      <div className="transition-zone tz-white-to-footer" aria-hidden="true" />
     </div>
   );
 }

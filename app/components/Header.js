@@ -132,39 +132,63 @@ export default function Header() {
           {/* Right side: hotline + CTA + hamburger */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
             {/* Hotline - desktop only */}
-            <a
-              href={company.hotlineTel}
+            <div
               className="desktop-only"
               style={{
                 display: "flex",
                 flexDirection: "column",
                 textAlign: "right",
-                lineHeight: 1.3,
+                lineHeight: 1.25,
                 paddingRight: "0.75rem",
                 borderRight: isDarkHeader ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid var(--cream-200)",
-                textDecoration: "none",
                 transition: "border-color .3s",
               }}
             >
-              <span style={{
-                fontSize: "0.625rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.15em",
-                color: isDarkHeader ? "rgba(255, 255, 255, 0.6)" : "var(--text-muted)",
-                fontWeight: 500,
-                transition: "color .3s"
-              }}>
-                Hotline
-              </span>
-              <span style={{
-                fontSize: "0.8125rem",
-                fontWeight: 700,
-                color: isDarkHeader ? "var(--gold-300)" : "var(--navy-700)",
-                transition: "color .3s"
-              }}>
-                {company.hotline}
-              </span>
-            </a>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.35rem", justifyContent: "flex-end" }}>
+                <span style={{
+                  fontSize: "0.625rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.12em",
+                  color: isDarkHeader ? "rgba(255, 255, 255, 0.6)" : "var(--text-muted)",
+                  fontWeight: 600,
+                }}>
+                  Hotline chính:
+                </span>
+                <a
+                  href={company.hotlineTel}
+                  style={{
+                    fontSize: "0.8125rem",
+                    fontWeight: 700,
+                    color: isDarkHeader ? "var(--gold-300)" : "var(--navy-900)",
+                    textDecoration: "none",
+                  }}
+                  title="Nguyễn Hậu - Điều hành bãi xe 24/7"
+                >
+                  {company.hotline} <span style={{ fontSize: "0.6875rem", fontWeight: 600, opacity: 0.85 }}>(A. Hậu)</span>
+                </a>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.35rem", justifyContent: "flex-end", marginTop: "1px" }}>
+                <span style={{
+                  fontSize: "0.625rem",
+                  color: isDarkHeader ? "rgba(255, 255, 255, 0.5)" : "var(--text-muted)",
+                  fontWeight: 500,
+                }}>
+                  Hotline 2:
+                </span>
+                <a
+                  href={company.hotline2Tel}
+                  style={{
+                    fontSize: "0.75rem",
+                    fontWeight: 600,
+                    color: isDarkHeader ? "rgba(255, 255, 255, 0.8)" : "var(--navy-700)",
+                    textDecoration: "none",
+                  }}
+                  title="Nguyễn Hữu Phúc - Đại diện kinh doanh & Điều phối"
+                >
+                  {company.hotline2} <span style={{ fontSize: "0.6875rem", fontWeight: 500, opacity: 0.85 }}>(A. Phúc)</span>
+                </a>
+              </div>
+            </div>
 
             {/* CTA Button */}
             <a
@@ -246,13 +270,20 @@ export default function Header() {
           ))}
         </nav>
         <div style={{ marginTop: "2rem", paddingTop: "1.5rem", borderTop: "1px solid var(--cream-200)" }}>
-          <p style={{ fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--gold-600)", margin: "0 0 0.5rem" }}>
-            VẬN TẢI — XÂY DỰNG — DỊCH VỤ
+          <p style={{ fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--gold-600)", margin: "0 0 0.75rem" }}>
+            HOTLINE &amp; ZALO ĐIỀU XE 24/7
           </p>
-          <a href={company.hotlineTel} style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--gold-600)", display: "block", marginBottom: "0.5rem" }}>
-            {company.hotline}
-          </a>
-          <p style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "0.75rem" }}>
+            <a href={company.hotlineTel} style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--navy-900)", display: "flex", alignItems: "center", justifyContent: "space-between", textDecoration: "none" }}>
+              <span>{company.hotline}</span>
+              <span style={{ fontSize: "0.8125rem", color: "var(--gold-600)", fontWeight: 700 }}>A. Hậu (Chính)</span>
+            </a>
+            <a href={company.hotline2Tel} style={{ fontSize: "1.125rem", fontWeight: 600, color: "var(--navy-700)", display: "flex", alignItems: "center", justifyContent: "space-between", textDecoration: "none" }}>
+              <span>{company.hotline2}</span>
+              <span style={{ fontSize: "0.8125rem", color: "var(--text-muted)", fontWeight: 500 }}>A. Phúc (Số 2)</span>
+            </a>
+          </div>
+          <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", marginTop: "0.5rem" }}>
             {company.address}
           </p>
         </div>

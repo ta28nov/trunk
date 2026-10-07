@@ -10,6 +10,33 @@
   "hotlineTel": "tel:0823040412",
   "zalo": "0823 040 412",
   "zaloLink": "https://zalo.me/0823040412",
+  "representative1": "Nguyễn Hậu",
+  "hotline2": "0908 453 497",
+  "hotline2Tel": "tel:0908453497",
+  "zalo2": "0908 453 497",
+  "zalo2Link": "https://zalo.me/0908453497",
+  "representative2": "Nguyễn Hữu Phúc",
+  "legalRepresentative": "Cao Thị Trí",
+  "contacts": [
+    {
+      "name": "Nguyễn Hậu",
+      "role": "Hotline chính · Điều hành bãi xe 24/7",
+      "phone": "0823 040 412",
+      "tel": "tel:0823040412",
+      "zalo": "0823 040 412",
+      "zaloLink": "https://zalo.me/0823040412",
+      "isPrimary": true
+    },
+    {
+      "name": "Nguyễn Hữu Phúc",
+      "role": "Hotline 2 · Đại diện kinh doanh & Điều phối",
+      "phone": "0908 453 497",
+      "tel": "tel:0908453497",
+      "zalo": "0908 453 497",
+      "zaloLink": "https://zalo.me/0908453497",
+      "isPrimary": false
+    }
+  ],
   "email": "nguyenhau1707hhh@gmail.com",
   "taxCode": "2803219353",
   "established": "13/03/2026",

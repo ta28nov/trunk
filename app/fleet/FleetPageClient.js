@@ -72,8 +72,8 @@ export default function FleetPageClient({ fleet, company }) {
           </p>
 
           <div className="subpage-hero-actions">
-            <a href={company.hotlineTel} className="btn btn-primary">
-              <span>Hotline điều xe: {company.hotline}</span>
+            <a href={company.hotlineTel} className="btn btn-primary" title="Gọi Hotline chính Nguyễn Hậu">
+              <span>Hotline: {company.hotline} (A. Hậu)</span>
             </a>
             <a
               href={company.zaloLink}
@@ -95,8 +95,8 @@ export default function FleetPageClient({ fleet, company }) {
         </div>
       </section>
 
-      {/* Transition Zone: Hero (Dark #0A0E17) → Filter (#FFFFFF) */}
-      <div className="transition-zone tz-hero-to-light" aria-hidden="true" />
+      {/* Transition: Dark Hero (#0A0E17) → Filter & Fleet (#FFFFFF) */}
+      <div className="transition-zone tz-dark-to-white" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════════════════════════════
           BỘ LỌC TẢI TRỌNG & LOẠI THÙNG
@@ -311,8 +311,8 @@ export default function FleetPageClient({ fleet, company }) {
         </div>
       </section>
 
-      {/* Transition Zone: Content (#FFFFFF) → Footer Paper (#ebeee7) */}
-      <div className="transition-zone tz-white-to-paper" aria-hidden="true" />
+      {/* Transition: Fleet Showcase (#FFFFFF) → Dark Navy Footer (#0D1529) */}
+      <div className="transition-zone tz-white-to-footer" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════════════════════════════
           MODAL BÁO GIÁ NHANH

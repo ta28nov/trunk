@@ -77,7 +77,7 @@ export default function ContactPageClient() {
 - Loại hàng: ${cleanCargo || "Chưa ghi rõ"}`;
 
     const encoded = encodeURIComponent(message);
-    window.open(`${company.zaloLink}?text=${encoded}`, "_blank", "noopener,noreferrer");
+    window.open(`${company.zalo2Link || company.zaloLink}?text=${encoded}`, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
 
@@ -112,8 +112,8 @@ export default function ContactPageClient() {
           </p>
 
           <div className="subpage-hero-actions">
-            <a href={company.hotlineTel} className="btn btn-primary">
-              <span>Hotline trực ban: {company.hotline}</span>
+            <a href={company.hotlineTel} className="btn btn-primary" title="Gọi Hotline chính Nguyễn Hậu">
+              <span>Hotline: {company.hotline} (A. Hậu)</span>
             </a>
             <a
               href={company.zaloLink}
@@ -122,7 +122,7 @@ export default function ContactPageClient() {
               className="btn btn-secondary"
               style={{ borderColor: "rgba(255,255,255,0.4)", color: "#FFFFFF" }}
             >
-              <span>Chat Zalo điều xe</span>
+              <span>Chat Zalo A. Hậu</span>
             </a>
             <a href="#thong-tin-lien-he" className="monolith-explore" style={{ marginLeft: "auto" }}>
               <span>Thông tin liên hệ &amp; Bản đồ</span>
@@ -135,8 +135,8 @@ export default function ContactPageClient() {
         </div>
       </section>
 
-      {/* Transition Zone: Hero (Dark #0A0E17) → Contact Info (#FAF8F2) */}
-      <div className="transition-zone tz-hero-to-light" aria-hidden="true" />
+      {/* Transition: Dark Hero (#0A0E17) → Contact Info (#FAF8F2) */}
+      <div className="transition-zone tz-hero-to-cream" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════════════════════════════
           CONTACT INFO & INQUIRY FORM
@@ -146,13 +146,13 @@ export default function ContactPageClient() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "clamp(1.5rem, 4vw, 3rem)", alignItems: "start" }}>
             {/* Contact Info Cards */}
             <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-              {/* Hotline Card */}
+              {/* Representative 1: Nguyen Hau Card (Primary) */}
               <div style={{
                 background: "#FFFFFF",
-                border: "1.5px solid var(--cream-200)",
+                border: "1.5px solid var(--gold-400)",
                 borderRadius: "var(--radius-lg)",
                 padding: "1.75rem",
-                boxShadow: "0 8px 24px rgba(20, 32, 63, 0.06)",
+                boxShadow: "0 8px 24px rgba(217, 162, 27, 0.12)",
                 display: "flex",
                 alignItems: "center",
                 gap: "1.25rem",
@@ -160,17 +160,30 @@ export default function ContactPageClient() {
                 <div style={{ width: "52px", height: "52px", borderRadius: "var(--radius-md)", background: "rgba(217, 162, 27, 0.15)", display: "grid", placeItems: "center", flexShrink: 0 }}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-600)" strokeWidth="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                 </div>
-                <div>
-                  <span style={{ fontSize: "0.8125rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 700, display: "block", marginBottom: "0.25rem" }}>
-                    Hotline điều xe trực ban 24/7
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "0.25rem", marginBottom: "0.25rem" }}>
+                    <span style={{ fontSize: "0.8125rem", color: "var(--gold-600)", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 800 }}>
+                      Hotline Chính · Điều Hành 24/7
+                    </span>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--navy-900)", background: "var(--cream-100)", padding: "0.15rem 0.5rem", borderRadius: "var(--radius-pill)" }}>
+                      Nguyễn Hậu (Chính)
+                    </span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
+                    <a href={company.hotlineTel} style={{ fontSize: "1.375rem", fontWeight: 900, color: "var(--navy-900)", textDecoration: "none" }}>
+                      {company.hotline}
+                    </a>
+                    <a href={company.zaloLink} target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--gold-600)", background: "rgba(217, 162, 27, 0.12)", padding: "0.25rem 0.65rem", borderRadius: "var(--radius-pill)", textDecoration: "none" }}>
+                      Nhắn Zalo →
+                    </a>
+                  </div>
+                  <span style={{ fontSize: "0.8125rem", color: "var(--text-muted)", display: "block", marginTop: "0.25rem" }}>
+                    Điều hành phương tiện, hỗ trợ bốc xếp &amp; trực ban bãi xe 24/7
                   </span>
-                  <a href={company.hotlineTel} style={{ fontSize: "1.5rem", fontWeight: 900, color: "var(--navy-900)" }}>
-                    {company.hotline}
-                  </a>
                 </div>
               </div>
 
-              {/* Zalo Card */}
+              {/* Representative 2: Nguyen Huu Phuc Card */}
               <div style={{
                 background: "#FFFFFF",
                 border: "1.5px solid var(--cream-200)",
@@ -182,15 +195,28 @@ export default function ContactPageClient() {
                 gap: "1.25rem",
               }}>
                 <div style={{ width: "52px", height: "52px", borderRadius: "var(--radius-md)", background: "rgba(20, 32, 63, 0.08)", display: "grid", placeItems: "center", flexShrink: 0 }}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-700)" strokeWidth="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--navy-700)" strokeWidth="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                 </div>
-                <div>
-                  <span style={{ fontSize: "0.8125rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 700, display: "block", marginBottom: "0.25rem" }}>
-                    Nhắn tin Zalo nhận báo giá
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "0.25rem", marginBottom: "0.25rem" }}>
+                    <span style={{ fontSize: "0.8125rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 700 }}>
+                      Hotline 2 &amp; Zalo Kinh Doanh
+                    </span>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--navy-900)", background: "var(--cream-100)", padding: "0.15rem 0.5rem", borderRadius: "var(--radius-pill)" }}>
+                      Nguyễn Hữu Phúc
+                    </span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
+                    <a href={company.hotline2Tel} style={{ fontSize: "1.375rem", fontWeight: 900, color: "var(--navy-900)", textDecoration: "none" }}>
+                      {company.hotline2}
+                    </a>
+                    <a href={company.zalo2Link} target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--navy-800)", background: "rgba(20, 32, 63, 0.08)", padding: "0.25rem 0.65rem", borderRadius: "var(--radius-pill)", textDecoration: "none" }}>
+                      Nhắn Zalo →
+                    </a>
+                  </div>
+                  <span style={{ fontSize: "0.8125rem", color: "var(--text-muted)", display: "block", marginTop: "0.25rem" }}>
+                    Phụ trách kinh doanh, tư vấn giá cước &amp; điều phối tuyến
                   </span>
-                  <a href={company.zaloLink} target="_blank" rel="noopener noreferrer" style={{ fontSize: "1.25rem", fontWeight: 800, color: "var(--gold-600)" }}>
-                    {company.zalo}
-                  </a>
                 </div>
               </div>
 
@@ -251,9 +277,14 @@ export default function ContactPageClient() {
                   <p style={{ color: "var(--text-muted)", fontSize: "0.9375rem", marginBottom: "2rem", lineHeight: 1.6 }}>
                     Ban điều phối Hậu Nguyễn sẽ đối chiếu lịch trình xe và gọi lại phản hồi ngay cho quý khách.
                   </p>
-                  <a href={company.hotlineTel} className="ch7-submit-btn" style={{ textDecoration: "none" }}>
-                    Gọi ngay hotline: {company.hotline}
-                  </a>
+                  <div style={{ display: "flex", gap: "0.75rem", justifyContent: "center", flexWrap: "wrap" }}>
+                    <a href={company.hotlineTel} className="ch7-submit-btn" style={{ textDecoration: "none", flex: "1 1 auto" }} title="Gọi Hotline chính Nguyễn Hậu">
+                      Gọi A. Hậu (Chính): {company.hotline}
+                    </a>
+                    <a href={company.hotline2Tel} className="ch7-submit-btn" style={{ textDecoration: "none", background: "var(--navy-800)", flex: "1 1 auto" }} title="Gọi Hotline 2 Nguyễn Hữu Phúc">
+                      Gọi A. Phúc: {company.hotline2}
+                    </a>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="ch7-form">
@@ -444,8 +475,8 @@ export default function ContactPageClient() {
          ═══════════════════════════════════════════════════════════════ */}
       <FAQSection title="Hỏi đáp thường gặp khi đặt xe &amp; giao nhận hàng" />
 
-      {/* Transition Zone: Content (#FAF8F2) → Footer Paper (#0D1529) */}
-      <div className="transition-zone tz-white-to-paper" aria-hidden="true" />
+      {/* Transition: Contact FAQ (#FAF8F2) → Dark Navy Footer (#0D1529) */}
+      <div className="transition-zone tz-cream-to-footer" aria-hidden="true" />
     </div>
   );
 }
