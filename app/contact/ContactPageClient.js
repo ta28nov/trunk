@@ -435,8 +435,8 @@ export default function ContactPageClient() {
               src={company.mapEmbed}
               allowFullScreen
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Bản đồ 92 Đông Xuân, Xã Trường Văn, Tỉnh Thanh Hóa"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="Bản đồ Vận Tải Hậu Nguyễn - Vận Chuyển Hàng Hóa Bắc Trung Bộ"
               style={{ width: "100%", height: "100%", border: 0 }}
             />
 
@@ -456,7 +456,7 @@ export default function ContactPageClient() {
                   Gọi ngay: {company.hotline}
                 </a>
                 <a
-                  href="https://maps.google.com/?q=92+Đông+Xuân+Trường+Văn+Thanh+Hóa"
+                  href={company.mapUrl || "https://maps.app.goo.gl/oqUeDWscMXJ5zjkg6"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-secondary"

@@ -283,9 +283,14 @@ export default function Header() {
               <span style={{ fontSize: "0.8125rem", color: "var(--text-muted)", fontWeight: 500 }}>A. Phúc (Số 2)</span>
             </a>
           </div>
-          <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", marginTop: "0.5rem" }}>
-            {company.address}
-          </p>
+          <a
+            href={company.mapUrl || "https://maps.app.goo.gl/oqUeDWscMXJ5zjkg6"}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontSize: "0.875rem", color: "var(--text-muted)", marginTop: "0.5rem", display: "inline-block", textDecoration: "none" }}
+          >
+            📍 {company.address} ↗
+          </a>
         </div>
       </div>
 

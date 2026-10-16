@@ -47,7 +47,9 @@
   },
   "brands": ["Hino", "Hyundai"],
   "bodyTypes": ["Thùng kín", "Thùng bạt"],
-  "mapEmbed": "https://maps.google.com/maps?q=92+Đông+Xuân,+Xã+Trường+Văn,+Tỉnh+Thanh+Hóa&t=&z=14&ie=UTF8&iwloc=&output=embed",
+  "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1872597.1654614287!2d104.13702521447182!3d19.56734210539197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1c54389066ed845%3A0x41e72f82e774f4a4!2zVuG6rW4gVOG6o2kgSOG6rXUgTmd1eeG7hW4gLSBW4bqtbiBDaHV54buDbiBIw6BuZyBIw7NhIELhuq9jIFRydW5nIELhu5k!5e1!3m2!1svi!2s!4v1792144471765!5m2!1svi!2s",
+  "mapUrl": "https://maps.app.goo.gl/oqUeDWscMXJ5zjkg6",
+  "mapLink": "https://maps.app.goo.gl/oqUeDWscMXJ5zjkg6",
   "website": "https://vantaihaunguyen.com",
   "domain": "vantaihaunguyen.com"
 }

@@ -380,8 +380,10 @@ h1, h2 {
   background: var(--cream-50);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 2rem;
+  justify-content: flex-start;
+  padding: 4.5rem 1.75rem 2.5rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   opacity: 0;
   visibility: hidden;
   transition: opacity .35s var(--ease-in-out), visibility .35s;

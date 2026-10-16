@@ -124,7 +124,7 @@ export default function Footer() {
               Giấy chứng nhận đăng ký kinh doanh số: <strong>{company.taxCode}</strong> do Sở Kế hoạch và Đầu tư Tỉnh Thanh Hóa cấp ngày 13/03/2026 (Thay đổi lần 1: 23/09/2026).
             </p>
             <p style={{ margin: 0 }}>
-              Trụ sở &amp; Bãi xe: {company.address} · Hotline / Zalo: <strong>{company.hotline}</strong> (A. Hậu - Chính) · <strong>{company.hotline2}</strong> (A. Phúc) · Email: {company.email}
+              Trụ sở &amp; Bãi xe: <a href={company.mapUrl || "https://maps.app.goo.gl/oqUeDWscMXJ5zjkg6"} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold-300)", textDecoration: "underline", textUnderlineOffset: "3px" }}>{company.address} ↗</a> · Hotline / Zalo: <strong>{company.hotline}</strong> (A. Hậu - Chính) · <strong>{company.hotline2}</strong> (A. Phúc) · Email: {company.email}
             </p>
           </div>
         </div>

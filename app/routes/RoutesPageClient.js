@@ -386,7 +386,7 @@ export default function RoutesPageClient() {
               src={company.mapEmbed}
               allowFullScreen
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              referrerPolicy="strict-origin-when-cross-origin"
               title="Bản đồ vị trí Hậu Nguyễn Transport tại Thanh Hóa"
               style={{ width: "100%", height: "100%", border: 0 }}
             />
@@ -402,9 +402,20 @@ export default function RoutesPageClient() {
               <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.5, marginBottom: "1rem" }}>
                 {company.address}
               </p>
-              <a href={company.hotlineTel} className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }} title="Gọi Hotline chính Nguyễn Hậu">
-                Gọi kiểm tra xe: {company.hotline} (A. Hậu)
-              </a>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                <a href={company.hotlineTel} className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }} title="Gọi Hotline chính Nguyễn Hậu">
+                  Gọi kiểm tra xe: {company.hotline} (A. Hậu)
+                </a>
+                <a
+                  href={company.mapUrl || "https://maps.app.goo.gl/oqUeDWscMXJ5zjkg6"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary"
+                  style={{ width: "100%", justifyContent: "center" }}
+                >
+                  Chỉ đường Google Maps ↗
+                </a>
+              </div>
             </div>
           </div>
         </div>
